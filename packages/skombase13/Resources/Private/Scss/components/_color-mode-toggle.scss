@@ -1,0 +1,7 @@
+@include new(color-mode-toggle, component) {
+    margin-bottom: 0;
+    @include has(toggle) {
+        list-style: none;
+        padding-top: 5px;
+    }
+}

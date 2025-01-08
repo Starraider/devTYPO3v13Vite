@@ -1,0 +1,28 @@
+base: 'https://devtypo3v13vite.ddev.site/'
+dependencies:
+  - skom/skombase13
+languages:
+  -
+    title: German
+    enabled: true
+    languageId: 0
+    base: /
+    locale: de_DE.utf8
+    navigationTitle: Deutsch
+    flag: de
+    hreflang: de-DE
+    websiteTitle: ''
+  -
+    title: English
+    enabled: true
+    locale: en_US.utf8
+    hreflang: en-US
+    base: /en/
+    websiteTitle: ''
+    navigationTitle: English
+    fallbackType: strict
+    fallbacks: ''
+    flag: en-us-gb
+    languageId: 1
+rootPageId: 1
+websiteTitle: ''

@@ -1,0 +1,99 @@
+//
+// abstracts
+// contains no actual styles
+//
+@import "bootstrap/scss/functions";
+@import "abstracts/variables";
+@import "abstracts/variables-dark";
+@import "abstracts/bem-mixin";
+
+
+//
+// vendors
+// third-party stylesheets
+//
+@import "bootstrap/scss/bootstrap";
+//@import "bootstrap-icons/font/bootstrap-icons";
+
+// Bootstrap Compat
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/text";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/form";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/embed";
+// Bootstrap Components
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/functions/a11y";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/form";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/button";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/navbar";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/nav";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/backendlayout";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/section";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/frame";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/breadcrumb";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/subnav";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/footer";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/carousel";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/accordion";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/tab";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/card";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/audio";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/link";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/figure";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/gallery";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/address";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/table";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/list";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/filelink";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/blockquote";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/icongroup";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/timeline";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/textpic";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/textteaser";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/texticon";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/text";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/thumbnail-menu";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/sociallink";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/well";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/pagination";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/scrolltop";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/page";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/misc";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/contentcontainer";
+
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/plugins/photoswipe";
+
+//@import 'vanillajs-datepicker/sass/datepicker';
+//
+// base
+// boilerplate used throughout the entire site
+//
+@import "base/typography";
+
+//
+// layout
+// structural layout
+//
+@import "layout/navigation";
+@import "layout/language-menu";
+@import "layout/container";
+@import "layout/footer";
+
+//
+// plugins
+// TYPO3 plugins
+//
+@import "plugins/plugins";
+//@import "plugins/forms";
+
+//
+// components
+// reusable components
+//
+@import "components/buttons";
+@import "components/modals";
+@import "components/color-mode-toggle";
+//@import "components/links";
+
+//
+// overwrite css-vars
+//
+@import "abstracts/css-vars";

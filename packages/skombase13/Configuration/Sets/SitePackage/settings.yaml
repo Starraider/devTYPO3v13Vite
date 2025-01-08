@@ -1,0 +1,43 @@
+plugin:
+  bootstrap_package:
+    settings:
+      scss:
+        primary: '#fcb103'
+        secondary: '#013859'
+    view:
+      layoutRootPath: 'EXT:skombase13/Resources/Private/Layouts/'
+      partialRootPath: 'EXT:skombase13/Resources/Private/Partials/'
+      templateRootPath: 'EXT:skombase13/Resources/Private/Templates/'
+  bootstrap_package_contentelements:
+
+    view:
+      layoutRootPath: 'EXT:skombase13/Resources/Private/Layouts/ContentElements/'
+      partialRootPath: 'EXT:skombase13/Resources/Private/Partials/ContentElements/'
+      templateRootPath: 'EXT:skombase13/Resources/Private/Templates/ContentElements/'
+page:
+  logo:
+    file: 'EXT:skombase13/Resources/Public/Images/logo.svg'
+    fileInverted: 'EXT:skombase13/Resources/Public/Images/logo-inverted.svg'
+    width: 192
+    alt: 'SKom'
+    linktitle: 'SKom'
+  favicon:
+    file: 'EXT:skombase13/Resources/Public/Icons/favicon.ico'
+  theme:
+    cookieconsent:
+      enable: false
+    footernavigation:
+      navigationValue: '4, 5'
+    navigation:
+      type: top
+      style: default
+      icon:
+        enable: false
+    copyright:
+      text: '&copy; 2025 <a href="http://www.skom.de" rel="noopener" target="_blank">SKom</a>'
+  fluidtemplate:
+    layoutRootPath: 'EXT:skombase13/Resources/Private/Layouts/Page/'
+    partialRootPath: 'EXT:skombase13/Resources/Private/Partials/Page/'
+    templateRootPath: 'EXT:skombase13/Resources/Private/Templates/Page/'
+config:
+  headerComment: '© Copyright 2025 Sven Kalbhenn'

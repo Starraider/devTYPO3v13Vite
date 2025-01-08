@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "sass": "^1.80.6",
+    "vite": "^5.4.10",
+    "vite-plugin-live-reload": "^3.0.4",
+    "vite-plugin-typo3": "^1.0.2"
+  }
+}

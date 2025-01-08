@@ -1,0 +1,41 @@
+<html   xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<vac:asset.vite
+    entry="EXT:skombase13/Resources/Private/Main.entry.js"
+    scriptTagAttributes="{
+        type: 'text/javascript',
+        async: 1
+    }"
+    addCss="1"
+    priority="1"
+/>
+
+<div id="top"></div>
+<div class="body-bg{f:if(condition:theme.navigation.type, then:' body-bg-{theme.navigation.type}')}">
+
+    <f:render partial="DropIn/Page/PageBefore" arguments="{_all}" />
+    <f:render partial="Structure/CookieConsent" arguments="{_all}" />
+    <f:render partial="Structure/Skiplink" arguments="{_all}" />
+
+    <f:render partial="Navigation/Main" arguments="{_all}" />
+    <f:render section="Border" optional="true" />
+    <f:render partial="Navigation/Breadcrumb" arguments="{_all}" />
+
+    <main id="page-content" class="bp-page-content main-section">
+        <!--TYPO3SEARCH_begin-->
+        <f:render section="Main" />
+        <!--TYPO3SEARCH_end-->
+    </main>
+
+    <footer id="page-footer" class="bp-page-footer">
+        <f:render partial="DropIn/Structure/FooterBefore" arguments="{_all}" />
+        <f:render section="Footer" optional="true" />
+        <f:render partial="Structure/FooterMeta" arguments="{_all}" />
+        <f:render partial="DropIn/Structure/FooterAfter" arguments="{_all}" />
+    </footer>
+    <f:render partial="Structure/ScrollTop" arguments="{_all}" />
+    <f:render partial="DropIn/Page/PageAfter" arguments="{_all}" />
+
+</div>
+</html>

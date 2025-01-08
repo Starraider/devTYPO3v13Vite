@@ -1,0 +1,68 @@
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+### macOS ###
+.DS_Store
+*.swp
+*.old
+*.ld
+*.icloud
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### Project ###
+.idea
+/node_modules/
+/var/
+/vendor/
+/.phpunit.cache
+.phpunit.result.cache
+.php_cs.cache
+.php-cs-fixer.cache
+/composer.phar
+/Quellen/
+
+### DDEV ###
+.ddev/backup/*
+!.ddev/backup/fileadmin.tar.gz
+!.ddev/backup/mysql-db.sql.gz
+.ddev/php-profiles/*
+.ddev/data/*
+
+### TYPO3 ###
+/public/*
+!/public/build
+!/public/typo3conf
+/public/typo3conf/*
+!/public/typo3conf/LocalConfiguration.php
+!/public/typo3conf/AdditionalConfiguration.php
+!/public/typo3conf/PackageStates.php
+!/public/typo3conf/contentBlocks
+!/public/.htaccess
+
+## Personal assets ##
+/dev_data
+
+### secure files that are symlinked #
+/secure_file_uploads/*
+/form_attachments/*
+
+### /packages/customer_sitepackage/Resources/Public/*
+dev_data
+live_data

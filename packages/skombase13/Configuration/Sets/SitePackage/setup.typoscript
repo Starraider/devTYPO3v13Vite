@@ -1,0 +1,92 @@
+
+##########################
+#### Development-Mode ####
+##########################
+[applicationContext == "Development"]
+  config {
+    no_cache = 1
+    sendCacheHeaders = 0
+    compressJs = 0
+    concatenateCss = 0
+    concatenateJs = 0
+    compressCss = 0
+    admPanel = 1
+  }
+  page {
+    meta.robots = noindex,nofollow
+  }
+  sourceopt {
+    enabled = 0
+    formatHtml = 4
+    removeComments = 0
+  }
+  plugin {
+    tx_min.tinysource.enable = 0
+    bootstrap_package.settings.cssSourceMapping = 1
+  }
+[END]
+[applicationContext == "Production"]
+  config {
+    no_cache = 0
+    sendCacheHeaders = 1
+    compressJs = 1
+    concatenateCss = 1
+    concatenateJs = 1
+    compressCss = 1
+    admPanel = 0
+  }
+  page {
+    meta.robots = index,follow
+  }
+  sourceopt {
+    enabled = 1
+    removeGenerator = 1
+    formatHtml = 2
+    removeComments = 1
+  }
+  plugin {
+    tx_min.tinysource.enable = 1
+    bootstrap_package.settings.cssSourceMapping = 0
+  }
+[END]
+
+
+config {
+    htmlTag.attributes.data-bs-theme = dark
+}
+page {
+
+    includeCSSLibs {
+        bootstrappackageicon >
+        googlewebfont >
+    }
+    includeCSS {
+        theme >
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+        bootstrap >
+        bootstrap_accordion >
+        bootstrap_lightbox >
+        bootstrap_navbar >
+        bootstrap_popover >
+        bootstrap_smoothscroll >
+        bootstrap_stickyheader >
+        # photoswipe_caption >
+        # photoswipe_core >
+        # photoswipe_ui >
+        # popper >
+    }
+
+    includeJSFooter {
+        skombase13_scripts >
+    }
+}

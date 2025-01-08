@@ -1,0 +1,19 @@
+@include new(language-menu, component) {
+    @include has(language) {
+        display: inline-block;
+        list-style: none;
+        max-height: 1rem;
+        @include if(active) {
+
+        }
+    }
+    @include has(flag) {
+        width: 25px;
+        aspect-ratio: auto 1.334;
+        height: 19px;
+        margin-top: 1rem;
+    }
+    @include has(link) {
+
+    }
+}

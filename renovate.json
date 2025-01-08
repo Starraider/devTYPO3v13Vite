@@ -1,0 +1,57 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended"
+	],
+	"labels": ["Dependency-Updates"],
+	"assignees": ["Starraider"],
+	"enableManagers": [
+		"composer"
+	],
+	"composer": {
+		"fileMatch": [
+			"^composer\\.json$"
+		]
+	},
+	"prHourlyLimit": 3,
+	"prConcurrentLimit": 5,
+	"timezone": "Europe/Berlin",
+	"schedule": [
+		"* 1-14 * * *"
+	],
+    "packageRules": [
+		{
+			"matchPackageNames": ["typo3/cms-*"],
+			"groupName": "TYPO3 Core Update",
+			"labels": ["TYPO3-Update"],
+			"rangeStrategy": "in-range-only",
+			"allowedVersions": "^12.4"
+			"enabled": true
+		},
+		{
+			"matchPackageNames": [
+				"bk2k/bootstrap-package",
+				"helhum/dotenv-connector",
+				"helhum/typo3-console",
+				"codingfreaks/cf-cookiemanager",
+				"lolli/dbdoctor",
+				"causal/image_autoresize",
+				"reelworx/rx-shariff",
+				"t3g/blog",
+				"jweiland/infinitescrolling",
+				"b13/container",
+				"tpwd/ke_search",
+				"autodudes/ai-suite"
+			],
+			"groupName": "TYPO3 Extensions Update",
+			"rangeStrategy": "in-range-only",
+			"enabled": true
+		},
+		{
+			"matchPackageNames": [
+				"skom/photo-blog-sitepackage"
+			],
+			"enabled": false
+		}
+	]
+}

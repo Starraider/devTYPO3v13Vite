@@ -1,0 +1,20 @@
+{
+    "name": "skom/skombase13",
+    "type": "typo3-cms-extension",
+    "description": "Base sitepacke for TYPO3 v13 with Vite",    "homepage": "https://www.skom.de",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "require": {
+        "bk2k/bootstrap-package": "^15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Skom\\Skombase13\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "skombase13"
+        }
+    }
+}

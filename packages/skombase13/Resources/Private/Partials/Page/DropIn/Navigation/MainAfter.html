@@ -1,0 +1,59 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<ul class="c-color-mode-toggle">
+    <li class="c-color-mode-toggle__toggle dropdown">
+        <a href="#" class="nav-link nav-link-toggle py-2 px-0 px-lg-2 d-flex align-items-center show" id="bd-color-mode"
+            data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" data-bs-display="static">
+            <i class="bi bi-sun-fill"></i>
+            <span class="nav-link-indicator" aria-hidden="true"></span>
+            <span class="nav-link-text visually-hidden">Submenu for color-mode-toggle"</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-color-mode" data-bs-popper="static">
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill"></i>&nbsp; Light
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill"></i>&nbsp; Dark
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half"></i>&nbsp; Auto
+                </button>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<f:if condition="{theme.language.enable}">
+    <ul class="c-language-menu">
+        <f:for each="{languagenavigation}" as="item">
+            <f:if condition="{item.active}">
+                <f:else>
+                    <li
+                        class="c-language-menu__language {f:if(condition: item.active, then: 'is-active')} {f:if(condition: item.available, then: 'is-available')}">
+                        <f:if condition="{item.available}">
+                            <f:then>
+                                <a class="c-language-menu__link" href="{item.link}" hreflang="{item.hreflang}"
+                                    title="{item.title}">
+                                    <f:image class="c-language-menu__flag"
+                                        src="EXT:skombase13/Resources/Public/Icons/{item.hreflang}.svg"
+                                        alt="{item.title}" />
+                                </a>
+                            </f:then>
+                            <f:else>
+                                <f:image class="c-language-menu__flag"
+                                    src="EXT:skombase13/Resources/Public/Icons/{item.hreflang}_grey.svg"
+                                    alt="{item.title}" />
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:else>
+            </f:if>
+        </f:for>
+    </ul>
+</f:if>
+
+</html>
