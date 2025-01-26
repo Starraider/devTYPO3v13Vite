@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:leseohren/Resources/Private/Language/locallang_csh_tx_leseohren_domain_model_person.xlf" date="2024-02-13T18:30:06Z" product-name="leseohren">
+		<header/>
+		<body>
+			<trans-unit id="firstname.description" resname="firstname.description" xml:space="preserve">
+				<source>firstname</source>
+			</trans-unit>
+			<trans-unit id="lastname.description" resname="lastname.description" xml:space="preserve">
+				<source>lastname</source>
+			</trans-unit>
+			<trans-unit id="gender.description" resname="gender.description" xml:space="preserve">
+				<source>gender</source>
+			</trans-unit>
+			<trans-unit id="gender.1" resname="gender.1" xml:space="preserve">
+				<source>female</source>
+			</trans-unit>
+			<trans-unit id="gender.2" resname="gender.2" xml:space="preserve">
+				<source>male</source>
+			</trans-unit>
+			<trans-unit id="gender.3" resname="gender.3" xml:space="preserve">
+				<source>diverse</source>
+			</trans-unit>
+			<trans-unit id="birthday.description" resname="birthday.description" xml:space="preserve">
+				<source>birthday</source>
+			</trans-unit>
+			<trans-unit id="street1.description" resname="street1.description" xml:space="preserve">
+				<source>street1</source>
+			</trans-unit>
+			<trans-unit id="street2.description" resname="street2.description" xml:space="preserve">
+				<source>street2</source>
+			</trans-unit>
+			<trans-unit id="zip.description" resname="zip.description" xml:space="preserve">
+				<source>zip</source>
+			</trans-unit>
+			<trans-unit id="city.description" resname="city.description" xml:space="preserve">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="district.description" resname="district.description" xml:space="preserve">
+				<source>district</source>
+			</trans-unit>
+			<trans-unit id="phone_landline.description" resname="phone_landline.description" xml:space="preserve">
+				<source>phoneLandline</source>
+			</trans-unit>
+			<trans-unit id="phone_mobile.description" resname="phone_mobile.description" xml:space="preserve">
+				<source>phoneMobile</source>
+			</trans-unit>
+			<trans-unit id="email.description" resname="email.description" xml:space="preserve">
+				<source>email</source>
+			</trans-unit>
+			<trans-unit id="whatsapp.description" resname="whatsapp.description" xml:space="preserve">
+				<source>whatsapp</source>
+			</trans-unit>
+			<trans-unit id="notes.description" resname="notes.description" xml:space="preserve">
+				<source>notes</source>
+			</trans-unit>
+			<trans-unit id="status.description" resname="status.description" xml:space="preserve">
+				<source>status</source>
+			</trans-unit>
+			<trans-unit id="statusbegin_date.description" resname="statusbegin_date.description" xml:space="preserve">
+				<source>statusbeginDate</source>
+			</trans-unit>
+			<trans-unit id="statusend_date.description" resname="statusend_date.description" xml:space="preserve">
+				<source>statusendDate</source>
+			</trans-unit>
+			<trans-unit id="travel_options.description" resname="travel_options.description" xml:space="preserve">
+				<source>travelOptions</source>
+			</trans-unit>
+			<trans-unit id="languages.description" resname="languages.description" xml:space="preserve">
+				<source>languages</source>
+			</trans-unit>
+			<trans-unit id="preference_agegroup.description" resname="preference_agegroup.description" xml:space="preserve">
+				<source>preferenceAgegroup</source>
+			</trans-unit>
+			<trans-unit id="preference_organization_type.description" resname="preference_organization_type.description" xml:space="preserve">
+				<source>preferenceOrganizationType</source>
+			</trans-unit>
+			<trans-unit id="payment_method.description" resname="payment_method.description" xml:space="preserve">
+				<source>paymentMethod</source>
+			</trans-unit>
+			<trans-unit id="iban.description" resname="iban.description" xml:space="preserve">
+				<source>iban</source>
+			</trans-unit>
+			<trans-unit id="swift.description" resname="swift.description" xml:space="preserve">
+				<source>swift</source>
+			</trans-unit>
+			<trans-unit id="account_owner.description" resname="account_owner.description" xml:space="preserve">
+				<source>accountOwner</source>
+			</trans-unit>
+			<trans-unit id="bankname.description" resname="bankname.description" xml:space="preserve">
+				<source>bankname</source>
+			</trans-unit>
+			<trans-unit id="paypal.description" resname="paypal.description" xml:space="preserve">
+				<source>paypal</source>
+			</trans-unit>
+			<trans-unit id="file_fuehrungszeugnis.description" resname="file_fuehrungszeugnis.description" xml:space="preserve">
+				<source>fileFuehrungszeugnis</source>
+			</trans-unit>
+			<trans-unit id="file_mandat.description" resname="file_mandat.description" xml:space="preserve">
+				<source>fileMandat</source>
+			</trans-unit>
+			<trans-unit id="file_others.description" resname="file_others.description" xml:space="preserve">
+				<source>fileOthers</source>
+			</trans-unit>
+			<trans-unit id="donations.description" resname="donations.description" xml:space="preserve">
+				<source>Gifts</source>
+			</trans-unit>
+			<trans-unit id="blackboards.description" resname="blackboards.description" xml:space="preserve">
+				<source>Blackboards</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

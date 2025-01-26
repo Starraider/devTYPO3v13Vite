@@ -1,0 +1,55 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    {namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+
+<div class="card">
+    <div class="card-header text-bg-primary">
+        <f:translate key="tx_leseohren_domain_model_registration.newRegistration" />
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <strong>
+                    <f:translate key="tx_leseohren_domain_model_registration.registration_for" />:
+                </strong>
+                <f:if condition="{personref}">
+                        {personref.fullname},
+                        {personref.zip} {personref.city}
+                </f:if>
+                <f:if condition="{eventref}">
+                    {eventref.startDate -> f:format.date(format: 'd.m.Y')}: {eventref.title}
+                </f:if>
+                <f:form.hidden property="registrationDate" value="{now}" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <f:if condition="{personref}">
+                    <label for="event" class="form-label">
+                        <f:translate key="tx_leseohren_domain_model_registration.whichevent" />
+                    </label>
+                    <f:form.select class="form-select" property="event" id="event" options="{events}" optionValueField="uid" optionLabelField="extendedtitle" />
+                </f:if>
+                <f:if condition="{eventref}">
+                    <label for="person" class="form-label">
+                        <f:translate key="tx_leseohren_domain_model_registration.whichperson" />
+                    </label>
+                    <f:form.select class="form-select" property="person" id="person" options="{persons}" optionValueField="uid" optionLabelField="fullname" />
+                </f:if>
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <f:form.checkbox class="form-check-input" property="onwaitlist" value="true" id="onwaitlist" multiple="0" />
+                <label class="form-check-label" for="onwaitlist">
+                    <f:translate key="tx_leseohren_domain_model_registration.onwaitlist" />
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</html>

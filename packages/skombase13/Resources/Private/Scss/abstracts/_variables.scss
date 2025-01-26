@@ -298,10 +298,11 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary:       $red;
-$secondary:     $gray-600;
+$primary:       #f90;
+$secondary:     lighten($primary, 10%);
 $tertiary:      #c6d6dd;
 $quaternary:    #f3f7f8;
+
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;
@@ -1765,5 +1766,30 @@ $kbd-bg:                            var(--#{$prefix}body-color);
 $nested-kbd-font-weight:            null; // Deprecated in v5.2.0, removing in v6
 
 $pre-color:                         null;
+
+//
+// Footer
+// --------------------------------------------------
+$footer-sections: ();
+$footer-sections: map-merge(
+    (
+        'content': (
+            'background':   $light,
+            'color':        $black,
+            'link-color':   $link-color
+        ),
+        'addressbar': (
+            'background':   $quaternary,
+            'color':        color-contrast($black),
+            'link-color':   $link-color
+        ),
+        'meta': (
+            'background':   $white,
+            'color':        color-contrast($black),
+            'link-color':   $link-color
+        )
+    ),
+    $footer-sections
+);
 
 @import "variables-dark"; // TODO: can be removed safely in v6, only here to avoid breaking changes in v5.3

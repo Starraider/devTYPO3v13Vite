@@ -1,0 +1,68 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    {namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:debug inline="true">{event}</f:debug>
+
+<div class="card">
+    <div class="card-header text-bg-primary">Event-Daten</div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="title" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_event.title" />:
+                </label>
+                <f:form.textfield property="title" id="title" class="form-control" />
+                <br />
+                <label for="maxparticipants" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_event.maxparticipants" />:
+                </label>
+                <f:form.textfield property="maxparticipants" id="maxparticipants" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="categories" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_event.categories" />:
+                </label>
+                <f:form.select class="form-select" size="5" property="categories" id="categories" multiple="true" options="{categories}" optionValueField="uid" optionLabelField="title" />
+                <div id="categoriesHelpBlock" class="form-text">
+                    <f:translate key="tx_leseohren_domain_model_event.categories.description" />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="startDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_event.start_date" />:
+                </label>
+                <f:form.textfield property="startDate" id="startDate" value="{event.startDate->f:format.date(format: 'd.m.Y')}" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+                <label for="endDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_event.end_date" />:
+                </label>
+                <f:form.textfield property="endDate" id="endDate" value="{event.endDate->f:format.date(format: 'd.m.Y')}" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <div class="form-check">
+                    <f:form.checkbox class="form-check-input" property="reminderSent" value="1" multiple="0" />
+                    <label for="reminderSent" class="form-check-label">
+                        <f:translate key="tx_leseohren_domain_model_event.reminder_sent" /> <f:translate key="tx_leseohren_domain_model_event.reminder_sent.sent" />
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="description" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_event.description" />:
+                </label>
+                <f:form.textarea property="description" id="description" rows="8" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="location" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_event.location" />:
+                </label>
+                <f:form.textarea property="location" id="location" rows="8" class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>

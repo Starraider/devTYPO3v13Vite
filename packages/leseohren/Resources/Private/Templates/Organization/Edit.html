@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1><f:translate key="tx_leseohren_domain_model_organization.editOrganization" /></h1>
+
+    <f:flashMessages />
+
+    <f:render partial="FormErrors" />
+
+    <f:form action="update" name="organization" object="{organization}" >
+    <f:render partial="Organization/FormFields" arguments="{organization:organization, categories:categories}" />
+    <f:form.submit value="{f:translate(key: 'tx_leseohren.save')}" class="btn btn-primary" />
+    </f:form>
+</f:section>
+</html>

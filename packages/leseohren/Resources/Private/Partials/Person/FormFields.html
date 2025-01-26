@@ -1,0 +1,358 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace leseohren=FluidTYPO3\Leseohren\ViewHelpers}
+
+<div class="card">
+    <div class="card-header text-bg-primary">Personen-Daten</div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="firstname" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.firstname" />:
+                </label>
+                <f:form.textfield property="firstname" id="firstname" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="lastname" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.lastname" />:
+                </label>
+                <f:form.textfield property="lastname" id="lastname" class="form-control" required="true" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="title" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.title" />:
+                </label>
+                <f:form.textfield property="title" id="title" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="gender" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.gender" />:
+                </label>
+                <f:form.select property="gender" id="gender" class="form-select">
+                    <v:iterator.loop count="3" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.gender.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="job" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.job" />:
+                </label>
+                <f:form.textfield property="job" id="job" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="birthday" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.birthday" />:
+                </label>
+                <f:form.textfield property="birthday" id="birthday" class="form-control"
+                    value="{person.birthday -> f:format.date(format: 'd.m.Y')}" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="categories" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.categories" />:
+                </label>
+                <f:form.select class="form-select" property="categories" id="categories" multiple="true" options="{categories}" optionValueField="uid" optionLabelField="title" />
+                <div id="categoriesHelpBlock" class="form-text">
+                    <f:translate key="tx_leseohren_domain_model_person.categories.description" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="awareness" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.awareness" />:
+                </label>
+                <f:form.select property="awareness" id="awareness" class="form-select">
+                    <v:iterator.loop count="9" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.awareness.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+
+                <label for="notes" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.notes" />:
+                </label>
+                <f:form.textarea property="notes" id="notes" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="card-header text-bg-primary">Adresse</div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="street1" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.street1" />:
+                </label>
+                <f:form.textfield property="street1" id="street1" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="street2" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.street2" />:
+                </label>
+                <f:form.textfield property="street2" id="street2" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="zip" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.zip" />:
+                </label>
+                <f:form.textfield property="zip" id="zip" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <label for="city" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.city" />:
+                </label>
+                <f:form.textfield property="city" id="city" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <label for="district" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.district" />:
+                </label>
+                <f:form.select property="district" id="district" class="form-select">
+                    <v:iterator.loop count="23" iteration="i">
+                        <f:form.select.option value="{f:translate(key: 'tx_leseohren.district.{i.index}')}">
+                            <v:l key="tx_leseohren.district.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+            </div>
+        </div>
+    </div>
+    <div class="card-header text-bg-primary"><f:translate key="tx_leseohren.contact" /></div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="phoneLandline" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.phoneLandline" />:
+                </label>
+                <f:form.textfield property="phoneLandline" id="phoneLandline" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="phoneMobile" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.phoneMobile" />:
+                </label>
+                <f:form.textfield property="phoneMobile" id="phoneMobile" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="email" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.email" />:
+                </label>
+                <f:form.textfield property="email" id="email" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="whatsapp" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.whatsapp" />:
+                </label>
+                <f:form.textfield property="whatsapp" id="whatsapp" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="card-header text-bg-primary"><f:translate key="tx_leseohren.status" /></div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="status" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.status" />:
+                </label>
+                <f:form.select property="status" id="status" class="form-select">
+                    <v:iterator.loop count="3" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.status.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+            </div>
+            <div class="col-sm-3">
+                <label for="statuschangeDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.statuschangeDate" />:
+                </label>
+                <f:form.textfield property="statuschangeDate" id="statuschangeDate" class="form-control"
+                    value="{person.statuschangeDate -> f:format.date(format: 'd.m.Y')}" />
+            </div>
+            <div class="col-sm-3">
+                <label for="statusbeginDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.statusbeginDate" />:
+                </label>
+                <f:form.textfield property="statusbeginDate" id="statusbeginDate" class="form-control"
+                    value="{person.statusbeginDate -> f:format.date(format: 'd.m.Y')}" />
+            </div>
+            <div class="col-sm-3">
+                <label for="statusendDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.statusendDate" />:
+                </label>
+                <f:form.textfield property="statusendDate" id="statusendDate" class="form-control"
+                    value="{person.statusendDate -> f:format.date(format: 'd.m.Y')}" />
+            </div>
+        </div>
+    </div>
+
+    <div class="card-header text-bg-primary"><f:translate key="tx_leseohren.membership" /></div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-4">
+                <label for="membershipType" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.membership_type" />:
+                </label>
+                <f:form.select property="membershipType" id="membershipType" class="form-select">
+                    <v:iterator.loop count="5" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.membershipType.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+            </div>
+            <div class="col-sm-4">
+                <label for="memberorg" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.memberorg" />:
+                </label>
+                <f:form.textfield property="memberorg" id="memberorg" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <label for="membershipFee" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.membership_fee" />:
+                </label>
+                <f:form.textfield property="membershipFee" id="membershipFee" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="travelOptions" class="form-label">
+                    <f:translate key="tx_leseohren.paymentMethod" />:
+                </label>
+                <f:form.select property="paymentMethod" id="paymentMethod" class="form-select">
+                    <v:iterator.loop count="4" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.paymentMethod.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+            </div>
+            <div class="col-sm-6">
+                <label for="mandatsreferenz" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.mandatsreferenz" />:
+                </label>
+                <f:form.textfield property="mandatsreferenz" id="mandatsreferenz" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="iban" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.iban" />:
+                </label>
+                <f:form.textfield property="iban" id="iban" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="swift" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.swift" />:
+                </label>
+                <f:form.textfield property="swift" id="swift" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="accountOwner" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.account_owner" />:
+                </label>
+                <f:form.textfield property="accountOwner" id="accountOwner" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="swift" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.bankname" />:
+                </label>
+                <f:form.textfield property="bankname" id="bankname" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <label for="paypal" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_person.paypal" />:
+                </label>
+                <f:form.textfield property="paypal" id="paypal" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-header text-bg-primary"><f:translate key="tx_leseohren.preferences" /></div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="travelOptions" class="form-label">
+                    <f:translate key="tx_leseohren.travelOptions" />:
+                </label>
+                <f:form.select property="travelOptions" id="travelOptions" class="form-select">
+                    <v:iterator.loop count="6" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.travelOptions.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+            </div>
+            <div class="col-sm-6">
+                <label for="languages" class="form-label">
+                    <f:translate key="tx_leseohren.languages" />:
+                </label>
+                <f:form.select property="languages" id="languages" class="form-select" multiple="true">
+                    <v:iterator.loop count="18" iteration="i">
+                        <f:form.select.option value="{i.cycle}">
+                            <v:l key="tx_leseohren.languages.{i.cycle}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+                <div id="languagesHelpBlock" class="form-text">
+                    <f:translate key="tx_leseohren.languages.description" />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="preferenceAgegroup" class="form-label">
+                    <f:translate key="tx_leseohren.ageGroup" />:
+                </label>
+                <f:form.select property="preferenceAgegroup" id="preferenceAgegroup" class="form-select" multiple="true">
+                    <v:iterator.loop count="5" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.ageGroup.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+                <div id="preferenceAgegroupHelpBlock" class="form-text">
+                    <f:translate key="tx_leseohren.ageGroup.description" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="preferenceOrganizationType" class="form-label">
+                    <f:translate key="tx_leseohren.orgType" />:
+                </label>
+                <f:form.select property="preferenceOrganizationType" id="preferenceOrganizationType" class="form-select" multiple="true">
+                    <v:iterator.loop count="5" iteration="i">
+                        <f:form.select.option value="{i.index}">
+                            <v:l key="tx_leseohren.orgType.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+                <div id="preferenceOrganizationTypeHelpBlock" class="form-text">
+                    <f:translate key="tx_leseohren.orgType.description" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

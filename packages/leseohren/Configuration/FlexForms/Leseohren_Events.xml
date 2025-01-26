@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.pluginOptions
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.leseohren_events.categories>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.categories
+                            </label>
+                            <config>
+                                <type>category</type>
+                                <treeConfig>
+                                    <startingPoints>18</startingPoints>
+                                    <showHeader>false</showHeader>
+                                </treeConfig>
+                                <size>12</size>
+                            </config>
+                        </TCEforms>
+                    </settings.leseohren_events.categories>
+                    <settings.leseohren_events.filtercategory>
+                        <label>
+                            LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.filtercategory
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0">
+                                    <label>
+                                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.filtercategory.allEvents
+                                    </label>
+                                    <value>allEvents</value>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <label>
+                                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.filtercategory.onlySelectedCategories
+                                    </label>
+                                    <value>onlySelectedCategories</value>
+                                </numIndex>
+                                <numIndex index="2">
+                                    <label>
+                                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.filtercategory.onlyNotSelectedCategories
+                                    </label>
+                                    <value>onlyNotSelectedCategories</value>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.leseohren_events.filtercategory>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

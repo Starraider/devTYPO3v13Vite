@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:leseohren/Resources/Private/Language/locallang_csh_tx_leseohren_domain_model_organization.xlf" date="2024-02-13T18:30:06Z" product-name="leseohren">
+		<header/>
+		<body>
+			<trans-unit id="name.description" resname="name.description" xml:space="preserve">
+				<source>Name der Organisation</source>
+			</trans-unit>
+			<trans-unit id="street1.description" resname="street1.description" xml:space="preserve">
+				<source>street1</source>
+			</trans-unit>
+			<trans-unit id="street2.description" resname="street2.description" xml:space="preserve">
+				<source>street2</source>
+			</trans-unit>
+			<trans-unit id="zip.description" resname="zip.description" xml:space="preserve">
+				<source>zip</source>
+			</trans-unit>
+			<trans-unit id="city.description" resname="city.description" xml:space="preserve">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="district.description" resname="district.description" xml:space="preserve">
+				<source>district</source>
+			</trans-unit>
+			<trans-unit id="phone1.description" resname="phone1.description" xml:space="preserve">
+				<source>phone1</source>
+			</trans-unit>
+			<trans-unit id="phone2.description" resname="phone2.description" xml:space="preserve">
+				<source>phone2</source>
+			</trans-unit>
+			<trans-unit id="email.description" resname="email.description" xml:space="preserve">
+				<source>email</source>
+			</trans-unit>
+			<trans-unit id="url.description" resname="url.description" xml:space="preserve">
+				<source>url</source>
+			</trans-unit>
+			<trans-unit id="whatsapp.description" resname="whatsapp.description" xml:space="preserve">
+				<source>whatsapp</source>
+			</trans-unit>
+			<trans-unit id="opening_hours.description" resname="opening_hours.description" xml:space="preserve">
+				<source>openingHours</source>
+			</trans-unit>
+			<trans-unit id="notes.description" resname="notes.description" xml:space="preserve">
+				<source>notes</source>
+			</trans-unit>
+			<trans-unit id="reading_times.description" resname="reading_times.description" xml:space="preserve">
+				<source>readingTimes</source>
+			</trans-unit>
+			<trans-unit id="vp_languages.description" resname="vp_languages.description" xml:space="preserve">
+				<source>vpLanguages</source>
+			</trans-unit>
+			<trans-unit id="vp_number.description" resname="vp_number.description" xml:space="preserve">
+				<source>vpNumber</source>
+			</trans-unit>
+			<trans-unit id="contact_person.description" resname="contact_person.description" xml:space="preserve">
+				<source>Kontaktperson</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

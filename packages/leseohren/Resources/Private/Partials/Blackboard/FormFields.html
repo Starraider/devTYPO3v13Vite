@@ -1,0 +1,62 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    {namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="card">
+    <div class="card-header text-bg-primary"><f:translate key="tx_leseohren_domain_model_blackboard" /></div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <strong>
+                    <f:translate key="tx_leseohren_domain_model_blackboard.author" />:
+                </strong>
+                <f:if condition="{blackboard.person}">
+                    <f:then>
+                        <f:for each="{blackboard.person}" as="author" iteration="authorIterator">
+                            {author.firstname} {author.lastname},
+                            {author.zip} {author.city}
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        {person.firstname} {person.lastname},
+                        {person.zip} {person.city}
+                    </f:else>
+                </f:if>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <label for="title" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_blackboard.title" />:
+                </label>
+                <f:form.textfield property="title" id="title" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="startDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_blackboard.start_date" />:
+                </label>
+                <f:form.textfield property="startDate" id="startDate" class="form-control"
+                    value="{blackboard.startDate -> f:format.date(format: 'd.m.Y')}" />
+            </div>
+            <div class="col-sm-6">
+                <label for="endDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_blackboard.end_date" />:
+                </label>
+                <f:form.textfield property="endDate" id="endDate" class="form-control"
+                    value="{blackboard.endDate -> f:format.date(format: 'd.m.Y')}" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <label for="description" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_blackboard.description" />:
+                </label>
+                <f:form.textarea property="description" id="description"  rows="8" class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</html>

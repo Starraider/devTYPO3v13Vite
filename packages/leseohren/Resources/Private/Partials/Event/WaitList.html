@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="accordion" id="waitlistAccordion">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="waitlistHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#waitlistContent" aria-expanded="false" aria-controls="waitlistContent">
+                <f:translate key="tx_leseohren.waitList" default="Waitlist" />
+                <span class="badge bg-secondary ms-2">{waitlist -> f:count()}</span>
+            </button>
+        </h2>
+        <div id="waitlistContent" class="accordion-collapse collapse" aria-labelledby="waitlistHeading" data-bs-parent="#waitlistAccordion">
+            <div class="accordion-body">
+                <table class="table table-striped" id="waitingList">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>E-Mail</th>
+                            <th class="dt-head-center">Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{waitlist}" as="registration" iteration="waitlistIterator">
+                            <tr>
+                                <td>
+                                    <f:link.action pageUid="12" action="show" controller="Person" arguments="{person: registration.person}">
+                                        {registration.person.lastName}, {registration.person.firstName}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:if condition="{registration.person.phoneLandline}">
+                                        <i class="bi bi-telephone"></i>&nbsp;
+                                        {registration.person.phoneLandline}</br>
+                                    </f:if>
+                                    <f:if condition="{registration.person.phoneMobile}">
+                                        <i class="bi bi-phone-vibrate"></i>&nbsp;
+                                        {registration.person.phoneMobile}</br>
+                                    </f:if>
+                                </td>
+                                <td>
+                                    <f:if condition="{registration.person.email}">
+                                        <i class="bi bi-envelope-at"></i>&nbsp;
+                                        <f:link.email email="{registration.person.email}" /></br>
+                                    </f:if>
+                                </td>
+                                <td class="dt-body-center">
+                                    {f:variable(name: 'tableid', value: 'b')}
+                                    <a type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteRegistrationModal{tableid}{waitlistIterator.index}">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                    <f:render partial="Registration/DeleteModal" arguments="{registration:registration, person:person, event:event, tableid:tableid, registrationnr:waitlistIterator.index}" />
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

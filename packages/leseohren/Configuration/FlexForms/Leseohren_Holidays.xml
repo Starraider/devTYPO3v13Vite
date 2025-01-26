@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.flexform.pluginOptions
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.leseohren_holiday.warningdays>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.flexform.warningdays
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>3</size>
+                                <eval>int</eval>
+                                <default>90</default>
+                            </config>
+                        </TCEforms>
+                    </settings.leseohren_holiday.warningdays>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

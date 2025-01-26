@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<!-- Modal -->
+<div class="modal fade" id="boardModal{blackboardnr}" tabindex="-1" aria-labelledby="boardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="boardModalLabel">{blackboard.title}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="c-person_blackboardDate">
+                    <small>
+                        <strong>Datum:</strong> {blackboard.startDate -> f:format.date(format: 'd.m.Y')} bis {blackboard.endDate -> f:format.date(format: 'd.m.Y')}
+                    </small>
+                </div>
+                <div class="c-person_blackboardDescription">
+                    {blackboard.description -> f:format.html()}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

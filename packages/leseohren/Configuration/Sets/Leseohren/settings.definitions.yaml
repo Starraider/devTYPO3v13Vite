@@ -1,0 +1,191 @@
+pageIDs:
+  personShowPid:
+    type: int
+    label: Person detail page ID
+    default: 12
+  organizationShowPid:
+    type: int
+    label: Organization detail page ID
+    default: 19
+  eventShowPid:
+    type: int
+    label: Event detail page ID
+    default: 225
+  blackboardShowPid:
+    type: int
+    label: Blackboard detail page ID
+    default: 228
+  presentShowPid:
+    type: int
+    label: Present detail page ID
+    default: 232
+  registrationShowPid:
+    type: int
+    label: Registration detail page ID
+    default: 233
+
+persistence:
+  storagePids:
+    persons:
+      type: int
+      label: Storage PID for persons
+      default: 13
+    blackboards:
+      type: int
+      label: Storage PID for blackboards
+      default: 13
+    gifts:
+      type: int
+      label: Storage PID for gifts
+      default: 227
+    events:
+      type: int
+      label: Storage PID for events
+      default: 21
+    presents:
+      type: int
+      label: Storage PID for presents
+      default: 13
+
+page:
+  logo:
+    file:
+      type: string
+      label: Logo file path
+      default: EXT:leseohren/Resources/Public/Icons/logo_leseohren.svg
+    fileInverted:
+      type: string
+      label: Inverted logo file path
+      default: EXT:leseohren/Resources/Public/Icons/logo_leseohren-inverted.svg
+    height:
+      type: int
+      label: Logo height
+      default: 60
+    width:
+      type: int
+      label: Logo width
+      default: 168
+    alt:
+      type: string
+      label: Logo alt text
+      default: Leseohren e.V.
+    linktitle:
+      type: string
+      label: Logo link title
+      default: Leseohren e.V.
+  theme:
+    language:
+      enable:
+        type: bool
+        label: Enable language menu
+        default: false
+    googleFont:
+      enable:
+        type: bool
+        label: Enable Google Fonts
+        default: false
+    cookieconsent:
+      enable:
+        type: bool
+        label: Enable cookie consent
+        default: false
+    breadcrumb:
+      enableLevel:
+        type: int
+        label: Breadcrumb level
+        default: 1
+    copyright:
+      enable:
+        type: bool
+        label: Enable copyright
+        default: true
+      text:
+        type: string
+        label: Copyright text
+        default: '&copy; 2024 Leseohren e.V.'
+
+plugin:
+  tx_leseohren_personen:
+    view:
+      templateRootPath:
+        type: string
+        label: Template Root Path
+        default: EXT:leseohren/Resources/Private/Templates/
+      partialRootPath:
+        type: string
+        label: Partial Root Path
+        default: EXT:leseohren/Resources/Private/Partials/
+      layoutRootPath:
+        type: string
+        label: Layout Root Path
+        default: EXT:leseohren/Resources/Private/Layouts/
+  tx_leseohren_organizations:
+    view:
+      templateRootPath:
+        type: string
+        label: Template Root Path
+        default: EXT:leseohren/Resources/Private/Templates/
+      partialRootPath:
+        type: string
+        label: Partial Root Path
+        default: EXT:leseohren/Resources/Private/Partials/
+      layoutRootPath:
+        type: string
+        label: Layout Root Path
+        default: EXT:leseohren/Resources/Private/Layouts/
+  tx_leseohren_events:
+    view:
+      templateRootPath:
+        type: string
+        label: Template Root Path
+        default: EXT:leseohren/Resources/Private/Templates/
+      partialRootPath:
+        type: string
+        label: Partial Root Path
+        default: EXT:leseohren/Resources/Private/Partials/
+      layoutRootPath:
+        type: string
+        label: Layout Root Path
+        default: EXT:leseohren/Resources/Private/Layouts/
+  tx_leseohren_blackboards:
+    view:
+      templateRootPath:
+        type: string
+        label: Template Root Path
+        default: EXT:leseohren/Resources/Private/Templates/
+      partialRootPath:
+        type: string
+        label: Partial Root Path
+        default: EXT:leseohren/Resources/Private/Partials/
+      layoutRootPath:
+        type: string
+        label: Layout Root Path
+        default: EXT:leseohren/Resources/Private/Layouts/
+  tx_leseohren_persondashboard:
+    view:
+      templateRootPath:
+        type: string
+        label: Template Root Path
+        default: EXT:leseohren/Resources/Private/Templates/
+      partialRootPath:
+        type: string
+        label: Partial Root Path
+        default: EXT:leseohren/Resources/Private/Partials/
+      layoutRootPath:
+        type: string
+        label: Layout Root Path
+        default: EXT:leseohren/Resources/Private/Layouts/
+  tx_leseohren_presents:
+    view:
+      templateRootPath:
+        type: string
+        label: Template Root Path
+        default: EXT:leseohren/Resources/Private/Templates/
+      partialRootPath:
+        type: string
+        label: Partial Root Path
+        default: EXT:leseohren/Resources/Private/Partials/
+      layoutRootPath:
+        type: string
+        label: Layout Root Path
+        default: EXT:leseohren/Resources/Private/Layouts/

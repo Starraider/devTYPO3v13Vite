@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+<div class="card">
+    <div class="card-header">
+        <v:l key="tx_leseohren.speaker" />
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <tbody>
+                <f:for each="{event.speaker}" as="teacher">
+                    <tr>
+                        <td>
+                            <strong>Name:</strong><br />
+                            <f:link.action pageUid="12" action="show" controller="Person" arguments="{person: teacher}">
+                                {teacher.lastName}, {teacher.firstName}
+                            </f:link.action><br />
+                            <f:if condition="{teacher.phoneLandline} || {teacher.phoneMobile}">
+                                <strong>Tel.:</strong><br />
+                                <f:if condition="{teacher.phoneLandline}">
+                                    <i class="bi bi-telephone"></i>&nbsp;
+                                    {teacher.phoneLandline}</br>
+                                </f:if>
+                                <f:if condition="{teacher.phoneMobile}">
+                                    <i class="bi bi-phone-vibrate"></i>&nbsp;
+                                    {teacher.phoneMobile}</br>
+                                </f:if>
+                            </f:if>
+                            <f:if condition="{teacher.email}">
+                                <strong>E-Mail:</strong><br />
+                                <i class="bi bi-envelope-at"></i>&nbsp;
+                                <f:link.email email="{teacher.email}" /></br>
+                            </f:if>
+                        </td>
+                    </tr>
+                </f:for>
+            </tbody>
+        </table>
+    </div>
+</div>

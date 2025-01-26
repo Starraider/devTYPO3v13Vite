@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1><f:translate key="tx_leseohren_domain_model_blackboard" /></h1>
+
+    <f:flashMessages />
+
+        <f:for each="{blackboards}" as="blackboard" iteration="blackboardIterator">
+            <div class="card c-blackboard">
+                <h3 class="card-header c-blackboard__title">
+                    {blackboard.title}
+                </h3>
+                <div class="card-body">
+                    <p class="card-text c-blackboard__date">
+                        <strong>Datum:</strong>
+                        {blackboard.startDate -> f:format.date(format: 'd.m.Y')}
+                        - {blackboard.endDate -> f:format.date(format: 'd.m.Y')}
+                        &nbsp;&nbsp;&nbsp;
+                        <strong><f:translate key="tx_leseohren_domain_model_blackboard.author" />:</strong>
+                        <f:for each="{blackboard.person}" as="author" iteration="authorIterator">
+                            <f:link.action pageUid="{settings.pageIDs.personShowPid}" action="show" controller="Person" arguments="{person : author}" >
+                                {author.firstname} {author.lastname}
+                            </f:link.action>,
+                            {author.zip} {author.city}
+                        </f:for>
+                    </p>
+                    <p class="card-text c-blackboard__description">
+                        {blackboard.description -> f:format.html()}
+                    </p>
+                </div>
+                <div class="card-body">
+                    <f:link.action action="edit" arguments="{blackboard : blackboard}" class="btn btn-primary btn-sm">
+                        <i class="bi bi-gear"></i>&nbsp;<f:translate key="tx_leseohren.edit" />
+                    </f:link.action>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteBlackboardModal{blackboardIterator.index}">
+                        <i class="bi bi-x-square"></i>&nbsp;<f:translate key="tx_leseohren.delete" />
+                    </button>
+                    <f:render partial="Blackboard/DeleteModal" arguments="{blackboard:blackboard, blackboardnr:blackboardIterator.index}" />
+                </div>
+            </div>
+        </f:for>
+</f:section>
+</html>

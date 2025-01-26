@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:debug inline="true">{blackboard}</f:debug>
+<table class="tx-leseohren">
+    <tr>
+        <td>
+            <f:translate key="tx_leseohren_domain_model_blackboard.title" />
+        </td>
+        <td>{blackboard.title}</td>
+    </tr>
+    <tr>
+        <td>
+            Person
+        </td>
+        <td>
+            <f:if condition="{blackboard.person}">
+                <f:for each="{blackboard.person}" as="blackboardPerson">
+                    {blackboardPerson.firstname} {blackboardPerson.lastname}
+                </f:for>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_leseohren_domain_model_blackboard.description" />
+        </td>
+        <td>{blackboard.description -> f:format.html()}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_leseohren_domain_model_blackboard.start_date" />
+        </td>
+        <td>{blackboard.startDate -> f:format.date()}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_leseohren_domain_model_blackboard.end_date" />
+        </td>
+        <td>{blackboard.endDate -> f:format.date()}</td>
+    </tr>
+</table>
+
+</html>

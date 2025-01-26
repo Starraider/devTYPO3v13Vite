@@ -1,0 +1,68 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>Archivierte <f:translate key="tx_leseohren_domain_model_events" /></h1>
+
+    <f:flashMessages />
+
+    <table id="eventList" class="table table-striped display">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th><f:translate key="tx_leseohren_domain_model_event.start_date" /></th>
+                <th><f:translate key="tx_leseohren_domain_model_event.categories" /></th>
+                <th><f:translate key="tx_leseohren_domain_model_event.title" /></th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <f:for each="{events}" as="event" iteration="eventIterator">
+                <tr>
+                    <td>
+                        {event.startDate -> f:format.date(format: 'Y/m')}
+                    </td>
+                    <td data-search="{event.startDate -> f:format.date(format: 'Y/m/d')}">
+                        <f:link.action action="show" arguments="{event : event}">{event.startDate -> f:format.date(format: 'Y/m/d')}</f:link.action>
+                    </td>
+                    <td>
+                        <f:if condition="{event.categories}">
+                            <f:for each="{event.categories}" as="eventCategory">
+                                <category class="c-event__categories">
+                                    <span class="badge bg-secondary">
+                                        {eventCategory.title -> f:format.htmlspecialchars()}
+                                    </span>
+                                </category>
+                            </f:for>
+                        </f:if>
+                    </td>
+                    <td><f:link.action action="show" arguments="{event:event}">{event.title}</f:link.action></td>
+                    <td>
+                        <f:link.action action="edit" arguments="{event:event}"><i class="bi bi-pencil"></i></f:link.action>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal{eventIterator.index}">
+                            <i class="bi bi-trash3"></i>
+                        </a>
+                        <f:render partial="Event/DeleteModal" arguments="{event:event, eventnr:eventIterator.index}" />
+                    </td>
+                </tr>
+            </f:for>
+        </tbody>
+    </table>
+
+    <div class="container button-list-bottom">
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4 text-center">
+                <f:link.action action="new" class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-lg"></i>&nbsp;<f:translate key="tx_leseohren_domain_model_event.newEvent" />
+                </f:link.action>
+            </div>
+            <div class="col-4 text-center">
+
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

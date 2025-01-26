@@ -1,0 +1,37 @@
+@import "leseohren-personen";
+@import "leseohren-events";
+@import "leseohren-blackboards";
+
+.row-header {
+    margin-bottom: 1.5rem;
+}
+
+.button-list-bottom {
+    margin-top: 1.5rem;
+}
+
+textarea.f3-form-error {
+    background-color: #FF9F9F;
+    border: 1px #FF0000 solid;
+}
+
+input.f3-form-error {
+    background-color: #FF9F9F;
+    border: 1px #FF0000 solid;
+}
+
+.typo3-messages .message-error {
+    color: red;
+}
+
+.typo3-messages .message-ok {
+    color: green;
+}
+ul.typo3-messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    .alert-message {
+        margin: 0;
+    }
+}

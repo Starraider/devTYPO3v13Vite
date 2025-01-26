@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:leseohren/Resources/Private/Language/locallang.xlf" date="2024-02-13T18:30:06Z" product-name="leseohren">
+		<header/>
+		<body>
+			<trans-unit id="tx_leseohren_persondashboard.flexform.pluginOptions" resname="tx_leseohren_persondashboard.flexform.pluginOptions" xml:space="preserve">
+				<source>Plugin Options</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_personen.flexform.pluginOptions" resname="tx_leseohren_personen.flexform.pluginOptions" xml:space="preserve">
+				<source>Plugin Options</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_personen.flexform.filtercategory" resname="tx_leseohren_personen.flexform.filtercategory" xml:space="preserve">
+				<source>Which persons should be shown?</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_personen.flexform.filtercategory.allPersons" resname="tx_leseohren_personen.flexform.filtercategory.allPersons" xml:space="preserve">
+				<source>All persons</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_personen.flexform.filtercategory.onlyMembers" resname="tx_leseohren_personen.flexform.filtercategory.onlyMembers" xml:space="preserve">
+				<source>Only members</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_personen.flexform.filtercategory.onlyVorlesepaten" resname="tx_leseohren_personen.flexform.filtercategory.onlyVorlesepaten" xml:space="preserve">
+				<source>Only Vorlesepaten</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_events.flexform.pluginOptions" resname="tx_leseohren_events.flexform.pluginOptions" xml:space="preserve">
+				<source>Plugin Options</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_events.flexform.categories" resname="tx_leseohren_events.flexform.categories" xml:space="preserve">
+				<source>Shown categories</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_events.flexform.filtercategory" resname="tx_leseohren_events.flexform.filtercategory" xml:space="preserve">
+				<source>Which events should be shown?</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_events.flexform.filtercategory.allEvents" resname="tx_leseohren_events.flexform.filtercategory.allEvents" xml:space="preserve">
+				<source>All events</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_events.flexform.filtercategory.onlySelectedCategories" resname="tx_leseohren_events.flexform.filtercategory.onlySelectedCategories" xml:space="preserve">
+				<source>Only selected categories</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_events.flexform.filtercategory.onlyNotSelectedCategories" resname="tx_leseohren_events.flexform.filtercategory.onlyNotSelectedCategories" xml:space="preserve">
+				<source>Only NOT selected categories</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

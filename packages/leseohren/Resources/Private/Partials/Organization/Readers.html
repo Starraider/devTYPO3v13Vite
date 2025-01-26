@@ -1,0 +1,85 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:if condition="{organization.vlpaten -> f:count()} > 0 OR {organization.vpNumber} > 0">
+    <div class="container">
+        <div class="row">
+            <h2>
+                <f:translate key="tx_leseohren_domain_model_organization.readers" />
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <strong>
+                    Anzahl:
+                    <f:if condition="{organization.vlpaten -> f:count()} != {organization.vpNumber}">
+                        <f:then>
+                            <span class="text-danger">{organization.vlpaten -> f:count()}/{organization.vpNumber} <i class="bi bi-exclamation-triangle"></i></span>
+                        </f:then>
+                        <f:else>
+                            <span class="text-success">{organization.vlpaten -> f:count()}/{organization.vpNumber}<i class="bi bi-check-lg"></i></span>
+                        </f:else>
+                    </f:if>
+                </strong>
+            </div>
+            <div class="col-4">
+                <strong>Gesuchte Sprachen:</strong><br />
+                <v:iterator.explode content="{organization.vpLanguages}" glue="," as="langIDs">
+                    <f:for each="{langIDs}" as="langID" iteration="langIterator">
+                        <f:if condition="{langIterator.isLast}">
+                            <f:then><f:translate key="tx_leseohren.languages.{langID}" /></f:then>
+                            <f:else><f:translate key="tx_leseohren.languages.{langID}" />,</f:else>
+                        </f:if>
+                    </f:for>
+                </v:iterator.explode>
+
+            </div>
+            <div class="col-4">
+                <f:if condition="{organization.readingTimes}">
+                    <strong>Vorlesezeiten:</strong><br />
+                    <f:format.nl2br>{organization.readingTimes}</f:format.nl2br>
+                </f:if>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Telefon</th>
+                            <th>E-Mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{organization.vlpaten}" as="vlpate">
+                            <tr>
+                                <td>
+                                    <f:link.action pageUid="12" action="show" controller="Person" arguments="{person: vlpate}">
+                                        {vlpate.lastName}, {vlpate.firstName}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:if condition="{vlpate.phoneLandline}">
+                                        <i class="bi bi-telephone"></i>&nbsp;
+                                        {vlpate.phoneLandline}</br>
+                                    </f:if>
+                                    <f:if condition="{vlpate.phoneMobile}">
+                                        <i class="bi bi-phone-vibrate"></i>&nbsp;
+                                        {vlpate.phoneMobile}</br>
+                                    </f:if>
+                                </td>
+                                <td>
+                                    <f:if condition="{vlpate.email}">
+                                        <i class="bi bi-envelope-at"></i>&nbsp;
+                                        <f:link.email email="{vlpate.email}" /></br>
+                                    </f:if>
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</f:if>

@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:leseohren/Resources/Private/Language/locallang.xlf" date="2024-02-13T18:30:06Z" product-name="leseohren">
+		<header/>
+		<body>
+			<trans-unit id="tx_leseohren.save" resname="tx_leseohren.save" xml:space="preserve">
+				<source>Save</source>
+				<target>Speichern</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.edit" resname="tx_leseohren.edit" xml:space="preserve">
+				<source>Edit</source>
+				<target>Bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.delete" resname="tx_leseohren.delete" xml:space="preserve">
+				<source>Delete</source>
+				<target>Löschen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.cancel" resname="tx_leseohren.cancel" xml:space="preserve">
+				<source>Cancel</source>
+				<target>Abbrechen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.backToList" resname="tx_leseohren.backToList" xml:space="preserve">
+				<source>Back to list</source>
+				<target>Zurück zur Liste</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.archive" resname="tx_leseohren.archive" xml:space="preserve">
+				<source>Archive</source>
+				<target>Archiv</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.info" resname="tx_leseohren.info" xml:space="preserve">
+				<source>Info</source>
+				<target>Info</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.contact" resname="tx_leseohren.contact" xml:space="preserve">
+				<source>Contact</source>
+				<target>Kontakt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.actions" resname="tx_leseohren.actions" xml:space="preserve">
+				<source>Actions</source>
+				<target>Aktionen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.gender.0" resname="tx_leseohren.gender.0" xml:space="preserve">
+				<source>female</source>
+				<target>weiblich</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.gender.1" resname="tx_leseohren.gender.1" xml:space="preserve">
+				<source>male</source>
+				<target>mänlich</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.gender.2" resname="tx_leseohren.gender.2" xml:space="preserve">
+				<source>divers</source>
+				<target>divers</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.status" resname="tx_leseohren.status" xml:space="preserve">
+				<source>Status</source>
+				<target>Status</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.status.0" resname="tx_leseohren.status.0" xml:space="preserve">
+				<source>active</source>
+				<target>aktiv</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.status.1" resname="tx_leseohren.status.1" xml:space="preserve">
+				<source>paused</source>
+				<target>pausiert</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.status.2" resname="tx_leseohren.status.2" xml:space="preserve">
+				<source>retired</source>
+				<target>ausgeschieden</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.participants" resname="tx_leseohren.participants" xml:space="preserve">
+				<source>Participants</source>
+				<target>Teilnehmer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.registrations" resname="tx_leseohren.registrations" xml:space="preserve">
+				<source>Registrations</source>
+				<target>Anmeldungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.noParticipants" resname="tx_leseohren.noParticipants" xml:space="preserve">
+				<source>No participants</source>
+				<target>Noch keine Teilnehmer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.waitList" resname="tx_leseohren.waitList" xml:space="preserve">
+				<source>Wait list</source>
+				<target>Warteliste</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_registration.newRegistration" resname="tx_leseohren_domain_model_registration.newRegistration" xml:space="preserve">
+				<source>New registration</source>
+				<target>Neue Anmeldung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_registration.registration_for" resname="tx_leseohren_domain_model_registration.registration_for" xml:space="preserve">
+				<source>Registration for</source>
+				<target>Anmeldung für</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_registration.events" resname="tx_leseohren_domain_model_registration.events" xml:space="preserve">
+				<source>Events</source>
+				<target>Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_registration.whichevent" resname="tx_leseohren_domain_model_registration.whichevent" xml:space="preserve">
+				<source>Which event?</source>
+				<target>Welche Veranstaltung?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_registration.whichperson" resname="tx_leseohren_domain_model_registration.whichperson" xml:space="preserve">
+				<source>Which person?</source>
+				<target>Welche Person?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_registration.onwaitlist" resname="tx_leseohren_domain_model_registration.onwaitlist" xml:space="preserve">
+				<source>On waiting list</source>
+				<target>Auf Warteliste</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_registration.deleteConfirm" resname="tx_leseohren_domain_model_registration.deleteConfirm" xml:space="preserve">
+				<source>Are you sure you want to delete this registration?</source>
+				<target>Sind Sie sicher, dass Sie diese Anmeldung löschen möchten?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.bankData" resname="tx_leseohren.bankData" xml:space="preserve">
+				<source>Bank data</source>
+				<target>Bankdaten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.paymentMethod" resname="tx_leseohren.paymentMethod" xml:space="preserve">
+				<source>Payment method</source>
+				<target>Zahlungsmethode</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.paymentMethod.0" resname="tx_leseohren.paymentMethod.0" xml:space="preserve">
+				<source>k.A.</source>
+				<target>k.A.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.paymentMethod.1" resname="tx_leseohren.paymentMethod.1" xml:space="preserve">
+				<source>Direct debit</source>
+				<target>Lastschrift</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.paymentMethod.2" resname="tx_leseohren.paymentMethod.2" xml:space="preserve">
+				<source>Bank transfer</source>
+				<target>Überweisung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.paymentMethod.3" resname="tx_leseohren.paymentMethod.3" xml:space="preserve">
+				<source>Paypal</source>
+				<target>Paypal</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.ageGroup" resname="tx_leseohren.ageGroup" xml:space="preserve">
+				<source>Age Group</source>
+				<target>Altersgruppe</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.ageGroup.description" resname="tx_leseohren.ageGroup.description" xml:space="preserve">
+				<source>Press and hold cmd-key to select multiple.</source>
+				<target>Drücke und halte cmd-Taste um mehrere auszuwählen.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.ageGroup.0" resname="tx_leseohren.ageGroup.0" xml:space="preserve">
+				<source>0-4 years</source>
+				<target>0-4 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.ageGroup.1" resname="tx_leseohren.ageGroup.1" xml:space="preserve">
+				<source>4-8 years</source>
+				<target>4-8 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.ageGroup.2" resname="tx_leseohren.ageGroup.2" xml:space="preserve">
+				<source>8-12 years</source>
+				<target>8-12 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.ageGroup.3" resname="tx_leseohren.ageGroup.3" xml:space="preserve">
+				<source>12-16 years</source>
+				<target>12-16 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.ageGroup.4" resname="tx_leseohren.ageGroup.4" xml:space="preserve">
+				<source>16-18 years</source>
+				<target>16-18 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType" resname="tx_leseohren.orgType" xml:space="preserve">
+				<source>Organization Type</source>
+				<target>Organisationstyp</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType.description" resname="tx_leseohren.orgType.description" xml:space="preserve">
+				<source>Press and hold cmd-key to select multiple.</source>
+				<target>Drücke und halte cmd-Taste um mehrere auszuwählen.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType.1" resname="tx_leseohren.orgType.1" xml:space="preserve">
+				<source>Daycare center</source>
+				<target>Sonderveranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType.2" resname="tx_leseohren.orgType.2" xml:space="preserve">
+				<source>Daycare center</source>
+				<target>Kita</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType.3" resname="tx_leseohren.orgType.3" xml:space="preserve">
+				<source>School</source>
+				<target>Schule</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType.4" resname="tx_leseohren.orgType.4" xml:space="preserve">
+				<source>Library</source>
+				<target>Bibliothek</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType.5" resname="tx_leseohren.orgType.5" xml:space="preserve">
+				<source>Refugees</source>
+				<target>Flüchtlinge</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.orgType.6" resname="tx_leseohren.orgType.6" xml:space="preserve">
+				<source>Training courses</source>
+				<target>Fortbildungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.travelOptions" resname="tx_leseohren.travelOptions" xml:space="preserve">
+				<source>Travel Options</source>
+				<target>Anreisemöglichkeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.travelOptions.0" resname="tx_leseohren.travelOptions.0" xml:space="preserve">
+				<source>Car</source>
+				<target>Auto</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.travelOptions.1" resname="tx_leseohren.travelOptions.1" xml:space="preserve">
+				<source>Motorcycle/Scooter</source>
+				<target>Motorrad/Roller</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.travelOptions.2" resname="tx_leseohren.travelOptions.2" xml:space="preserve">
+				<source>Public transport</source>
+				<target>ÖNV</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.travelOptions.3" resname="tx_leseohren.travelOptions.3" xml:space="preserve">
+				<source>Bycicle</source>
+				<target>Fahrrad</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.travelOptions.4" resname="tx_leseohren.travelOptions.4" xml:space="preserve">
+				<source>on foot</source>
+				<target>zu Fuß</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.travelOptions.5" resname="tx_leseohren.travelOptions.5" xml:space="preserve">
+				<source>Other</source>
+				<target>Sonstige</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages" resname="tx_leseohren.languages" xml:space="preserve">
+				<source>Languages</source>
+				<target>Sprachen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.description" resname="tx_leseohren.languages.description" xml:space="preserve">
+				<source>Press cmd to select multiple.</source>
+				<target>Drücken und halten Sie cmd, um mehrere auszuwählen.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.1" resname="tx_leseohren.languages.1" xml:space="preserve">
+				<source>German</source>
+				<target>Deutsch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.2" resname="tx_leseohren.languages.2" xml:space="preserve">
+				<source>English</source>
+				<target>Englisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.3" resname="tx_leseohren.languages.3" xml:space="preserve">
+				<source>Turkish</source>
+				<target>Türkisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.4" resname="tx_leseohren.languages.4" xml:space="preserve">
+				<source>Italien</source>
+				<target>Italienisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.5" resname="tx_leseohren.languages.5" xml:space="preserve">
+				<source>Albanian</source>
+				<target>Albanisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.6" resname="tx_leseohren.languages.6" xml:space="preserve">
+				<source>Chinese</source>
+				<target>Chinesisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.7" resname="tx_leseohren.languages.7" xml:space="preserve">
+				<source>Russian</source>
+				<target>Russisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.8" resname="tx_leseohren.languages.8" xml:space="preserve">
+				<source>Arabic</source>
+				<target>Arabisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.9" resname="tx_leseohren.languages.9" xml:space="preserve">
+				<source>Greek</source>
+				<target>Griechisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.10" resname="tx_leseohren.languages.10" xml:space="preserve">
+				<source>Romanian</source>
+				<target>Rumänisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.11" resname="tx_leseohren.languages.11" xml:space="preserve">
+				<source>Kurdish</source>
+				<target>Kurdisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.12" resname="tx_leseohren.languages.12" xml:space="preserve">
+				<source>Portuguese</source>
+				<target>Portugiesisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.13" resname="tx_leseohren.languages.13" xml:space="preserve">
+				<source>French</source>
+				<target>Französisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.14" resname="tx_leseohren.languages.14" xml:space="preserve">
+				<source>Indian</source>
+				<target>Indisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.15" resname="tx_leseohren.languages.15" xml:space="preserve">
+				<source>Polish</source>
+				<target>Polnisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.16" resname="tx_leseohren.languages.16" xml:space="preserve">
+				<source>Hungarian</source>
+				<target>Ungarisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.17" resname="tx_leseohren.languages.17" xml:space="preserve">
+				<source>Spanish</source>
+				<target>Spanisch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.languages.18" resname="tx_leseohren.languages.18" xml:space="preserve">
+				<source>Other</source>
+				<target>Sonstige</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district" resname="tx_leseohren.district" xml:space="preserve">
+				<source>District</source>
+				<target>Stadtbezirk</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.description" resname="tx_leseohren.district.description" xml:space="preserve">
+				<source>District</source>
+				<target>Stadtbezirk in Stuttgart</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.1" resname="tx_leseohren.district.1" xml:space="preserve">
+				<source>Stuttgart-Ost</source>
+				<target>Stuttgart-Ost</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.2" resname="tx_leseohren.district.2" xml:space="preserve">
+				<source>Stuttgart-West</source>
+				<target>Stuttgart-West</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.3" resname="tx_leseohren.district.3" xml:space="preserve">
+				<source>Weilimdorf</source>
+				<target>Weilimdorf</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.4" resname="tx_leseohren.district.4" xml:space="preserve">
+				<source>Zuffenhausen</source>
+				<target>Zuffenhausen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.5" resname="tx_leseohren.district.5" xml:space="preserve">
+				<source>Bad Cannstatt</source>
+				<target>Bad Cannstatt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.7" resname="tx_leseohren.district.7" xml:space="preserve">
+				<source>Feuerbach</source>
+				<target>Feuerbach</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.8" resname="tx_leseohren.district.8" xml:space="preserve">
+				<source>Stammheim</source>
+				<target>Stammheim</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.9" resname="tx_leseohren.district.9" xml:space="preserve">
+				<source>Degerloch</source>
+				<target>Degerloch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.11" resname="tx_leseohren.district.11" xml:space="preserve">
+				<source>Plieningen</source>
+				<target>Plieningen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.12" resname="tx_leseohren.district.12" xml:space="preserve">
+				<source>Münster</source>
+				<target>Münster</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.13" resname="tx_leseohren.district.13" xml:space="preserve">
+				<source>Botnang</source>
+				<target>Botnang</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.14" resname="tx_leseohren.district.14" xml:space="preserve">
+				<source>Möhringen</source>
+				<target>Möhringen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.15" resname="tx_leseohren.district.15" xml:space="preserve">
+				<source>Vaihingen</source>
+				<target>Vaihingen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.16" resname="tx_leseohren.district.16" xml:space="preserve">
+				<source>Untertürkheim</source>
+				<target>Untertürkheim</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.17" resname="tx_leseohren.district.17" xml:space="preserve">
+				<source>Stuttgart‐Süd</source>
+				<target>Stuttgart‐Süd</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.18" resname="tx_leseohren.district.18" xml:space="preserve">
+				<source>Stuttgart‐Mitte</source>
+				<target>Stuttgart‐Mitte</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.19" resname="tx_leseohren.district.19" xml:space="preserve">
+				<source>andere Orte</source>
+				<target>andere Orte</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.20" resname="tx_leseohren.district.20" xml:space="preserve">
+				<source>Stuttgart</source>
+				<target>Stuttgart</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.21" resname="tx_leseohren.district.21" xml:space="preserve">
+				<source>Stuttgart-Nord</source>
+				<target>Stuttgart-Nord</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.22" resname="tx_leseohren.district.22" xml:space="preserve">
+				<source>Sillenbuch</source>
+				<target>Sillenbuch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.25" resname="tx_leseohren.district.25" xml:space="preserve">
+				<source>Hedelfingen</source>
+				<target>Hedelfingen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.26" resname="tx_leseohren.district.26" xml:space="preserve">
+				<source>Wangen</source>
+				<target>Wangen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.32" resname="tx_leseohren.district.32" xml:space="preserve">
+				<source>Birkach</source>
+				<target>Birkach</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.33" resname="tx_leseohren.district.33" xml:space="preserve">
+				<source>Obertürkheim</source>
+				<target>Obertürkheim</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.34" resname="tx_leseohren.district.34" xml:space="preserve">
+				<source>Mühlhausen</source>
+				<target>Mühlhausen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.district.35" resname="tx_leseohren.district.35" xml:space="preserve">
+				<source>Neugereut</source>
+				<target>Neugereut</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person" resname="tx_leseohren_domain_model_person" xml:space="preserve">
+				<source>Person</source>
+				<target>Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.description" resname="tx_leseohren_domain_model_person.description" xml:space="preserve">
+				<source>Person like members, employes etc.</source>
+				<target>Person wie z.B. Vorlesepaten, Mitglieder usw.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.personList" resname="tx_leseohren_domain_model_person.personList" xml:space="preserve">
+				<source>Person List</source>
+				<target>Personen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.newPerson" resname="tx_leseohren_domain_model_person.newPerson" xml:space="preserve">
+				<source>New Person</source>
+				<target>Neue Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.editPerson" resname="tx_leseohren_domain_model_person.editPerson" xml:space="preserve">
+				<source>Edit Person</source>
+				<target>Person bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.deleteConfirm" resname="tx_leseohren_domain_model_person.deleteConfirm" xml:space="preserve">
+				<source>Do you really want to delete this person?</source>
+				<target>Soll diese Person wirklich gelöscht werden?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.firstname" resname="tx_leseohren_domain_model_person.firstname" xml:space="preserve">
+				<source>Firstname</source>
+				<target>Vorname</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.firstname.description" resname="tx_leseohren_domain_model_person.firstname.description" xml:space="preserve">
+				<source>Firstname of the person</source>
+				<target>Vorname der Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.lastname" resname="tx_leseohren_domain_model_person.lastname" xml:space="preserve">
+				<source>Lastname</source>
+				<target>Nachname</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.lastname.description" resname="tx_leseohren_domain_model_person.lastname.description" xml:space="preserve">
+				<source>Lastname of the person</source>
+				<target>Nachname der Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.title" resname="tx_leseohren_domain_model_person.title" xml:space="preserve">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.title.description" resname="tx_leseohren_domain_model_person.title.description" xml:space="preserve">
+				<source>f.e. Dr., Prof., M.A., MdL, MdB</source>
+				<target>Wie Dr., Prof., M.A., MdL, MdB</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.job" resname="tx_leseohren_domain_model_person.job" xml:space="preserve">
+				<source>Job</source>
+				<target>Beruf</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.job.description" resname="tx_leseohren_domain_model_person.job.description" xml:space="preserve">
+				<source>What's her/his job?</source>
+				<target>Beruf der Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.gender" resname="tx_leseohren_domain_model_person.gender" xml:space="preserve">
+				<source>Gender</source>
+				<target>Geschlecht</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.gender.description" resname="tx_leseohren_domain_model_person.gender.description" xml:space="preserve">
+				<source>Gender of the person</source>
+				<target>Geschlecht der Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.gender.1" resname="tx_leseohren_domain_model_person.gender.1" xml:space="preserve">
+				<source>female</source>
+				<target>weiblich</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.gender.2" resname="tx_leseohren_domain_model_person.gender.2" xml:space="preserve">
+				<source>male</source>
+				<target>männlich</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.gender.3" resname="tx_leseohren_domain_model_person.gender.3" xml:space="preserve">
+				<source>diverse</source>
+				<target>divers</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.birthday" resname="tx_leseohren_domain_model_person.birthday" xml:space="preserve">
+				<source>Birthday</source>
+				<target>Geburtstag</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.birthday.description" resname="tx_leseohren_domain_model_person.birthday.description" xml:space="preserve">
+				<source>f.e. 09.11.1970</source>
+				<target>z.B. 09.11.1970</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.age" resname="tx_leseohren_domain_model_person.age" xml:space="preserve">
+				<source>Age</source>
+				<target>Alter</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.categories" resname="tx_leseohren_domain_model_person.categories" xml:space="preserve">
+				<source>Categories</source>
+				<target>Kategorien</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.categories.description" resname="tx_leseohren_domain_model_person.categories.description" xml:space="preserve">
+				<source>Press and hold cmd to select multiple</source>
+				<target>Drücken und halten Sie cmd, um mehrere auszuwählen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.birthday.description" resname="tx_leseohren_domain_model_person.birthday.description" xml:space="preserve">
+				<source>When was the person born?</source>
+				<target>Wann wurde die Person geboren?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.street1" resname="tx_leseohren_domain_model_person.street1" xml:space="preserve">
+				<source>Street 1</source>
+				<target>Straße</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.street1.description" resname="tx_leseohren_domain_model_person.street1.description" xml:space="preserve">
+				<source>Street where the person lives</source>
+				<target>Straße wo die Person wohnt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.street2" resname="tx_leseohren_domain_model_person.street2" xml:space="preserve">
+				<source>Street 2</source>
+				<target>Adresszusatz</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.street2.description" resname="tx_leseohren_domain_model_person.street2.description" xml:space="preserve">
+				<source>Additional street info</source>
+				<target>Zusätzliche Adressinformation</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.zip" resname="tx_leseohren_domain_model_person.zip" xml:space="preserve">
+				<source>Zip</source>
+				<target>PLZ</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.zip.description" resname="tx_leseohren_domain_model_person.zip.description" xml:space="preserve">
+				<source>Zip code</source>
+				<target>Postleitzahl</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.city" resname="tx_leseohren_domain_model_person.city" xml:space="preserve">
+				<source>City</source>
+				<target>Ort</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.city.description" resname="tx_leseohren_domain_model_person.city.description" xml:space="preserve">
+				<source>City</source>
+				<target>Ort in der die Person lebt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.district" resname="tx_leseohren_domain_model_person.district" xml:space="preserve">
+				<source>District</source>
+				<target>Stadtbezirk</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.district.description" resname="tx_leseohren_domain_model_person.district.description" xml:space="preserve">
+				<source>District</source>
+				<target>Stadtbezirk in Stuttgart</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.phoneLandline" resname="tx_leseohren_domain_model_person.phoneLandline" xml:space="preserve">
+				<source>Phone Landline</source>
+				<target>Festnetz-Nr.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.phoneLandline.description" resname="tx_leseohren_domain_model_person.phoneLandline.description" xml:space="preserve">
+				<source>Phone Landline</source>
+				<target>Festnetz-Nummer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.phoneMobile" resname="tx_leseohren_domain_model_person.phoneMobile" xml:space="preserve">
+				<source>Phone Mobile</source>
+				<target>Handy-Nr.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.phoneMobile.description" resname="tx_leseohren_domain_model_person.phoneMobile.description" xml:space="preserve">
+				<source>Phone Mobile</source>
+				<target>Mobilfunk-Nummer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.email" resname="tx_leseohren_domain_model_person.email" xml:space="preserve">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.email.description" resname="tx_leseohren_domain_model_person.email.description" xml:space="preserve">
+				<source>E-Mail address</source>
+				<target>E-Mail-Adresse</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.whatsapp" resname="tx_leseohren_domain_model_person.whatsapp" xml:space="preserve">
+				<source>Whatsapp</source>
+				<target>Whatsapp</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.whatsapp.description" resname="tx_leseohren_domain_model_person.whatsapp.description" xml:space="preserve">
+				<source>Whatsapp number</source>
+				<target>Whatsapp-Nummer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.awareness" resname="tx_leseohren_domain_model_person.awareness" xml:space="preserve">
+				<source>Awareness</source>
+				<target>Aufmerksam durch</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.0" resname="tx_leseohren.awareness.0" xml:space="preserve">
+				<source>k.A.</source>
+				<target>k.A.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.1" resname="tx_leseohren.awareness.1" xml:space="preserve">
+				<source>Homepage</source>
+				<target>Homepage</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.2" resname="tx_leseohren.awareness.2" xml:space="preserve">
+				<source>Betterplace</source>
+				<target>Betterplace</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.3" resname="tx_leseohren.awareness.3" xml:space="preserve">
+				<source>Press</source>
+				<target>Presse</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.4" resname="tx_leseohren.awareness.4" xml:space="preserve">
+				<source>Flyer</source>
+				<target>Flyer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.5" resname="tx_leseohren.awareness.5" xml:space="preserve">
+				<source>Reading campaign</source>
+				<target>Vorleseaktion</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.6" resname="tx_leseohren.awareness.6" xml:space="preserve">
+				<source>District office</source>
+				<target>Bezirksamt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.7" resname="tx_leseohren.awareness.7" xml:space="preserve">
+				<source>Volunteer agency</source>
+				<target>Freiwilligenagentur</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.awareness.8" resname="tx_leseohren.awareness.8" xml:space="preserve">
+				<source>Word of mouth</source>
+				<target>Mundpropaganda</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.notes" resname="tx_leseohren_domain_model_person.notes" xml:space="preserve">
+				<source>Notes</source>
+				<target>Anmerkungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.notes.description" resname="tx_leseohren_domain_model_person.notes.description" xml:space="preserve">
+				<source>Additional notes to this person</source>
+				<target>Zusätzliche Anmerkungen zu dieser Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.status" resname="tx_leseohren_domain_model_person.status" xml:space="preserve">
+				<source>Status</source>
+				<target>Status</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.status.description" resname="tx_leseohren_domain_model_person.status.description" xml:space="preserve">
+				<source>Current status of this person</source>
+				<target>Aktueller Status dieser Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.statuschangeDate" resname="tx_leseohren_domain_model_person.statuschangeDate" xml:space="preserve">
+				<source>Status change date</source>
+				<target>Status wurde geändert am</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.statuschangeDate.description" resname="tx_leseohren_domain_model_person.statuschangeDate.description" xml:space="preserve">
+				<source>When was this status changed?</source>
+				<target>Wann wurde der Status geändert?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.statusbeginDate" resname="tx_leseohren_domain_model_person.statusbeginDate" xml:space="preserve">
+				<source>Statusbegin Date</source>
+				<target>Statusbeginn</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.statusbeginDate.description" resname="tx_leseohren_domain_model_person.statusbeginDate.description" xml:space="preserve">
+				<source>When did this status begin?</source>
+				<target>Wann hat dieser Status begonnen?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.statusendDate" resname="tx_leseohren_domain_model_person.statusendDate" xml:space="preserve">
+				<source>Statusend Date</source>
+				<target>Statusende</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.statusend_date.description" resname="tx_leseohren_domain_model_person.statusend_date.description" xml:space="preserve">
+				<source>When will this status end?</source>
+				<target>Wann endet dieser Status</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.travel_options" resname="tx_leseohren_domain_model_person.travel_options" xml:space="preserve">
+				<source>Travel Options</source>
+				<target>Anreisemöglichkeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.travel_options.description" resname="tx_leseohren_domain_model_person.travel_options.description" xml:space="preserve">
+				<source>How can this person reach the location?</source>
+				<target>Wie kann diese Person den Einsatzort erreichen?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.languages" resname="tx_leseohren_domain_model_person.languages" xml:space="preserve">
+				<source>Languages</source>
+				<target>Sprachen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.languages.description" resname="tx_leseohren_domain_model_person.languages.description" xml:space="preserve">
+				<source>Which languages is this person fluent in?</source>
+				<target>Welche Sprachen spricht diese Person?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.preferences" resname="tx_leseohren.preferences" xml:space="preserve">
+				<source>Preferences</source>
+				<target>Präferenzen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.preference_agegroup" resname="tx_leseohren_domain_model_person.preference_agegroup" xml:space="preserve">
+				<source>Preference Agegroup</source>
+				<target>Präferierte Altersgruppe</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.preference_agegroup.description" resname="tx_leseohren_domain_model_person.preference_agegroup.description" xml:space="preserve">
+				<source>Preference Agegroup</source>
+				<target>Zu welchen Altersgruppen möchte diese Person vorlesen?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.preference_organization_type" resname="tx_leseohren_domain_model_person.preference_organization_type" xml:space="preserve">
+				<source>Preference Organization Type</source>
+				<target>Präferierter Organisationstyp</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.preference_organization_type.description" resname="tx_leseohren_domain_model_person.preference_organization_type.description" xml:space="preserve">
+				<source>Preference Organization Type</source>
+				<target>In welchen Organisationstypen möchte diese Person vorlesen?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.membership" resname="tx_leseohren.membership" xml:space="preserve">
+				<source>Membership</source>
+				<target>Mitgliedschaft</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.membership_type" resname="tx_leseohren_domain_model_person.membership_type" xml:space="preserve">
+				<source>Membership Type</source>
+				<target>Art der Mitgliedschaft</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.membershipType.0" resname="tx_leseohren.membershipType.0" xml:space="preserve">
+				<source>k.A.</source>
+				<target>k.A.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.membershipType.1" resname="tx_leseohren.membershipType.1" xml:space="preserve">
+				<source>private Person</source>
+				<target>Privatperson</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.membershipType.2" resname="tx_leseohren.membershipType.2" xml:space="preserve">
+				<source>Pupil/Student</source>
+				<target>Schüler/Student</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.membershipType.3" resname="tx_leseohren.membershipType.3" xml:space="preserve">
+				<source>Institution</source>
+				<target>Institution</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.membershipType.4" resname="tx_leseohren.membershipType.4" xml:space="preserve">
+				<source>Unternehmen</source>
+				<target>Unternehmen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.membershipType.5" resname="tx_leseohren.membershipType.5" xml:space="preserve">
+				<source>Investor</source>
+				<target>Investor</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.membership_fee" resname="tx_leseohren_domain_model_person.membership_fee" xml:space="preserve">
+				<source>Membership Fee</source>
+				<target>Mitgliedschaftsbeitrag</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.payment_method" resname="tx_leseohren_domain_model_person.payment_method" xml:space="preserve">
+				<source>Payment Method</source>
+				<target>Zahlungsmethode</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.payment_method.description" resname="tx_leseohren_domain_model_person.payment_method.description" xml:space="preserve">
+				<source>How does this person want to pay?</source>
+				<target>Wie möchte diese Person zahlen?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.iban" resname="tx_leseohren_domain_model_person.iban" xml:space="preserve">
+				<source>IBAN</source>
+				<target>IBAN</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.iban.description" resname="tx_leseohren_domain_model_person.iban.description" xml:space="preserve">
+				<source>IBAN number</source>
+				<target>IBAN-Nummer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.swift" resname="tx_leseohren_domain_model_person.swift" xml:space="preserve">
+				<source>Swift/BIC</source>
+				<target>Swift/BIC</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.swift.description" resname="tx_leseohren_domain_model_person.swift.description" xml:space="preserve">
+				<source>Swift</source>
+				<target>Swift/BIC-Code</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.account_owner" resname="tx_leseohren_domain_model_person.account_owner" xml:space="preserve">
+				<source>Account Owner</source>
+				<target>Kontoinhaber</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.account_owner.description" resname="tx_leseohren_domain_model_person.account_owner.description" xml:space="preserve">
+				<source>Who is the owner of the bank account?</source>
+				<target>Wer ist der Kontoinhaber?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.bankname" resname="tx_leseohren_domain_model_person.bankname" xml:space="preserve">
+				<source>Bankname</source>
+				<target>Name der Bank</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.bankname.description" resname="tx_leseohren_domain_model_person.bankname.description" xml:space="preserve">
+				<source>Name of the bank</source>
+				<target>Name der Bank</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.paypal" resname="tx_leseohren_domain_model_person.paypal" xml:space="preserve">
+				<source>Paypal</source>
+				<target>Paypal Nummer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.paypal.description" resname="tx_leseohren_domain_model_person.paypal.description" xml:space="preserve">
+				<source>Paypal number</source>
+				<target>Paypal-Nummer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.files" resname="tx_leseohren_domain_model_person.files" xml:space="preserve">
+				<source>Files</source>
+				<target>Dateien</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.file_fuehrungszeugnis" resname="tx_leseohren_domain_model_person.file_fuehrungszeugnis" xml:space="preserve">
+				<source>Certificate of good conduct</source>
+				<target>Führungszeugnis</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.file_fuehrungszeugnis.description" resname="tx_leseohren_domain_model_person.file_fuehrungszeugnis.description" xml:space="preserve">
+				<source>Certificate of good conduct</source>
+				<target>Nur pdf,doc,xls Dateien erlaubt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.fuehrungszeugnis_date" resname="tx_leseohren_domain_model_person.fuehrungszeugnis_date" xml:space="preserve">
+				<source>Führungszeugnis date</source>
+				<target>Führungszeugnis-Datum</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.file_mandat" resname="tx_leseohren_domain_model_person.file_mandat" xml:space="preserve">
+				<source>Mandate</source>
+				<target>Mandat</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.file_mandat.description" resname="tx_leseohren_domain_model_person.file_mandat.description" xml:space="preserve">
+				<source>Writen mandate</source>
+				<target>Schriftliches Mandat</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.file_others" resname="tx_leseohren_domain_model_person.file_others" xml:space="preserve">
+				<source>Other files</source>
+				<target>Sonstige Dateien</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.file_others.description" resname="tx_leseohren_domain_model_person.file_others.description" xml:space="preserve">
+				<source>Other files belonging to this person</source>
+				<target>Sonstige Dateien zu dieser Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.donations" resname="tx_leseohren_domain_model_person.donations" xml:space="preserve">
+				<source>Donations</source>
+				<target>Geschenke</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.donations.description" resname="tx_leseohren_domain_model_person.donations.description" xml:space="preserve">
+				<source>Donations to this person</source>
+				<target>Geschenke an diese Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.blackboards" resname="tx_leseohren_domain_model_person.blackboards" xml:space="preserve">
+				<source>Notice boards</source>
+				<target>Schwarze Bretter</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.blackboards.description" resname="tx_leseohren_domain_model_person.blackboards.description" xml:space="preserve">
+				<source>Notices of this person</source>
+				<target>Schwarze Bretter dieser Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization" resname="tx_leseohren_domain_model_organization" xml:space="preserve">
+				<source>Organization</source>
+				<target>Organisation</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organizations" resname="tx_leseohren_domain_model_organizations" xml:space="preserve">
+				<source>Organizations</source>
+				<target>Organisationen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.description" resname="tx_leseohren_domain_model_organization.description" xml:space="preserve">
+				<source>Organisations</source>
+				<target>Organisationen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.newOrganization" resname="tx_leseohren_domain_model_organization.newOrganization" xml:space="preserve">
+				<source>New Organization</source>
+				<target>Neue Organisation</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.editOrganization" resname="tx_leseohren_domain_model_organization.editOrganization" xml:space="preserve">
+				<source>Edit Organization</source>
+				<target>Organisation bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.deleteConfirm" resname="tx_leseohren_domain_model_organization.deleteConfirm" xml:space="preserve">
+				<source>Do you really want to delete this organization?</source>
+				<target>Soll diese Organisation wirklich gelöscht werden?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.name" resname="tx_leseohren_domain_model_organization.name" xml:space="preserve">
+				<source>Name</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.name.description" resname="tx_leseohren_domain_model_organization.name.description" xml:space="preserve">
+				<source>Name of the organisation</source>
+				<target>Name der Organisation</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.categories" resname="tx_leseohren_domain_model_organization.categories" xml:space="preserve">
+				<source>Categories</source>
+				<target>Kategorien</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.categories.description" resname="tx_leseohren_domain_model_organization.categories.description" xml:space="preserve">
+				<source>Press and hold cmd to select multiple</source>
+				<target>Drücken und halten Sie cmd, um mehrere auszuwählen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.street1" resname="tx_leseohren_domain_model_organization.street1" xml:space="preserve">
+				<source>Street</source>
+				<target>Straße</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.street2" resname="tx_leseohren_domain_model_organization.street2" xml:space="preserve">
+				<source>Street 2</source>
+				<target>Adresszusatz</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.zip" resname="tx_leseohren_domain_model_organization.zip" xml:space="preserve">
+				<source>Zip</source>
+				<target>PLZ</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.city" resname="tx_leseohren_domain_model_organization.city" xml:space="preserve">
+				<source>City</source>
+				<target>Ort</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.district" resname="tx_leseohren_domain_model_organization.district" xml:space="preserve">
+				<source>District</source>
+				<target>Stadtbezirk</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.phone1" resname="tx_leseohren_domain_model_organization.phone1" xml:space="preserve">
+				<source>Phone 1</source>
+				<target>Telefon 1</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.phone2" resname="tx_leseohren_domain_model_organization.phone2" xml:space="preserve">
+				<source>Phone 2</source>
+				<target>Telefon 2</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.email" resname="tx_leseohren_domain_model_organization.email" xml:space="preserve">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.whatsapp" resname="tx_leseohren_domain_model_organization.whatsapp" xml:space="preserve">
+				<source>WhatsApp</source>
+				<target>WhatsApp</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.contact_person" resname="tx_leseohren_domain_model_organization.contact_person" xml:space="preserve">
+				<source>Contact Person</source>
+				<target>Kontaktperson</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.contact_person.description" resname="tx_leseohren_domain_model_organization.contact_person.description" xml:space="preserve">
+				<source>Who is the contact person?</source>
+				<target>Wer ist die Kontaktperson?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.readers" resname="tx_leseohren_domain_model_organization.readers" xml:space="preserve">
+				<source>Reading mentors</source>
+				<target>Vorlesepaten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.openingHours" resname="tx_leseohren_domain_model_organization.openingHours" xml:space="preserve">
+				<source>Opening hours</source>
+				<target>Öffnungszeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.notes" resname="tx_leseohren_domain_model_organization.notes" xml:space="preserve">
+				<source>Notes</source>
+				<target>Anmerkungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.url" resname="tx_leseohren_domain_model_organization.url" xml:space="preserve">
+				<source>URL</source>
+				<target>URL</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_gift" resname="tx_leseohren_domain_model_gift" xml:space="preserve">
+				<source>Gift</source>
+				<target>Geschenk</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_gift.description" resname="tx_leseohren_domain_model_gift.description" xml:space="preserve">
+				<source>What is the gift?</source>
+				<target>Was ist das Geschenk?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_gift.deleteConfirm" resname="tx_leseohren_domain_model_gift.deleteConfirm" xml:space="preserve">
+				<source>Do you really want to delete this gift?</source>
+				<target>Soll dieses Geschenk wirklich gelöscht werden?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_gift.title" resname="tx_leseohren_domain_model_gift.title" xml:space="preserve">
+				<source>Title</source>
+				<target>Bezeichnung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_gift.title.description" resname="tx_leseohren_domain_model_gift.title.description" xml:space="preserve">
+				<source>Title of the gift</source>
+				<target>Bezeichnung des Geschenks</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_gift.description.description" resname="tx_leseohren_domain_model_gift.description.description" xml:space="preserve">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present" resname="tx_leseohren_domain_model_present" xml:space="preserve">
+				<source>Donations</source>
+				<target>Schenkungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.description" resname="tx_leseohren_domain_model_present.description" xml:space="preserve">
+				<source>Donations to this person</source>
+				<target>Schenkungen an diese Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.newPresent" resname="tx_leseohren_domain_model_present.newPresent" xml:space="preserve">
+				<source>New donation</source>
+				<target>Neue Schenkung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.deleteConfirm" resname="tx_leseohren_domain_model_present.deleteConfirm" xml:space="preserve">
+				<source>Do you really want to delete this present?</source>
+				<target>Soll diese Schenkung wirklich gelöscht werden?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.present_to" resname="tx_leseohren_domain_model_present.present_to" xml:space="preserve">
+				<source>Donation to</source>
+				<target>Schenkung an</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.gift_date" resname="tx_leseohren_domain_model_present.gift_date" xml:space="preserve">
+				<source>Gift Date</source>
+				<target>Schenkungsdatum</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.gift_date.description" resname="tx_leseohren_domain_model_present.gift_date.description" xml:space="preserve">
+				<source>When was the gift presented to the person?</source>
+				<target>Wann wurde das Geschenk der Person überreicht?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.given" resname="tx_leseohren_domain_model_present.given" xml:space="preserve">
+				<source>Given</source>
+				<target>Überreicht</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.given.description" resname="tx_leseohren_domain_model_present.given.description" xml:space="preserve">
+				<source>Was the gift already given to the person?</source>
+				<target>Wurde das Geschenk der Person bereits überreicht?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.gift" resname="tx_leseohren_domain_model_present.gift" xml:space="preserve">
+				<source>Gift</source>
+				<target>Geschenk</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_present.gift.description" resname="tx_leseohren_domain_model_present.gift.description" xml:space="preserve">
+				<source>Gift for this person</source>
+				<target>Geschenk für diese Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard" resname="tx_leseohren_domain_model_blackboard" xml:space="preserve">
+				<source>Notice board</source>
+				<target>Schwarzes Brett</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.description" resname="tx_leseohren_domain_model_blackboard.description" xml:space="preserve">
+				<source>Notice board of this person</source>
+				<target>Schwarzes Brett dieser Person</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.newBlackboard" resname="tx_leseohren_domain_model_blackboard.newBlackboard" xml:space="preserve">
+				<source>New notice board</source>
+				<target>Neues Schwarzes Brett</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.edit_blackboard" resname="tx_leseohren_domain_model_blackboard.edit_blackboard" xml:space="preserve">
+				<source>Edit Blackboard</source>
+				<target>Schwarzes Brett bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.deleteConfirm" resname="tx_leseohren_domain_model_blackboard.deleteConfirm" xml:space="preserve">
+				<source>Do you really want to delete the Notice Board?</source>
+				<target>Soll dieses Schwarze Brett wirklich gelöscht werden?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.author" resname="tx_leseohren_domain_model_blackboard.author" xml:space="preserve">
+				<source>Author</source>
+				<target>VerfasserInn</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.title" resname="tx_leseohren_domain_model_blackboard.title" xml:space="preserve">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.title.description" resname="tx_leseohren_domain_model_blackboard.title.description" xml:space="preserve">
+				<source>Title of the notice board</source>
+				<target>Titel des Schwarzen Bretts</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.description.description" resname="tx_leseohren_domain_model_blackboard.description.description" xml:space="preserve">
+				<source>Content</source>
+				<target>Inhalt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.start_date" resname="tx_leseohren_domain_model_blackboard.start_date" xml:space="preserve">
+				<source>Start Date</source>
+				<target>Start-Datum</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.start_date.description" resname="tx_leseohren_domain_model_blackboard.start_date.description" xml:space="preserve">
+				<source>Start date for this notice board</source>
+				<target>Startdatum für dieses Schwarze Brett</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.end_date" resname="tx_leseohren_domain_model_blackboard.end_date" xml:space="preserve">
+				<source>End Date</source>
+				<target>End-Datum</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_blackboard.end_date.description" resname="tx_leseohren_domain_model_blackboard.end_date.description" xml:space="preserve">
+				<source>End date for this notice board</source>
+				<target>Enddatum für dieses Schwarze Brett</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event" resname="tx_leseohren_domain_model_event" xml:space="preserve">
+				<source>Event</source>
+				<target>Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_events" resname="tx_leseohren_domain_model_events" xml:space="preserve">
+				<source>Events</source>
+				<target>Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.description" resname="tx_leseohren_domain_model_event.description" xml:space="preserve">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.newEvent" resname="tx_leseohren_domain_model_event.newEvent" xml:space="preserve">
+				<source>New Event</source>
+				<target>Neue Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.deleteConfirm" resname="tx_leseohren_domain_model_event.deleteConfirm" xml:space="preserve">
+				<source>Do you really want to delete this event?</source>
+				<target>Soll diese Veranstaltung wirklich gelöscht werden?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.description.description" resname="tx_leseohren_domain_model_event.description.description" xml:space="preserve">
+				<source>Events like birthdays</source>
+				<target>Veranstaltungen wie Fortbildungen, Vorlesungen, Geburtstage etc.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.title" resname="tx_leseohren_domain_model_event.title" xml:space="preserve">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.title.description" resname="tx_leseohren_domain_model_event.title.description" xml:space="preserve">
+				<source>Title of the event</source>
+				<target>Titel der Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.categories" resname="tx_leseohren_domain_model_event.categories" xml:space="preserve">
+				<source>Categories</source>
+				<target>Kategorien</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.categories.description" resname="tx_leseohren_domain_model_event.categories.description" xml:space="preserve">
+				<source>Press and hold cmd-key to select multiple.</source>
+				<target>Drücke und halte cmd-Taste um mehrere auszuwählen.</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.description.description" resname="tx_leseohren_domain_model_event.description.description" xml:space="preserve">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.start_date" resname="tx_leseohren_domain_model_event.start_date" xml:space="preserve">
+				<source>Start Date</source>
+				<target>Start-Datum</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.start_date.description" resname="tx_leseohren_domain_model_event.start_date.description" xml:space="preserve">
+				<source>Start date of the event</source>
+				<target>Startdatum der Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.end_date" resname="tx_leseohren_domain_model_event.end_date" xml:space="preserve">
+				<source>End Date</source>
+				<target>End-Datum</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.end_date.description" resname="tx_leseohren_domain_model_event.end_date.description" xml:space="preserve">
+				<source>End date of the event</source>
+				<target>Enddatum der Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.location" resname="tx_leseohren_domain_model_event.location" xml:space="preserve">
+				<source>Location</source>
+				<target>Veranstaltungsort</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.location.description" resname="tx_leseohren_domain_model_event.location.description" xml:space="preserve">
+				<source>Location of the event</source>
+				<target>Ort der Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.participants" resname="tx_leseohren_domain_model_event.participants" xml:space="preserve">
+				<source>Participants</source>
+				<target>Teilnehmer</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.participants.description" resname="tx_leseohren_domain_model_event.participants.description" xml:space="preserve">
+				<source>Who takes part in this event?</source>
+				<target>Wer nimmt an dieser Veranstaltung teil?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.maxparticipants" resname="tx_leseohren_domain_model_event.maxparticipants" xml:space="preserve">
+				<source>Max. Participants</source>
+				<target>Max. Teilnehmeranzahl</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.maxparticipants.description" resname="tx_leseohren_domain_model_event.maxparticipants.description" xml:space="preserve">
+				<source>How many people can take part?</source>
+				<target>Wieviele können teilnehmen?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.reminder_sent.title" resname="tx_leseohren_domain_model_event.reminder_sent.title" xml:space="preserve">
+				<source>Reminder</source>
+				<target>Erinnerung</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.reminder_sent" resname="tx_leseohren_domain_model_event.reminder_sent" xml:space="preserve">
+				<source>Reminder mail</source>
+				<target>Erinnerungs-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.reminder_sent.description" resname="tx_leseohren_domain_model_event.reminder_sent.description" xml:space="preserve">
+				<source>Has the reminder e-mail been sent?</source>
+				<target>Wurde die Erinnerungs-Mail verschickt?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_event.reminder_sent.sent" resname="tx_leseohren_domain_model_event.reminder_sent.sent" xml:space="preserve">
+				<source>sent</source>
+				<target>verschickt</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_holidays.daystochristmas" resname="tx_leseohren_holidays.daystochristmas" xml:space="preserve">
+				<source>days until Christmas</source>
+				<target>Tage bis Weihnachten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_holidays.daystoeaster" resname="tx_leseohren_holidays.daystoeaster" xml:space="preserve">
+				<source>days until Easter</source>
+				<target>Tage bis Ostern</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren.speaker" resname="tx_leseohren.speaker" xml:space="preserve">
+				<source>Speaker</source>
+				<target>Referent</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.mandatsreferenz" resname="tx_leseohren_domain_model_person.mandatsreferenz" xml:space="preserve">
+				<source>Mandate Reference</source>
+				<target>Mandatsreferenz</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.memberorg" resname="tx_leseohren_domain_model_person.memberorg" xml:space="preserve">
+				<source>Member Organization</source>
+				<target>Mitgliedsorganisation</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

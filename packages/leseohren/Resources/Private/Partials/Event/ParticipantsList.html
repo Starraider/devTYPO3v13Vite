@@ -1,0 +1,64 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="accordion" id="participantsAccordion">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#participantsCollapse" aria-expanded="true" aria-controls="participantsCollapse">
+                <f:translate key="tx_leseohren.registrations" />
+                <span class="badge bg-secondary ms-2">{registrations -> f:count()}</span>
+            </button>
+        </h2>
+        <div id="participantsCollapse" class="accordion-collapse collapse show" data-bs-parent="#participantsAccordion">
+            <div class="accordion-body">
+                <table id="participantsList" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>E-Mail</th>
+                            <th class="dt-head-center">Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{registrations}" as="registration" iteration="registrationIterator">
+                            <tr>
+                                <td>
+                                    <f:link.action pageUid="12" action="show" controller="Person" arguments="{person: registration.person}">
+                                        {registration.person.lastName}, {registration.person.firstName}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:if condition="{registration.person.phoneLandline}">
+                                        <i class="bi bi-telephone"></i>&nbsp;
+                                        {registration.person.phoneLandline}</br>
+                                    </f:if>
+                                    <f:if condition="{registration.person.phoneMobile}">
+                                        <i class="bi bi-phone-vibrate"></i>&nbsp;
+                                        {registration.person.phoneMobile}</br>
+                                    </f:if>
+                                </td>
+                                <td>
+                                    <f:if condition="{registration.person.email}">
+                                        <i class="bi bi-envelope-at"></i>&nbsp;
+                                        <f:link.email email="{registration.person.email}" /></br>
+                                    </f:if>
+                                </td>
+                                <td class="dt-body-center">
+                                    {f:variable(name: 'tableid', value: 'a')}
+                                    <a type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteRegistrationModal{tableid}{registrationIterator.index}">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                    <f:render partial="Registration/DeleteModal" arguments="{registration:registration, person:person, event:event, tableid:tableid, registrationnr:registrationIterator.index}" />
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+                <f:link.action pageUid="{settings.pageIDs.registrationShowPid}" controller="Registration" action="new" arguments="{event: event}"
+                    class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-square"></i>
+                </f:link.action>
+            </div>
+        </div>
+    </div>
+</div>

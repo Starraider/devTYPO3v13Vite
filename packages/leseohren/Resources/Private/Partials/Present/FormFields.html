@@ -1,0 +1,50 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    {namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+
+
+<div class="card">
+    <div class="card-header text-bg-primary">
+        <f:translate key="tx_leseohren_domain_model_present.newPresent" />
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <strong>
+                    <f:translate key="tx_leseohren_domain_model_present.present_to" />:
+                </strong>
+                <f:if condition="{person}">
+                        {person.firstname} {person.lastname},
+                        {person.zip} {person.city}
+                </f:if>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="title" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_present.gift" />:
+                </label>
+                <f:form.select class="form-select" property="gift" id="gift" options="{gifts}" optionValueField="uid" optionLabelField="title" />
+            </div>
+            <div class="col-sm-6">
+                <label for="giftDate" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_present.gift_date" />:
+                </label>
+                <f:form.textfield property="giftDate" id="giftDate" class="form-control"
+                    value="{present.giftDate -> f:format.date(format: 'd.m.Y')}" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <f:form.checkbox class="form-check-input" property="given" value="true" id="given" multiple="0" />
+                <label class="form-check-label" for="given">
+                    <f:translate key="tx_leseohren_domain_model_present.given" />
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</html>

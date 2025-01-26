@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <f:flashMessages />
+    <f:render partial="Person/Properties" arguments="{person:person}" />
+    <div class="container button-list-bottom">
+        <div class="row">
+            <div class="col-4">
+                <f:link.action action="list" class="btn btn-primary btn-sm">
+                    <i class="bi bi-card-list"></i>&nbsp;<f:translate key="tx_leseohren.backToList" />
+                </f:link.action>
+            </div>
+            <div class="col-4 text-center">
+                <f:link.action action="new" class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-lg"></i>&nbsp;New Person
+                </f:link.action>
+                &nbsp;&nbsp;
+                <f:link.action action="edit" arguments="{person : person}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-pencil"></i>&nbsp;<f:translate key="tx_leseohren.edit" />
+                </f:link.action>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deletePersonModal1">
+                    <i class="bi bi-x-square"></i>&nbsp;<f:translate key="tx_leseohren.delete" />
+                </button>
+                <f:render partial="Person/DeleteModal" arguments="{person:person, personnr:1}" />
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+    </div>
+
+
+</f:section>
+</html>

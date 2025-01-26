@@ -1,0 +1,77 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    leseohrendb-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^leseohrendb\.ddev\.site$`)|| HostRegexp(`^vite\.leseohrendb\.ddev\.site$`)
+
+      service: "leseohrendb-web-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "leseohrendb-redirectHttps"
+    leseohrendb-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^leseohrendb\.ddev\.site$`)|| HostRegexp(`^vite\.leseohrendb\.ddev\.site$`)
+
+      service: "leseohrendb-web-8025"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "leseohrendb-redirectHttps"
+
+
+
+    leseohrendb-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^leseohrendb\.ddev\.site$`) || HostRegexp(`^vite\.leseohrendb\.ddev\.site$`)
+
+      service: "leseohrendb-web-80"
+      ruleSyntax: v3
+
+      tls: true
+
+    leseohrendb-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^leseohrendb\.ddev\.site$`) || HostRegexp(`^vite\.leseohrendb\.ddev\.site$`)
+
+      service: "leseohrendb-web-8025"
+      ruleSyntax: v3
+
+      tls: true
+
+
+
+  middlewares:
+    leseohrendb-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    leseohrendb-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-leseohrendb-web:80
+
+    leseohrendb-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-leseohrendb-web:8025
+
+
+
+
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/leseohrendb.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/leseohrendb.key

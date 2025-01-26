@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_personen.flexform.pluginOptions
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.leseohren_personen.filtercategory>
+                        <label>
+                            LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_personen.flexform.filtercategory
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0">
+                                    <label>
+                                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_personen.flexform.filtercategory.allEvents
+                                    </label>
+                                    <value>allEvents</value>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <label>
+                                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_personen.flexform.filtercategory.onlyTrainingCourses
+                                    </label>
+                                    <value>onlyTrainingCourses</value>
+                                </numIndex>
+                                <numIndex index="2">
+                                    <label>
+                                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_personen.flexform.filtercategory.onlySpecialEvents
+                                    </label>
+                                    <value>onlySpecialEvents</value>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.leseohren_personen.filtercategory>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

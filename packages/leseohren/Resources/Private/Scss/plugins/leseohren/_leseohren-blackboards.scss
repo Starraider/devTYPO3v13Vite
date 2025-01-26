@@ -1,0 +1,13 @@
+@include new(blackboard, component){
+    margin-bottom: 1rem;
+    @include has(title) {
+        font-weight: normal;
+    };
+    @include has(date) {
+        font-size: .9rem;
+        color: $dark;
+    };
+    @include has(description) {
+        margin-bottom: 0;
+    };
+}

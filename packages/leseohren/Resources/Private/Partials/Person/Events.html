@@ -1,0 +1,72 @@
+<div class="accordion" id="accordionEvents">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseEvents" aria-expanded="false" aria-controls="collapseEvents">
+                Veranstaltungen
+            </button>
+        </h2>
+        <div id="collapseEvents" class="accordion-collapse collapse" data-bs-parent="#accordionEvents">
+            <div class="accordion-body">
+
+
+                <table id="eventTable" class="table table-striped display">
+                    <thead>
+                        <tr>
+                            <th><f:translate key="tx_leseohren_domain_model_event.start_date" /></th>
+                            <th><f:translate key="tx_leseohren_domain_model_event.categories" /></th>
+                            <th><f:translate key="tx_leseohren_domain_model_event.title" /></th>
+                            <th></th>
+                            <th class="dt-head-center">Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{person.registrations}" as="registration" iteration="personIterator">
+                            <tr>
+                                <td data-search="{registration.event.startDate -> f:format.date(format: 'Y/m/d')}">
+                                    <f:link.action pageUid="{settings.pageIDs.eventShowPid}" action="show" controller="Event" arguments="{event: registration.event}">
+                                        {registration.event.startDate -> f:format.date(format: 'd.m.Y')}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:if condition="{registration.event.categories}">
+                                        <f:for each="{registration.event.categories}" as="eventCategory">
+                                            <category class="c-event__categories">
+                                                <span class="badge bg-secondary">
+                                                    {eventCategory.title -> f:format.htmlspecialchars()}
+                                                </span>
+                                            </category>
+                                        </f:for>
+                                    </f:if>
+                                </td>
+                                <td>
+                                    <f:link.action pageUid="225" action="show" controller="Event" arguments="{event: registration.event}">
+                                        {registration.event.title}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:if condition="{registration.onwaitlist}">
+                                        <i class="bi bi-hourglass-split"></i>
+                                    </f:if>
+                                </td>
+                                <td class="dt-body-center">
+                                    {f:variable(name: 'tableid', value: 'c')}
+                                    <a type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteRegistrationModal{tableid}{personIterator.index}">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                    <f:render partial="Registration/DeleteModal" arguments="{registration:registration, person:person, event:event, tableid:tableid, registrationnr:personIterator.index}" />
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+
+                <f:link.action pageUid="{settings.pageIDs.registrationShowPid}" controller="Registration" action="new" arguments="{person: person}"
+                    class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-square"></i>
+                </f:link.action>
+
+            </div>
+        </div>
+    </div>
+</div>

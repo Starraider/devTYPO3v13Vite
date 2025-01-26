@@ -1,0 +1,136 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="card">
+    <div class="card-header text-bg-primary">Firma</div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="name" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.name" />:
+                </label>
+                <f:form.textfield property="name" id="name" class="form-control" required="true" />
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="categories" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.categories" />:
+                </label>
+                <f:form.select class="form-select" property="categories" id="categories" multiple="true" options="{categories}" optionValueField="uid" optionLabelField="title" />
+                <div id="categoriesHelpBlock" class="form-text">
+                    <f:translate key="tx_leseohren_domain_model_organization.categories.description" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="notes" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.notes" />:
+                </label>
+                <f:form.textarea property="notes" id="notes" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="card-header text-bg-primary">Adresse</div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="street1" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.street1" />:
+                </label>
+                <f:form.textfield property="street1" id="street1" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="street2" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.street2" />:
+                </label>
+                <f:form.textfield property="street2" id="street2" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="zip" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.zip" />:
+                </label>
+                <f:form.textfield property="zip" id="zip" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <label for="city" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.city" />:
+                </label>
+                <f:form.textfield property="city" id="city" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <label for="district" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.district" />:
+                </label>
+                <f:form.select property="district" id="district" class="form-select">
+                    <v:iterator.loop count="23" iteration="i">
+                        <f:form.select.option value="{f:translate(key: 'tx_leseohren.district.{i.index}')}">
+                            <v:l key="tx_leseohren.district.{i.index}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+            </div>
+        </div>
+    </div>
+    <div class="card-header text-bg-primary"><f:translate key="tx_leseohren.contact" /></div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="phone1" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.phone1" />:
+                </label>
+                <f:form.textfield property="phone1" id="phone1" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="phone2" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.phone2" />:
+                </label>
+                <f:form.textfield property="phone2" id="phone2" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="email" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.email" />:
+                </label>
+                <f:form.textfield property="email" id="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" class="form-control" required="true" />
+            </div>
+            <div class="col-sm-6">
+                <label for="whatsapp" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.whatsapp" />:
+                </label>
+                <f:form.textfield property="whatsapp" id="whatsapp" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <label for="url" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.url" />:
+                </label>
+                <f:form.textfield property="url" id="url" pattern="https?://.+" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <label for="openingHours" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.openingHours" />:
+                </label>
+                <f:form.textarea property="openingHours" id="openingHours" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="card-header text-bg-primary">Vorlesepaten</div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

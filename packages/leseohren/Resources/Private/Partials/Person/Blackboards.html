@@ -1,0 +1,59 @@
+<div class="accordion" id="accordionBlackboard">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                Schwarze Bretter
+            </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionBlackboard">
+            <div class="accordion-body">
+                <f:if condition="{person.blackboards}">
+
+                <table id="blackboardTable" class="table table-striped display">
+                    <thead>
+                        <tr>
+                            <th><f:translate key="tx_leseohren_domain_model_blackboard.title" /></th>
+                            <th><f:translate key="tx_leseohren.actions" /></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                        <f:for each="{person.blackboards}" as="blackboard" iteration="blackboardIterator">
+                            <tr class="c-person_blackboard">
+                                <td>
+                                    {blackboard.title}
+                                </td>
+                                <td>
+                                    <!-- Show Modal - Begin -->
+                                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#boardModal{blackboardIterator.index}">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <f:render partial="Person/BlackboardModal" arguments="{blackboard:blackboard, blackboardnr:blackboardIterator.index}" />
+                                    <!-- Show Modal - End -->
+                                    <f:link.action class="btn btn-primary btn-sm" pageUid="{settings.pageIDs.blackboardShowPid}" controller="Blackboard" action="edit" arguments="{blackboard: blackboard}">
+                                        <i class="bi bi-pencil"></i>
+                                    </f:link.action>
+                                    <!-- Delete Modal - Begin -->
+                                    <a type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteBlackboardModal{blackboardIterator.index}">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                    <f:render partial="Blackboard/DeleteModal" arguments="{blackboard:blackboard, blackboardnr:blackboardIterator.index, person: person}" />
+                                    <!-- Delete Modal - End -->
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+                </f:if>
+                <f:link.action pageUid="{settings.pageIDs.blackboardShowPid}" controller="Blackboard" action="new" arguments="{person: person}"
+                    class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-square"></i>
+                </f:link.action>
+
+            </div>
+        </div>
+    </div>
+</div>

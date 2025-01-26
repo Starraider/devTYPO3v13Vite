@@ -1,0 +1,62 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="card">
+    <div class="card-header">Anschrift</div>
+    <div class="card-body c-organization__address">
+        <p class="card-text">
+            <f:if condition="{organization.street1}">
+                {organization.street1}</br>
+            </f:if>
+            <f:if condition="{organization.street2}">
+                {organization.street2}</br>
+            </f:if>
+            <f:if condition="{organization.district} AND {organization.district} != '19' AND {organization.district} != '20'">
+                <f:translate key="tx_leseohren_domain_model_organization.district" />: <f:translate key="tx_leseohren.district.{organization.district}" /></br>
+            </f:if>
+            {organization.zip} {organization.city}
+        </p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Kontakt</h5>
+        <p class="card-text">
+            <f:if condition="{organization.phone1}">
+                <i class="bi bi-telephone"></i>&nbsp;
+                {organization.phone1}</br>
+            </f:if>
+            <f:if condition="{organization.phone2}">
+                <i class="bi bi-phone-vibrate"></i>&nbsp;
+                {organization.phone2}</br>
+            </f:if>
+            <f:if condition="{organization.email}">
+                <i class="bi bi-envelope-at"></i>&nbsp;
+                <f:link.email email="{organization.email}" /></br>
+            </f:if>
+            <f:if condition="{organization.url}">
+                <i class="bi bi-globe"></i>&nbsp;
+                <f:link.external uri="{organization.url}" target="_blank">
+                    {organization.url}
+                </f:link.external></br>
+            </f:if>
+            <f:if condition="{organization.whatsapp}">
+                <i class="bi bi-whatsapp"></i>&nbsp; {organization.whatsapp}
+            </f:if>
+        </p>
+        <h5 class="card-title"><f:translate key="tx_leseohren_domain_model_organization.openingHours" />:</h5>
+        <p class="card-text">
+            <f:if condition="{organization.openingHours}">
+                <f:then>
+                    <f:format.nl2br>{organization.openingHours}</f:format.nl2br>
+                </f:then>
+                <f:else>
+                    keine Angaben
+                </f:else>
+            </f:if>
+        </p>
+        <f:if condition="{organization.notes}">
+            <h5 class="card-title"><f:translate key="tx_leseohren_domain_model_organization.notes" />:</h5>
+            <p class="card-text">
+                <small><f:format.nl2br>{organization.notes}</f:format.nl2br></small>
+            </p>
+        </f:if>
+    </div>
+</div>

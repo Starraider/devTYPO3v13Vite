@@ -1,0 +1,84 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace f=SKom\Leseohren\ViewHelpers}
+
+<div class="card">
+    <div class="card-header">Anschrift</div>
+    <div class="card-body c-person__address">
+        <p class="card-text">
+            <f:if condition="{person.street1}">
+                {person.street1}</br>
+            </f:if>
+            <f:if condition="{person.street2}">
+                {person.street2}</br>
+            </f:if>
+            <f:if condition="{person.district} AND {person.district} != 'Sonstige'">
+                <v:l key="tx_leseohren.district" />: {person.district}</br>
+            </f:if>
+            {person.zip} {person.city}
+        </p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><f:translate key="tx_leseohren.contact" /></h5>
+        <p class="card-text">
+            <f:if condition="{person.phoneLandline}">
+                <i class="bi bi-telephone"></i>&nbsp;
+                {person.phoneLandline}</br>
+            </f:if>
+            <f:if condition="{person.phoneMobile}">
+                <i class="bi bi-phone-vibrate"></i>&nbsp;
+                {person.phoneMobile}</br>
+            </f:if>
+            <f:if condition="{person.email}">
+                <i class="bi bi-envelope-at"></i>&nbsp;
+                <f:link.email email="{person.email}" /></br>
+            </f:if>
+            <f:if condition="{person.whatsapp}">
+                <i class="bi bi-whatsapp"></i>&nbsp; {person.whatsapp}
+            </f:if>
+        </p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><f:translate key="tx_leseohren.info" /></h5>
+        <p class="card-text">
+            <f:if condition="{person.job}">
+                <div class="c-person__job">
+                    <f:translate key="tx_leseohren_domain_model_person.job" />:
+                    {person.job}</br>
+                </div>
+            </f:if>
+            <div class="c-person__languages">
+                <f:translate key="tx_leseohren_domain_model_person.languages" />: &nbsp;
+                <f:for each="{person.languages}" as="langID" iteration="langIterator">
+                    <f:if condition="{langIterator.isLast}">
+                        <f:then><v:l key="tx_leseohren.languages.{langID}" /></f:then>
+                        <f:else><v:l key="tx_leseohren.languages.{langID}" />,</f:else>
+                    </f:if>
+                </f:for>
+            </div>
+            <f:if condition="{person.birthday}">
+                <div class="c-person__birthday">
+                    <f:translate key="tx_leseohren_domain_model_person.birthday" />:
+                    {person.birthday -> f:format.date(format: 'd.m.Y')}</br>
+                    <f:translate key="tx_leseohren_domain_model_person.age" />:
+                    <f:format.age>{person.birthday}</f:format.age></br>
+                </div>
+            </f:if>
+            <f:if condition="{person.awareness}">
+                <div class="c-person__awareness">
+                    <f:translate key="tx_leseohren_domain_model_person.awareness" />:</br>
+                    <small><f:translate key="tx_leseohren.awareness.{person.awareness}" /></small>
+                </div>
+            </f:if>
+            <f:if condition="{person.notes}">
+                <div class="c-person__notes">
+                    <f:translate key="tx_leseohren_domain_model_person.notes" />:</br>
+                    <small><f:format.nl2br>{person.notes}</f:format.nl2br></small>
+                </div>
+            </f:if>
+        </p>
+    </div>
+
+</div>
+
+</html>

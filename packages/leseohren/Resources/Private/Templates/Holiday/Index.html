@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:layout name="Default" />
+
+    <f:section name="content">
+        <f:if condition="({daysUntilChristmas} > 0) AND ({daysUntilChristmas} <= {settings.leseohren_holiday.warningdays})">
+            <div class="alert alert-secondary" role="alert">
+                <strong>{daysUntilChristmas} <f:translate key="tx_leseohren_holidays.daystochristmas" /></strong>
+            </div>
+        </f:if>
+        <f:if condition="({daysUntilEaster} > 0) AND ({daysUntilEaster} <= {settings.leseohren_holiday.warningdays})">
+            <div class="alert alert-secondary" role="alert">
+                <strong>{daysUntilEaster} <f:translate key="tx_leseohren_holidays.daystoeaster" /> ({easterDate})</strong>
+            </div>
+        </f:if>
+    </f:section>
+</html>

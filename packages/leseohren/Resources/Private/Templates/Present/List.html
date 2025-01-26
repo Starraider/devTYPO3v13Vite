@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1><f:translate key="tx_leseohren_domain_model_person.donations" /></h1>
+
+    <f:flashMessages />
+
+    <table id="presentsTable" class="table table-striped display">
+        <tr>
+            <th><f:translate key="tx_leseohren_domain_model_present.gift_date" /></th>
+            <th><f:translate key="tx_leseohren_domain_model_present.gift" /></th>
+            <th class="dt-head-center"><f:translate key="tx_leseohren_domain_model_present.given" /></th>
+            <th class="dt-head-center"><f:translate key="tx_leseohren.actions" /></th>
+        </tr>
+        <f:for each="{presents}" as="present" iteration="presentIterator">
+            <tr>
+                <td data-search="{present.giftDate -> f:format.date(format: 'Y/m/d')}">
+                    {present.giftDate -> f:format.date(format: 'd.m.Y')}
+                </td>
+                <td>
+                    <strong>{present.gift.title -> f:format.htmlspecialchars()}</strong>
+                    <small>{present.gift.description -> f:format.html()}</small>
+                </td>
+                <td class="dt-body-center">
+                    <f:if condition="{present.given}">
+                        <i class="bi bi-gift"></i>
+                    </f:if>
+                </td>
+                <td class="dt-body-center">
+                    <f:link.action action="edit" arguments="{present : present}"><i class="bi bi-pencil"></i></f:link.action>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#deletePresentModal{presentIterator.index}">
+                        <i class="bi bi-trash3"></i>
+                    </a>
+                    <f:render partial="Present/DeleteModal" arguments="{present : present, presentnr:presentIterator.index}" />
+                </td>
+            </tr>
+        </f:for>
+    </table>
+
+    <f:link.action action="new">New Present</f:link.action>
+</f:section>
+</html>

@@ -1,0 +1,42 @@
+//
+// abstracts
+// contains no actual styles
+//
+@import "abstracts/variables";
+@import "abstracts/bem-mixin";
+@import "abstracts/css-vars";
+
+//
+// vendors
+// third-party stylesheets
+//
+@import 'vanillajs-datepicker/sass/datepicker';
+// ToDo: import bootstrap 5 version?
+//@import 'vanillajs-datepicker/sass/datepicker-bs5';
+
+//
+// base
+// boilerplate used throughout the entire site
+//
+@import "base/typography";
+
+//
+// layout
+// structural layout
+//
+@import "layout/container";
+
+//
+// plugins
+// TYPO3 plugins
+//
+@import "plugins/plugins";
+//@import "plugins/forms";
+
+//
+// components
+// reusable components
+//
+@import "components/buttons";
+@import "components/modals";
+//@import "components/links";

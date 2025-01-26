@@ -1,0 +1,76 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div class="container c-event">
+    <div class="row">
+        <div class="col-2 c-event__date">
+            <div class="card text-bg-primary">
+                <div class="card-body text-center">
+                    <div class="c-event__startDate">{event.startDate -> f:format.date(format: 'd.m.Y')}</div>
+                    <div class="c-event__startTime">{event.startDate -> f:format.date(format: 'H:i')} Uhr</div>
+                    <div class="c-event__bis">bis</div>
+                    <f:if condition="{event.endDate -> f:format.date(format: 'd.m.Y')} != {event.startDate -> f:format.date(format: 'd.m.Y')}">
+                        <div class="c-event__endDate">{event.endDate -> f:format.date(format: 'd.m.Y')}</div>
+                    </f:if>
+                    <div class="c-event__endTime">{event.endDate -> f:format.date(format: 'H:i')} Uhr</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-10">
+            <div class="row">
+                <div class="col-12 row-header">
+                    <h1 class="c-event__title">{event.title}</h1>
+                    <f:if condition="{event.categories}">
+                        <f:for each="{event.categories}" as="eventCategory">
+                            <category class="c-event__categories">
+                                <span class="badge bg-secondary">
+                                    {eventCategory.title -> f:format.htmlspecialchars()}
+                                </span>
+                            </category>
+                        </f:for>
+                    </f:if>
+                    <f:if condition="{event.reminderSent}">
+                        &nbsp;
+                        <strong><i class="bi bi-send-check"></i></strong>
+                    </f:if>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    {event.description -> f:format.html()}
+                    <h3><f:translate key="tx_leseohren.participants" /> <small>(max. {event.maxparticipants})</small></h3>
+                    <f:if condition="{registrations}">
+                        <f:then>
+                            <f:render partial="Event/ParticipantsList" arguments="{event: event, registrations: registrations}" />
+                        </f:then>
+                        <f:else>
+                            <p><f:translate key="tx_leseohren.noParticipants" /></p>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{waitlist}">
+                        <f:then>
+                            <f:render partial="Event/WaitList" arguments="{event: event, waitlist: waitlist}" />
+                        </f:then>
+                    </f:if>
+                </div>
+                <div class="col-4">
+                    <f:render partial="Event/SpeakerList" arguments="{event: event}" />
+                    <div class="card">
+                        <div class="card-header">
+                            <v:l key="tx_leseohren_domain_model_event.location" />
+                        </div>
+                        <div class="card-body">
+                            {event.location -> f:format.nl2br()}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</html>

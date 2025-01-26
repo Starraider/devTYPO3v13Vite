@@ -1,0 +1,75 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <vac:asset.vite entry="EXT:leseohren/Resources/Private/DataTables.entry.js"
+        scriptTagAttributes="{
+            type: 'text/javascript',
+            async: 1
+        }"
+        addCss="1"
+        priority="1"
+        useNonce="1"
+    />
+    <h1><f:translate key="tx_leseohren_domain_model_organizations" /></h1>
+
+    <f:flashMessages />
+
+    <table id="organizationList" class="table table-striped display">
+        <thead>
+            <tr>
+                <th><f:translate key="tx_leseohren_domain_model_organization.name" /></th>
+                <th>Kategorien</th>
+                <th><f:translate key="tx_leseohren_domain_model_organization.zip" /></th>
+                <th><f:translate key="tx_leseohren_domain_model_organization.city" /></th>
+                <th class="dt-head-center">Aktionen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <f:for each="{organizations}" as="organization" iteration="orgIterator">
+                <tr>
+                    <td><f:link.action action="show" arguments="{organization : organization}">{organization.name}</f:link.action></td>
+                    <td>
+                        <f:if condition="{organization.categories}">
+                            <f:for each="{organization.categories}" as="organizationCategory">
+                                <category class="c-organization__categories">
+                                    <span class="badge bg-secondary">
+                                        {organizationCategory.title -> f:format.htmlspecialchars()}
+                                    </span>
+                                </category>
+                            </f:for>
+                        </f:if>
+                    </td>
+                    <td>{organization.zip}</td>
+                    <td>{organization.city}</td>
+                    <td class="dt-body-center">
+                        <f:link.action action="edit" arguments="{organization:organization}"><i class="bi bi-pencil"></i></f:link.action>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#deleteOrganizationModal{orgIterator.index}">
+                            <i class="bi bi-trash3"></i>
+                        </a>
+                        <f:render partial="Organization/DeleteModal" arguments="{organization:organization, orgnr:orgIterator.index}" />
+                    </td>
+                </tr>
+            </f:for>
+        </tbody>
+    </table>
+
+    <div class="container button-list-bottom">
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4 text-center">
+                <f:link.action action="new" class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-lg"></i>&nbsp;<f:translate key="tx_leseohren_domain_model_organization.newOrganization" />
+                </f:link.action>
+            </div>
+            <div class="col-4 text-center">
+
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

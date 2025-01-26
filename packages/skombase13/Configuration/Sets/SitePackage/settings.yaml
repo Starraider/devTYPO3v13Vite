@@ -16,11 +16,12 @@ plugin:
       templateRootPath: 'EXT:skombase13/Resources/Private/Templates/ContentElements/'
 page:
   logo:
-    file: 'EXT:skombase13/Resources/Public/Images/logo.svg'
-    fileInverted: 'EXT:skombase13/Resources/Public/Images/logo-inverted.svg'
-    width: 192
-    alt: 'SKom'
-    linktitle: 'SKom'
+    file: 'EXT:skombase13/Resources/Public/Images/logo_leseohren.svg'
+    fileInverted: 'EXT:skombase13/Resources/Public/Images/logo_leseohren.svg'
+    height: 60
+    width: 168
+    alt: Leseohren e.V.
+    linktitle: Leseohren e.V.
   favicon:
     file: 'EXT:skombase13/Resources/Public/Icons/favicon.ico'
   theme:

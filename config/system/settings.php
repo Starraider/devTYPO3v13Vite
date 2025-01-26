@@ -130,7 +130,7 @@ return [
         'features' => [
             'frontend.cache.autoTagging' => true,
         ],
-        'sitename' => 'TYPO3v13Vite',
+        'sitename' => 'LeseohrenDB',
         'systemLocale' => 'de_DE.utf8',
         'systemMaintainers' => [
             1,

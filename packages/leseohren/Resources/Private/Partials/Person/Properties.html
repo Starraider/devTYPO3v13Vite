@@ -1,0 +1,82 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace f=SKom\Leseohren\ViewHelpers}
+
+<div class="container c-person">
+    <div class="row">
+        <div class="col-9 row-header">
+            <h1 class="c-person__name">
+                <f:if condition="{person.title}">{person.title}&nbsp;</f:if>
+                {person.lastname}, {person.firstname}
+                <small class="c-person__gender-icon">
+                    <f:switch expression="{person.gender}">
+                        <f:case value="0"><i class="bi bi-gender-female"></i></f:case>
+                        <f:case value="1"><i class="bi bi-gender-male"></i></f:case>
+                        <f:case value="2"><i class="bi bi-gender-ambiguous"></i></f:case>
+                        <f:defaultCase></f:defaultCase>
+                    </f:switch>
+                </small>
+            </h1>
+            <f:if condition="{person.categories}">
+                <f:for each="{person.categories}" as="personCategory">
+                    <category class="c-person__categories">
+                        <span class="badge bg-secondary">
+                            {personCategory.title -> f:format.htmlspecialchars()}
+                        </span>
+                    </category>
+                </f:for>
+            </f:if>
+        </div>
+        <div class="col-3">
+            <div class="c-person__status">
+                <strong>
+                    <v:l key="tx_leseohren_domain_model_person.status" />:
+                </strong>
+                <f:switch expression="{person.status}">
+                    <f:case value="0">
+                        <span class="c-person__status--active text-success">
+                            <i class="bi bi-check-lg"></i><v:l key="tx_leseohren.status.{person.status}" />
+                        </span>
+                    </f:case>
+                    <f:case value="1">
+                        <span class="c-person__status--paused text-warning">
+                            <i class="bi bi-exclamation-diamond"></i><v:l key="tx_leseohren.status.{person.status}" />
+                        </span>
+                    </f:case>
+                    <f:case value="2">
+                        <span class="c-person__status--ended text-danger">
+                            <i class="bi bi-exclamation-triangle"></i><v:l key="tx_leseohren.status.{person.status}" />
+                        </span>
+                    </f:case>
+                    <f:defaultCase>
+                        <span class="text-danger"><i class="bi bi-question-lg"></i></span>
+                    </f:defaultCase>
+                </f:switch>
+
+                (<small><i class="bi bi-pencil"></i><f:format.date pattern="dd.MM.Y">{person.statuschangeDate}</f:format.date></small>)
+                <br />
+                <f:format.date pattern="dd.MM.Y">{person.statusbeginDate}</f:format.date>
+                <f:if condition="{person.statusendDate}">
+                    - <f:format.date pattern="dd.MM.Y">{person.statusendDate}</f:format.date>
+                </f:if>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <f:render partial="Person/AddressCard" arguments="{person: person}" />
+        </div>
+        <div class="col-6">
+            <f:render partial="Person/Organizations" arguments="{person: person}" />
+            <f:render partial="Person/Events" arguments="{person: person}" />
+            <f:render partial="Person/Presents" arguments="{person: person}" />
+            <f:render partial="Person/Blackboards" arguments="{person: person}" />
+        </div>
+        <div class="col-3">
+            <f:render partial="Person/AccordionRight" arguments="{person: person}" />
+        </div>
+    </div>
+</div>
+
+
+
+</html>

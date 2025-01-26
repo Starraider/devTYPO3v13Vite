@@ -1,0 +1,31 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="container c-organization">
+    <div class="row">
+        <div class="col-12 row-header">
+            <h1 class="c-person__name">{organization.name}</h1>
+            <f:if condition="{organization.categories}">
+                <f:for each="{organization.categories}" as="organizationCategory">
+                    <category class="c-organization__categories">
+                        <span class="badge bg-secondary">
+                            {organizationCategory.title -> f:format.htmlspecialchars()}
+                        </span>
+                    </category>
+                </f:for>
+            </f:if>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <f:render partial="Organization/AddressCard" arguments="{organization: organization}" />
+        </div>
+        <div class="col-6">
+            <f:render partial="Organization/Readers" arguments="{organization: organization}" />
+        </div>
+        <div class="col-3">
+            <f:render partial="Organization/AccordionRight" arguments="{organization: organization}" />
+        </div>
+    </div>
+</div>
+
+</html>

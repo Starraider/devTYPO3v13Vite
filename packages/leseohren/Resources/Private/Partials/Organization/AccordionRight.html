@@ -1,0 +1,38 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="accordion" id="accordionInfo">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <f:translate key="tx_leseohren_domain_model_organization.contact_person" />
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionInfo">
+            <div class="accordion-body">
+                <f:if condition="{organization.contactPerson}">
+                    <f:for each="{organization.contactPerson}" as="contactPerson">
+                        <f:link.action pageUid="12" action="show" controller="Person" arguments="{person: contactPerson}">
+                            <h5>{contactPerson.lastname}, {contactPerson.firstname}</h5>
+                        </f:link.action>
+                        <f:if condition="{contactPerson.phoneLandline}">
+                            <i class="bi bi-telephone"></i>&nbsp;
+                            {contactPerson.phoneLandline}</br>
+                        </f:if>
+                        <f:if condition="{contactPerson.phoneMobile}">
+                            <i class="bi bi-phone-vibrate"></i>&nbsp;
+                            {contactPerson.phoneMobile}</br>
+                        </f:if>
+                        <f:if condition="{contactPerson.email}">
+                            <i class="bi bi-envelope-at"></i>&nbsp;
+                            <f:link.email email="{contactPerson.email}" /></br>
+                        </f:if>
+                        <f:if condition="{contactPerson.whatsapp}">
+                            <i class="bi bi-whatsapp"></i>&nbsp; {contactPerson.whatsapp}
+                        </f:if>
+                    </f:for>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</div>

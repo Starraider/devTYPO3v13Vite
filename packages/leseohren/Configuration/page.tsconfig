@@ -1,0 +1,150 @@
+mod {
+            wizards.newContentElement.wizardItems.plugins {
+                elements {
+                    personen {
+                        iconIdentifier = leseohren-plugin-personen
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_personen.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_personen.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_personen
+                        }
+                    }
+                    organizations {
+                        iconIdentifier = leseohren-plugin-organizations
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_organizations.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_organizations.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_organizations
+                        }
+                    }
+                    events {
+                        iconIdentifier = leseohren-plugin-events
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_events.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_events.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_events
+                        }
+                    }
+                    blackboards {
+                        iconIdentifier = leseohren-plugin-blackboards
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_blackboards.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_blackboards.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_blackboards
+                        }
+                    }
+                    persondashboard {
+                        iconIdentifier = leseohren-plugin-events
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_persondashboard.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_persondashboard.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_persondashboard
+                        }
+                    }
+                    holidays {
+                        iconIdentifier = leseohren-plugin-holidays
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_holidays
+                        }
+                    }
+                    presents {
+                        iconIdentifier = leseohren-plugin-presents
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_presents.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_presents.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_presents
+                        }
+                    }
+                }
+                show = *
+            }
+        }
+
+mod {
+            wizards.newContentElement.wizardItems.plugins {
+                elements {
+                    personen {
+                        iconIdentifier = leseohren-plugin-personen
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_personen.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_personen.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_personen
+                        }
+                    }
+                    organizations {
+                        iconIdentifier = leseohren-plugin-organizations
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_organizations.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_organizations.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_organizations
+                        }
+                    }
+                    events {
+                        iconIdentifier = leseohren-plugin-events
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_events.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_events.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_events
+                        }
+                    }
+                    blackboards {
+                        iconIdentifier = leseohren-plugin-blackboards
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_blackboards.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_blackboards.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_blackboards
+                        }
+                    }
+                    persondashboard {
+                        iconIdentifier = leseohren-plugin-events
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_persondashboard.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_persondashboard.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_persondashboard
+                        }
+                    }
+                    holidays {
+                        iconIdentifier = leseohren-plugin-holidays
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_holidays
+                        }
+                    }
+                    presents {
+                        iconIdentifier = leseohren-plugin-presents
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_presents.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_presents.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_presents
+                        }
+                    }
+                    registrations {
+                        iconIdentifier = leseohren-plugin-registrations
+                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_registrations.name
+                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_registrations.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = leseohren_registrations
+                        }
+                    }
+                }
+                show = *
+            }
+        }

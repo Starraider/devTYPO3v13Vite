@@ -24,6 +24,7 @@
 	],
 	"config": {
 		"allow-plugins": {
+			"helhum/dotenv-connector": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		},
@@ -33,9 +34,13 @@
 		"sort-packages": true
 	},
 	"require": {
+		"b13/container": "^3.1",
 		"bk2k/bootstrap-package": "^15.0",
+		"fluidtypo3/vhs": "^3.1",
+		"helhum/dotenv-connector": "^3.1",
 		"helhum/typo3-console": "^8.2",
 		"praetorius/vite-asset-collector": "^1.12",
+		"skom/leseohren": "@dev",
 		"skom/skombase13": "@dev",
 		"typo3/cms-backend": "^13.4",
 		"typo3/cms-belog": "^13.4",
@@ -64,6 +69,7 @@
 		"typo3/cms-webhooks": "^13.4"
 	},
 	"require-dev": {
-		"b13/make": "^0.1.8"
+		"b13/make": "^0.1.8",
+		"ssch/typo3-rector": "^3.0"
 	}
 }

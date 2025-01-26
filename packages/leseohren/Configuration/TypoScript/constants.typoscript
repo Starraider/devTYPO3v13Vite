@@ -1,0 +1,2 @@
+@import "EXT:leseohren/Configuration/Sets/Leseohren/constants.typoscript"
+@import "EXT:vhs/Configuration/TypoScript/constants.typoscript"

@@ -1,0 +1,33 @@
+@include new(event, component){
+    margin-bottom: 1rem;
+    @include has(title) {
+        font-weight: normal;
+    };
+    @include has(date) {
+        font-size: 1.5rem;
+        color: $white !important;
+    };
+    @include has(startDate) {
+        font-size: 1.5rem;
+        color: $white !important;
+    };
+    @include has(startTime) {
+        font-size: 1.3rem;
+        color: $white !important;
+    };
+    @include has(endDate) {
+        font-size: 1.5rem;
+        color: $white !important;
+    };
+    @include has(endTime) {
+        font-size: 1.3rem;
+        color: $white !important;
+    };
+    @include has(bis) {
+        font-size: 1rem;
+        color: $white !important;
+    };
+    @include has(description) {
+        margin-bottom: 0;
+    };
+}

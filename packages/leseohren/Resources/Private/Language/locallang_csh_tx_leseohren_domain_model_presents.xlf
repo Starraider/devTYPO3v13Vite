@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:leseohren/Resources/Private/Language/locallang_csh_tx_leseohren_domain_model_presents.xlf" date="2024-02-13T02:41:42Z" product-name="leseohren">
+		<header/>
+		<body>
+			<trans-unit id="gift_date.description" resname="gift_date.description" xml:space="preserve">
+				<source>gift_date</source>
+			</trans-unit>
+			<trans-unit id="given.description" resname="given.description" xml:space="preserve">
+				<source>given</source>
+			</trans-unit>
+			<trans-unit id="gift.description" resname="gift.description" xml:space="preserve">
+				<source>gift</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>Listing for Person</h1>
+
+    <f:flashMessages />
+
+    <table id="personList" class="table table-striped">
+        <tr>
+            <th><f:translate key="tx_leseohren_domain_model_person.firstname" /></th>
+            <th><f:translate key="tx_leseohren_domain_model_person.lastname" /></th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <f:for each="{people}" as="person">
+            <tr>
+                <td><f:link.action action="show" arguments="{person : person}">{person.firstname}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{person : person}">{person.lastname}</f:link.action></td>
+                <td><f:link.action action="edit" arguments="{person : person}">Edit</f:link.action></td>
+                <td><f:link.action action="delete" arguments="{person : person}">Delete</f:link.action></td>
+            </tr>
+        </f:for>
+    </table>
+
+    <f:link.action action="new">New Person</f:link.action>
+</f:section>
+</html>

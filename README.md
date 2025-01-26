@@ -4,57 +4,80 @@ Get going quickly with TYPO3 CMS.
 
 ## Prerequisites
 
-* PHP 8.2
+* PHP 8.3
 * [Composer](https://getcomposer.org/download/)
 
-## Quickstart
 
-* `composer create-project typo3/cms-base-distribution project-name ^13`
-* `cd project-name`
+## Rector/Fractor
 
-Note that this distribution installs most, but not all of the TYPO3 CMS core extensions.
-Depending on your need you might also want to install other TYPO3 extensions from
-[packagist.org](https://packagist.org/?type=typo3-cms-framework).
-
-### Setup
-
-To start an interactive installation, you can do so by executing the following
-command and then follow the wizard:
+### Vorschau anzeigen
 
 ```bash
-composer exec typo3 setup
+vendor/bin/rector process --dry-run
+
+vendor/bin/rector process packages/leseohren --dry-run
 ```
 
-### Setup unattended (optional)
-
-If you're a more advanced user, you might want to leverage the unattended installation.
-To do this, you need to execute the following command and substitute the arguments
-with your own environment configuration.
+### Änderungen durchführen lassen
 
 ```bash
-export TYPO3_SETUP_ADMIN_PASSWORD=$(tr -dc "_A-Za-z0-9#=$()/" < /dev/urandom | head -c24)
-composer exec -- typo3 setup \
-    --no-interaction \
-    --server-type=other \
-    --driver=sqlite \
-    --admin-username=admin \
-    --admin-email="info@example.com" \
-    --project-name="My TYPO3 Project" \
-    --create-site="http://localhost:8000/"
-echo "Admin password: ${TYPO3_SETUP_ADMIN_PASSWORD}"
+vendor/bin/rector process
+vendor/bin/fractor process
 ```
 
-### Development server
+## CLI
 
-While it's advised to use a more sophisticated web server such as
-Apache 2 or Nginx, you can instantly run the project by using PHPs` built-in
-[web server](https://secure.php.net/manual/en/features.commandline.webserver.php).
+### Cache leeren
 
-* `TYPO3_CONTEXT=Development php -S localhost:8000 -t public`
-* open your browser at "http://localhost:8000"
+```bash
+ddev typo3 cache:flush
+```
 
-Please be aware that the built-in web server is single threaded and only meant
-to be used for development.
+### reference-index aktualisieren
+
+```bash
+ddev typo3 referenceindex:update
+```
+
+### language files aktualisieren
+
+```bash
+ddev typo3 language:update
+```
+
+### DB-Updates
+
+```bash
+ddev typo3 database:updateschema
+```
+
+### DB-Backup
+```bash
+ddev typo3 database:export -c Default > ./Quellen/backup/2025-01-21_db.sql
+
+cat ./Quellen/backup/2025-01-21_db.sql | ddev typo3 database:import --connection Default
+```
+
+### DB-Health
+
+```bash
+ddev typo3 dbdoctor:health
+```
+Wenn ein Fehler gefunden wird, gibt es folgende Optionen:
+
+e - EXECUTE suggested changes!
+
+s - SIMULATE suggested changes, no execution
+
+a - ABORT now
+
+r - RELOAD this check
+
+p - SHOW records by page
+
+d - SHOW record details
+
+? - HELP
 
 ## License
 

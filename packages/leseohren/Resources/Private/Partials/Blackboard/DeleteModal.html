@@ -1,0 +1,24 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <!-- Modal -->
+    <div class="modal fade" id="deleteBlackboardModal{blackboardnr}" tabindex="-1" aria-labelledby="deleteBlackboardModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteBlackboardModalLabel"><f:translate key="tx_leseohren.delete" />?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <f:translate key="tx_leseohren_domain_model_blackboard.deleteConfirm" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <f:translate key="tx_leseohren.cancel" />
+                    </button>
+                    <f:link.action pageUid="{settings.pageIDs.blackboardShowPid}" action="deletegoperson" controller="Blackboard" arguments="{blackboard : blackboard}" class="btn btn-primary">
+                        <f:translate key="tx_leseohren.delete" />
+                    </f:link.action>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

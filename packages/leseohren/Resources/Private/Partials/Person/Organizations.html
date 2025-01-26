@@ -1,0 +1,24 @@
+<f:if condition="{person.organizations}">
+    <div class="accordion" id="accordionOrganization">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOrganization" aria-expanded="false" aria-controls="collapseOrganization">
+                    VorlesepatInn bei Organisation
+                </button>
+            </h2>
+            <div id="collapseOrganization" class="accordion-collapse collapse" data-bs-parent="#accordionOrganization">
+                <div class="accordion-body">
+                    <f:for each="{person.organizations}" as="organization" iteration="orgIterator">
+                        <div class="c-person_organization">
+                            <f:link.action pageUid="19" action="show" controller="Organization" arguments="{organization: organization}">
+                                {organization.name},
+                            </f:link.action>
+                            {organization.zip} {organization.city}
+                        </div>
+                    </f:for>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:if>
