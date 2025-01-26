@@ -20,7 +20,7 @@ page {
 }
 
 pageIDs {
-  personShowPid = 12
+  personShowPid = 7
   organizationShowPid = 19
   eventShowPid = 225
   blackboardShowPid = 228
@@ -39,8 +39,8 @@ plugin.tx_leseohren_personen {
     }
     persistence {
         # cat=plugin.tx_leseohren_personen//a; type=string; label=Default storage PID
-        storagePid = 13
-        blackboardsStoragePid = 13
+        storagePid = 9
+        blackboardsStoragePid = 9
         giftsStoragePid = 227
     }
 }
