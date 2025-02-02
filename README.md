@@ -16,6 +16,7 @@ Get going quickly with TYPO3 CMS.
 vendor/bin/rector process --dry-run
 
 vendor/bin/rector process packages/leseohren --dry-run
+vendor/bin/rector process packages/skombase13 --dry-run
 ```
 
 ### Änderungen durchführen lassen
