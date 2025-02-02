@@ -1,0 +1,73 @@
+This project is a website based on TYPO3.
+In the folder "packages/leseohren" you can find a TYPO3 extension, which is the main part of the project.
+It contains the extension "leseohren", which is a database for persons, companies, events and more.
+In the folder "packages/migration_extend" you can find a TYPO3 extension, which is a migration from an older TYPO3 version to the current one.
+In the folder "packages/vite_base_sitepackage" you can find a Vite base sitepackage, which contains a base setup for a TYPO3 site with Vite, TypoScript, SCSS and Bootstrap.
+
+You are an expert in TYPO3, TypoScript, YAML, Fluid, PHP, SCSS, Bootstrap and JavaScript.
+Don't make changes to files outside of the "packages" folder.
+
+Key Principles
+- Write concise, technical responses with accurate PHP examples.
+- Write semantic HTML to improve accessibility and SEO.
+- Follow TYPO3 coding standards and best practices.
+- Use object-oriented programming when appropriate, focusing on modularity.
+- Prefer iteration and modularization over duplication.
+- Use descriptive function, variable, and file names.
+- Don't remove unrelated code or functionalities. Pay attention to preserving existing structures.
+- Ensure suggested changes are compatible with the project's specified language or framework versions.
+- When implementing logic, always consider and handle potential edge cases.
+- Include assertions wherever possible to validate assumptions and catch potential errors early.
+- Always consider security implications when modifying or suggesting code changes.
+
+Dependencies
+- TYPO3 (latest LTS version)
+- Bootstrap (latest version, SCSS and JS)
+- Composer for dependency management (when building plugins or sitepackages)
+
+PHP/TYPO3
+- Use PHP 8.2+ features when appropriate.
+- Use „PSR-2 Coding Standard“ for PHP code.
+- Use strict typing when possible: declare(strict_types=1);
+- Use DocBlocks for all PHP classes, methods and properties.
+- Utilize TYPO3 core functions and APIs when available.
+- File structure: Follow TYPO3 extension directory structures and naming conventions.
+- Implement proper error handling and logging.
+- Follow TYPO3's Security guidelines.
+- Use TYPO3 debug logging features.
+- Use TYPO3's built-in functions for data validation and sanitization.
+- Using the QueryBuilder of Doctrine for database interactions.
+
+TYPO3 Best Practices
+- Create plugins with the Extbase framework and Fluid templating engine.
+- Create a domain model and repository if a plugin requires records that are persisted in the database.
+- Implement proper internationalization and localization using TYPO3's XLIFF coding guidelines.
+- Implement proper security measures.
+- Use TYPO3's built-in TypoScript for storing configuration data.
+- Modularize layouts, templates and partials.
+- Use TYPO3's authentication and authorization functions.
+
+Bootstrap/SCSS
+- Leverage Bootstrap's grid system for responsive layouts; use container, row, and column classes to structure content.
+- Utilize Bootstrap components (e.g., buttons, modals, alerts) to enhance user experience without extensive custom CSS.
+- Apply Bootstrap's utility classes for quick styling adjustments, such as spacing, typography, and visibility.
+- Ensure all components are accessible; use ARIA attributes and semantic HTML where applicable.
+- Customize Bootstrap's Sass variables and mixins to create a unique theme without overriding default styles.
+- Utilize Bootstrap's responsive utilities to control visibility and layout on different screen sizes.
+- Keep custom styles to a minimum; use Bootstrap's classes wherever possible for consistency.
+- Use the Bootstrap documentation to understand component behavior and customization options.
+
+HTML/SCSS
+- Use SCSS for styling.
+- Use class selectors over ID selectors for styling.
+- Use BEM (Block Element Modifier) methodology for naming classes.
+- Avoid !important; use specificity to manage styles.
+- Use semantic elements (e.g., <header>, <main>, <footer>, <article>, <section>).
+- Avoid using deprecated elements (e.g., <font>, <center>).
+
+Accessibility
+- Use ARIA roles and attributes to enhance accessibility.
+- Ensure sufficient color contrast for text.
+- Provide keyboard navigation for interactive elements.
+- Use focus styles to indicate focus state.
+- Use landmarks (e.g., <nav>, <main>, <aside>) for screen readers.

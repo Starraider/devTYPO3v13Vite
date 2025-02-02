@@ -1,18 +1,18 @@
 pageIDs:
-  personShowPid: 12
-  organizationShowPid: 19
-  eventShowPid: 225
-  blackboardShowPid: 228
-  presentShowPid: 232
-  registrationShowPid: 233
+  personShowPid: 7
+  organizationShowPid: 10
+  eventShowPid: 11
+  blackboardShowPid: 13
+  presentShowPid: 14
+  registrationShowPid: 20
 
 persistence:
   storagePids:
-    persons: 13
-    blackboards: 13
-    gifts: 227
-    events: 21
-    presents: 13
+    persons: 9
+    blackboards: 9
+    gifts: 9
+    events: 18
+    presents: 9
 
 page:
   logo:
