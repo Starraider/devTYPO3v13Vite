@@ -56,6 +56,9 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
+        'vhs' => [
+            'disableAssetHandling' => '0',
+        ],
         'vite_asset_collector' => [
             'defaultManifest' => '_assets/vite/.vite/manifest.json',
             'devServerUri' => 'auto',

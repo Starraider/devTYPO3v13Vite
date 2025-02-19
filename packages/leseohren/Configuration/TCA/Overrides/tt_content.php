@@ -5,71 +5,99 @@ defined('TYPO3') || die();
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-
 $personenPluginSignature = ExtensionUtility::registerPlugin(
-    'Leseohren',
-    'Personen',
-    'Personen'
+    'Leseohren',                  // extension name
+    'Personen',                   // plugin name
+    'Personen',                   // plugin title
+    'leseohren-plugin-personen',  // icon identifier
+    'default',                    // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_personen.description' // plugin description
 );
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$personenPluginSignature] = 'pi_flexform';
+
+ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', $personenPluginSignature, 'after:subheader');
 ExtensionManagementUtility::addPiFlexFormValue(
-    $personenPluginSignature,
-    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_Personen.xml'
+    '*',
+    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_Personen.xml',
+    $personenPluginSignature
 );
 
 ExtensionUtility::registerPlugin(
     'Leseohren',
     'Organizations',
-    'Organizations'
+    'Organizations',
+    'leseohren-plugin-organizations',  // icon identifier
+    'default',                         // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_organizations.description' // plugin description
 );
 
 $eventsPluginSignature = ExtensionUtility::registerPlugin(
     'Leseohren',
     'Events',
-    'Events'
+    'Events',
+    'leseohren-plugin-events',  // icon identifier
+    'default',                  // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_events.description' // plugin description
 );
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$eventsPluginSignature] = 'pi_flexform';
+ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', $eventsPluginSignature, 'after:subheader');
 ExtensionManagementUtility::addPiFlexFormValue(
-    $eventsPluginSignature,
-    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_Events.xml'
+    '*',
+    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_Events.xml',
+    $eventsPluginSignature
 );
 
 ExtensionUtility::registerPlugin(
     'Leseohren',
     'Blackboards',
-    'Blackboards'
+    'Blackboards',
+    'leseohren-plugin-blackboards',  // icon identifier
+    'default',                       // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_blackboards.description' // plugin description
 );
 
 $personDashboardPluginSignature = ExtensionUtility::registerPlugin(
     'Leseohren',
     'PersonDashboard',
-    'PersonDashboard'
+    'PersonDashboard',
+    'leseohren-plugin-personen',  // icon identifier
+    'default',                  // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_persondashboard.description' // plugin description
 );
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$personDashboardPluginSignature] = 'pi_flexform';
+ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', $personDashboardPluginSignature, 'after:subheader');
 ExtensionManagementUtility::addPiFlexFormValue(
-    $personDashboardPluginSignature,
-    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_PersonDashboard.xml'
+    '*',
+    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_PersonDashboard.xml',
+    $personDashboardPluginSignature
 );
 
 $holidayPluginSignature = ExtensionUtility::registerPlugin(
     'Leseohren',
     'Holidays',
     'Holidays',
+    'leseohren-plugin-holidays',  // icon identifier
+    'default',                    // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.description' // plugin description
 );
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$holidayPluginSignature] = 'pi_flexform';
+ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', $holidayPluginSignature, 'after:subheader');
 ExtensionManagementUtility::addPiFlexFormValue(
-    $holidayPluginSignature,
-    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_Holidays.xml'
+    '*',
+    'FILE:EXT:leseohren/Configuration/FlexForms/Leseohren_Holidays.xml',
+    $holidayPluginSignature
 );
 
 ExtensionUtility::registerPlugin(
     'Leseohren',
     'Presents',
-    'Presents'
+    'Presents',
+    'leseohren-plugin-presents',  // icon identifier
+    'default',                    // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_presents.description' // plugin description
 );
 
 ExtensionUtility::registerPlugin(
     'Leseohren',
     'Registrations',
-    'Registrations'
+    'Registrations',
+    'leseohren-plugin-registrations',  // icon identifier
+    'default',                         // group
+    'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_registrations.description' // plugin description
 );

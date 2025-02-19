@@ -1,0 +1,34 @@
+plugin.tx_leseohren_personen {
+    settings {
+      pageIDs {
+        personShowPid = {$tx_leseohren_personen.personShowPid}
+        organizationShowPid = {$tx_leseohren_organizations.organizationShowPid}
+        eventShowPid = {$tx_leseohren_events.eventShowPid}
+        blackboardShowPid = {$tx_leseohren_blackboards.blackboardShowPid}
+        presentShowPid = {$tx_leseohren_presents.presentShowPid}
+        registrationShowPid = {$tx_leseohren_registrations.registrationShowPid}
+      }
+    }
+    view {
+        templateRootPaths.0 = {$tx_leseohren_personen.templateRootPath}
+        partialRootPaths.0 = {$tx_leseohren_personen.partialRootPath}
+        layoutRootPaths.0 = {$tx_leseohren_personen.layoutRootPath}
+    }
+    persistence {
+        // storagePid = {$tx_leseohren_personen.storagePid}
+        storagePid = 13
+        recursive = 1
+        classes {
+            SKom\Leseohren\Domain\Model\Blackboard {
+                newRecordStoragePid = {$tx_leseohren_blackboards.storagePid}
+            }
+            SKom\Leseohren\Domain\Model\Gift {
+                newRecordStoragePid = {$tx_leseohren_gifts.storagePid}
+            }
+            SKom\Leseohren\Domain\Model\Present {
+                newRecordStoragePid = {$tx_leseohren_presents.storagePid}
+            }
+        }
+    }
+    features.ignoreAllEnableFieldsInBe = 0
+}

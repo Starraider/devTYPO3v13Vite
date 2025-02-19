@@ -9,10 +9,10 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
-use TYPO3\CMS\Core\Utility\DebugUtility;
 use SKom\Leseohren\Domain\Repository\BlackboardRepository;
 use SKom\Leseohren\Domain\Model\Blackboard;
 use SKom\Leseohren\Domain\Model\Person;
+use TYPO3\CMS\Core\Utility\DebugUtility;
 
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
@@ -57,6 +57,7 @@ class BlackboardController extends ActionController
      */
     public function listAction(): ResponseInterface
     {
+        //DebugUtility::debug($this, 'blackboardController');
         $blackboards = $this->blackboardRepository->findAll();
         $this->view->assign('blackboards', $blackboards);
         return $this->htmlResponse();

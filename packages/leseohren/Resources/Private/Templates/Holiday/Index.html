@@ -7,10 +7,21 @@
                 <strong>{daysUntilChristmas} <f:translate key="tx_leseohren_holidays.daystochristmas" /></strong>
             </div>
         </f:if>
-        <f:if condition="({daysUntilEaster} > 0) AND ({daysUntilEaster} <= {settings.leseohren_holiday.warningdays})">
-            <div class="alert alert-secondary" role="alert">
-                <strong>{daysUntilEaster} <f:translate key="tx_leseohren_holidays.daystoeaster" /> ({easterDate})</strong>
-            </div>
+
+        <f:if condition="{easterDate}">
+            <f:then>
+                <f:if condition="({daysUntilEaster} > 0) AND ({daysUntilEaster} <= {settings.leseohren_holiday.warningdays})">
+                    <div class="alert alert-secondary" role="alert">
+                        <strong>{daysUntilEaster} <f:translate key="tx_leseohren_holidays.daystoeaster" /> ({easterDate})</strong>
+                    </div>
+                </f:if>
+            </f:then>
+            <f:else>
+                <div class="alert alert-warning" role="alert">
+                    <strong><f:translate key="tx_leseohren_holidays.no_easter_date" /></strong>
+                </div>
+            </f:else>
         </f:if>
+
     </f:section>
 </html>

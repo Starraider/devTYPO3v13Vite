@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use SKom\Leseohren\Domain\Repository\OrganizationRepository;
 use SKom\Leseohren\Domain\Repository\CategoryRepository;
 use SKom\Leseohren\Domain\Model\Organization;
-
+use TYPO3\CMS\Core\Utility\DebugUtility;
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
  *
@@ -65,6 +65,7 @@ class OrganizationController extends ActionController
     {
         $organizations = $this->organizationRepository->findAll();
         $this->view->assign('organizations', $organizations);
+        //DebugUtility::debug($organizations, 'organizations');
         return $this->htmlResponse();
     }
 

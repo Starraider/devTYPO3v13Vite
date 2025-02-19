@@ -23,4 +23,6 @@ class BlackboardRepository extends Repository
     protected $defaultOrderings = [
         'start_date' => QueryInterface::ORDER_DESCENDING
     ];
+
+
 }

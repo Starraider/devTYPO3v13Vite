@@ -4,15 +4,17 @@
 //
 @import "abstracts/variables";
 @import "abstracts/bem-mixin";
-@import "abstracts/css-vars";
+
 
 //
 // vendors
 // third-party stylesheets
 //
-@import 'vanillajs-datepicker/sass/datepicker';
+//@import 'vanillajs-datepicker/sass/datepicker';
 // ToDo: import bootstrap 5 version?
-//@import 'vanillajs-datepicker/sass/datepicker-bs5';
+// @import 'vanillajs-datepicker/sass/datepicker-bs5';
+// @import 'vanillajs-datepicker/sass/index-bs5';
+// @import "vanillajs-datepicker/dist/css/datepicker-bs5.min.css";
 
 //
 // base
@@ -40,3 +42,8 @@
 @import "components/buttons";
 @import "components/modals";
 //@import "components/links";
+
+//
+// overwrite css-vars
+//
+@import "abstracts/css-vars";

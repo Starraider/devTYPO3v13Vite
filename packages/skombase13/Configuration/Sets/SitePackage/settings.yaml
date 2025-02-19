@@ -9,7 +9,6 @@ plugin:
       partialRootPath: 'EXT:skombase13/Resources/Private/Partials/'
       templateRootPath: 'EXT:skombase13/Resources/Private/Templates/'
   bootstrap_package_contentelements:
-
     view:
       layoutRootPath: 'EXT:skombase13/Resources/Private/Layouts/ContentElements/'
       partialRootPath: 'EXT:skombase13/Resources/Private/Partials/ContentElements/'

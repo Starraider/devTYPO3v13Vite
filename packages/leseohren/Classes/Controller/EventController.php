@@ -83,16 +83,20 @@ class EventController extends ActionController
     public function listAction(): ResponseInterface
     {
         $selectedCategories = [];
-        if($this->settings['leseohren_events']['categories'] != '0'){
-            $selectedCategories = explode(',', $this->settings['leseohren_events']['categories']);
-        }
-        if($this->settings['leseohren_events']['filtercategory'] == 'onlySelectedCategories'){
-            $categoryNames = [];
-            foreach ($selectedCategories as $categoryID) {
-                $cat = $this->categoryRepository->findOneBy(['uid' => $categoryID]);
-                $categoryNames [] = $cat->getTitle();
+        //DebugUtility::debug($this->settings, 'settings');
+
+        if($this->settings['leseohren_events']['filtercategory'] != 'allEvents'){
+            if($this->settings['leseohren_events']['categories'] != '0'){
+                $selectedCategories = explode(',', $this->settings['leseohren_events']['categories']);
             }
-            $this->view->assign('selectedCategories', $categoryNames);
+            if($this->settings['leseohren_events']['filtercategory'] == 'onlySelectedCategories'){
+                $categoryNames = [];
+                foreach ($selectedCategories as $categoryID) {
+                    $cat = $this->categoryRepository->findOneBy(['uid' => $categoryID]);
+                    $categoryNames [] = $cat->getTitle();
+                }
+                $this->view->assign('selectedCategories', $categoryNames);
+            }
         }
 
         if((count($selectedCategories) > 0) AND $this->settings['leseohren_events']['filtercategory'] == 'onlySelectedCategories'){

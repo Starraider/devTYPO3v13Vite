@@ -8,13 +8,13 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
-//use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use SKom\Leseohren\Domain\Repository\PersonRepository;
 use SKom\Leseohren\Domain\Repository\CategoryRepository;
 use SKom\Leseohren\Domain\Model\Person;
+//use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Core\Utility\DebugUtility;
 //use SKom\Leseohren\Property\TypeConverter\UploadedFileReferenceConverter;
 
 /**
@@ -45,22 +45,11 @@ class PersonController extends ActionController
      */
     protected $categoryRepository = null;
 
-    /**
-     * persistenceManager
-     *
-     * @var PersistenceManager
-     */
-    protected $persistenceManager = null;
 
     public function __construct(PersonRepository $personRepository, CategoryRepository $categoryRepository)
     {
         $this->personRepository = $personRepository;
         $this->categoryRepository = $categoryRepository;
-    }
-
-    public function PersistenceManager__construct(PersistenceManager $persistenceManager): void
-    {
-        $this->persistenceManager = $persistenceManager;
     }
 
     /**
@@ -113,6 +102,7 @@ class PersonController extends ActionController
     public function listAction(): ResponseInterface
     {
         $people = $this->personRepository->findAll();
+        //DebugUtility::debug($people, 'PersonController');
         $this->view->assign('people', $people);
         return $this->htmlResponse();
     }

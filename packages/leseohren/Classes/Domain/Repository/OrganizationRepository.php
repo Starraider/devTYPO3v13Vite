@@ -6,7 +6,7 @@ namespace SKom\Leseohren\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-
+use TYPO3\CMS\Core\Utility\DebugUtility;
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
  *
@@ -23,4 +23,5 @@ class OrganizationRepository extends Repository
     protected $defaultOrderings = [
         'name' => QueryInterface::ORDER_ASCENDING
     ];
+
 }

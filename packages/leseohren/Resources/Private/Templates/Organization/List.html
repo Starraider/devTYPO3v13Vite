@@ -16,7 +16,6 @@ data-namespace-typo3-fluid="true">
     <h1><f:translate key="tx_leseohren_domain_model_organizations" /></h1>
 
     <f:flashMessages />
-
     <table id="organizationList" class="table table-striped display">
         <thead>
             <tr>
@@ -49,7 +48,7 @@ data-namespace-typo3-fluid="true">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#deleteOrganizationModal{orgIterator.index}">
                             <i class="bi bi-trash3"></i>
                         </a>
-                        <f:render partial="Organization/DeleteModal" arguments="{organization:organization, orgnr:orgIterator.index}" />
+                            <f:render partial="Organization/DeleteModal" arguments="{organization:organization, orgnr:orgIterator.index}" />
                     </td>
                 </tr>
             </f:for>

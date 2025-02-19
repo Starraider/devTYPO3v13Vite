@@ -13,7 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-//use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Utility\DebugUtility;
 
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
@@ -28,12 +28,6 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  */
 class PersonRepository extends Repository
 {
-    public function initializeObject(): void
-    {
-        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
-        $querySettings->setRespectStoragePage(false);
-        $this->setDefaultQuerySettings($querySettings);
-    }
 
     /**
      * Find all persons having a birthday today

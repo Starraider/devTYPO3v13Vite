@@ -3,25 +3,21 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>
-                        LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.flexform.pluginOptions
-                    </sheetTitle>
-                </TCEforms>
+                <sheetTitle>
+                    LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.flexform.pluginOptions
+                </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.leseohren_holiday.warningdays>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.flexform.warningdays
-                            </label>
-                            <config>
-                                <type>input</type>
-                                <size>3</size>
-                                <eval>int</eval>
-                                <default>90</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.flexform.warningdays
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>3</size>
+                            <eval>int</eval>
+                            <default>90</default>
+                        </config>
                     </settings.leseohren_holiday.warningdays>
                 </el>
             </ROOT>

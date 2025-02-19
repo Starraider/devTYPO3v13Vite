@@ -2,3 +2,4 @@ name: skom/skombase13
 label: 'skombase13'
 dependencies:
   - bootstrap-package/full
+  - skom/leseohren

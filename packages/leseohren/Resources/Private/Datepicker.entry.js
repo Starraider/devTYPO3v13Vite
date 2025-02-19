@@ -1,6 +1,7 @@
 // Import vanillajs-datepicker
 // See https://mymth.github.io/vanillajs-datepicker/#/
 import { Datepicker } from 'vanillajs-datepicker'
+import 'vanillajs-datepicker/sass/index-bs5.scss'
 
 const birthday = document.querySelector('input[id="birthday"]')
 if (birthday !== null) {

@@ -36,10 +36,10 @@
 	"require": {
 		"b13/container": "^3.1",
 		"bk2k/bootstrap-package": "^15.0",
-		"fluidtypo3/vhs": "^3.1",
 		"helhum/dotenv-connector": "^3.1",
 		"helhum/typo3-console": "^8.2",
 		"praetorius/vite-asset-collector": "^1.12",
+        "fluidtypo3/vhs": "@dev",
 		"skom/leseohren": "@dev",
 		"skom/skombase13": "@dev",
 		"typo3/cms-backend": "^13.4",

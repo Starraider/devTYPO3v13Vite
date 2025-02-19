@@ -1,184 +1,118 @@
 <?php
+use SKom\Leseohren\Controller\PersonController;
+use SKom\Leseohren\Controller\OrganizationController;
+use SKom\Leseohren\Controller\EventController;
+use SKom\Leseohren\Controller\BlackboardController;
+use SKom\Leseohren\Controller\PersonDashboardController;
+use SKom\Leseohren\Controller\HolidayController;
+use SKom\Leseohren\Controller\PresentController;
+use SKom\Leseohren\Controller\RegistrationController;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') || die();
 
 (static function () {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'Personen',
         [
-            \SKom\Leseohren\Controller\PersonController::class => 'list, index, show, new, create, edit, update, delete'
+            PersonController::class => 'list, index, show, new, create, edit, update, delete'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\PersonController::class => 'new, create, edit, update, delete'
-        ]
+            PersonController::class => 'new, create, edit, update, delete'
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'Organizations',
         [
-            \SKom\Leseohren\Controller\OrganizationController::class => 'list, index, show, new, create, edit, update, delete'
+            OrganizationController::class => 'list, index, show, new, create, edit, update, delete'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\OrganizationController::class => 'new, create, edit, update, delete'
-        ]
+            OrganizationController::class => 'new, create, edit, update, delete'
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'Events',
         [
-            \SKom\Leseohren\Controller\EventController::class => 'list, listPast, index, show, new, create, edit, update, delete'
+            EventController::class => 'list, listPast, index, show, new, create, edit, update, delete'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\EventController::class => 'new, create, edit, update, delete'
-        ]
+            EventController::class => 'new, create, edit, update, delete'
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'Blackboards',
         [
-            \SKom\Leseohren\Controller\BlackboardController::class => 'list, index, show, new, create, edit, update, delete, deletegoperson'
+            BlackboardController::class => 'list, index, show, new, create, edit, update, delete, deletegoperson'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\BlackboardController::class => 'new, create, edit, update, delete, deletegoperson'
-        ]
+            BlackboardController::class => 'new, create, edit, update, delete, deletegoperson'
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'PersonDashboard',
         [
-            \SKom\Leseohren\Controller\PersonDashboardController::class => 'statuschange, birthdays'
+            PersonDashboardController::class => 'statuschange, birthdays'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\PersonDashboardController::class => ''
-        ]
+            PersonDashboardController::class => ''
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'Holidays',
         [
-            \SKom\Leseohren\Controller\HolidayController::class => 'index'
+            HolidayController::class => 'index'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\HolidayController::class => ''
-        ]
+            HolidayController::class => ''
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'Presents',
         [
-            \SKom\Leseohren\Controller\PresentController::class => 'list, show, new, create, edit, update, delete'
+            PresentController::class => 'list, show, new, create, edit, update, delete'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\PresentController::class => 'new, create, edit, update, delete'
-        ]
+            PresentController::class => 'new, create, edit, update, delete'
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Leseohren',
         'Registrations',
         [
-            \SKom\Leseohren\Controller\RegistrationController::class => 'list, show, new, create, edit, update, delete'
+            RegistrationController::class => 'list, show, new, create, edit, update, delete'
         ],
         // non-cacheable actions
         [
-            \SKom\Leseohren\Controller\RegistrationController::class => 'new, create, edit, update, delete'
-        ]
-    );
-
-    // wizards
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        'mod {
-            wizards.newContentElement.wizardItems.plugins {
-                elements {
-                    personen {
-                        iconIdentifier = leseohren-plugin-personen
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_personen.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_personen.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_personen
-                        }
-                    }
-                    organizations {
-                        iconIdentifier = leseohren-plugin-organizations
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_organizations.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_organizations.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_organizations
-                        }
-                    }
-                    events {
-                        iconIdentifier = leseohren-plugin-events
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_events.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_events.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_events
-                        }
-                    }
-                    blackboards {
-                        iconIdentifier = leseohren-plugin-blackboards
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_blackboards.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_blackboards.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_blackboards
-                        }
-                    }
-                    persondashboard {
-                        iconIdentifier = leseohren-plugin-events
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_persondashboard.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_persondashboard.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_persondashboard
-                        }
-                    }
-                    holidays {
-                        iconIdentifier = leseohren-plugin-holidays
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_holidays.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_holidays
-                        }
-                    }
-                    presents {
-                        iconIdentifier = leseohren-plugin-presents
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_presents.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_presents.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_presents
-                        }
-                    }
-                    registrations {
-                        iconIdentifier = leseohren-plugin-registrations
-                        title = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_registrations.name
-                        description = LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_registrations.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = leseohren_registrations
-                        }
-                    }
-                }
-                show = *
-            }
-        }'
+            RegistrationController::class => 'new, create, edit, update, delete'
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
     // Register TypeConverter for file upload
-    //\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(
+    //ExtensionUtility::registerTypeConverter(
     //    \SKom\Leseohren\Property\TypeConverter\UploadedFileReferenceConverter::class
     //);
 })();

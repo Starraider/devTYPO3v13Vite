@@ -1,0 +1,22 @@
+plugin.tx_leseohren_presents {
+    settings {
+      pageIDs {
+        personShowPid = {$tx_leseohren_personen.personShowPid}
+        organizationShowPid = {$tx_leseohren_organizations.organizationShowPid}
+        eventShowPid = {$tx_leseohren_events.eventShowPid}
+        blackboardShowPid = {$tx_leseohren_blackboards.blackboardShowPid}
+        presentShowPid = {$tx_leseohren_presents.presentShowPid}
+        registrationShowPid = {$tx_leseohren_registrations.registrationShowPid}
+      }
+    }
+    view {
+        templateRootPaths.0 = {$tx_leseohren_presents.templateRootPath}
+        partialRootPaths.0 = {$tx_leseohren_presents.partialRootPath}
+        layoutRootPaths.0 = {$tx_leseohren_presents.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$tx_leseohren_presents.storagePid}
+        recursive = 1
+    }
+    features.ignoreAllEnableFieldsInBe = 0
+}

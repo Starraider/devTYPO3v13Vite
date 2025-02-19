@@ -1,191 +1,315 @@
-pageIDs:
-  personShowPid:
-    type: int
-    label: Person detail page ID
-    default: 12
-  organizationShowPid:
-    type: int
-    label: Organization detail page ID
-    default: 19
-  eventShowPid:
-    type: int
-    label: Event detail page ID
-    default: 225
-  blackboardShowPid:
-    type: int
-    label: Blackboard detail page ID
-    default: 228
-  presentShowPid:
-    type: int
-    label: Present detail page ID
-    default: 232
-  registrationShowPid:
-    type: int
-    label: Registration detail page ID
-    default: 233
-
-persistence:
-  storagePids:
-    persons:
-      type: int
-      label: Storage PID for persons
-      default: 13
-    blackboards:
-      type: int
-      label: Storage PID for blackboards
-      default: 13
-    gifts:
-      type: int
-      label: Storage PID for gifts
-      default: 227
-    events:
-      type: int
-      label: Storage PID for events
-      default: 21
-    presents:
-      type: int
-      label: Storage PID for presents
-      default: 13
-
-page:
-  logo:
-    file:
-      type: string
-      label: Logo file path
-      default: EXT:leseohren/Resources/Public/Icons/logo_leseohren.svg
-    fileInverted:
-      type: string
-      label: Inverted logo file path
-      default: EXT:leseohren/Resources/Public/Icons/logo_leseohren-inverted.svg
-    height:
-      type: int
-      label: Logo height
-      default: 60
-    width:
-      type: int
-      label: Logo width
-      default: 168
-    alt:
-      type: string
-      label: Logo alt text
-      default: Leseohren e.V.
-    linktitle:
-      type: string
-      label: Logo link title
-      default: Leseohren e.V.
-  theme:
-    language:
-      enable:
-        type: bool
-        label: Enable language menu
-        default: false
-    googleFont:
-      enable:
-        type: bool
-        label: Enable Google Fonts
-        default: false
-    cookieconsent:
-      enable:
-        type: bool
-        label: Enable cookie consent
-        default: false
-    breadcrumb:
-      enableLevel:
-        type: int
-        label: Breadcrumb level
-        default: 1
-    copyright:
-      enable:
-        type: bool
-        label: Enable copyright
-        default: true
-      text:
-        type: string
-        label: Copyright text
-        default: '&copy; 2024 Leseohren e.V.'
-
-plugin:
+categories:
   tx_leseohren_personen:
-    view:
-      templateRootPath:
-        type: string
-        label: Template Root Path
-        default: EXT:leseohren/Resources/Private/Templates/
-      partialRootPath:
-        type: string
-        label: Partial Root Path
-        default: EXT:leseohren/Resources/Private/Partials/
-      layoutRootPath:
-        type: string
-        label: Layout Root Path
-        default: EXT:leseohren/Resources/Private/Layouts/
+    label: 'Personen'
+  tx_leseohren_personen.templates:
+    label: 'Templates'
+    parent: tx_leseohren_personen
+  tx_leseohren_personen.settings:
+    label: 'Settings'
+    parent: tx_leseohren_personen
+
   tx_leseohren_organizations:
-    view:
-      templateRootPath:
-        type: string
-        label: Template Root Path
-        default: EXT:leseohren/Resources/Private/Templates/
-      partialRootPath:
-        type: string
-        label: Partial Root Path
-        default: EXT:leseohren/Resources/Private/Partials/
-      layoutRootPath:
-        type: string
-        label: Layout Root Path
-        default: EXT:leseohren/Resources/Private/Layouts/
+    label: 'Organizations'
+  tx_leseohren_organizations.templates:
+    label: 'Templates'
+    parent: tx_leseohren_organizations
+  tx_leseohren_organizations.settings:
+    label: 'Settings'
+    parent: tx_leseohren_organizations
+
   tx_leseohren_events:
-    view:
-      templateRootPath:
-        type: string
-        label: Template Root Path
-        default: EXT:leseohren/Resources/Private/Templates/
-      partialRootPath:
-        type: string
-        label: Partial Root Path
-        default: EXT:leseohren/Resources/Private/Partials/
-      layoutRootPath:
-        type: string
-        label: Layout Root Path
-        default: EXT:leseohren/Resources/Private/Layouts/
+    label: 'Events'
+  tx_leseohren_events.templates:
+    label: 'Templates'
+    parent: tx_leseohren_events
+  tx_leseohren_events.settings:
+    label: 'Settings'
+    parent: tx_leseohren_events
+
   tx_leseohren_blackboards:
-    view:
-      templateRootPath:
-        type: string
-        label: Template Root Path
-        default: EXT:leseohren/Resources/Private/Templates/
-      partialRootPath:
-        type: string
-        label: Partial Root Path
-        default: EXT:leseohren/Resources/Private/Partials/
-      layoutRootPath:
-        type: string
-        label: Layout Root Path
-        default: EXT:leseohren/Resources/Private/Layouts/
-  tx_leseohren_persondashboard:
-    view:
-      templateRootPath:
-        type: string
-        label: Template Root Path
-        default: EXT:leseohren/Resources/Private/Templates/
-      partialRootPath:
-        type: string
-        label: Partial Root Path
-        default: EXT:leseohren/Resources/Private/Partials/
-      layoutRootPath:
-        type: string
-        label: Layout Root Path
-        default: EXT:leseohren/Resources/Private/Layouts/
+    label: 'Blackboards'
+  tx_leseohren_blackboards.templates:
+    label: 'Templates'
+    parent: tx_leseohren_blackboards
+  tx_leseohren_blackboards.settings:
+    label: 'Settings'
+    parent: tx_leseohren_blackboards
+
   tx_leseohren_presents:
-    view:
-      templateRootPath:
-        type: string
-        label: Template Root Path
-        default: EXT:leseohren/Resources/Private/Templates/
-      partialRootPath:
-        type: string
-        label: Partial Root Path
-        default: EXT:leseohren/Resources/Private/Partials/
-      layoutRootPath:
-        type: string
-        label: Layout Root Path
-        default: EXT:leseohren/Resources/Private/Layouts/
+    label: 'Presents'
+  tx_leseohren_presents.templates:
+    label: 'Templates'
+    parent: tx_leseohren_presents
+  tx_leseohren_presents.settings:
+    label: 'Settings'
+    parent: tx_leseohren_presents
+
+  tx_leseohren_persondashboard:
+    label: 'Person Dashboard'
+  tx_leseohren_persondashboard.templates:
+    label: 'Templates'
+    parent: tx_leseohren_persondashboard
+  tx_leseohren_persondashboard.settings:
+    label: 'Settings'
+    parent: tx_leseohren_persondashboard
+
+  tx_leseohren_holidays:
+    label: 'Holiday Dashboard'
+  tx_leseohren_holidays.templates:
+    label: 'Templates'
+    parent: tx_leseohren_holidays
+  tx_leseohren_holidays.settings:
+    label: 'Settings'
+    parent: tx_leseohren_holidays
+
+  tx_leseohren_registrations:
+    label: 'Registrations'
+  tx_leseohren_registrations.templates:
+    label: 'Templates'
+    parent: tx_leseohren_registrations
+  tx_leseohren_registrations.settings:
+    label: 'Settings'
+    parent: tx_leseohren_registrations
+
+settings:
+  tx_leseohren_personen.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_personen.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_personen.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_personen.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_personen.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_personen.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+  tx_leseohren_personen.storagePid:
+    label: 'Personen Storage PID'
+    category: tx_leseohren_personen.settings
+    description: 'Storage PID'
+    type: int
+    default: 13
+  tx_leseohren_personen.personShowPid:
+    label: 'Personen Detail PID'
+    category: tx_leseohren_personen.settings
+    description: 'PID of SingleView'
+    type: int
+    default: 12
+
+  tx_leseohren_organizations.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_organizations.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_organizations.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_organizations.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_organizations.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_organizations.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+  tx_leseohren_organizations.storagePid:
+    label: 'Organizations Storage PID'
+    category: tx_leseohren_organizations.settings
+    description: 'Storage PID'
+    type: int
+    default: 20
+  tx_leseohren_organizations.organizationShowPid:
+    label: 'Organizations Detail PID'
+    category: tx_leseohren_organizations.settings
+    description: 'PID of SingleView'
+    type: int
+    default: 19
+
+  tx_leseohren_events.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_events.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_events.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_events.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_events.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_events.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+  tx_leseohren_events.storagePid:
+    label: 'Events Storage PID'
+    category: tx_leseohren_events.settings
+    description: 'Storage PID'
+    type: int
+    default: 21
+  tx_leseohren_events.eventShowPid:
+    label: 'Events Detail PID'
+    category: tx_leseohren_events.settings
+    description: 'PID of SingleView'
+    type: int
+    default: 225
+
+  tx_leseohren_blackboards.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_blackboards.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_blackboards.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_blackboards.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_blackboards.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_blackboards.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+  tx_leseohren_blackboards.storagePid:
+    label: 'Blackboards Storage PID'
+    category: tx_leseohren_blackboards.settings
+    description: 'Storage PID'
+    type: int
+    default: 13
+  tx_leseohren_blackboards.blackboardShowPid:
+    label: 'Blackboards Detail PID'
+    category: tx_leseohren_blackboards.settings
+    description: 'PID of SingleView'
+    type: int
+    default: 228
+
+  tx_leseohren_presents.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_presents.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_presents.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_presents.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_presents.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_presents.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+  tx_leseohren_presents.storagePid:
+    label: 'Presents Storage PID'
+    category: tx_leseohren_presents.settings
+    description: 'Storage PID'
+    type: int
+    default: 13
+  tx_leseohren_presents.presentShowPid:
+    label: 'Presents Detail PID'
+    category: tx_leseohren_presents.settings
+    description: 'PID of SingleView'
+    type: int
+    default: 232
+  tx_leseohren_gifts.storagePid:
+    label: 'Gifts Storage PID'
+    category: tx_leseohren_presents.settings
+    description: 'Storage PID for gifts'
+    type: int
+    default: 13
+
+  tx_leseohren_holidays.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_holidays.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_holidays.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_holidays.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_holidays.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_holidays.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+  tx_leseohren_holidays.storagePid:
+    label: 'Holidays Storage PID'
+    category: tx_leseohren_holidays.settings
+    description: 'Storage PID'
+    type: int
+    default: 16
+  tx_leseohren_holidays.holidayShowPid:
+    label: 'Holidays Detail PID'
+    category: tx_leseohren_holidays.settings
+    description: 'PID of SingleView'
+    type: int
+    default: 1
+
+  tx_leseohren_persondashboard.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_persondashboard.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_persondashboard.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_persondashboard.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_persondashboard.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_persondashboard.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+
+  tx_leseohren_registrations.templateRootPath:
+    label: 'Template Root Path'
+    category: tx_leseohren_registrations.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Templates/'
+  tx_leseohren_registrations.partialRootPath:
+    label: 'Partial Root Path'
+    category: tx_leseohren_registrations.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Partials/'
+  tx_leseohren_registrations.layoutRootPath:
+    label: 'Layout Root Path'
+    category: tx_leseohren_registrations.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:leseohren/Resources/Private/Layouts/'
+  tx_leseohren_registrations.storagePid:
+    label: 'Registrations Storage PID'
+    category: tx_leseohren_registrations.settings
+    description: 'Storage PID'
+    type: int
+    default: 13
+  tx_leseohren_registrations.registrationShowPid:
+    label: 'Registrations Detail PID'
+    category: tx_leseohren_registrations.settings
+    description: 'PID of SingleView'
+    type: int
+    default: 231

@@ -47,7 +47,6 @@ class HolidayController extends ActionController
     {
         $today = new \DateTime("now");
         $thisYear = $today->format('Y');
-
         // Christmas date for the current year
         $christmas = new \DateTimeImmutable("$thisYear-12-24");
         // Calculate the number of days from today to Christmas

@@ -3,27 +3,23 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>
-                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.pluginOptions
-                    </sheetTitle>
-                </TCEforms>
+                <sheetTitle>
+                    LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.pluginOptions
+                </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.leseohren_events.categories>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.categories
-                            </label>
-                            <config>
-                                <type>category</type>
-                                <treeConfig>
-                                    <startingPoints>18</startingPoints>
-                                    <showHeader>false</showHeader>
-                                </treeConfig>
-                                <size>12</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_events.flexform.categories
+                        </label>
+                        <config>
+                            <type>category</type>
+                            <treeConfig>
+                                <startingPoints>18</startingPoints>
+                                <showHeader>false</showHeader>
+                            </treeConfig>
+                            <size>12</size>
+                        </config>
                     </settings.leseohren_events.categories>
                     <settings.leseohren_events.filtercategory>
                         <label>

@@ -3,11 +3,9 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>
-                        LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_personen.flexform.pluginOptions
-                    </sheetTitle>
-                </TCEforms>
+                <sheetTitle>
+                    LLL:EXT:leseohren/Resources/Private/Language/locallang_flexforms.xlf:tx_leseohren_personen.flexform.pluginOptions
+                </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.leseohren_personen.filtercategory>

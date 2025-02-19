@@ -865,6 +865,9 @@
 			<trans-unit id="tx_leseohren_holidays.daystoeaster" resname="tx_leseohren_holidays.daystoeaster" xml:space="preserve">
 				<source>days until Easter</source>
 			</trans-unit>
+			<trans-unit id="tx_leseohren_holidays.no_easter_date" resname="tx_leseohren_holidays.no_easter_date" xml:space="preserve">
+				<source>No Easter date has been set for the current year.</source>
+			</trans-unit>
 			<trans-unit id="tx_leseohren_domain_model_person.mandatsreferenz" xml:space="preserve">
 				<source>Mandate Reference</source>
 			</trans-unit>

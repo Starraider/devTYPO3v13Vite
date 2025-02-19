@@ -1,0 +1,26 @@
+plugin.tx_leseohren_holidays {
+    settings {
+      pageIDs {
+        personShowPid = {$tx_leseohren_personen.personShowPid}
+        organizationShowPid = {$tx_leseohren_organizations.organizationShowPid}
+        eventShowPid = {$tx_leseohren_events.eventShowPid}
+        blackboardShowPid = {$tx_leseohren_blackboards.blackboardShowPid}
+        presentShowPid = {$tx_leseohren_presents.presentShowPid}
+        registrationShowPid = {$tx_leseohren_registrations.registrationShowPid}
+      }
+    }
+    view {
+        templateRootPaths.0 = {$tx_leseohren_holidays.templateRootPath}
+        partialRootPaths.0 = {$tx_leseohren_holidays.partialRootPath}
+        layoutRootPaths.0 = {$tx_leseohren_holidays.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$tx_leseohren_holidays.storagePid}
+        recursive = 1
+        classes {
+            SKom\Leseohren\Domain\Model\Easterdate {
+                storagePid = {$tx_leseohren_holidays.storagePid}
+            }
+        }
+    }
+}

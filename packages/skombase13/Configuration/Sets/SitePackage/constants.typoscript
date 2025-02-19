@@ -1,1 +1,13 @@
 @import "EXT:leseohren/Configuration/Sets/Leseohren/constants.typoscript"
+
+page {
+    theme {
+        contact.enable = 0
+        footernavigation.enable = 0
+        footernavigation.navigationValue = 7,8
+        footernavigation.includeNotInMenu = 0
+        meta.navigationValue = 7,8
+    }
+}
+plugin.tx_cfcookiemanager_cookiefrontend.persistence.storagePid = 230
+module.tx_cfcookiemanager_cookiesettings.persistence.storagePid = 230

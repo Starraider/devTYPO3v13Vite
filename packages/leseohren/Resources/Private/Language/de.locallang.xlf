@@ -1163,6 +1163,10 @@
 				<source>days until Easter</source>
 				<target>Tage bis Ostern</target>
 			</trans-unit>
+            <trans-unit id="tx_leseohren_holidays.no_easter_date" resname="tx_leseohren_holidays.no_easter_date" xml:space="preserve">
+				<source>No Easter date has been set for the current year.</source>
+				<target>Es wurde kein Osterdatum für das aktuelle Jahr festgelegt.</target>
+			</trans-unit>
 			<trans-unit id="tx_leseohren.speaker" resname="tx_leseohren.speaker" xml:space="preserve">
 				<source>Speaker</source>
 				<target>Referent</target>
