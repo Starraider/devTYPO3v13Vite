@@ -71,6 +71,7 @@
 	},
 	"require-dev": {
 		"b13/make": "^0.1.8",
-		"ssch/typo3-rector": "^3.0"
+		"ssch/typo3-rector": "^3.0",
+        "deployer/deployer": "7.4.1"
 	}
 }

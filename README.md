@@ -7,6 +7,25 @@ Get going quickly with TYPO3 CMS.
 * PHP 8.3
 * [Composer](https://getcomposer.org/download/)
 
+## Deployment
+
+ACHTUNG: Vorher ein Build durchführen und new Release erstellen!
+
+```bash
+vendor/bin/dep deploy beta -vvv
+```
+
+## Releases
+
+### 1. Create pull request from develop branch
+
+Above the list of files, in the yellow banner, click "Compare & pull request" or go to "Pull requests" in the main menu and click on "New pull request", to create a pull request.
+
+### 2. Merge pull request into main branch
+
+### 3. New release will be created automatically by the "Release Please" GitHub Action
+
+The "Release Please" GitHub Action will create a new release with the next version number and update the CHANGELOG.md.
 
 ## Rector/Fractor
 
