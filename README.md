@@ -12,7 +12,7 @@ Get going quickly with TYPO3 CMS.
 ACHTUNG: Vorher ein Build durchführen und new Release erstellen!
 
 ```bash
-vendor/bin/dep deploy beta -vvv
+vendor/bin/dep deploy live -vvv
 ```
 
 ## Releases
