@@ -1,5 +1,4 @@
 <?php
-
 $GLOBALS['TYPO3_CONF_VARS'] = array_replace_recursive(
     $GLOBALS['TYPO3_CONF_VARS'],
     [
@@ -15,13 +14,11 @@ $GLOBALS['TYPO3_CONF_VARS'] = array_replace_recursive(
                 ],
             ],
         ],
-        // This GFX configuration allows processing by installed ImageMagick 6
         'GFX' => [
             'processor' => getenv('TYPO3_GFX_PROCESSOR'),
             'processor_path' => getenv('TYPO3_GFX_PROCESSOR_PATH'),
             'processor_path_lzw' => getenv('TYPO3_GFX_PROCESSOR_PATH_LZW'),
         ],
-        // This mail configuration sends all emails to mailpit
         'MAIL' => [
             'transport' => getenv('TYPO3_MAIL_TRANSPORT'),
             'transport_smtp_server' => getenv('TYPO3_MAIL_TRANSPORT_SMTP_SERVER'),
