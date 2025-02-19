@@ -1,9 +1,9 @@
 {
 	"name": "typo3/cms-base-distribution",
-	"description" : "TYPO3 CMS Base Distribution",
+	"description": "TYPO3 CMS Base Distribution",
 	"license": "GPL-2.0-or-later",
 	"type": "project",
-    "version": "13.0.0",
+	"version": "1.0.0",
 	"authors": [
 		{
 			"name": "Sven Kalbhenn",
@@ -12,7 +12,7 @@
 			"role": "Developer"
 		}
 	],
-    "repositories": [
+	"repositories": [
 		{
 			"type": "path",
 			"url": "packages/*"
@@ -39,7 +39,7 @@
 		"helhum/dotenv-connector": "^3.1",
 		"helhum/typo3-console": "^8.2",
 		"praetorius/vite-asset-collector": "^1.12",
-        "fluidtypo3/vhs": "@dev",
+		"fluidtypo3/vhs": "@dev",
 		"skom/leseohren": "@dev",
 		"skom/skombase13": "@dev",
 		"typo3/cms-backend": "^13.4",
@@ -72,6 +72,6 @@
 	"require-dev": {
 		"b13/make": "^0.1.8",
 		"ssch/typo3-rector": "^3.0",
-        "deployer/deployer": "7.4.1"
+		"deployer/deployer": "7.4.1"
 	}
 }
