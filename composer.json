@@ -12,34 +12,13 @@
 			"role": "Developer"
 		}
 	],
-	"repositories": [
-		{
-			"type": "path",
-			"url": "packages/*"
-		},
-		{
-			"type": "composer",
-			"url": "https://composer.typo3.org/"
-		}
-	],
-	"config": {
-		"allow-plugins": {
-			"helhum/dotenv-connector": true,
-			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true
-		},
-		"platform": {
-			"php": "8.2.0"
-		},
-		"sort-packages": true
-	},
 	"require": {
 		"b13/container": "^3.1",
 		"bk2k/bootstrap-package": "^15.0",
+		"fluidtypo3/vhs": "@dev",
 		"helhum/dotenv-connector": "^3.1",
 		"helhum/typo3-console": "^8.2",
 		"praetorius/vite-asset-collector": "^1.12",
-		"fluidtypo3/vhs": "@dev",
 		"skom/leseohren": "@dev",
 		"skom/skombase13": "@dev",
 		"typo3/cms-backend": "^13.4",
@@ -71,7 +50,42 @@
 	},
 	"require-dev": {
 		"b13/make": "^0.1.8",
-		"ssch/typo3-rector": "^3.0",
-		"deployer/deployer": "7.4.1"
+		"deployer/deployer": "7.4.1",
+		"ergebnis/composer-normalize": "^2.45",
+		"ssch/typo3-rector": "^3.0"
+	},
+	"repositories": [
+		{
+			"type": "path",
+			"url": "packages/*"
+		},
+		{
+			"type": "composer",
+			"url": "https://composer.typo3.org/"
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
+			"helhum/dotenv-connector": true,
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
+		"platform": {
+			"php": "8.2.0"
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"ci:composer:normalize": "@composer normalize --dry-run",
+		"ci:json:lint": "find . ! -path '*public/*' ! -path '*vendor/*' ! -path '*.vscode/*' ! -path '*var/*' -name '*.json' | xargs -r php ./vendor/bin/jsonlint",
+		"ci:php:sniff": "exec ./vendor/bin/phpcs packages/leseohren",
+		"fix:composer": "@composer normalize"
+	},
+	"scripts-descriptions": {
+		"ci:composer:normalize": "Check if composer.json is normalized",
+		"ci:json:lint": "Lints the JSON files.",
+		"ci:php:sniff": "Checks the code style with PHP_CodeSniffer (PHPCS).",
+		"fix:composer": "Normalize composer.json"
 	}
 }
