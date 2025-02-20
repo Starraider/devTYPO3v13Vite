@@ -1,0 +1,80 @@
+{
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons-BOrJxbIo.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons-BtvjY1KL.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  },
+  "packages/leseohren/Resources/Private/DataTables.entry.js": {
+    "file": "assets/DataTables.entry-g6JvGoUZ.js",
+    "name": "DataTables.entry",
+    "src": "packages/leseohren/Resources/Private/DataTables.entry.js",
+    "isEntry": true,
+    "css": [
+      "assets/DataTables-ChZg9r-J.css"
+    ]
+  },
+  "packages/leseohren/Resources/Private/Datepicker.entry.js": {
+    "file": "assets/Datepicker.entry-Cy11fV3R.js",
+    "name": "Datepicker.entry",
+    "src": "packages/leseohren/Resources/Private/Datepicker.entry.js",
+    "isEntry": true,
+    "css": [
+      "assets/Datepicker-BhlF3ZTd.css"
+    ]
+  },
+  "packages/leseohren/Resources/Private/ext.leseohren.entry.js": {
+    "file": "assets/ext.leseohren.entry-DhrhPY8j.js",
+    "name": "ext.leseohren.entry",
+    "src": "packages/leseohren/Resources/Private/ext.leseohren.entry.js",
+    "isEntry": true,
+    "css": [
+      "assets/ext.leseohren-DNs1033z.css"
+    ]
+  },
+  "packages/skombase13/Resources/Private/Main.entry.js": {
+    "file": "assets/Main.entry-CF1MILgj.js",
+    "name": "Main.entry",
+    "src": "packages/skombase13/Resources/Private/Main.entry.js",
+    "isEntry": true,
+    "css": [
+      "assets/Main-D-4Q4XEK.css"
+    ],
+    "assets": [
+      "assets/bootstrap-icons-BtvjY1KL.woff2",
+      "assets/bootstrap-icons-BOrJxbIo.woff",
+      "assets/rubik-v19-latin-300-D5SVD-FQ.woff2",
+      "assets/rubik-v19-latin-300-CuISHDDx.woff",
+      "assets/rubik-v19-latin-500-xnS44cyu.woff2",
+      "assets/rubik-v19-latin-500-C4o0CF8p.woff",
+      "assets/rubik-v19-latin-300italic-CpMYCg1y.woff2",
+      "assets/rubik-v19-latin-300italic-B5ipYiTy.woff"
+    ]
+  },
+  "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300.woff": {
+    "file": "assets/rubik-v19-latin-300-CuISHDDx.woff",
+    "src": "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300.woff"
+  },
+  "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300.woff2": {
+    "file": "assets/rubik-v19-latin-300-D5SVD-FQ.woff2",
+    "src": "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300.woff2"
+  },
+  "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300italic.woff": {
+    "file": "assets/rubik-v19-latin-300italic-B5ipYiTy.woff",
+    "src": "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300italic.woff"
+  },
+  "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300italic.woff2": {
+    "file": "assets/rubik-v19-latin-300italic-CpMYCg1y.woff2",
+    "src": "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-300italic.woff2"
+  },
+  "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-500.woff": {
+    "file": "assets/rubik-v19-latin-500-C4o0CF8p.woff",
+    "src": "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-500.woff"
+  },
+  "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-500.woff2": {
+    "file": "assets/rubik-v19-latin-500-xnS44cyu.woff2",
+    "src": "packages/skombase13/Resources/Public/Fonts/rubik-v19-latin-500.woff2"
+  }
+}

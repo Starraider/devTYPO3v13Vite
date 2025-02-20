@@ -46,15 +46,16 @@
 .ddev/data/*
 
 ### TYPO3 ###
-/public/*
-!/public/build
-!/public/typo3conf
-/public/typo3conf/*
-!/public/typo3conf/LocalConfiguration.php
-!/public/typo3conf/AdditionalConfiguration.php
-!/public/typo3conf/PackageStates.php
-!/public/typo3conf/contentBlocks
-!/public/.htaccess
+/public/_assets/*
+!/public/_assets/vite/
+!/public/_assets/vite/*
+
+/public/typo3temp
+/public/fileadmin
+!/public/fileadmin/.htaccess
+!/public/fileadmin/index.html
+/public/typo3
+/public/index.php
 
 ## Personal assets ##
 /dev_data

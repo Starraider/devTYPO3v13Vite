@@ -58,6 +58,11 @@ ddev typo3 cache:flush
 ```bash
 ddev typo3 referenceindex:update
 ```
+### Dump autoload
+
+```bash
+ddev composer dump-autoload
+```
 
 ### language files aktualisieren
 
