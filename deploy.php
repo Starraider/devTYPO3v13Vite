@@ -28,7 +28,7 @@ add('writable_dirs', []);
 // Hosts
 
 host('live')
-    ->set('hostname', '167.235.201.149')
+    ->set('hostname', '188.245.195.33')
     ->set('remote_user', 'leseohre2')
     ->set('branch', 'main')
     ->set('public_urls', ['https://leseohrendb.staging.skom-server.de']);
