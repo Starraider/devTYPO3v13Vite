@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.1...v1.0.2) (2025-02-19)
+
+
+### Miscellaneous Chores
+
+* Update deployment command to target live environment ([f8d3a49](https://github.com/Starraider/devTYPO3v13Vite/commit/f8d3a490bb7e49247bb0cd5aecd559f45c8b8ace))
+
 ## [1.0.1](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.0...v1.0.1) (2025-02-19)
 
 
