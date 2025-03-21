@@ -8,12 +8,12 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "packages/leseohren/Resources/Private/DataTables.entry.js": {
-    "file": "assets/DataTables.entry-g6JvGoUZ.js",
+    "file": "assets/DataTables.entry-D2Ts4WMW.js",
     "name": "DataTables.entry",
     "src": "packages/leseohren/Resources/Private/DataTables.entry.js",
     "isEntry": true,
     "css": [
-      "assets/DataTables-ChZg9r-J.css"
+      "assets/DataTables-C2xwOpgb.css"
     ]
   },
   "packages/leseohren/Resources/Private/Datepicker.entry.js": {
