@@ -1,4 +1,30 @@
 page {
+    includeJSLibs {
+        // datatables = EXT:leseohren/Resources/Public/JavaScript/datatables.min.js
+        // datatables.forceOnTop = 1
+        // datatables.excludeFromConcatenation = 1
+        // datatables.defer = 1
+        pdfmake = https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js
+        pdfmake.forceOnTop = 1
+        pdfmake.excludeFromConcatenation = 1
+        pdfmake.disableCompression = 1
+        pdfmake.external = 1
+        vfsfonts = https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js
+        vfsfonts.forceOnTop = 1
+        vfsfonts.excludeFromConcatenation = 1
+        vfsfonts.disableCompression = 1
+        vfsfonts.external = 1
+        datatables = https://cdn.datatables.net/v/bs5/jq-3.7.0/moment-2.29.4/jszip-3.10.1/dt-2.2.2/b-3.2.2/b-html5-3.2.2/b-print-3.2.2/r-3.0.4/sp-2.3.3/sl-3.0.0/datatables.min.js
+        datatables.forceOnTop = 1
+        datatables.excludeFromConcatenation = 1
+        datatables.disableCompression = 1
+        datatables.external = 1
+    }
+    includeJS {
+        mydatatables = EXT:leseohren/Resources/Public/JavaScript/myDataTables.js
+        mydatatables.excludeFromConcatenation = 1
+        mydatatables.disableCompression = 1
+    }
     theme {
         language.enable = {$page.theme.language.enable}
         googleFont.enable = {$page.theme.googleFont.enable}
