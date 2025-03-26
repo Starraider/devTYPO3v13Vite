@@ -1,0 +1,14 @@
+@include color-mode(dark) {
+    .footer-section-content {
+        background: #151719 !important;
+        color: rgb(255, 255, 255, 0.65) !important;
+        .frame {
+            color: rgb(255, 255, 255, 0.65) !important;
+        }
+    }
+    .footer-section-meta {
+        background: $gray-900;
+        --frame-link-color: #ff9900;
+        --frame-link-hover-color: #ff9900;
+    }
+}
