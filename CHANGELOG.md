@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.5](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.4...v1.0.5) (2025-03-31)
+
+
+### Miscellaneous Chores
+
+* add dark mode styles to footer and navigation ([608b308](https://github.com/Starraider/devTYPO3v13Vite/commit/608b308b5e746237a61a0605c668f1c01d5d28ed))
+* update SCSS styles for personen component, adjust footer styles, and add card variables for dark mode ([969e331](https://github.com/Starraider/devTYPO3v13Vite/commit/969e3311d83ec391f22eb9b064f1ab1bb54763fe))
+
 ## [1.0.4](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.3...v1.0.4) (2025-03-21)
 
 
