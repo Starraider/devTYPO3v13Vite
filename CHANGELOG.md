@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.6](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.5...v1.0.6) (2025-03-31)
+
+
+### Miscellaneous Chores
+
+* update live host IP address in deployment configuration ([19981b4](https://github.com/Starraider/devTYPO3v13Vite/commit/19981b4b60825e16245076f2d922a40b49f7aeb6))
+* update live host IP address in deployment configuration ([a596892](https://github.com/Starraider/devTYPO3v13Vite/commit/a596892a624faa79da1ce57771b2a4476edf3588))
+
 ## [1.0.5](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.4...v1.0.5) (2025-03-31)
 
 
