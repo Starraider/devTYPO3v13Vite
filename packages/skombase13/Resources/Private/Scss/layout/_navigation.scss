@@ -1,4 +1,14 @@
 //
+// Navbar
+//
+@include color-mode(dark) {
+    .navbar-default {
+        background-color: #151719 !important;
+    }
+}
+
+
+//
 // Meta-Menu
 //
 .meta-menu {
