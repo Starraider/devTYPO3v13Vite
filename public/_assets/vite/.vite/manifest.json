@@ -26,21 +26,21 @@
     ]
   },
   "packages/leseohren/Resources/Private/ext.leseohren.entry.js": {
-    "file": "assets/ext.leseohren.entry-DhrhPY8j.js",
+    "file": "assets/ext.leseohren.entry-ou-aUR3V.js",
     "name": "ext.leseohren.entry",
     "src": "packages/leseohren/Resources/Private/ext.leseohren.entry.js",
     "isEntry": true,
     "css": [
-      "assets/ext.leseohren-DNs1033z.css"
+      "assets/ext.leseohren-tRdDbLgt.css"
     ]
   },
   "packages/skombase13/Resources/Private/Main.entry.js": {
-    "file": "assets/Main.entry-CF1MILgj.js",
+    "file": "assets/Main.entry-DRXor-tc.js",
     "name": "Main.entry",
     "src": "packages/skombase13/Resources/Private/Main.entry.js",
     "isEntry": true,
     "css": [
-      "assets/Main-D-4Q4XEK.css"
+      "assets/Main-CG7nxS8J.css"
     ],
     "assets": [
       "assets/bootstrap-icons-BtvjY1KL.woff2",
