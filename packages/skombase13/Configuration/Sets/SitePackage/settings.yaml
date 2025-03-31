@@ -27,7 +27,7 @@ page:
     cookieconsent:
       enable: false
     footernavigation:
-      navigationValue: '4, 5'
+      navigationValue: '7,8'
     navigation:
       type: top
       style: default

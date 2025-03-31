@@ -1,0 +1,14 @@
+.card {
+    .card-header {
+        font-weight: 400;
+    }
+}
+
+@include color-mode(dark) {
+    .card {
+        color: $card-color-dark;
+        .card-header {
+            color: $card-cap-color-dark;
+        }
+    }
+}
