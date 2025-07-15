@@ -7,6 +7,13 @@ Get going quickly with TYPO3 CMS.
 * PHP 8.3
 * [Composer](https://getcomposer.org/download/)
 
+## Development with Vite
+
+```bash
+ddev vite
+ddev launch typo3
+```
+
 ## Deployment
 
 ACHTUNG: Vorher ein Build durchführen und new Release erstellen!

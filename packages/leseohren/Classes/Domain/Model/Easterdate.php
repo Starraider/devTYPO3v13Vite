@@ -26,7 +26,6 @@ class Easterdate extends AbstractEntity
      * easterdate
      *
      * @var \DateTime
-     *
      */
     #[Validate(['validator' => 'NotEmpty'])]
     protected $easterdate;
