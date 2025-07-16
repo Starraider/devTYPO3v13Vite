@@ -108,6 +108,13 @@ class Organization extends AbstractEntity
     protected $whatsapp = '';
 
     /**
+     * lastcontact
+     *
+     * @var \DateTime
+     */
+    protected $lastcontact = null;
+
+    /**
      * openingHours
      *
      * @var string
@@ -427,6 +434,26 @@ class Organization extends AbstractEntity
     public function setWhatsapp(string $whatsapp): void
     {
         $this->whatsapp = $whatsapp;
+    }
+
+    /**
+     * Returns the lastcontact
+     *
+     * @return \DateTime
+     */
+    public function getLastcontact()
+    {
+        return $this->lastcontact;
+    }
+
+    /**
+     * Sets the lastcontact
+     *
+     * @return void
+     */
+    public function setLastcontact(\DateTime $lastcontact): void
+    {
+        $this->lastcontact = $lastcontact;
     }
 
     /**

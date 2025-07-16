@@ -83,4 +83,16 @@ if (giftDate !== null) {
     todayHighlight: true,
   })
 }
+
+const lastcontact = document.querySelector('input[id="lastcontact"]')
+if (lastcontact !== null) {
+  const datepicker1 = new Datepicker(lastcontact, {
+    format: 'dd.mm.yyyy',
+    buttonClass: 'btn',
+    autohide: true,
+    todayButton: true,
+    clearButton: true,
+    todayHighlight: true,
+  })
+}
 console.log('leseohren Datepicker.entry.js loaded!')

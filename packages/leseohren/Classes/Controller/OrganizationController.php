@@ -93,6 +93,17 @@ class OrganizationController extends ActionController
     }
 
     /**
+     * initialize create action
+     *
+     * @param void
+     */
+    public function initializeCreateAction(): void
+    {
+        $this->arguments->getArgument('newOrganization')
+            ->getPropertyMappingConfiguration()->forProperty('*')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
+    }
+
+    /**
      * action create
      */
     public function createAction(Organization $newOrganization)
@@ -115,6 +126,17 @@ class OrganizationController extends ActionController
         $this->view->assign('categories', $categories);
         $this->view->assign('organization', $organization);
         return $this->htmlResponse();
+    }
+
+    /**
+     * initialize update action
+     *
+     * @param void
+     */
+    public function initializeUpdateAction(): void
+    {
+        $this->arguments->getArgument('organization')
+            ->getPropertyMappingConfiguration()->forProperty('*')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
     }
 
     /**

@@ -42,7 +42,7 @@ return [
         ],
         'contactPalette' => [
             'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.contactPalette.description',
-            'showitem' => 'phone1, phone2, --linebreak--, email, url, --linebreak--, opening_hours, whatsapp',
+            'showitem' => 'phone1, phone2, --linebreak--, email, url, --linebreak--, opening_hours, whatsapp, --linebreak--, lastcontact',
         ],
     ],
     'columns' => [
@@ -240,6 +240,18 @@ return [
                 'size' => 30,
                 'eval' => 'trim',
                 'default' => ''
+            ],
+        ],
+        'lastcontact' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_organization.lastcontact',
+            'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_organization.lastcontact.description',
+            'config' => [
+                'type' => 'datetime',
+                'format' => 'date',
+                'required' => false,
+                'size' => 20,
+                'default' => 0,
             ],
         ],
         'opening_hours' => [
