@@ -84,10 +84,11 @@ ddev typo3 database:updateschema
 ```
 
 ### DB-Backup
+Achtung: Funktioniert nicht mit zip gepackten dumps
 ```bash
 ddev typo3 database:export -c Default > ./Quellen/backup/2025-01-21_db.sql
 
-cat ./Quellen/backup/2025-01-21_db.sql | ddev typo3 database:import --connection Default
+cat ./Quellen/backup/2025-06-14_leseohren_db.sql | ddev typo3 database:import --connection Default
 ```
 
 ### DB-Health
