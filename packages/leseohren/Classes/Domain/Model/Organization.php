@@ -152,7 +152,7 @@ class Organization extends AbstractEntity
     /**
      * Kontaktperson
      *
-     * @var ObjectStorage<Person>
+     * @var Person|null
      */
     #[Lazy]
     protected $contactPerson = null;
@@ -439,9 +439,9 @@ class Organization extends AbstractEntity
     /**
      * Returns the lastcontact
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getLastcontact()
+    public function getLastcontact(): ?\DateTime
     {
         return $this->lastcontact;
     }
@@ -449,9 +449,10 @@ class Organization extends AbstractEntity
     /**
      * Sets the lastcontact
      *
+     * @param \DateTime|null $lastcontact
      * @return void
      */
-    public function setLastcontact(\DateTime $lastcontact): void
+    public function setLastcontact(?\DateTime $lastcontact): void
     {
         $this->lastcontact = $lastcontact;
     }
@@ -559,19 +560,23 @@ class Organization extends AbstractEntity
     /**
      * Returns the contactPerson
      *
-     * @return ObjectStorage<Person>
+     * @return Person|null
      */
-    public function getContactPerson()
+    public function getContactPerson(): ?Person
     {
+        if ($this->contactPerson instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+            $this->contactPerson->_loadRealInstance();
+        }
         return $this->contactPerson;
     }
 
     /**
      * Sets the contactPerson
      *
+     * @param Person|null $contactPerson
      * @return void
      */
-    public function setContactPerson(Person $contactPerson): void
+    public function setContactPerson(?Person $contactPerson): void
     {
         $this->contactPerson = $contactPerson;
     }

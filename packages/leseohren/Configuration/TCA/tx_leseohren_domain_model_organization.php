@@ -348,11 +348,11 @@ return [
             'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_organization.contact_person.description',
             'config' => [
                 'type' => 'select',
-                'renderType' => 'selectSingle',
+                'renderType' => 'selectSingle', // Einzelne Auswahl
                 'foreign_table' => 'tx_leseohren_domain_model_person',
                 'default' => 0,
                 'minitems' => 0,
-                'maxitems' => 1,
+                'maxitems' => 1, // Nur eine Person auswählbar
             ],
         ],
 

@@ -56,6 +56,7 @@ CREATE TABLE tx_leseohren_domain_model_organization (
 	email varchar(255) NOT NULL DEFAULT '',
 	url varchar(255) NOT NULL DEFAULT '',
 	whatsapp varchar(255) NOT NULL DEFAULT '',
+	lastcontact int(11) DEFAULT '0' NOT NULL,
 	opening_hours text NOT NULL DEFAULT '',
 	notes text NOT NULL DEFAULT '',
 	reading_times text NOT NULL DEFAULT '',

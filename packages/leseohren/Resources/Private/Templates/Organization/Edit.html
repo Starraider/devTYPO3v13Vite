@@ -20,7 +20,7 @@ data-namespace-typo3-fluid="true">
     <f:render partial="FormErrors" />
 
     <f:form action="update" name="organization" object="{organization}" >
-    <f:render partial="Organization/FormFields" arguments="{organization:organization, categories:categories}" />
+    <f:render partial="Organization/FormFields" arguments="{_all}" />
     <f:form.submit value="{f:translate(key: 'tx_leseohren.save')}" class="btn btn-primary" />
     </f:form>
 </f:section>

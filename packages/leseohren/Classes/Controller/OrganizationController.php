@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use SKom\Leseohren\Domain\Repository\OrganizationRepository;
 use SKom\Leseohren\Domain\Repository\CategoryRepository;
+use SKom\Leseohren\Domain\Repository\PersonRepository;
 use SKom\Leseohren\Domain\Model\Organization;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 /**
@@ -40,10 +41,18 @@ class OrganizationController extends ActionController
      */
     protected $organizationRepository = null;
 
-    public function __construct(OrganizationRepository $organizationRepository, CategoryRepository $categoryRepository)
+    /**
+     * personRepository
+     *
+     * @var PersonRepository
+     */
+    protected $personRepository = null;
+
+    public function __construct(OrganizationRepository $organizationRepository, CategoryRepository $categoryRepository, PersonRepository $personRepository)
     {
         $this->organizationRepository = $organizationRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->personRepository = $personRepository;
     }
 
     /**
@@ -88,7 +97,9 @@ class OrganizationController extends ActionController
     public function newAction(): ResponseInterface
     {
         $categories = $this->categoryRepository->findBy(['parent' => '10']);
+        $contactPersons = $this->personRepository->searchCategoryUid([6]);
         $this->view->assign('categories', $categories);
+        $this->view->assign('contactPersons', $contactPersons);
         return $this->htmlResponse();
     }
 
@@ -123,7 +134,10 @@ class OrganizationController extends ActionController
     {
         // ToDo: Read Parent-ID from Settings
         $categories = $this->categoryRepository->findBy(['parent' => '10']);
+        $contactPersons = $this->personRepository->searchCategoryUid([6]);
+        //DebugUtility::debug($contactPersons, 'editAction');
         $this->view->assign('categories', $categories);
+        $this->view->assign('contactPersons', $contactPersons);
         $this->view->assign('organization', $organization);
         return $this->htmlResponse();
     }

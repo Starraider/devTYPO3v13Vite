@@ -28,6 +28,12 @@ use TYPO3\CMS\Core\Utility\DebugUtility;
  */
 class PersonRepository extends Repository
 {
+    public function initializeObject(): void
+    {
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
+        $querySettings->setRespectStoragePage(false);
+        $this->setDefaultQuerySettings($querySettings);
+    }
 
     /**
      * Find all persons having a birthday today
@@ -131,4 +137,35 @@ class PersonRepository extends Repository
         'lastname' => QueryInterface::ORDER_ASCENDING,
         'firstname' => QueryInterface::ORDER_ASCENDING
     ];
+
+
+    /**
+     * Find all events by category UID
+     *
+     * @param array $categories
+     * @param bool $invert Should the result be inverted
+     * @return QueryResultInterface
+     */
+    public function searchCategoryUid($categories = [], $invert = false)
+    {
+        $constraints = [];
+        $query = $this->createQuery();
+        foreach ($categories as $category) {
+            $constraints[] = $query->contains('categories', \intval($category));
+        }
+        if (!empty($constraints)) {
+            if($invert == false){
+                $query->matching(
+                    $query->logicalOr(...array_values($constraints)),
+                );
+            }else {
+                $query->matching(
+                    $query->logicalNot(
+                        $query->logicalOr(...array_values($constraints))
+                    ),
+                );
+            }
+        }
+        return $query->execute();
+    }
 }
