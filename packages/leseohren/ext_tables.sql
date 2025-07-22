@@ -99,7 +99,7 @@ CREATE TABLE tx_leseohren_domain_model_event (
 	end_date bigint(12) DEFAULT '0' NOT NULL,
 	speaker int(11) unsigned NOT NULL DEFAULT '0',
 	maxparticipants int(11) unsigned DEFAULT '0' NOT NULL,
-	reminder_sent int(11) DEFAULT '0' NOT NULL
+	reminder_sent smallint(1) unsigned DEFAULT '0' NOT NULL
 );
 
 CREATE TABLE tx_leseohren_domain_model_easterdate (

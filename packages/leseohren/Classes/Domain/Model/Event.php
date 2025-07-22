@@ -82,10 +82,9 @@ class Event extends AbstractEntity
     /**
      * reminderSent
      *
-     * @var string
+     * @var bool
      */
-    #[Validate(['validator' => 'NotEmpty'])]
-    protected $reminderSent = '';
+    protected $reminderSent = false;
 
     /**
      * __construct
@@ -328,7 +327,7 @@ class Event extends AbstractEntity
      *
      * @return void
      */
-    public function setReminderSent(string $reminderSent): void
+    public function setReminderSent(bool $reminderSent): void
     {
         $this->reminderSent = $reminderSent;
     }
