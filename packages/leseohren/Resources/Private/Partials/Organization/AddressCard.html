@@ -40,6 +40,10 @@
             <f:if condition="{organization.whatsapp}">
                 <i class="bi bi-whatsapp"></i>&nbsp; {organization.whatsapp}
             </f:if>
+            <f:if condition="{organization.lastcontact}">
+                <f:translate key="tx_leseohren_domain_model_organization.lastcontact" />:
+                {organization.lastcontact -> f:format.date(format: 'd.m.Y')}
+            </f:if>
         </p>
         <h5 class="card-title"><f:translate key="tx_leseohren_domain_model_organization.openingHours" />:</h5>
         <p class="card-text">

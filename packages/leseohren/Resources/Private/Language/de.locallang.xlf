@@ -911,6 +911,10 @@
 				<source>WhatsApp</source>
 				<target>WhatsApp</target>
 			</trans-unit>
+            <trans-unit id="tx_leseohren_domain_model_organization.lastcontact" resname="tx_leseohren_domain_model_organization.lastcontact" xml:space="preserve">
+				<source>Last contact</source>
+				<target>Letzter Kontakt</target>
+			</trans-unit>
 			<trans-unit id="tx_leseohren_domain_model_organization.contact_person" resname="tx_leseohren_domain_model_organization.contact_person" xml:space="preserve">
 				<source>Contact Person</source>
 				<target>Kontaktperson</target>

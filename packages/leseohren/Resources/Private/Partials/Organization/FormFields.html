@@ -107,6 +107,34 @@
         </div>
         <div class="row mb-3">
             <div class="col-sm-6">
+                <label for="contactPerson" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.contact_person" />:
+                </label>
+                <f:form.select
+                    property="contactPerson"
+                    id="contactPerson"
+                    class="form-select"
+                    options="{contactPersons}"
+                    optionValueField="uid"
+                    optionLabelField="fullname"
+                    prependOptionLabel="Bitte wählen"
+                    prependOptionValue=""
+                />
+                <p class="text-muted small">Nur Personen der Kategorie 'Kontaktperson' können zugeordnet werden!</p>
+            </div>
+            <div class="col-sm-6">
+                <label for="lastcontact" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.lastcontact" />:
+                </label>
+                <f:form.textfield property="lastcontact" id="lastcontact" class="form-control"
+                    value="{organization.lastcontact -> f:format.date(format: 'd.m.Y')}"
+                    placeholder="TT.MM.JJJJ"
+                    additionalAttributes="{autocomplete: 'off'}"
+                />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
                 <label for="url" class="form-label">
                     <f:translate key="tx_leseohren_domain_model_organization.url" />:
                 </label>

@@ -56,6 +56,7 @@ CREATE TABLE tx_leseohren_domain_model_organization (
 	email varchar(255) NOT NULL DEFAULT '',
 	url varchar(255) NOT NULL DEFAULT '',
 	whatsapp varchar(255) NOT NULL DEFAULT '',
+	lastcontact int(11) DEFAULT '0' NOT NULL,
 	opening_hours text NOT NULL DEFAULT '',
 	notes text NOT NULL DEFAULT '',
 	reading_times text NOT NULL DEFAULT '',
@@ -98,9 +99,16 @@ CREATE TABLE tx_leseohren_domain_model_event (
 	end_date bigint(12) DEFAULT '0' NOT NULL,
 	speaker int(11) unsigned NOT NULL DEFAULT '0',
 	maxparticipants int(11) unsigned DEFAULT '0' NOT NULL,
-	reminder_sent int(11) DEFAULT '0' NOT NULL
+	reminder_sent smallint(1) unsigned DEFAULT '0' NOT NULL
 );
 
 CREATE TABLE tx_leseohren_domain_model_easterdate (
 	easterdate int(11) NOT NULL DEFAULT '0'
 );
+
+CREATE TABLE tx_leseohren_organization_person_mm (
+      uid_local int(11) DEFAULT '0' NOT NULL,
+      uid_foreign int(11) DEFAULT '0' NOT NULL,
+      tablenames varchar(255) DEFAULT '' NOT NULL,
+      sorting int(11) DEFAULT '0' NOT NULL
+  );

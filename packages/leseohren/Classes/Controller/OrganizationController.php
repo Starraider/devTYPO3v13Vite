@@ -10,8 +10,10 @@ use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use SKom\Leseohren\Domain\Repository\OrganizationRepository;
 use SKom\Leseohren\Domain\Repository\CategoryRepository;
+use SKom\Leseohren\Domain\Repository\PersonRepository;
 use SKom\Leseohren\Domain\Model\Organization;
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
  *
@@ -40,10 +42,18 @@ class OrganizationController extends ActionController
      */
     protected $organizationRepository = null;
 
-    public function __construct(OrganizationRepository $organizationRepository, CategoryRepository $categoryRepository)
+    /**
+     * personRepository
+     *
+     * @var PersonRepository
+     */
+    protected $personRepository = null;
+
+    public function __construct(OrganizationRepository $organizationRepository, CategoryRepository $categoryRepository, PersonRepository $personRepository)
     {
         $this->organizationRepository = $organizationRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->personRepository = $personRepository;
     }
 
     /**
@@ -76,7 +86,9 @@ class OrganizationController extends ActionController
      */
     public function showAction(Organization $organization): ResponseInterface
     {
+        $vlpaten = $this->personRepository->searchCategoryUid([3]);
         $this->view->assign('organization', $organization);
+        $this->view->assign('vlpaten', $vlpaten);
         return $this->htmlResponse();
     }
 
@@ -88,8 +100,21 @@ class OrganizationController extends ActionController
     public function newAction(): ResponseInterface
     {
         $categories = $this->categoryRepository->findBy(['parent' => '10']);
+        $contactPersons = $this->personRepository->searchCategoryUid([6]);
         $this->view->assign('categories', $categories);
+        $this->view->assign('contactPersons', $contactPersons);
         return $this->htmlResponse();
+    }
+
+    /**
+     * initialize create action
+     *
+     * @param void
+     */
+    public function initializeCreateAction(): void
+    {
+        $this->arguments->getArgument('newOrganization')
+            ->getPropertyMappingConfiguration()->forProperty('*')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
     }
 
     /**
@@ -112,9 +137,23 @@ class OrganizationController extends ActionController
     {
         // ToDo: Read Parent-ID from Settings
         $categories = $this->categoryRepository->findBy(['parent' => '10']);
+        $contactPersons = $this->personRepository->searchCategoryUid([6]);
+        //DebugUtility::debug($contactPersons, 'editAction');
         $this->view->assign('categories', $categories);
+        $this->view->assign('contactPersons', $contactPersons);
         $this->view->assign('organization', $organization);
         return $this->htmlResponse();
+    }
+
+    /**
+     * initialize update action
+     *
+     * @param void
+     */
+    public function initializeUpdateAction(): void
+    {
+        $this->arguments->getArgument('organization')
+            ->getPropertyMappingConfiguration()->forProperty('*')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
     }
 
     /**
@@ -135,5 +174,49 @@ class OrganizationController extends ActionController
         $this->addFlashMessage('Die Organisation wurde erfolgreich gelöscht.', '', ContextualFeedbackSeverity::OK);
         $this->organizationRepository->remove($organization);
         return $this->redirect('list');
+    }
+
+    /**
+     * Zeigt das Modal zur Auswahl eines Vorlesepaten
+     */
+    public function addVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization): ResponseInterface
+    {
+        $vlpaten = $this->personRepository->searchCategoryUid([3]);
+        //DebugUtility::debug($vlpaten, 'vlpaten');
+        $this->view->assignMultiple([
+            'organization' => $organization,
+            'vlpaten' => $vlpaten
+        ]);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Ordnet eine Person als vlpate zu
+     */
+    public function assignVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization, \SKom\Leseohren\Domain\Model\Person $person): ResponseInterface
+    {
+        if (!$organization->getVlpaten()->contains($person)) {
+            $organization->addVlpaten($person);
+            $this->organizationRepository->update($organization);
+            $this->addFlashMessage('Vorlesepate erfolgreich zugeordnet.');
+        } else {
+            $this->addFlashMessage('Diese Person ist bereits zugeordnet.', '', ContextualFeedbackSeverity::WARNING);
+        }
+        return $this->redirect('show', null, null, ['organization' => $organization]);
+    }
+
+    /**
+     * Entfernt einen Vorlesepaten aus der Organisation
+     */
+    public function removeVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization, \SKom\Leseohren\Domain\Model\Person $person): ResponseInterface
+    {
+        if ($organization->getVlpaten()->contains($person)) {
+            $organization->removeVlpaten($person);
+            $this->organizationRepository->update($organization);
+            $this->addFlashMessage('Vorlesepate erfolgreich entfernt.');
+        } else {
+            $this->addFlashMessage('Diese Person ist nicht als Vorlesepate zugeordnet.', '', ContextualFeedbackSeverity::WARNING);
+        }
+        return $this->redirect('show', null, null, ['organization' => $organization]);
     }
 }

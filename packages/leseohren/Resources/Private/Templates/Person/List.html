@@ -1,5 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
 data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
@@ -28,6 +29,7 @@ data-namespace-typo3-fluid="true">
                 <th><f:translate key="tx_leseohren_domain_model_person.email" /></th>
                 <th>Telefon</th>
                 <th>Liest in</th>
+                <th>Organisation Kategorien</th>
                 <th class="dt-head-center">FZ</th>
                 <th class="dt-head-center">Aktionen</th>
             </tr>
@@ -39,13 +41,13 @@ data-namespace-typo3-fluid="true">
                     <td><f:link.action action="show" arguments="{person : person}">{person.firstname}</f:link.action></td>
                     <td>
                         <f:if condition="{person.categories}">
-                            <f:for each="{person.categories}" as="personCategory">
-                                <category class="c-person__categories">
+                            <category class="c-person__categories" data-search="<f:for each='{person.categories}' as='cat' iteration='it'>{cat.title}<f:if condition='!{it.isLast}'>, </f:if></f:for>">
+                                <f:for each="{person.categories}" as="personCategory">
                                     <span class="badge bg-secondary">
                                         {personCategory.title -> f:format.htmlspecialchars()}
-                                    </span>
-                                </category><br />
-                            </f:for>
+                                    </span><br />
+                                </f:for>
+                            </category>
                         </f:if>
                     </td>
                     <td>{person.zip}</td>
@@ -71,6 +73,24 @@ data-namespace-typo3-fluid="true">
                                     {organization.name -> f:format.crop(maxCharacters: 17)},<br />
                             </f:link.action>
                         </f:for>
+                    </td>
+                    <td>
+                        <f:if condition="{person.organizations}">
+                            <organization-categories class="c-organization__categories" data-search="
+                                <f:for each='{person.organizations}' as='org' iteration='orgIt'>
+                                    <f:for each='{org.categories}' as='orgcat' iteration='orgcatit'>
+                                        {orgcat.title}<f:if condition='!{orgcatit.isLast}'>, </f:if>
+                                    </f:for>
+                                    <f:if condition='!{orgIt.isLast}'>, </f:if>
+                                </f:for>
+                            ">
+                                <f:for each="{person.organizations}" as="org">
+                                    <f:for each="{org.categories}" as="orgCategory">
+                                        <span class="badge bg-primary">{orgCategory.title -> f:format.htmlspecialchars()}</span><br />
+                                    </f:for>
+                                </f:for>
+                            </organization-categories>
+                        </f:if>
                     </td>
                     <td class="dt-body-center">
                         <f:if condition="{person.fuehrungszeugnisChecked}">

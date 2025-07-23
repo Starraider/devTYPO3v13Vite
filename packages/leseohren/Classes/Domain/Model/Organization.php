@@ -108,6 +108,13 @@ class Organization extends AbstractEntity
     protected $whatsapp = '';
 
     /**
+     * lastcontact
+     *
+     * @var \DateTime
+     */
+    protected $lastcontact = null;
+
+    /**
      * openingHours
      *
      * @var string
@@ -145,7 +152,7 @@ class Organization extends AbstractEntity
     /**
      * Kontaktperson
      *
-     * @var ObjectStorage<Person>
+     * @var Person|null
      */
     #[Lazy]
     protected $contactPerson = null;
@@ -430,6 +437,27 @@ class Organization extends AbstractEntity
     }
 
     /**
+     * Returns the lastcontact
+     *
+     * @return \DateTime|null
+     */
+    public function getLastcontact(): ?\DateTime
+    {
+        return $this->lastcontact;
+    }
+
+    /**
+     * Sets the lastcontact
+     *
+     * @param \DateTime|null $lastcontact
+     * @return void
+     */
+    public function setLastcontact(?\DateTime $lastcontact): void
+    {
+        $this->lastcontact = $lastcontact;
+    }
+
+    /**
      * Returns the openingHours
      *
      * @return string
@@ -532,19 +560,23 @@ class Organization extends AbstractEntity
     /**
      * Returns the contactPerson
      *
-     * @return ObjectStorage<Person>
+     * @return Person|null
      */
-    public function getContactPerson()
+    public function getContactPerson(): ?Person
     {
+        if ($this->contactPerson instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+            $this->contactPerson->_loadRealInstance();
+        }
         return $this->contactPerson;
     }
 
     /**
      * Sets the contactPerson
      *
+     * @param Person|null $contactPerson
      * @return void
      */
-    public function setContactPerson(Person $contactPerson): void
+    public function setContactPerson(?Person $contactPerson): void
     {
         $this->contactPerson = $contactPerson;
     }

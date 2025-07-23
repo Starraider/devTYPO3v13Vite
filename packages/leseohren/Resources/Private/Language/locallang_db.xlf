@@ -342,6 +342,12 @@
 			<trans-unit id="tx_leseohren_domain_model_organization.whatsapp.description" resname="tx_leseohren_domain_model_organization.whatsapp.description" xml:space="preserve">
 				<source>Whatsapp number</source>
 			</trans-unit>
+            <trans-unit id="tx_leseohren_domain_model_organization.lastcontact" resname="tx_leseohren_domain_model_organization.lastcontact" xml:space="preserve">
+				<source>Last contact</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.lastcontact.description" resname="tx_leseohren_domain_model_organization.lastcontact.description" xml:space="preserve">
+				<source>When was the last contact?</source>
+			</trans-unit>
 			<trans-unit id="tx_leseohren_domain_model_organization.opening_hours" resname="tx_leseohren_domain_model_organization.opening_hours" xml:space="preserve">
 				<source>Opening Hours</source>
 			</trans-unit>
