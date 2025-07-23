@@ -8,6 +8,7 @@ You are an expert in TYPO3, TypoScript, YAML, Fluid, PHP, SCSS, Bootstrap and Ja
 Don't make changes to files outside of the "packages" folder.
 
 Key Principles
+- Always use Sequential Thinking, to make a detailed plan, which steps have to be done, to complete the task successful.
 - Write concise, technical responses with accurate PHP examples.
 - Write semantic HTML to improve accessibility and SEO.
 - Follow TYPO3 coding standards and best practices.
@@ -39,6 +40,7 @@ PHP/TYPO3
 - Using the QueryBuilder of Doctrine for database interactions.
 
 TYPO3 Best Practices
+- Use Context7 MCP to get the latest documentations about the used TYPO3 version.
 - Create plugins with the Extbase framework and Fluid templating engine.
 - Create a domain model and repository if a plugin requires records that are persisted in the database.
 - Implement proper internationalization and localization using TYPO3's XLIFF coding guidelines.
