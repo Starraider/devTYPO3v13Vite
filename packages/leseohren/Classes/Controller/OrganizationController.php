@@ -215,7 +215,7 @@ class OrganizationController extends ActionController
             $this->organizationRepository->update($organization);
             $this->addFlashMessage('Vorlesepate erfolgreich entfernt.');
         } else {
-            $this->addFlashMessage('Diese Person ist nicht als Vorlesepate zugeordnet.', '', AbstractMessage::WARNING);
+            $this->addFlashMessage('Diese Person ist nicht als Vorlesepate zugeordnet.', '', ContextualFeedbackSeverity::WARNING);
         }
         return $this->redirect('show', null, null, ['organization' => $organization]);
     }
