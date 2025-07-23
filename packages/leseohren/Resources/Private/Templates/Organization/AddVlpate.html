@@ -3,11 +3,13 @@
 
 <f:section name="content">
     <div class="container my-4">
-        <h2>Vorlesepate zuordnen</h2>
+        <h2>Vorlesepate zuordnen zu</h2>
+        <h4>{organization.name}</h4>
         <f:form action="assignVlpate" controller="Organization" method="post" arguments="{organization: organization}">
             <div class="mb-3">
                 <label for="person" class="form-label">Vorlesepate auswählen</label>
                 <f:form.select name="person" options="{vlpaten}" optionLabelField="fullname" optionValueField="uid" class="form-select" />
+                <p class="text-muted small">Nur Personen der Kategorie 'Vorlesepate' können zugeordnet werden!</p>
             </div>
             <button type="submit" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-square"></i> Zuordnen
