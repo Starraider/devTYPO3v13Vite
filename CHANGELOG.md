@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.1.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.6...v1.1.0) (2025-07-23)
+
+
+### Features
+
+* add comprehensive Product Requirements Documents for Leseohren, covering implementation, system overview, technical specifications, user experience, and database schema ([74252f7](https://github.com/Starraider/devTYPO3v13Vite/commit/74252f77854177440366443f58db99f9fa33cec3))
+* add last contact field to organization model, update forms and templates for new functionality ([603fed2](https://github.com/Starraider/devTYPO3v13Vite/commit/603fed20299202e0ee296bfbc021bf03d3225a0a))
+* add organization categories to person list template and enhance DataTables JavaScript for improved filtering capabilities ([c49dce7](https://github.com/Starraider/devTYPO3v13Vite/commit/c49dce74fad27ab4ee3c11e4e9ff5167b9811957))
+* enhance organization management by integrating person repository, updating forms and templates to support contact person selection and last contact date ([ac8bf3a](https://github.com/Starraider/devTYPO3v13Vite/commit/ac8bf3af7eedfafb22877676cb10896acf830aed))
+* enhance person list template and JavaScript for improved category search and filter functionality ([fc18bb7](https://github.com/Starraider/devTYPO3v13Vite/commit/fc18bb7fef2ab4666b1881d63be53d1e3a22c474))
+* implement functionality for managing Vorlesepaten in organizations, including actions to add, assign, and remove Vorlesepaten, along with corresponding UI updates and modal integration ([8b968b4](https://github.com/Starraider/devTYPO3v13Vite/commit/8b968b4d2398c574947db587058b96ad1b963d2e))
+* update organization forms to include contextual messages for category restrictions on Vorlesepaten and contact persons ([b5d3773](https://github.com/Starraider/devTYPO3v13Vite/commit/b5d377348f03aee20babb3d97593f630b8940723))
+
+
+### Bug Fixes
+
+* change reminder_sent field type to smallint and update Event model to use boolean for reminderSent ([7444da1](https://github.com/Starraider/devTYPO3v13Vite/commit/7444da12fbbc19105d641601de7e5cd2a526d6f2))
+* update flash message severity in OrganizationController for improved clarity ([13ee691](https://github.com/Starraider/devTYPO3v13Vite/commit/13ee691bff410dcbf402ea01e2dc2f81248f6b94))
+* update organization category badge color in person list template for improved visual consistency ([0d90cee](https://github.com/Starraider/devTYPO3v13Vite/commit/0d90ceea1e2168138381d9919840b68f79d7c335))
+
+
+### Miscellaneous Chores
+
+* update configuration files to enhance development environment with debugging options and clarify coding principles ([c6700ad](https://github.com/Starraider/devTYPO3v13Vite/commit/c6700ad7063e579b713798e4184b61889ffd5780))
+* update TYPO3 to version 13.4.15 ([7970762](https://github.com/Starraider/devTYPO3v13Vite/commit/797076280804634c41253938b8ed6145d7d00ca1))
+* update Vite manifest and add new JavaScript and CSS assets for Datepicker and Main entry points ([219f5ad](https://github.com/Starraider/devTYPO3v13Vite/commit/219f5ad9b0d1a4f1861d08f1997c03cdfd5938d1))
+
 ## [1.0.6](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.5...v1.0.6) (2025-03-31)
 
 
