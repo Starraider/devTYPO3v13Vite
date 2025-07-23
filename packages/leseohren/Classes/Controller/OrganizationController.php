@@ -13,6 +13,7 @@ use SKom\Leseohren\Domain\Repository\CategoryRepository;
 use SKom\Leseohren\Domain\Repository\PersonRepository;
 use SKom\Leseohren\Domain\Model\Organization;
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
  *
@@ -85,7 +86,9 @@ class OrganizationController extends ActionController
      */
     public function showAction(Organization $organization): ResponseInterface
     {
+        $vlpaten = $this->personRepository->searchCategoryUid([3]);
         $this->view->assign('organization', $organization);
+        $this->view->assign('vlpaten', $vlpaten);
         return $this->htmlResponse();
     }
 
@@ -171,5 +174,49 @@ class OrganizationController extends ActionController
         $this->addFlashMessage('Die Organisation wurde erfolgreich gelöscht.', '', ContextualFeedbackSeverity::OK);
         $this->organizationRepository->remove($organization);
         return $this->redirect('list');
+    }
+
+    /**
+     * Zeigt das Modal zur Auswahl eines Vorlesepaten
+     */
+    public function addVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization): ResponseInterface
+    {
+        $vlpaten = $this->personRepository->searchCategoryUid([3]);
+        //DebugUtility::debug($vlpaten, 'vlpaten');
+        $this->view->assignMultiple([
+            'organization' => $organization,
+            'vlpaten' => $vlpaten
+        ]);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Ordnet eine Person als vlpate zu
+     */
+    public function assignVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization, \SKom\Leseohren\Domain\Model\Person $person): ResponseInterface
+    {
+        if (!$organization->getVlpaten()->contains($person)) {
+            $organization->addVlpaten($person);
+            $this->organizationRepository->update($organization);
+            $this->addFlashMessage('Vorlesepate erfolgreich zugeordnet.');
+        } else {
+            $this->addFlashMessage('Diese Person ist bereits zugeordnet.', '', ContextualFeedbackSeverity::WARNING);
+        }
+        return $this->redirect('show', null, null, ['organization' => $organization]);
+    }
+
+    /**
+     * Entfernt einen Vorlesepaten aus der Organisation
+     */
+    public function removeVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization, \SKom\Leseohren\Domain\Model\Person $person): ResponseInterface
+    {
+        if ($organization->getVlpaten()->contains($person)) {
+            $organization->removeVlpaten($person);
+            $this->organizationRepository->update($organization);
+            $this->addFlashMessage('Vorlesepate erfolgreich entfernt.');
+        } else {
+            $this->addFlashMessage('Diese Person ist nicht als Vorlesepate zugeordnet.', '', AbstractMessage::WARNING);
+        }
+        return $this->redirect('show', null, null, ['organization' => $organization]);
     }
 }

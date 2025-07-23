@@ -1,0 +1,23 @@
+<div class="modal fade" id="removeVlpateModal" tabindex="-1" aria-labelledby="removeVlpateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeVlpateModalLabel">Vorlesepate entfernen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+      </div>
+      <div class="modal-body">
+        <p>Möchten Sie <strong id="personName"></strong> wirklich als Vorlesepaten entfernen?</p>
+        <p class="text-muted small">Die Person wird nicht gelöscht, sondern nur die Zuordnung zur Organisation entfernt.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        <f:form action="removeVlpate" controller="Organization" method="post" arguments="{organization: organization}">
+          <input type="hidden" name="person" id="personUid" value="" />
+          <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Entfernen
+          </button>
+        </f:form>
+      </div>
+    </div>
+  </div>
+</div>

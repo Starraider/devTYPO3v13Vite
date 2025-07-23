@@ -51,6 +51,7 @@
                             <th>Name</th>
                             <th>Telefon</th>
                             <th>E-Mail</th>
+                            <th>Aktionen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,10 +78,45 @@
                                         <f:link.email email="{vlpate.email}" /></br>
                                     </f:if>
                                 </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#removeVlpateModal{vlpate.uid}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
                             </tr>
+                            <!-- Modal für diese Person -->
+                            <div class="modal fade" id="removeVlpateModal{vlpate.uid}" tabindex="-1" aria-labelledby="removeVlpateModalLabel{vlpate.uid}" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="removeVlpateModalLabel{vlpate.uid}">Vorlesepate entfernen</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Möchten Sie <strong>{vlpate.firstName} {vlpate.lastName}</strong> wirklich als Vorlesepaten entfernen?</p>
+                                    <p class="text-muted small">Die Person wird nicht gelöscht, sondern nur die Zuordnung zur Organisation entfernt.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                                    <f:form action="removeVlpate" controller="Organization" method="post" arguments="{organization: organization, person: vlpate}">
+                                      <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-trash"></i> Entfernen
+                                      </button>
+                                    </f:form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                         </f:for>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <f:link.action action="addVlpate" controller="Organization" arguments="{organization: organization}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-square"></i>
+                </f:link.action>
             </div>
         </div>
     </div>

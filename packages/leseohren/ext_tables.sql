@@ -105,3 +105,10 @@ CREATE TABLE tx_leseohren_domain_model_event (
 CREATE TABLE tx_leseohren_domain_model_easterdate (
 	easterdate int(11) NOT NULL DEFAULT '0'
 );
+
+CREATE TABLE tx_leseohren_organization_person_mm (
+      uid_local int(11) DEFAULT '0' NOT NULL,
+      uid_foreign int(11) DEFAULT '0' NOT NULL,
+      tablenames varchar(255) DEFAULT '' NOT NULL,
+      sorting int(11) DEFAULT '0' NOT NULL
+  );

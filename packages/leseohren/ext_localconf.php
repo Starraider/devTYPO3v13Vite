@@ -29,11 +29,11 @@ defined('TYPO3') || die();
         'Leseohren',
         'Organizations',
         [
-            OrganizationController::class => 'list, index, show, new, create, edit, update, delete'
+            OrganizationController::class => 'list, index, show, new, create, edit, update, delete, addVlpate, assignVlpate, removeVlpate'
         ],
         // non-cacheable actions
         [
-            OrganizationController::class => 'new, create, edit, update, delete'
+            OrganizationController::class => 'new, create, edit, update, delete, addVlpate, assignVlpate, removeVlpate'
         ],
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
