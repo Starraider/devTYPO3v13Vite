@@ -1,5 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
 data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
@@ -39,13 +40,13 @@ data-namespace-typo3-fluid="true">
                     <td><f:link.action action="show" arguments="{person : person}">{person.firstname}</f:link.action></td>
                     <td>
                         <f:if condition="{person.categories}">
-                            <f:for each="{person.categories}" as="personCategory">
-                                <category class="c-person__categories">
+                            <category class="c-person__categories" data-search="<f:for each='{person.categories}' as='cat' iteration='it'>{cat.title}<f:if condition='!{it.isLast}'>, </f:if></f:for>">
+                                <f:for each="{person.categories}" as="personCategory">
                                     <span class="badge bg-secondary">
                                         {personCategory.title -> f:format.htmlspecialchars()}
-                                    </span>
-                                </category><br />
-                            </f:for>
+                                    </span><br />
+                                </f:for>
+                            </category>
                         </f:if>
                     </td>
                     <td>{person.zip}</td>
