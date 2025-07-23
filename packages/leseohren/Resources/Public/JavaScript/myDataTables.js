@@ -111,9 +111,35 @@ addEventListener('DOMContentLoaded', () => {
             },
             {
                 searchPanes: {
-                    show: false,
+                    show: true,
+                    orthogonal: {
+                        filter: 'spFilter'
+                    }
                 },
                 targets: [8],
+                render: function (data, type, row, meta) {
+                    const cell = meta && meta.col !== undefined && meta.row !== undefined
+                        ? tablePersonList.cell(meta.row, meta.col).node()
+                        : null;
+                    if (cell) {
+                        const search = cell.querySelector('[data-search]');
+                        if (search) {
+                            const searchValue = search.getAttribute('data-search') || '';
+                            const categoriesArray = searchValue.split(',').map(s => s.trim()).filter(Boolean);
+                            if (
+                                type === 'spFilter' ||
+                                type === 'filter' ||
+                                type === 'search' ||
+                                type === 'display'
+                            ) {
+                                return categoriesArray;
+                            }
+                            // Für sort etc. einen String zurückgeben
+                            return searchValue;
+                        }
+                    }
+                    return data;
+                },
             },
             {
                 orderable: false,
