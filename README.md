@@ -60,6 +60,11 @@ vendor/bin/fractor process
 ddev typo3 cache:flush
 ```
 
+### processed files löschen
+```bash
+ddev typo3 cleanup:localprocessedfiles
+```
+
 ### reference-index aktualisieren
 
 ```bash
