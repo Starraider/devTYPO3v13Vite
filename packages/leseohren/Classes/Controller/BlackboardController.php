@@ -13,6 +13,8 @@ use SKom\Leseohren\Domain\Repository\BlackboardRepository;
 use SKom\Leseohren\Domain\Model\Blackboard;
 use SKom\Leseohren\Domain\Model\Person;
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Cache\CacheManager;
 
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
@@ -108,6 +110,10 @@ class BlackboardController extends ActionController
         $newBlackboard->addPerson($person);
         $this->addFlashMessage('Das neue Schwarze Brett wurde erstellt.', '', ContextualFeedbackSeverity::OK);
         $this->blackboardRepository->add($newBlackboard);
+        // Cache für die betroffene Personenseite leeren (TYPO3 v13)
+        $pid = intval($this->settings['pageIDs']['personShowPid']);
+        $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+        $pageCache->flushByTag('pageId_' . $pid);
         return $this->redirect('list');
     }
 

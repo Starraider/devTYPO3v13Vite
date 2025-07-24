@@ -16,6 +16,8 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 
 
@@ -96,6 +98,9 @@ class RegistrationController extends ActionController
             ContextualFeedbackSeverity::OK
         );
         if($personref){
+            $pid = intval($this->settings['pageIDs']['personShowPid']);
+            $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+            $pageCache->flushByTag('pageId_' . $pid);
             return $this->redirect('show', 'Person', 'Leseohren', ['person' => $personref], $redirectPID, null, 303);
         }
         if($eventref){
@@ -136,6 +141,9 @@ class RegistrationController extends ActionController
             );
         }
         if($person){
+            $pid = intval($this->settings['pageIDs']['personShowPid']);
+            $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+            $pageCache->flushByTag('pageId_' . $pid);
             return $this->redirect('show', 'Person', 'Leseohren', ['person' => $person], $redirectPID, null, 303);
         }
         if($event){

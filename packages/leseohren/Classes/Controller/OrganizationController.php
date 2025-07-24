@@ -13,6 +13,8 @@ use SKom\Leseohren\Domain\Repository\CategoryRepository;
 use SKom\Leseohren\Domain\Repository\PersonRepository;
 use SKom\Leseohren\Domain\Model\Organization;
 use SKom\Leseohren\Domain\Model\Person;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 /**
@@ -201,6 +203,10 @@ class OrganizationController extends ActionController
         if (!$organization->getVlpaten()->contains($person)) {
             $organization->addVlpaten($person);
             $this->organizationRepository->update($organization);
+            // Cache für die betroffene Organisationenseite leeren (TYPO3 v13)
+            $pid = intval($this->settings['pageIDs']['organizationShowPid']);
+            $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+            $pageCache->flushByTag('pageId_' . $pid);
             $this->addFlashMessage('Vorlesepate erfolgreich zugeordnet.');
         } else {
             $this->addFlashMessage('Diese Person ist bereits zugeordnet.', '', ContextualFeedbackSeverity::WARNING);
@@ -216,6 +222,10 @@ class OrganizationController extends ActionController
         if ($organization->getVlpaten()->contains($person)) {
             $organization->removeVlpaten($person);
             $this->organizationRepository->update($organization);
+            // Cache für die betroffene Organisationenseite leeren (TYPO3 v13)
+            $pid = intval($this->settings['pageIDs']['organizationShowPid']);
+            $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+            $pageCache->flushByTag('pageId_' . $pid);
             $this->addFlashMessage('Vorlesepate erfolgreich entfernt.');
         } else {
             $this->addFlashMessage('Diese Person ist nicht als Vorlesepate zugeordnet.', '', ContextualFeedbackSeverity::WARNING);
