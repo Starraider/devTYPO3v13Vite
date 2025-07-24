@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.2.0...v1.3.0) (2025-07-24)
+
+
+### Features
+
+* enhance organization management by adding VP languages VP numbers and reading times fields, updating form templates and translations ([a73c098](https://github.com/Starraider/devTYPO3v13Vite/commit/a73c098338eb6b88a5d65fadb705b8959d73a9f0))
+* implement cache flushing for person and organization pages in respective controllers to ensure updated content display ([3020e9e](https://github.com/Starraider/devTYPO3v13Vite/commit/3020e9efcd3a3815a70be2cf68b20efe2407a257))
+
+
+### Miscellaneous Chores
+
+* remove TYPO3_CONTEXT from web_environment in DDEV configuration and use .env instead ([358cb8d](https://github.com/Starraider/devTYPO3v13Vite/commit/358cb8d3b8586a70f8c3fcc224d18993a2763e0f))
+
 ## [1.2.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.1.0...v1.2.0) (2025-07-24)
 
 
