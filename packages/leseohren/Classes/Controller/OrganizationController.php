@@ -12,6 +12,9 @@ use SKom\Leseohren\Domain\Repository\OrganizationRepository;
 use SKom\Leseohren\Domain\Repository\CategoryRepository;
 use SKom\Leseohren\Domain\Repository\PersonRepository;
 use SKom\Leseohren\Domain\Model\Organization;
+use SKom\Leseohren\Domain\Model\Person;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 /**
@@ -115,6 +118,7 @@ class OrganizationController extends ActionController
     {
         $this->arguments->getArgument('newOrganization')
             ->getPropertyMappingConfiguration()->forProperty('*')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
+        $this->arguments->getArgument('newOrganization')->getPropertyMappingConfiguration()->setTargetTypeForSubProperty('vpLanguages', 'array');
     }
 
     /**
@@ -154,6 +158,7 @@ class OrganizationController extends ActionController
     {
         $this->arguments->getArgument('organization')
             ->getPropertyMappingConfiguration()->forProperty('*')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
+        $this->arguments->getArgument('organization')->getPropertyMappingConfiguration()->setTargetTypeForSubProperty('vpLanguages', 'array');
     }
 
     /**
@@ -179,7 +184,7 @@ class OrganizationController extends ActionController
     /**
      * Zeigt das Modal zur Auswahl eines Vorlesepaten
      */
-    public function addVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization): ResponseInterface
+    public function addVlpateAction(Organization $organization): ResponseInterface
     {
         $vlpaten = $this->personRepository->searchCategoryUid([3]);
         //DebugUtility::debug($vlpaten, 'vlpaten');
@@ -193,11 +198,15 @@ class OrganizationController extends ActionController
     /**
      * Ordnet eine Person als vlpate zu
      */
-    public function assignVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization, \SKom\Leseohren\Domain\Model\Person $person): ResponseInterface
+    public function assignVlpateAction(Organization $organization, Person $person): ResponseInterface
     {
         if (!$organization->getVlpaten()->contains($person)) {
             $organization->addVlpaten($person);
             $this->organizationRepository->update($organization);
+            // Cache für die betroffene Organisationenseite leeren (TYPO3 v13)
+            $pid = intval($this->settings['pageIDs']['organizationShowPid']);
+            $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+            $pageCache->flushByTag('pageId_' . $pid);
             $this->addFlashMessage('Vorlesepate erfolgreich zugeordnet.');
         } else {
             $this->addFlashMessage('Diese Person ist bereits zugeordnet.', '', ContextualFeedbackSeverity::WARNING);
@@ -208,11 +217,15 @@ class OrganizationController extends ActionController
     /**
      * Entfernt einen Vorlesepaten aus der Organisation
      */
-    public function removeVlpateAction(\SKom\Leseohren\Domain\Model\Organization $organization, \SKom\Leseohren\Domain\Model\Person $person): ResponseInterface
+    public function removeVlpateAction(Organization $organization, Person $person): ResponseInterface
     {
         if ($organization->getVlpaten()->contains($person)) {
             $organization->removeVlpaten($person);
             $this->organizationRepository->update($organization);
+            // Cache für die betroffene Organisationenseite leeren (TYPO3 v13)
+            $pid = intval($this->settings['pageIDs']['organizationShowPid']);
+            $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+            $pageCache->flushByTag('pageId_' . $pid);
             $this->addFlashMessage('Vorlesepate erfolgreich entfernt.');
         } else {
             $this->addFlashMessage('Diese Person ist nicht als Vorlesepate zugeordnet.', '', ContextualFeedbackSeverity::WARNING);

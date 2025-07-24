@@ -15,6 +15,8 @@ use SKom\Leseohren\Domain\Repository\CategoryRepository;
 use SKom\Leseohren\Domain\Model\Person;
 //use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Cache\CacheManager;
 //use SKom\Leseohren\Property\TypeConverter\UploadedFileReferenceConverter;
 
 /**
@@ -115,6 +117,7 @@ class PersonController extends ActionController
     public function showAction(Person $person): ResponseInterface
     {
         //DebugUtility::debug($person, 'Person');
+        // Hinweis: Das Setzen eines individuellen Cache-Tags ist in dieser TYPO3-Version nicht direkt möglich.
         $this->view->assign('person', $person);
         return $this->htmlResponse();
     }

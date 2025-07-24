@@ -931,6 +931,30 @@
 				<source>Opening hours</source>
 				<target>Öffnungszeiten</target>
 			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.readingTimes" resname="tx_leseohren_domain_model_organization.readingTimes" xml:space="preserve">
+				<source>Reading times</source>
+				<target>Vorlesezeiten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.readingTimes.description" resname="tx_leseohren_domain_model_organization.readingTimes.description" xml:space="preserve">
+				<source>When are reading times?</source>
+				<target>Wann sind die Vorlesezeiten?</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.vpLanguages" resname="tx_leseohren_domain_model_organization.vpLanguages" xml:space="preserve">
+				<source>VP Languages</source>
+				<target>VP Sprachen</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.vpLanguages.description" resname="tx_leseohren_domain_model_organization.vpLanguages.description" xml:space="preserve">
+				<source>Which languages are we looking for?</source>
+				<target>In welchen Sprachen soll vorgelesen werden?</target>
+			</trans-unit>
+            <trans-unit id="tx_leseohren_domain_model_organization.vp_number" resname="tx_leseohren_domain_model_organization.vp_number" xml:space="preserve">
+				<source>Number of desired readers</source>
+				<target>Anzahl gewünschter Vorlesepaten</target>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.vp_number.description" resname="tx_leseohren_domain_model_organization.vp_number.description" xml:space="preserve">
+				<source>How many readers are we looking for?</source>
+				<target>Wieviele Vorlesepaten sind gewünscht?</target>
+			</trans-unit>
 			<trans-unit id="tx_leseohren_domain_model_organization.notes" resname="tx_leseohren_domain_model_organization.notes" xml:space="preserve">
 				<source>Notes</source>
 				<target>Anmerkungen</target>

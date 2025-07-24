@@ -524,17 +524,18 @@ class Organization extends AbstractEntity
      */
     public function getVpLanguages()
     {
-        return $this->vpLanguages;
+        return explode(',', $this->vpLanguages);
     }
 
     /**
      * Sets the vpLanguages
      *
+     * @param array $vpLanguages
      * @return void
      */
-    public function setVpLanguages(string $vpLanguages): void
+    public function setVpLanguages(array $vpLanguages): void
     {
-        $this->vpLanguages = $vpLanguages;
+        $this->vpLanguages = implode(',', $vpLanguages);
     }
 
     /**

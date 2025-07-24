@@ -13,6 +13,8 @@ use SKom\Leseohren\Domain\Repository\GiftRepository;
 use SKom\Leseohren\Domain\Model\Present;
 use SKom\Leseohren\Domain\Model\Person;
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Cache\CacheManager;
 
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
@@ -119,6 +121,10 @@ class PresentController extends ActionController
         $this->addFlashMessage('Die neue Schenkung wurde erfolgreich gespeichert.', '', ContextualFeedbackSeverity::OK);
         $this->presentRepository->add($newPresent);
         if($person){
+            // Cache für die betroffene Personenseite leeren (TYPO3 v13)
+            $pid = intval($this->settings['pageIDs']['personShowPid']);
+            $pageCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pages');
+            $pageCache->flushByTag('pageId_' . $pid);
             return $this->redirect('show', 'Person', 'Leseohren', ['person' => $person], $redirectPID, null, 303);
         } else {
             return $this->redirect('list');
