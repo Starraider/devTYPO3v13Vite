@@ -151,11 +151,32 @@
     <div class="card-header text-bg-primary">Vorlesepaten</div>
     <div class="card-body">
         <div class="row mb-3">
-            <div class="col-sm-6">
-
+            <div class="col-sm-4">
+                <label for="vpNumber" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.vp_number" />:
+                </label>
+                <f:form.textfield property="vpNumber" id="vpNumber" class="form-control" type="number" min="0" step="1" required="false" />
             </div>
-            <div class="col-sm-6">
-
+            <div class="col-sm-4">
+                <label for="readingTimes" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.readingTimes" />:
+                </label>
+                <f:form.textarea property="readingTimes" id="readingTimes" class="form-control" rows="4" />
+            </div>
+            <div class="col-sm-4">
+                <label for="vpLanguages" class="form-label">
+                    <f:translate key="tx_leseohren_domain_model_organization.vpLanguages" />:
+                </label>
+                <f:form.select property="vpLanguages" id="vpLanguages" class="form-select" multiple="true">
+                    <v:iterator.loop count="18" iteration="i">
+                        <f:form.select.option value="{i.cycle}">
+                            <v:l key="tx_leseohren.languages.{i.cycle}" />
+                        </f:form.select.option>
+                    </v:iterator.loop>
+                </f:form.select>
+                <div id="languagesHelpBlock" class="form-text">
+                    <f:translate key="tx_leseohren.languages.description" />
+                </div>
             </div>
         </div>
     </div>

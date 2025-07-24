@@ -697,6 +697,24 @@
 			<trans-unit id="tx_leseohren_domain_model_organization.openingHours" resname="tx_leseohren_domain_model_organization.openingHours" xml:space="preserve">
 				<source>Opening hours</source>
 			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.readingTimes" resname="tx_leseohren_domain_model_organization.readingTimes" xml:space="preserve">
+				<source>Reading times</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.readingTimes.description" resname="tx_leseohren_domain_model_organization.readingTimes.description" xml:space="preserve">
+				<source>When are reading times?</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.vpLanguages" resname="tx_leseohren_domain_model_organization.vpLanguages" xml:space="preserve">
+				<source>VP Languages</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.vpLanguages.description" resname="tx_leseohren_domain_model_organization.vpLanguages.description" xml:space="preserve">
+				<source>Which languages are we looking for?</source>
+			</trans-unit>
+            <trans-unit id="tx_leseohren_domain_model_organization.vp_number" resname="tx_leseohren_domain_model_organization.vp_number" xml:space="preserve">
+				<source>Number of desired readers</source>
+			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_organization.vp_number.description" resname="tx_leseohren_domain_model_organization.vp_number.description" xml:space="preserve">
+				<source>How many readers are we looking for?</source>
+			</trans-unit>
 			<trans-unit id="tx_leseohren_domain_model_organization.notes" resname="tx_leseohren_domain_model_organization.notes" xml:space="preserve">
 				<source>Notes</source>
 			</trans-unit>

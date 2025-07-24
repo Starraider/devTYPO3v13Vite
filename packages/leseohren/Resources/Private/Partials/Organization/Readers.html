@@ -26,14 +26,13 @@
             </div>
             <div class="col-4">
                 <strong>Gesuchte Sprachen:</strong><br />
-                <v:iterator.explode content="{organization.vpLanguages}" glue="," as="langIDs">
-                    <f:for each="{langIDs}" as="langID" iteration="langIterator">
-                        <f:if condition="{langIterator.isLast}">
-                            <f:then><f:translate key="tx_leseohren.languages.{langID}" /></f:then>
-                            <f:else><f:translate key="tx_leseohren.languages.{langID}" />,</f:else>
-                        </f:if>
-                    </f:for>
-                </v:iterator.explode>
+                <f:for each="{organization.vpLanguages}" as="langID" iteration="langIterator">
+                    <f:if condition="{langIterator.isLast}">
+                        <f:then><v:l key="tx_leseohren.languages.{langID}" /></f:then>
+                        <f:else><v:l key="tx_leseohren.languages.{langID}" />,</f:else>
+                    </f:if>
+                </f:for>
+
 
             </div>
             <div class="col-4">
