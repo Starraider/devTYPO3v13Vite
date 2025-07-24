@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.1.0...v1.2.0) (2025-07-24)
+
+
+### Features
+
+* integrate vanillajs-datepicker into TYPO3 templates and update Vite configuration ([dd72d6c](https://github.com/Starraider/devTYPO3v13Vite/commit/dd72d6c18c0d9a0b6dfb7ce503a0cce092d8a80a))
+
 ## [1.1.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.0.6...v1.1.0) (2025-07-23)
 
 
