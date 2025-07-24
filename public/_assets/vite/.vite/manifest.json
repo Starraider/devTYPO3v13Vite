@@ -8,21 +8,12 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "packages/leseohren/Resources/Private/DataTables.entry.js": {
-    "file": "assets/DataTables.entry-D2Ts4WMW.js",
+    "file": "assets/DataTables.entry-WznfBMgw.js",
     "name": "DataTables.entry",
     "src": "packages/leseohren/Resources/Private/DataTables.entry.js",
     "isEntry": true,
     "css": [
-      "assets/DataTables-C2xwOpgb.css"
-    ]
-  },
-  "packages/leseohren/Resources/Private/Datepicker.entry.js": {
-    "file": "assets/Datepicker.entry-DKY_QDkk.js",
-    "name": "Datepicker.entry",
-    "src": "packages/leseohren/Resources/Private/Datepicker.entry.js",
-    "isEntry": true,
-    "css": [
-      "assets/Datepicker-BhlF3ZTd.css"
+      "assets/DataTables-B8xpzD9p.css"
     ]
   },
   "packages/leseohren/Resources/Private/ext.leseohren.entry.js": {
@@ -35,12 +26,12 @@
     ]
   },
   "packages/skombase13/Resources/Private/Main.entry.js": {
-    "file": "assets/Main.entry-D_JjO5Rr.js",
+    "file": "assets/Main.entry-Cb4BMYjI.js",
     "name": "Main.entry",
     "src": "packages/skombase13/Resources/Private/Main.entry.js",
     "isEntry": true,
     "css": [
-      "assets/Main-Iy81GDrA.css"
+      "assets/Main-qplowKkw.css"
     ],
     "assets": [
       "assets/bootstrap-icons-BtvjY1KL.woff2",

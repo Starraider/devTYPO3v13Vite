@@ -3,6 +3,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "sass": "^1.80.6",
+    "terser": "^5.43.1",
     "vite": "^5.4.14"
   },
   "dependencies": {

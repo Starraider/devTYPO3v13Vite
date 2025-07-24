@@ -19,11 +19,21 @@ page {
         datatables.excludeFromConcatenation = 1
         datatables.disableCompression = 1
         datatables.external = 1
+        vanillajs_datepicker = EXT:leseohren/Resources/Public/JavaScript/datepicker.min.js
+        vanillajs_datepicker.forceOnTop = 1
+        vanillajs_datepicker.excludeFromConcatenation = 1
+        vanillajs_datepicker.disableCompression = 1
+    }
+    includeCSSLibs {
+        vanillajs_datepicker_css = EXT:leseohren/Resources/Public/Css/datepicker-bs5.min.css
     }
     includeJS {
         mydatatables = EXT:leseohren/Resources/Public/JavaScript/myDataTables.js
         mydatatables.excludeFromConcatenation = 1
         mydatatables.disableCompression = 1
+        datepicker_init = EXT:leseohren/Resources/Public/JavaScript/datepicker-init.js
+        datepicker_init.excludeFromConcatenation = 1
+        datepicker_init.disableCompression = 1
     }
     theme {
         language.enable = {$page.theme.language.enable}
