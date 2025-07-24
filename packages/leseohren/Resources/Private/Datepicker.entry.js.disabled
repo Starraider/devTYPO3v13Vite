@@ -1,0 +1,116 @@
+// vanillajs-datepicker wird über TypoScript geladen
+// See https://mymth.github.io/vanillajs-datepicker/#/
+
+// Funktion zur Initialisierung der Datepicker
+function initDatepickers() {
+  console.log('initDatepickers function called');
+
+  // Prüfe ob Datepicker bereits geladen ist
+  if (typeof window.Datepicker === 'undefined') {
+    console.warn('vanillajs-datepicker not loaded. Please check TypoScript configuration.');
+    return;
+  }
+
+  const birthday = document.querySelector('input[id="birthday"]')
+  if (birthday !== null) {
+    const datepicker1 = new window.Datepicker(birthday, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+
+  const statuschangeDate = document.querySelector('input[id="statuschangeDate"]')
+  if (statuschangeDate !== null) {
+    const datepicker2 = new window.Datepicker(statuschangeDate, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+
+  const statusbeginDate = document.querySelector('input[id="statusbeginDate"]')
+  if (statusbeginDate !== null) {
+    const datepicker3 = new window.Datepicker(statusbeginDate, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+  const statusendDate = document.querySelector('input[id="statusendDate"]')
+  if (statusendDate !== null) {
+    const datepicker4 = new window.Datepicker(statusendDate, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+  const startDate = document.querySelector('input[id="startDate"]')
+  if (startDate !== null) {
+    const datepicker5 = new window.Datepicker(startDate, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+  const endDate = document.querySelector('input[id="endDate"]')
+  if (endDate !== null) {
+    const datepicker6 = new window.Datepicker(endDate, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+
+  const giftDate = document.querySelector('input[id="giftDate"]')
+  if (giftDate !== null) {
+    const datepicker7 = new window.Datepicker(giftDate, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+
+  const lastcontact = document.querySelector('input[id="lastcontact"]')
+  if (lastcontact !== null) {
+    const datepicker8 = new window.Datepicker(lastcontact, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
+  console.log('leseohren Datepicker.entry.js loaded!')
+}
+
+// Warte bis das DOM geladen ist
+addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded event fired');
+  initDatepickers();
+})
+
+// Exportiere die Funktion für manuelle Initialisierung
+export { initDatepickers };
