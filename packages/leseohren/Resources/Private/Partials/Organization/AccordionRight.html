@@ -11,24 +11,12 @@
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionInfo">
             <div class="accordion-body">
                 <f:if condition="{organization.contactPerson}">
-                    <f:link.action pageUid="12" action="show" controller="Person" arguments="{person: organization.contactPerson}">
-                        <h5>{organization.contactPerson.lastname}, {organization.contactPerson.firstname}</h5>
-                    </f:link.action>
-                    <f:if condition="{organization.contactPerson.phoneLandline}">
-                        <i class="bi bi-telephone"></i>&nbsp;
-                        {organization.contactPerson.phoneLandline}</br>
-                    </f:if>
-                    <f:if condition="{organization.contactPerson.phoneMobile}">
-                        <i class="bi bi-phone-vibrate"></i>&nbsp;
-                        {organization.contactPerson.phoneMobile}</br>
-                    </f:if>
-                    <f:if condition="{organization.contactPerson.email}">
-                        <i class="bi bi-envelope-at"></i>&nbsp;
-                        <f:link.email email="{organization.contactPerson.email}" /></br>
-                    </f:if>
-                    <f:if condition="{organization.contactPerson.whatsapp}">
-                        <i class="bi bi-whatsapp"></i>&nbsp; {organization.contactPerson.whatsapp}
-                    </f:if>
+                    <f:then>
+                        <f:format.nl2br>{organization.contactPerson}</f:format.nl2br>
+                    </f:then>
+                    <f:else>
+                        <p class="text-muted">Keine Kontaktperson angegeben</p>
+                    </f:else>
                 </f:if>
             </div>
         </div>

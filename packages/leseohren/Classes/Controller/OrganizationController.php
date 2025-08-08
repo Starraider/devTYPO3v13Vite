@@ -103,9 +103,7 @@ class OrganizationController extends ActionController
     public function newAction(): ResponseInterface
     {
         $categories = $this->categoryRepository->findBy(['parent' => '10']);
-        $contactPersons = $this->personRepository->searchCategoryUid([6]);
         $this->view->assign('categories', $categories);
-        $this->view->assign('contactPersons', $contactPersons);
         return $this->htmlResponse();
     }
 
@@ -141,10 +139,7 @@ class OrganizationController extends ActionController
     {
         // ToDo: Read Parent-ID from Settings
         $categories = $this->categoryRepository->findBy(['parent' => '10']);
-        $contactPersons = $this->personRepository->searchCategoryUid([6]);
-        //DebugUtility::debug($contactPersons, 'editAction');
         $this->view->assign('categories', $categories);
-        $this->view->assign('contactPersons', $contactPersons);
         $this->view->assign('organization', $organization);
         return $this->htmlResponse();
     }

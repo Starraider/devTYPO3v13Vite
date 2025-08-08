@@ -152,10 +152,9 @@ class Organization extends AbstractEntity
     /**
      * Kontaktperson
      *
-     * @var Person|null
+     * @var string
      */
-    #[Lazy]
-    protected $contactPerson = null;
+    protected $contactPerson = '';
 
     /**
      * vlpaten
@@ -561,23 +560,20 @@ class Organization extends AbstractEntity
     /**
      * Returns the contactPerson
      *
-     * @return Person|null
+     * @return string
      */
-    public function getContactPerson(): ?Person
+    public function getContactPerson(): string
     {
-        if ($this->contactPerson instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
-            $this->contactPerson->_loadRealInstance();
-        }
         return $this->contactPerson;
     }
 
     /**
      * Sets the contactPerson
      *
-     * @param Person|null $contactPerson
+     * @param string $contactPerson
      * @return void
      */
-    public function setContactPerson(?Person $contactPerson): void
+    public function setContactPerson(string $contactPerson): void
     {
         $this->contactPerson = $contactPerson;
     }

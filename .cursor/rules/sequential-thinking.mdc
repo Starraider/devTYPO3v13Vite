@@ -1,0 +1,496 @@
+---
+description: Sequential Thinking for Programming Tasks
+globs: **/*
+alwaysApply: true
+---
+
+# Sequential Thinking for Programming Tasks
+
+This rule establishes a systematic approach to problem-solving that must be applied before every programming task to ensure comprehensive analysis and proper task identification.
+
+## 🎯 **Core Principle**
+
+**Always use Sequential Thinking before starting any programming task.** This systematic approach ensures that all necessary steps, dependencies, and considerations are identified before writing code.
+
+## 📋 **Sequential Thinking Process**
+
+### **Step 1: Problem Analysis**
+Before writing any code, systematically analyze the problem:
+
+1. **Understand the Requirements**
+   - What is the exact problem to solve?
+   - What are the input and expected output?
+   - Are there any constraints or limitations?
+   - What is the scope of the task?
+
+2. **Identify Stakeholders**
+   - Who will use this feature?
+   - Who will maintain this code?
+   - What are their needs and expectations?
+
+3. **Define Success Criteria**
+   - How will we know the task is complete?
+   - What are the acceptance criteria?
+   - Are there performance requirements?
+
+### **Step 2: Technical Analysis**
+
+1. **Architecture Considerations**
+   - Where does this fit in the existing architecture?
+   - What components will be affected?
+   - Are there any architectural patterns to follow?
+
+2. **Dependencies Analysis**
+   - What existing code will this depend on?
+   - What new dependencies might be needed?
+   - Are there any external services or APIs involved?
+
+3. **Data Flow Analysis**
+   - What data will be processed?
+   - Where does the data come from?
+   - Where does the data go?
+   - Are there any data transformations needed?
+
+### **Step 3: Implementation Planning**
+
+1. **Break Down the Task**
+   - What are the sub-tasks required?
+   - What is the logical order of implementation?
+   - Are there any prerequisites for each sub-task?
+
+2. **Identify Potential Issues**
+   - What could go wrong?
+   - Are there edge cases to consider?
+   - What are the failure scenarios?
+
+3. **Resource Requirements**
+   - What skills are needed?
+   - What tools or libraries are required?
+   - How much time is estimated?
+
+### **Step 4: Testing Strategy**
+
+1. **Test Cases Identification**
+   - What scenarios need to be tested?
+   - What are the happy path and edge cases?
+   - How will we verify the implementation?
+
+2. **Integration Points**
+   - How will this integrate with existing systems?
+   - What integration tests are needed?
+   - Are there any API contracts to maintain?
+
+## 🔄 **Sequential Thinking Checklist**
+
+Before starting any programming task, complete this checklist:
+
+### **✅ Problem Understanding**
+- [ ] Requirements are clearly understood
+- [ ] Input/output specifications are defined
+- [ ] Constraints and limitations are identified
+- [ ] Success criteria are established
+
+### **✅ Technical Planning**
+- [ ] Architecture impact is analyzed
+- [ ] Dependencies are identified
+- [ ] Data flow is mapped
+- [ ] Integration points are considered
+
+### **✅ Implementation Strategy**
+- [ ] Task is broken down into sub-tasks
+- [ ] Implementation order is determined
+- [ ] Potential issues are identified
+- [ ] Resource requirements are assessed
+
+### **✅ Quality Assurance**
+- [ ] Test strategy is planned
+- [ ] Edge cases are considered
+- [ ] Integration testing is planned
+- [ ] Documentation needs are identified
+
+## 🛠️ **Application Examples**
+
+### **Example 1: Adding a New Feature**
+
+**Sequential Thinking Process:**
+1. **Problem**: User needs to export data to CSV
+2. **Analysis**:
+   - What data format is required?
+   - Where does the data come from?
+   - What permissions are needed?
+3. **Implementation**:
+   - Create export service
+   - Add UI button
+   - Handle file download
+4. **Testing**:
+   - Test with different data sets
+   - Verify file format
+   - Test permissions
+
+### **Example 2: Fixing a Bug**
+
+**Sequential Thinking Process:**
+1. **Problem**: Users report login failures
+2. **Analysis**:
+   - What are the symptoms?
+   - When does it occur?
+   - What changed recently?
+3. **Investigation**:
+   - Check logs
+   - Reproduce the issue
+   - Identify root cause
+4. **Solution**:
+   - Plan the fix
+   - Test thoroughly
+   - Deploy safely
+
+### **Example 3: Refactoring Code**
+
+**Sequential Thinking Process:**
+1. **Problem**: Code is hard to maintain
+2. **Analysis**:
+   - What makes it hard to maintain?
+   - What are the dependencies?
+   - What is the impact scope?
+3. **Planning**:
+   - Identify refactoring targets
+   - Plan incremental changes
+   - Ensure backward compatibility
+4. **Execution**:
+   - Make small, safe changes
+   - Test after each change
+   - Document improvements
+
+## 📝 **Documentation Requirements**
+
+### **Before Starting:**
+- Document the problem analysis
+- List identified tasks and dependencies
+- Note potential risks and mitigation strategies
+- Define acceptance criteria
+
+### **During Implementation:**
+- Update progress on identified tasks
+- Note any new discoveries or issues
+- Document decisions and their rationale
+- Track time spent on each sub-task
+
+### **After Completion:**
+- Review against original plan
+- Document lessons learned
+- Update documentation if needed
+- Plan follow-up tasks if necessary
+
+## 🚫 **Common Anti-Patterns to Avoid**
+
+### **❌ Jumping Straight to Code**
+- **Problem**: Starting to code without understanding the problem
+- **Solution**: Always complete the Sequential Thinking process first
+
+### **❌ Ignoring Dependencies**
+- **Problem**: Not considering how changes affect other parts
+- **Solution**: Map dependencies before implementation
+
+### **❌ Skipping Edge Cases**
+- **Problem**: Only considering the happy path
+- **Solution**: Identify and plan for edge cases
+
+### **❌ No Testing Strategy**
+- **Problem**: Implementing without knowing how to verify
+- **Solution**: Plan testing approach before coding
+
+## 🎯 **Success Metrics**
+
+### **Quality Indicators:**
+- All identified tasks are completed
+- No unexpected issues arise during implementation
+- Code meets acceptance criteria
+- Integration with existing systems works smoothly
+
+### **Efficiency Indicators:**
+- Implementation time matches estimates
+- Few or no iterations needed
+- Clear progress tracking throughout
+- Minimal debugging required
+
+## 🔄 **Continuous Improvement**
+
+### **After Each Task:**
+1. **Review the Process**
+   - What worked well?
+   - What could be improved?
+   - Were any steps missed?
+
+2. **Update the Methodology**
+   - Refine the checklist based on experience
+   - Add new considerations for similar tasks
+   - Improve estimation accuracy
+
+3. **Share Learnings**
+   - Document insights for the team
+   - Update team processes if needed
+   - Mentor others in Sequential Thinking
+
+## 📚 **Integration with Other Rules**
+
+### **Works With:**
+- [cursor-rules.mdc](mdc:.cursor/rules/cursor-rules.mdc) - Rule management
+- [directory-structure.mdc](mdc:.cursor/rules/directory-structure.mdc) - Project structure understanding
+- [application-stack.mdc](mdc:.cursor/rules/application-stack.mdc) - Technology stack considerations
+
+### **Enhances:**
+- Code quality and maintainability
+- Project planning and estimation
+- Team collaboration and communication
+- Risk management and mitigation
+
+## 🎯 **Remember**
+
+**Sequential Thinking is not about slowing down development - it's about ensuring the right solution is built efficiently.** The time spent in analysis and planning is an investment that pays dividends in reduced debugging, fewer iterations, and higher quality code.
+
+**Always ask: "Have I completed the Sequential Thinking process before starting to code?"**
+# Sequential Thinking for Programming Tasks
+
+This rule establishes a systematic approach to problem-solving that must be applied before every programming task to ensure comprehensive analysis and proper task identification.
+
+## 🎯 **Core Principle**
+
+**Always use Sequential Thinking before starting any programming task.** This systematic approach ensures that all necessary steps, dependencies, and considerations are identified before writing code.
+
+## 📋 **Sequential Thinking Process**
+
+### **Step 1: Problem Analysis**
+Before writing any code, systematically analyze the problem:
+
+1. **Understand the Requirements**
+   - What is the exact problem to solve?
+   - What are the input and expected output?
+   - Are there any constraints or limitations?
+   - What is the scope of the task?
+
+2. **Identify Stakeholders**
+   - Who will use this feature?
+   - Who will maintain this code?
+   - What are their needs and expectations?
+
+3. **Define Success Criteria**
+   - How will we know the task is complete?
+   - What are the acceptance criteria?
+   - Are there performance requirements?
+
+### **Step 2: Technical Analysis**
+
+1. **Architecture Considerations**
+   - Where does this fit in the existing architecture?
+   - What components will be affected?
+   - Are there any architectural patterns to follow?
+
+2. **Dependencies Analysis**
+   - What existing code will this depend on?
+   - What new dependencies might be needed?
+   - Are there any external services or APIs involved?
+
+3. **Data Flow Analysis**
+   - What data will be processed?
+   - Where does the data come from?
+   - Where does the data go?
+   - Are there any data transformations needed?
+
+### **Step 3: Implementation Planning**
+
+1. **Break Down the Task**
+   - What are the sub-tasks required?
+   - What is the logical order of implementation?
+   - Are there any prerequisites for each sub-task?
+
+2. **Identify Potential Issues**
+   - What could go wrong?
+   - Are there edge cases to consider?
+   - What are the failure scenarios?
+
+3. **Resource Requirements**
+   - What skills are needed?
+   - What tools or libraries are required?
+   - How much time is estimated?
+
+### **Step 4: Testing Strategy**
+
+1. **Test Cases Identification**
+   - What scenarios need to be tested?
+   - What are the happy path and edge cases?
+   - How will we verify the implementation?
+
+2. **Integration Points**
+   - How will this integrate with existing systems?
+   - What integration tests are needed?
+   - Are there any API contracts to maintain?
+
+## 🔄 **Sequential Thinking Checklist**
+
+Before starting any programming task, complete this checklist:
+
+### **✅ Problem Understanding**
+- [ ] Requirements are clearly understood
+- [ ] Input/output specifications are defined
+- [ ] Constraints and limitations are identified
+- [ ] Success criteria are established
+
+### **✅ Technical Planning**
+- [ ] Architecture impact is analyzed
+- [ ] Dependencies are identified
+- [ ] Data flow is mapped
+- [ ] Integration points are considered
+
+### **✅ Implementation Strategy**
+- [ ] Task is broken down into sub-tasks
+- [ ] Implementation order is determined
+- [ ] Potential issues are identified
+- [ ] Resource requirements are assessed
+
+### **✅ Quality Assurance**
+- [ ] Test strategy is planned
+- [ ] Edge cases are considered
+- [ ] Integration testing is planned
+- [ ] Documentation needs are identified
+
+## 🛠️ **Application Examples**
+
+### **Example 1: Adding a New Feature**
+
+**Sequential Thinking Process:**
+1. **Problem**: User needs to export data to CSV
+2. **Analysis**:
+   - What data format is required?
+   - Where does the data come from?
+   - What permissions are needed?
+3. **Implementation**:
+   - Create export service
+   - Add UI button
+   - Handle file download
+4. **Testing**:
+   - Test with different data sets
+   - Verify file format
+   - Test permissions
+
+### **Example 2: Fixing a Bug**
+
+**Sequential Thinking Process:**
+1. **Problem**: Users report login failures
+2. **Analysis**:
+   - What are the symptoms?
+   - When does it occur?
+   - What changed recently?
+3. **Investigation**:
+   - Check logs
+   - Reproduce the issue
+   - Identify root cause
+4. **Solution**:
+   - Plan the fix
+   - Test thoroughly
+   - Deploy safely
+
+### **Example 3: Refactoring Code**
+
+**Sequential Thinking Process:**
+1. **Problem**: Code is hard to maintain
+2. **Analysis**:
+   - What makes it hard to maintain?
+   - What are the dependencies?
+   - What is the impact scope?
+3. **Planning**:
+   - Identify refactoring targets
+   - Plan incremental changes
+   - Ensure backward compatibility
+4. **Execution**:
+   - Make small, safe changes
+   - Test after each change
+   - Document improvements
+
+## 📝 **Documentation Requirements**
+
+### **Before Starting:**
+- Document the problem analysis
+- List identified tasks and dependencies
+- Note potential risks and mitigation strategies
+- Define acceptance criteria
+
+### **During Implementation:**
+- Update progress on identified tasks
+- Note any new discoveries or issues
+- Document decisions and their rationale
+- Track time spent on each sub-task
+
+### **After Completion:**
+- Review against original plan
+- Document lessons learned
+- Update documentation if needed
+- Plan follow-up tasks if necessary
+
+## 🚫 **Common Anti-Patterns to Avoid**
+
+### **❌ Jumping Straight to Code**
+- **Problem**: Starting to code without understanding the problem
+- **Solution**: Always complete the Sequential Thinking process first
+
+### **❌ Ignoring Dependencies**
+- **Problem**: Not considering how changes affect other parts
+- **Solution**: Map dependencies before implementation
+
+### **❌ Skipping Edge Cases**
+- **Problem**: Only considering the happy path
+- **Solution**: Identify and plan for edge cases
+
+### **❌ No Testing Strategy**
+- **Problem**: Implementing without knowing how to verify
+- **Solution**: Plan testing approach before coding
+
+## 🎯 **Success Metrics**
+
+### **Quality Indicators:**
+- All identified tasks are completed
+- No unexpected issues arise during implementation
+- Code meets acceptance criteria
+- Integration with existing systems works smoothly
+
+### **Efficiency Indicators:**
+- Implementation time matches estimates
+- Few or no iterations needed
+- Clear progress tracking throughout
+- Minimal debugging required
+
+## 🔄 **Continuous Improvement**
+
+### **After Each Task:**
+1. **Review the Process**
+   - What worked well?
+   - What could be improved?
+   - Were any steps missed?
+
+2. **Update the Methodology**
+   - Refine the checklist based on experience
+   - Add new considerations for similar tasks
+   - Improve estimation accuracy
+
+3. **Share Learnings**
+   - Document insights for the team
+   - Update team processes if needed
+   - Mentor others in Sequential Thinking
+
+## 📚 **Integration with Other Rules**
+
+### **Works With:**
+- [cursor-rules.mdc](mdc:.cursor/rules/cursor-rules.mdc) - Rule management
+- [directory-structure.mdc](mdc:.cursor/rules/directory-structure.mdc) - Project structure understanding
+- [application-stack.mdc](mdc:.cursor/rules/application-stack.mdc) - Technology stack considerations
+
+### **Enhances:**
+- Code quality and maintainability
+- Project planning and estimation
+- Team collaboration and communication
+- Risk management and mitigation
+
+## 🎯 **Remember**
+
+**Sequential Thinking is not about slowing down development - it's about ensuring the right solution is built efficiently.** The time spent in analysis and planning is an investment that pays dividends in reduced debugging, fewer iterations, and higher quality code.
+
+**Always ask: "Have I completed the Sequential Thinking process before starting to code?"**

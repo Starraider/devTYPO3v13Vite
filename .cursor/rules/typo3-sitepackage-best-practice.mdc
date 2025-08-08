@@ -1,0 +1,918 @@
+---
+description: Best practices for TYPO3-Sitepackages
+globs: packages/**/*
+alwaysApply: false
+---
+
+This rule defines the standard structure and best practices for creating TYPO3 site packages, based on the proven patterns.
+
+## 📁 Directory Structure
+
+### Root Extension Structure
+```
+packages/[extension-name]/
+├── Classes/                    # PHP classes (MVC architecture)
+│   ├── Controller/             # Extbase controllers
+│   ├── Domain/                 # Domain models and repositories
+│   └── ViewHelpers/            # Custom Fluid view helpers
+├── Configuration/              # TYPO3 extension configuration
+│   ├── Sets/                   # Site package configurations
+│   │   └── [SitePackageName]/
+│   │       ├── PageTsConfig/   # Page TSConfig
+│   │       ├── config.yaml     # Site configuration
+│   │       ├── settings.yaml   # Site settings
+│   │       ├── constants.typoscript
+│   │       ├── setup.typoscript
+│   │       └── page.tsconfig
+│   ├── RTE/                    # Rich text editor configuration
+│   ├── ContentSecurityPolicies.php
+│   ├── Icons.php               # Backend icon configuration
+│   └── ViteEntrypoints.json    # Vite entry points
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources (not directly accessible)
+│   │   ├── Language/           # Translation files
+│   │   ├── Layouts/            # Fluid layouts
+│   │   ├── Partials/           # Fluid partials
+│   │   ├── Templates/          # Fluid templates
+│   │   ├── Scss/               # SCSS stylesheets (see detailed structure below)
+│   │   ├── JavaScript/         # JavaScript files
+│   │   └── Main.entry.js       # Main JavaScript entry
+│   └── Public/                 # Public resources (directly accessible)
+│       ├── Fonts/              # Web fonts
+│       ├── Icons/              # Icons
+│       └── Images/             # Images
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── README.md                   # Extension documentation
+└── vite.config.js              # Vite configuration
+```
+
+## 🎨 SCSS Directory Structure and Rules
+
+### SCSS Directory Organization
+```
+Resources/Private/Scss/
+├── Main.entry.scss             # Main SCSS entry point (imports all other files)
+├── abstracts/                  # SCSS abstracts (variables, mixins, functions)
+│   ├── _variables.scss         # Main variables (colors, fonts, spacing)
+│   ├── _variables-dark.scss    # Dark mode variables
+│   ├── _css-vars.scss          # CSS custom properties
+│   └── _bem-mixin.scss         # BEM methodology mixins
+├── base/                       # Base styles (typography, reset, etc.)
+│   └── _typography.scss        # Typography rules
+├── components/                 # Reusable UI components
+│   ├── _buttons.scss           # Button styles
+│   ├── _cards.scss             # Card component styles
+│   ├── _modals.scss            # Modal dialog styles
+│   └── _color-mode-toggle.scss # Theme toggle component
+├── layout/                     # Layout-specific styles
+│   ├── _container.scss         # Container layouts
+│   ├── _navigation.scss        # Navigation styles
+│   ├── _footer.scss            # Footer styles
+│   └── _language-menu.scss     # Language switcher
+├── plugins/                    # TYPO3 plugin styles
+│   └── _plugins.scss           # Plugin-specific styles
+├── rte/                        # Rich text editor styles
+├── vendor/                     # Third-party library styles
+└── [extension-name]/           # Extension-specific styles (if needed)
+    ├── _[extension-name].scss  # Main extension styles
+    └── _[component].scss       # Component-specific styles
+```
+
+### SCSS Import Order in Main.entry.scss
+
+```scss
+//
+// abstracts
+// contains no actual styles
+//
+@import "bootstrap/scss/functions";
+@import "abstracts/variables";
+@import "abstracts/variables-dark";
+@import "abstracts/bem-mixin";
+
+//
+// vendors
+// third-party stylesheets
+//
+@import "bootstrap/scss/bootstrap";
+// Bootstrap Package imports
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/text";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/form";
+// ... other bootstrap-package imports
+
+//
+// base
+// boilerplate used throughout the entire site
+//
+@import "base/typography";
+
+//
+// layout
+// structural layout
+//
+@import "layout/navigation";
+@import "layout/language-menu";
+@import "layout/container";
+@import "layout/footer";
+
+//
+// plugins
+// TYPO3 plugins
+//
+@import "plugins/plugins";
+
+//
+// components
+// reusable components
+//
+@import "components/buttons";
+@import "components/cards";
+@import "components/modals";
+@import "components/color-mode-toggle";
+
+//
+// overwrite css-vars
+//
+@import "abstracts/css-vars";
+```
+
+## 📝 File Naming Conventions
+
+### SCSS Files
+- **Main entry**: `Main.entry.scss`
+- **Partials**: `_filename.scss` (with underscore prefix)
+- **Components**: `_component-name.scss` (kebab-case)
+- **Layouts**: `_layout-name.scss` (kebab-case)
+- **Abstracts**: `_abstract-name.scss` (kebab-case)
+
+### TYPO3 Configuration Files
+- **Site config**: `config.yaml`
+- **Site settings**: `settings.yaml`
+- **TypoScript constants**: `constants.typoscript`
+- **TypoScript setup**: `setup.typoscript`
+- **Page TSConfig**: `page.tsconfig`
+
+## 🔧 Configuration Best Practices
+
+### composer.json Structure
+```json
+{
+    "name": "vendor/extension-name",
+    "type": "typo3-cms-extension",
+    "description": "Site package for TYPO3 v13 with Vite",
+    "homepage": "https://www.example.com",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "require": {
+        "bk2k/bootstrap-package": "^15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\ExtensionName\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "extension_name"
+        }
+    }
+}
+```
+
+### ext_emconf.php Structure
+```php
+<?php
+
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Extension Name',
+    'description' => 'Site package for TYPO3 v13 with Vite',
+    'category' => 'templates',
+    'constraints' => [
+        'depends' => [
+            'bootstrap_package' => '15.0.0-15.99.99',
+        ],
+        'conflicts' => [
+        ],
+    ],
+    'autoload' => [
+        'psr-4' => [
+            'Vendor\\ExtensionName\\' => 'Classes',
+        ],
+    ],
+    'state' => 'stable',
+    'author' => 'Author Name',
+    'author_email' => 'author@example.com',
+    'author_company' => 'Company Name',
+    'version' => '1.0.0',
+];
+```
+
+### Site Configuration (config.yaml)
+```yaml
+name: vendor/extension-name
+label: 'Extension Name'
+dependencies:
+  - bootstrap-package/full
+  - vendor/other-extension
+```
+
+## 🎯 SCSS Coding Standards
+
+### Variable Naming
+```scss
+// ✅ Good: Use kebab-case for variable names
+$primary-color: #007bff;
+$font-size-base: 1rem;
+$spacing-unit: 1rem;
+
+// ❌ Bad: Use camelCase or snake_case
+$primaryColor: #007bff;
+$font_size_base: 1rem;
+```
+
+### BEM Methodology
+```scss
+// ✅ Good: Follow BEM naming convention
+.block {
+    &__element {
+        &--modifier {
+            // styles
+        }
+    }
+}
+
+// Example usage
+.card {
+    &__header {
+        background-color: $card-header-bg;
+
+        &--featured {
+            background-color: $card-header-featured-bg;
+        }
+    }
+
+    &__body {
+        padding: $card-body-padding;
+    }
+}
+```
+
+### Component Organization
+```scss
+// ✅ Good: Organize components with clear structure
+.component-name {
+    // 1. Layout properties
+    display: flex;
+    position: relative;
+
+    // 2. Box model properties
+    margin: 0;
+    padding: $component-padding;
+
+    // 3. Typography
+    font-size: $component-font-size;
+    line-height: $component-line-height;
+
+    // 4. Visual properties
+    background-color: $component-bg;
+    border: 1px solid $component-border-color;
+    border-radius: $component-border-radius;
+
+    // 5. States
+    &:hover {
+        background-color: $component-hover-bg;
+    }
+
+    &:focus {
+        outline: 2px solid $component-focus-color;
+    }
+
+    // 6. Modifiers
+    &--large {
+        padding: $component-padding-large;
+        font-size: $component-font-size-large;
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+```
+
+## 🚀 Development Workflow
+
+### 1. Create New Component
+```bash
+# Create component SCSS file
+touch Resources/Private/Scss/components/_new-component.scss
+
+# Add import to Main.entry.scss
+echo "@import \"components/new-component\";" >> Resources/Private/Scss/Main.entry.scss
+```
+
+### 2. Create New Layout
+```bash
+# Create layout SCSS file
+touch Resources/Private/Scss/layout/_new-layout.scss
+
+# Add import to Main.entry.scss
+echo "@import \"layout/new-layout\";" >> Resources/Private/Scss/Main.entry.scss
+```
+
+### 3. Add New Variables
+```scss
+// Add to abstracts/_variables.scss
+$new-component-bg: #ffffff;
+$new-component-border-color: #dee2e6;
+$new-component-padding: 1rem;
+```
+
+## 📋 Checklist for New Site Package
+
+### ✅ Basic Structure
+- [ ] Extension directory created in `packages/`
+- [ ] `composer.json` with proper dependencies
+- [ ] `ext_emconf.php` with correct metadata
+- [ ] `ext_localconf.php` and `ext_tables.php` (minimal)
+
+### ✅ Configuration
+- [ ] `Configuration/Sets/[SitePackageName]/` directory
+- [ ] `config.yaml` with site configuration
+- [ ] `settings.yaml` with site settings
+- [ ] `constants.typoscript` and `setup.typoscript`
+- [ ] `page.tsconfig` for backend configuration
+
+### ✅ Resources
+- [ ] `Resources/Private/Scss/` with proper structure
+- [ ] `Main.entry.scss` with correct import order
+- [ ] `Resources/Private/Templates/` for Fluid templates
+- [ ] `Resources/Private/Partials/` for reusable components
+- [ ] `Resources/Private/Layouts/` for page layouts
+
+### ✅ Assets
+- [ ] `vite.config.js` for build configuration
+- [ ] `Configuration/ViteEntrypoints.json` for asset collection
+- [ ] `Resources/Public/` for static assets
+
+## 🔗 Integration with Bootstrap Package
+
+### Required Dependencies
+```json
+{
+    "require": {
+        "bk2k/bootstrap-package": "^15.0"
+    }
+}
+```
+
+### Bootstrap Package Imports
+Always include these essential Bootstrap Package imports in your `Main.entry.scss`:
+
+```scss
+// Bootstrap Compat
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/text";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/form";
+
+// Essential Components
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/form";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/button";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/navbar";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/footer";
+```
+
+## 🎨 Theme Customization
+
+### Color Variables
+```scss
+// abstracts/_variables.scss
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$info: #17a2b8;
+$light: #f8f9fa;
+$dark: #343a40;
+```
+
+### Typography Variables
+```scss
+// abstracts/_variables.scss
+$font-family-sans-serif: 'Rubik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$headings-font-weight: 500;
+```
+
+## 📚 References
+
+- [TYPO3 Site Package Documentation](https://docs.typo3.org/m/typo3/tutorial-sitepackage/master/en-us/)
+- [Bootstrap Package Documentation](https://docs.bootstrap-package.com/)
+- [SCSS Best Practices](https://sass-guidelin.es/)
+- [BEM Methodology](http://getbem.com/)
+
+## 🚫 Common Anti-Patterns
+
+### ❌ Don't Mix SCSS and CSS
+```scss
+// ❌ Bad: Mixing SCSS and CSS files
+@import "styles.css";
+@import "components.scss";
+
+// ✅ Good: Use only SCSS files
+@import "abstracts/variables";
+@import "components/buttons";
+```
+
+### ❌ Don't Use Deep Nesting
+```scss
+// ❌ Bad: Deep nesting (hard to maintain)
+.card {
+    .card-header {
+        .card-title {
+            .card-title-text {
+                color: red;
+            }
+        }
+    }
+}
+
+// ✅ Good: Use BEM methodology
+.card__title {
+    color: red;
+}
+```
+
+### ❌ Don't Override Bootstrap Directly
+```scss
+// ❌ Bad: Direct Bootstrap overrides
+.btn {
+    background-color: red !important;
+}
+
+// ✅ Good: Use Bootstrap variables
+$btn-primary-bg: $custom-primary-color;
+```
+
+This rule ensures consistent, maintainable, and scalable TYPO3 site packages following industry best practices and the proven patterns from the skombase13 example.
+# TYPO3 Site Package Best Practices
+
+This rule defines the standard structure and best practices for creating TYPO3 site packages, based on the proven patterns.
+
+## 📁 Directory Structure
+
+### Root Extension Structure
+```
+packages/[extension-name]/
+├── Classes/                    # PHP classes (MVC architecture)
+│   ├── Controller/             # Extbase controllers
+│   ├── Domain/                 # Domain models and repositories
+│   └── ViewHelpers/            # Custom Fluid view helpers
+├── Configuration/              # TYPO3 extension configuration
+│   ├── Sets/                   # Site package configurations
+│   │   └── [SitePackageName]/
+│   │       ├── PageTsConfig/   # Page TSConfig
+│   │       ├── config.yaml     # Site configuration
+│   │       ├── settings.yaml   # Site settings
+│   │       ├── constants.typoscript
+│   │       ├── setup.typoscript
+│   │       └── page.tsconfig
+│   ├── RTE/                    # Rich text editor configuration
+│   ├── ContentSecurityPolicies.php
+│   ├── Icons.php               # Backend icon configuration
+│   └── ViteEntrypoints.json    # Vite entry points
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources (not directly accessible)
+│   │   ├── Language/           # Translation files
+│   │   ├── Layouts/            # Fluid layouts
+│   │   ├── Partials/           # Fluid partials
+│   │   ├── Templates/          # Fluid templates
+│   │   ├── Scss/               # SCSS stylesheets (see detailed structure below)
+│   │   ├── JavaScript/         # JavaScript files
+│   │   └── Main.entry.js       # Main JavaScript entry
+│   └── Public/                 # Public resources (directly accessible)
+│       ├── Fonts/              # Web fonts
+│       ├── Icons/              # Icons
+│       └── Images/             # Images
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── README.md                   # Extension documentation
+└── vite.config.js              # Vite configuration
+```
+
+## 🎨 SCSS Directory Structure and Rules
+
+### SCSS Directory Organization
+```
+Resources/Private/Scss/
+├── Main.entry.scss             # Main SCSS entry point (imports all other files)
+├── abstracts/                  # SCSS abstracts (variables, mixins, functions)
+│   ├── _variables.scss         # Main variables (colors, fonts, spacing)
+│   ├── _variables-dark.scss    # Dark mode variables
+│   ├── _css-vars.scss          # CSS custom properties
+│   └── _bem-mixin.scss         # BEM methodology mixins
+├── base/                       # Base styles (typography, reset, etc.)
+│   └── _typography.scss        # Typography rules
+├── components/                 # Reusable UI components
+│   ├── _buttons.scss           # Button styles
+│   ├── _cards.scss             # Card component styles
+│   ├── _modals.scss            # Modal dialog styles
+│   └── _color-mode-toggle.scss # Theme toggle component
+├── layout/                     # Layout-specific styles
+│   ├── _container.scss         # Container layouts
+│   ├── _navigation.scss        # Navigation styles
+│   ├── _footer.scss            # Footer styles
+│   └── _language-menu.scss     # Language switcher
+├── plugins/                    # TYPO3 plugin styles
+│   └── _plugins.scss           # Plugin-specific styles
+├── rte/                        # Rich text editor styles
+├── vendor/                     # Third-party library styles
+└── [extension-name]/           # Extension-specific styles (if needed)
+    ├── _[extension-name].scss  # Main extension styles
+    └── _[component].scss       # Component-specific styles
+```
+
+### SCSS Import Order in Main.entry.scss
+
+```scss
+//
+// abstracts
+// contains no actual styles
+//
+@import "bootstrap/scss/functions";
+@import "abstracts/variables";
+@import "abstracts/variables-dark";
+@import "abstracts/bem-mixin";
+
+//
+// vendors
+// third-party stylesheets
+//
+@import "bootstrap/scss/bootstrap";
+// Bootstrap Package imports
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/text";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/form";
+// ... other bootstrap-package imports
+
+//
+// base
+// boilerplate used throughout the entire site
+//
+@import "base/typography";
+
+//
+// layout
+// structural layout
+//
+@import "layout/navigation";
+@import "layout/language-menu";
+@import "layout/container";
+@import "layout/footer";
+
+//
+// plugins
+// TYPO3 plugins
+//
+@import "plugins/plugins";
+
+//
+// components
+// reusable components
+//
+@import "components/buttons";
+@import "components/cards";
+@import "components/modals";
+@import "components/color-mode-toggle";
+
+//
+// overwrite css-vars
+//
+@import "abstracts/css-vars";
+```
+
+## 📝 File Naming Conventions
+
+### SCSS Files
+- **Main entry**: `Main.entry.scss`
+- **Partials**: `_filename.scss` (with underscore prefix)
+- **Components**: `_component-name.scss` (kebab-case)
+- **Layouts**: `_layout-name.scss` (kebab-case)
+- **Abstracts**: `_abstract-name.scss` (kebab-case)
+
+### TYPO3 Configuration Files
+- **Site config**: `config.yaml`
+- **Site settings**: `settings.yaml`
+- **TypoScript constants**: `constants.typoscript`
+- **TypoScript setup**: `setup.typoscript`
+- **Page TSConfig**: `page.tsconfig`
+
+## 🔧 Configuration Best Practices
+
+### composer.json Structure
+```json
+{
+    "name": "vendor/extension-name",
+    "type": "typo3-cms-extension",
+    "description": "Site package for TYPO3 v13 with Vite",
+    "homepage": "https://www.example.com",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "require": {
+        "bk2k/bootstrap-package": "^15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\ExtensionName\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "extension_name"
+        }
+    }
+}
+```
+
+### ext_emconf.php Structure
+```php
+<?php
+
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Extension Name',
+    'description' => 'Site package for TYPO3 v13 with Vite',
+    'category' => 'templates',
+    'constraints' => [
+        'depends' => [
+            'bootstrap_package' => '15.0.0-15.99.99',
+        ],
+        'conflicts' => [
+        ],
+    ],
+    'autoload' => [
+        'psr-4' => [
+            'Vendor\\ExtensionName\\' => 'Classes',
+        ],
+    ],
+    'state' => 'stable',
+    'author' => 'Author Name',
+    'author_email' => 'author@example.com',
+    'author_company' => 'Company Name',
+    'version' => '1.0.0',
+];
+```
+
+### Site Configuration (config.yaml)
+```yaml
+name: vendor/extension-name
+label: 'Extension Name'
+dependencies:
+  - bootstrap-package/full
+  - vendor/other-extension
+```
+
+## 🎯 SCSS Coding Standards
+
+### Variable Naming
+```scss
+// ✅ Good: Use kebab-case for variable names
+$primary-color: #007bff;
+$font-size-base: 1rem;
+$spacing-unit: 1rem;
+
+// ❌ Bad: Use camelCase or snake_case
+$primaryColor: #007bff;
+$font_size_base: 1rem;
+```
+
+### BEM Methodology
+```scss
+// ✅ Good: Follow BEM naming convention
+.block {
+    &__element {
+        &--modifier {
+            // styles
+        }
+    }
+}
+
+// Example usage
+.card {
+    &__header {
+        background-color: $card-header-bg;
+
+        &--featured {
+            background-color: $card-header-featured-bg;
+        }
+    }
+
+    &__body {
+        padding: $card-body-padding;
+    }
+}
+```
+
+### Component Organization
+```scss
+// ✅ Good: Organize components with clear structure
+.component-name {
+    // 1. Layout properties
+    display: flex;
+    position: relative;
+
+    // 2. Box model properties
+    margin: 0;
+    padding: $component-padding;
+
+    // 3. Typography
+    font-size: $component-font-size;
+    line-height: $component-line-height;
+
+    // 4. Visual properties
+    background-color: $component-bg;
+    border: 1px solid $component-border-color;
+    border-radius: $component-border-radius;
+
+    // 5. States
+    &:hover {
+        background-color: $component-hover-bg;
+    }
+
+    &:focus {
+        outline: 2px solid $component-focus-color;
+    }
+
+    // 6. Modifiers
+    &--large {
+        padding: $component-padding-large;
+        font-size: $component-font-size-large;
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+```
+
+## 🚀 Development Workflow
+
+### 1. Create New Component
+```bash
+# Create component SCSS file
+touch Resources/Private/Scss/components/_new-component.scss
+
+# Add import to Main.entry.scss
+echo "@import \"components/new-component\";" >> Resources/Private/Scss/Main.entry.scss
+```
+
+### 2. Create New Layout
+```bash
+# Create layout SCSS file
+touch Resources/Private/Scss/layout/_new-layout.scss
+
+# Add import to Main.entry.scss
+echo "@import \"layout/new-layout\";" >> Resources/Private/Scss/Main.entry.scss
+```
+
+### 3. Add New Variables
+```scss
+// Add to abstracts/_variables.scss
+$new-component-bg: #ffffff;
+$new-component-border-color: #dee2e6;
+$new-component-padding: 1rem;
+```
+
+## 📋 Checklist for New Site Package
+
+### ✅ Basic Structure
+- [ ] Extension directory created in `packages/`
+- [ ] `composer.json` with proper dependencies
+- [ ] `ext_emconf.php` with correct metadata
+- [ ] `ext_localconf.php` and `ext_tables.php` (minimal)
+
+### ✅ Configuration
+- [ ] `Configuration/Sets/[SitePackageName]/` directory
+- [ ] `config.yaml` with site configuration
+- [ ] `settings.yaml` with site settings
+- [ ] `constants.typoscript` and `setup.typoscript`
+- [ ] `page.tsconfig` for backend configuration
+
+### ✅ Resources
+- [ ] `Resources/Private/Scss/` with proper structure
+- [ ] `Main.entry.scss` with correct import order
+- [ ] `Resources/Private/Templates/` for Fluid templates
+- [ ] `Resources/Private/Partials/` for reusable components
+- [ ] `Resources/Private/Layouts/` for page layouts
+
+### ✅ Assets
+- [ ] `vite.config.js` for build configuration
+- [ ] `Configuration/ViteEntrypoints.json` for asset collection
+- [ ] `Resources/Public/` for static assets
+
+## 🔗 Integration with Bootstrap Package
+
+### Required Dependencies
+```json
+{
+    "require": {
+        "bk2k/bootstrap-package": "^15.0"
+    }
+}
+```
+
+### Bootstrap Package Imports
+Always include these essential Bootstrap Package imports in your `Main.entry.scss`:
+
+```scss
+// Bootstrap Compat
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/text";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/bootstrap5/compat/form";
+
+// Essential Components
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/form";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/button";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/navbar";
+@import "../../../../../vendor/bk2k/bootstrap-package/Resources/Public/Scss/components/footer";
+```
+
+## 🎨 Theme Customization
+
+### Color Variables
+```scss
+// abstracts/_variables.scss
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$info: #17a2b8;
+$light: #f8f9fa;
+$dark: #343a40;
+```
+
+### Typography Variables
+```scss
+// abstracts/_variables.scss
+$font-family-sans-serif: 'Rubik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$headings-font-weight: 500;
+```
+
+## 📚 References
+
+- [TYPO3 Site Package Documentation](https://docs.typo3.org/m/typo3/tutorial-sitepackage/master/en-us/)
+- [Bootstrap Package Documentation](https://docs.bootstrap-package.com/)
+- [SCSS Best Practices](https://sass-guidelin.es/)
+- [BEM Methodology](http://getbem.com/)
+
+## 🚫 Common Anti-Patterns
+
+### ❌ Don't Mix SCSS and CSS
+```scss
+// ❌ Bad: Mixing SCSS and CSS files
+@import "styles.css";
+@import "components.scss";
+
+// ✅ Good: Use only SCSS files
+@import "abstracts/variables";
+@import "components/buttons";
+```
+
+### ❌ Don't Use Deep Nesting
+```scss
+// ❌ Bad: Deep nesting (hard to maintain)
+.card {
+    .card-header {
+        .card-title {
+            .card-title-text {
+                color: red;
+            }
+        }
+    }
+}
+
+// ✅ Good: Use BEM methodology
+.card__title {
+    color: red;
+}
+```
+
+### ❌ Don't Override Bootstrap Directly
+```scss
+// ❌ Bad: Direct Bootstrap overrides
+.btn {
+    background-color: red !important;
+}
+
+// ✅ Good: Use Bootstrap variables
+$btn-primary-bg: $custom-primary-color;
+```
+
+This rule ensures consistent, maintainable, and scalable TYPO3 site packages following industry best practices and the proven patterns from the skombase13 example.

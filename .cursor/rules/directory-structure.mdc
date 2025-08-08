@@ -1,0 +1,894 @@
+---
+description: TYPO3 Leseohren Project Directory Structure
+globs: **/*
+alwaysApply: true
+---
+
+# TYPO3 Leseohren Project Directory Structure
+
+This rule documents the complete directory structure of the TYPO3 Leseohren project, including all important files and folders with their purposes.
+
+## Project Root Structure
+
+```
+leseohrendb/
+├── .cursor/                    # Cursor IDE configuration and rules
+├── .ddev/                      # DDEV development environment config
+├── .github/                    # GitHub workflows and configurations
+├── .vite/                      # Vite build cache
+├── config/                     # TYPO3 site configuration
+├── packages/                   # TYPO3 extensions
+├── public/                     # Web root directory
+├── Quellen/                    # Source materials and backups
+├── var/                        # TYPO3 temporary files
+├── vendor/                     # Composer dependencies
+├── node_modules/               # NPM dependencies
+├── composer.json               # PHP dependencies configuration
+├── composer.lock               # PHP dependencies lock file
+├── package.json                # NPM dependencies configuration
+├── package-lock.json           # NPM dependencies lock file
+├── vite.config.js              # Vite build configuration
+├── deploy.php                  # Deployment configuration
+├── rector.php                  # Rector PHP upgrade configuration
+├── renovate.json               # Renovate dependency updates
+├── .editorconfig               # Editor configuration
+├── .gitignore                  # Git ignore rules
+├── LICENSE                     # Project license
+├── README.md                   # Project documentation
+├── CHANGELOG.md                # Version change log
+├── GEMINI.md                   # Gemini AI documentation
+└── PRD_*.md                    # Product Requirements Documents
+```
+
+## Configuration Directory (`config/`)
+
+```
+config/
+├── sites/
+│   └── main/                   # Main site configuration
+│       ├── config.yaml         # Site configuration
+│       └── csp.yaml           # Content Security Policy
+└── system/
+    ├── settings.php            # TYPO3 system settings
+    ├── additional.php          # Additional system configuration
+    └── .gitignore             # Git ignore for system files
+```
+
+## Packages Directory (`packages/`)
+
+The project contains two main TYPO3 extensions:
+
+### Leseohren Extension (`packages/leseohren/`)
+
+```
+packages/leseohren/
+├── Classes/                    # PHP classes (MVC architecture)
+│   ├── Controller/             # Extbase controllers
+│   │   ├── BlackboardController.php
+│   │   ├── EventController.php
+│   │   ├── GiftController.php
+│   │   ├── HolidayController.php
+│   │   ├── OrganizationController.php
+│   │   ├── PersonController.php
+│   │   ├── PersonDashboardController.php
+│   │   ├── PresentController.php
+│   │   └── RegistrationController.php
+│   ├── Domain/                 # Domain models and repositories
+│   │   ├── Model/              # Extbase domain models
+│   │   │   ├── Blackboard.php
+│   │   │   ├── Category.php
+│   │   │   ├── Easterdate.php
+│   │   │   ├── Event.php
+│   │   │   ├── Gift.php
+│   │   │   ├── Organization.php
+│   │   │   ├── Person.php
+│   │   │   ├── Present.php
+│   │   │   └── Registration.php
+│   │   └── Repository/         # Extbase repositories
+│   │       ├── BlackboardRepository.php
+│   │       ├── CategoryRepository.php
+│   │       ├── EasterdateRepository.php
+│   │       ├── EventRepository.php
+│   │       ├── GiftRepository.php
+│   │       ├── OrganizationRepository.php
+│   │       ├── PersonRepository.php
+│   │       ├── PresentRepository.php
+│   │       └── RegistrationRepository.php
+│   ├── Property/               # Property type converters
+│   │   └── TypeConverter/
+│   ├── Updates/                # Database update scripts
+│   │   └── SKomLeseohrenCTypeMigration.php
+│   └── ViewHelpers/            # Custom Fluid view helpers
+│       ├── Format/
+│       │   └── AgeViewHelper.php
+│       └── Form/
+├── Configuration/              # TYPO3 extension configuration
+│   ├── Extbase/                # Extbase configuration
+│   │   └── Persistence/
+│   │       └── Classes.php
+│   ├── FlexForms/              # Plugin flexform configurations
+│   │   ├── Leseohren_Events.xml
+│   │   ├── Leseohren_Holidays.xml
+│   │   ├── Leseohren_PersonDashboard.xml
+│   │   └── Leseohren_Personen.xml
+│   ├── Sets/                   # Site package configurations
+│   │   └── Leseohren/
+│   │       ├── config.yaml
+│   │       ├── settings.yaml
+│   │       ├── settings.definitions.yaml
+│   │       ├── constants.typoscript
+│   │       ├── setup.typoscript
+│   │       └── TypoScript/     # Plugin TypoScript configurations
+│   │           ├── page.typoscript
+│   │           ├── plugin.tx_leseohren_blackboards.typoscript
+│   │           ├── plugin.tx_leseohren_events.typoscript
+│   │           ├── plugin.tx_leseohren_holidays.typoscript
+│   │           ├── plugin.tx_leseohren_organizations.typoscript
+│   │           ├── plugin.tx_leseohren_persondashboard.typoscript
+│   │           ├── plugin.tx_leseohren_personen.typoscript
+│   │           ├── plugin.tx_leseohren_presents.typoscript
+│   │           └── plugin.tx_leseohren_registrations.typoscript
+│   ├── TCA/                    # Table Configuration Array
+│   │   ├── Overrides/          # TCA overrides
+│   │   │   ├── sys_template.php
+│   │   │   ├── tt_content.php
+│   │   │   ├── tx_leseohren_domain_model_event.php
+│   │   │   ├── tx_leseohren_domain_model_organization.php
+│   │   │   └── tx_leseohren_domain_model_person.php
+│   │   ├── tx_leseohren_domain_model_blackboard.php
+│   │   ├── tx_leseohren_domain_model_easterdate.php
+│   │   ├── tx_leseohren_domain_model_event.php
+│   │   ├── tx_leseohren_domain_model_gift.php
+│   │   ├── tx_leseohren_domain_model_organization.php
+│   │   ├── tx_leseohren_domain_model_person.php
+│   │   ├── tx_leseohren_domain_model_present.php
+│   │   └── tx_leseohren_domain_model_registration.php
+│   ├── TypoScript/             # Extension TypoScript
+│   │   ├── constants.typoscript
+│   │   └── setup.typoscript
+│   ├── Icons.php               # Backend icon configuration
+│   ├── Services.yaml           # Dependency injection configuration
+│   ├── ViteEntrypoints.json    # Vite entry points
+│   └── page.tsconfig           # Page TSConfig
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources (not directly accessible)
+│   │   ├── Language/           # Translation files
+│   │   │   ├── locallang.xlf
+│   │   │   ├── de.locallang.xlf
+│   │   │   ├── locallang_db.xlf
+│   │   │   ├── de.locallang_db.xlf
+│   │   │   ├── locallang_flexforms.xlf
+│   │   │   ├── de.locallang_flexforms.xlf
+│   │   │   └── locallang_csh_*.xlf (context sensitive help)
+│   │   ├── Layouts/            # Fluid layouts
+│   │   │   └── Default.html
+│   │   ├── Partials/           # Fluid partials
+│   │   │   ├── Blackboard/
+│   │   │   ├── Event/
+│   │   │   ├── Gift/
+│   │   │   ├── Organization/
+│   │   │   ├── Person/
+│   │   │   ├── PersonDashboard/
+│   │   │   ├── Present/
+│   │   │   ├── Registration/
+│   │   │   └── FormErrors.html
+│   │   ├── Templates/          # Fluid templates
+│   │   │   ├── Blackboard/
+│   │   │   ├── Event/
+│   │   │   ├── Gift/
+│   │   │   ├── Holiday/
+│   │   │   ├── Organization/
+│   │   │   ├── Person/
+│   │   │   ├── PersonDashboard/
+│   │   │   ├── Present/
+│   │   │   ├── Registration/
+│   │   │   └── Main.html
+│   │   ├── Scss/               # SCSS stylesheets
+│   │   │   ├── abstracts/      # SCSS abstracts (variables, mixins)
+│   │   │   │   ├── _bem-mixin.scss
+│   │   │   │   ├── _css-vars.scss
+│   │   │   │   └── _variables.scss
+│   │   │   ├── base/           # Base styles
+│   │   │   │   └── _typography.scss
+│   │   │   ├── components/     # Component styles
+│   │   │   │   ├── _buttons.scss
+│   │   │   │   └── _modals.scss
+│   │   │   ├── layout/         # Layout styles
+│   │   │   │   └── _container.scss
+│   │   │   ├── plugins/        # Plugin-specific styles
+│   │   │   │   ├── _plugins.scss
+│   │   │   │   └── leseohren/
+│   │   │   │       ├── _leseohren.scss
+│   │   │   │       ├── _leseohren-blackboards.scss
+│   │   │   │       ├── _leseohren-events.scss
+│   │   │   │       └── _leseohren-personen.scss
+│   │   │   ├── rte/            # Rich text editor styles
+│   │   │   ├── vendor/         # Third-party styles
+│   │   │   └── Main.entry.scss # Main SCSS entry point
+│   │   ├── DataTables.entry.js # DataTables JavaScript entry
+│   │   └── .htaccess           # Apache configuration
+│   └── Public/                 # Public resources (directly accessible)
+│       ├── Css/                # Compiled CSS files
+│       │   └── datepicker-bs5.min.css
+│       ├── JavaScript/         # JavaScript files
+│       │   ├── datatables.min.css
+│       │   ├── datatables.min.js
+│       │   └── datepicker-init.js
+│       └── Icons/              # Backend icons
+│           ├── Extension.svg
+│           ├── logo_leseohren.svg
+│           ├── relation.gif
+│           ├── tx_leseohren_domain_model_*.svg
+│           └── user_plugin_*.svg
+├── Tests/                      # Unit and functional tests
+│   ├── Unit/                   # Unit tests
+│   │   ├── Controller/
+│   │   │   ├── BlackboardControllerTest.php
+│   │   │   ├── EventControllerTest.php
+│   │   │   ├── GiftControllerTest.php
+│   │   │   ├── OrganizationControllerTest.php
+│   │   │   └── PersonControllerTest.php
+│   │   └── Domain/
+│   │       └── Model/
+│   │           ├── BlackboardTest.php
+│   │           ├── EventTest.php
+│   │           ├── GiftTest.php
+│   │           ├── OrganizationTest.php
+│   │           ├── PersonTest.php
+│   │           └── PresentTest.php
+│   └── Functional/             # Functional tests
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── ext_tables.sql              # Database schema
+├── ToDo.md                     # Extension TODO list
+└── .gitignore                  # Extension git ignore
+```
+
+### SKOM Base Extension (`packages/skombase13/`)
+
+```
+packages/skombase13/
+├── Classes/                    # PHP classes
+│   ├── Controller/             # Controllers
+│   ├── Domain/                 # Domain models
+│   ├── ViewHelpers/            # View helpers
+│   └── .htaccess
+├── Configuration/              # TYPO3 configuration
+│   ├── Sets/                   # Site package configurations
+│   │   └── SitePackage/
+│   │       ├── PageTsConfig/   # Page TSConfig
+│   │       │   └── BackendLayouts/
+│   │       │       └── example.tsconfig
+│   │       ├── config.yaml
+│   │       ├── settings.yaml
+│   │       ├── constants.typoscript
+│   │       ├── setup.typoscript
+│   │       └── page.tsconfig
+│   ├── RTE/                    # Rich text editor configuration
+│   │   └── Default.yaml
+│   ├── ContentSecurityPolicies.php
+│   ├── Icons.php
+│   └── ViteEntrypoints.json
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources
+│   │   ├── Language/           # Translation files
+│   │   │   ├── locallang.xlf
+│   │   │   ├── locallang_be.xlf
+│   │   │   └── locallang_db.xlf
+│   │   ├── Layouts/            # Fluid layouts
+│   │   │   ├── ContentElements/
+│   │   │   └── Page/
+│   │   │       └── Default.html
+│   │   ├── Partials/           # Fluid partials
+│   │   │   ├── ContentElements/
+│   │   │   └── Page/
+│   │   │       ├── DropIn/
+│   │   │       │   └── Navigation/
+│   │   │       │       └── MainAfter.html
+│   │   │       ├── Navigation/
+│   │   │       │   ├── Main.html
+│   │   │       │   └── MainNavigation.html
+│   │   │       └── Structure/
+│   │   │           └── FooterMeta.html
+│   │   ├── Templates/          # Fluid templates
+│   │   │   ├── ContentElements/
+│   │   │   └── Page/
+│   │   │       └── Example.html
+│   │   ├── Scss/               # SCSS stylesheets
+│   │   │   ├── abstracts/      # SCSS abstracts
+│   │   │   │   ├── _bem-mixin.scss
+│   │   │   │   ├── _css-vars.scss
+│   │   │   │   ├── _variables.scss
+│   │   │   │   └── _variables-dark.scss
+│   │   │   ├── base/           # Base styles
+│   │   │   │   └── _typography.scss
+│   │   │   ├── components/     # Component styles
+│   │   │   │   ├── _buttons.scss
+│   │   │   │   ├── _cards.scss
+│   │   │   │   ├── _color-mode-toggle.scss
+│   │   │   │   └── _modals.scss
+│   │   │   ├── layout/         # Layout styles
+│   │   │   │   ├── _container.scss
+│   │   │   │   ├── _footer.scss
+│   │   │   │   ├── _language-menu.scss
+│   │   │   │   └── _navigation.scss
+│   │   │   ├── plugins/        # Plugin styles
+│   │   │   │   └── _plugins.scss
+│   │   │   ├── rte/            # Rich text editor styles
+│   │   │   ├── vendor/         # Third-party styles
+│   │   │   └── Main.entry.scss # Main SCSS entry point
+│   │   ├── JavaScript/         # JavaScript files
+│   │   │   └── ColorMode.js
+│   │   ├── Main.entry.js       # Main JavaScript entry
+│   │   └── .htaccess
+│   └── Public/                 # Public resources
+│       ├── Fonts/              # Web fonts
+│       │   ├── .gitkeep
+│       │   └── rubik-v19-latin-*.{eot,svg,ttf,woff,woff2}
+│       ├── Icons/              # Icons
+│       │   ├── BackendLayouts/
+│       │   │   └── example.svg
+│       │   ├── Extension.svg
+│       │   ├── favicon.ico
+│       │   ├── de-DE.svg
+│       │   ├── en-US.svg
+│       │   ├── de-DE_grey.svg
+│       │   └── en-US_grey.svg
+│       └── Images/             # Images
+│           ├── logo_leseohren.svg
+│           ├── logo-inverted.svg
+│           └── logo.svg
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── README.md                   # Extension documentation
+└── vite.config.js              # Vite configuration
+```
+
+## Public Directory (`public/`)
+
+```
+public/
+├── _assets/                    # Compiled assets (Vite output)
+│   ├── vite/                   # Vite build files
+│   └── [hash]/                 # Versioned asset files
+├── fileadmin/                  # File management
+│   ├── user_upload/            # User uploaded files
+│   ├── _temp_/                 # Temporary files
+│   ├── _processed_/            # Processed files
+│   └── .htaccess
+├── typo3/                      # TYPO3 core files
+│   ├── install.php
+│   └── index.php
+├── typo3temp/                  # TYPO3 temporary files
+│   ├── assets/                 # Temporary assets
+│   └── index.html
+├── .htaccess                   # Apache configuration
+└── index.php                   # Frontend entry point
+```
+
+## Important Configuration Files
+
+### Root Level
+- `composer.json` - PHP dependencies and project metadata
+- `package.json` - NPM dependencies and build scripts
+- `vite.config.js` - Vite build configuration
+- `deploy.php` - Deployment configuration
+- `rector.php` - PHP upgrade configuration
+- `renovate.json` - Dependency update automation
+
+### TYPO3 Configuration
+- `config/sites/main/config.yaml` - Main site configuration
+- `config/sites/main/csp.yaml` - Content Security Policy
+- `config/system/settings.php` - TYPO3 system settings
+- `config/system/additional.php` - Additional system configuration
+
+### Extension Configuration
+- `packages/*/ext_emconf.php` - Extension metadata
+- `packages/*/ext_localconf.php` - Extension local configuration
+- `packages/*/ext_tables.php` - Extension tables configuration
+- `packages/*/ext_tables.sql` - Database schema
+- `packages/*/composer.json` - Extension dependencies
+
+## Key Development Patterns
+
+### MVC Architecture
+- **Models**: `packages/leseohren/Classes/Domain/Model/`
+- **Views**: `packages/leseohren/Resources/Private/Templates/`
+- **Controllers**: `packages/leseohren/Classes/Controller/`
+
+### Asset Management
+- **SCSS**: `packages/*/Resources/Private/Scss/`
+- **JavaScript**: `packages/*/Resources/Private/JavaScript/`
+- **Compiled Assets**: `public/_assets/`
+
+### Configuration Management
+- **Site Configuration**: `config/sites/`
+- **Extension Configuration**: `packages/*/Configuration/`
+- **TypoScript**: `packages/*/Configuration/TypoScript/`
+
+### Testing
+- **Unit Tests**: `packages/leseohren/Tests/Unit/`
+- **Functional Tests**: `packages/leseohren/Tests/Functional/`
+
+### Internationalization
+- **Translation Files**: `packages/*/Resources/Private/Language/`
+- **Language Keys**: `locallang.xlf`, `de.locallang.xlf`
+
+## File Naming Conventions
+
+### TYPO3 Extensions
+- Extension keys use lowercase with underscores: `leseohren`, `skombase13`
+- TCA files: `tx_[extension]_domain_model_[model].php`
+- Plugin TypoScript: `plugin.tx_[extension]_[plugin].typoscript`
+
+### Fluid Templates
+- Templates: `[Action].html` (e.g., `Index.html`, `Edit.html`)
+- Partials: `[PartialName].html`
+- Layouts: `[LayoutName].html`
+
+### SCSS Files
+- Main entry: `Main.entry.scss`
+- Abstracts: `_variables.scss`, `_mixins.scss`
+- Components: `_component-name.scss`
+- Plugins: `_plugin-name.scss`
+
+### JavaScript Files
+- Main entry: `Main.entry.js`
+- Plugin entries: `[PluginName].entry.js`
+
+## Development Workflow
+
+1. **Extension Development**: Work in `packages/leseohren/`
+2. **Site Package**: Customize in `packages/skombase13/`
+3. **Configuration**: Modify in `config/`
+4. **Assets**: Build with Vite, output to `public/_assets/`
+5. **Testing**: Write tests in `packages/leseohren/Tests/`
+6. **Documentation**: Update PRD files in root directory
+# TYPO3 Leseohren Project Directory Structure
+
+This rule documents the complete directory structure of the TYPO3 Leseohren project, including all important files and folders with their purposes.
+
+## Project Root Structure
+
+```
+leseohrendb/
+├── .cursor/                    # Cursor IDE configuration and rules
+├── .ddev/                      # DDEV development environment config
+├── .github/                    # GitHub workflows and configurations
+├── .vite/                      # Vite build cache
+├── config/                     # TYPO3 site configuration
+├── packages/                   # TYPO3 extensions
+├── public/                     # Web root directory
+├── Quellen/                    # Source materials and backups
+├── var/                        # TYPO3 temporary files
+├── vendor/                     # Composer dependencies
+├── node_modules/               # NPM dependencies
+├── composer.json               # PHP dependencies configuration
+├── composer.lock               # PHP dependencies lock file
+├── package.json                # NPM dependencies configuration
+├── package-lock.json           # NPM dependencies lock file
+├── vite.config.js              # Vite build configuration
+├── deploy.php                  # Deployment configuration
+├── rector.php                  # Rector PHP upgrade configuration
+├── renovate.json               # Renovate dependency updates
+├── .editorconfig               # Editor configuration
+├── .gitignore                  # Git ignore rules
+├── LICENSE                     # Project license
+├── README.md                   # Project documentation
+├── CHANGELOG.md                # Version change log
+├── GEMINI.md                   # Gemini AI documentation
+└── PRD_*.md                    # Product Requirements Documents
+```
+
+## Configuration Directory (`config/`)
+
+```
+config/
+├── sites/
+│   └── main/                   # Main site configuration
+│       ├── config.yaml         # Site configuration
+│       └── csp.yaml           # Content Security Policy
+└── system/
+    ├── settings.php            # TYPO3 system settings
+    ├── additional.php          # Additional system configuration
+    └── .gitignore             # Git ignore for system files
+```
+
+## Packages Directory (`packages/`)
+
+The project contains two main TYPO3 extensions:
+
+### Leseohren Extension (`packages/leseohren/`)
+
+```
+packages/leseohren/
+├── Classes/                    # PHP classes (MVC architecture)
+│   ├── Controller/             # Extbase controllers
+│   │   ├── BlackboardController.php
+│   │   ├── EventController.php
+│   │   ├── GiftController.php
+│   │   ├── HolidayController.php
+│   │   ├── OrganizationController.php
+│   │   ├── PersonController.php
+│   │   ├── PersonDashboardController.php
+│   │   ├── PresentController.php
+│   │   └── RegistrationController.php
+│   ├── Domain/                 # Domain models and repositories
+│   │   ├── Model/              # Extbase domain models
+│   │   │   ├── Blackboard.php
+│   │   │   ├── Category.php
+│   │   │   ├── Easterdate.php
+│   │   │   ├── Event.php
+│   │   │   ├── Gift.php
+│   │   │   ├── Organization.php
+│   │   │   ├── Person.php
+│   │   │   ├── Present.php
+│   │   │   └── Registration.php
+│   │   └── Repository/         # Extbase repositories
+│   │       ├── BlackboardRepository.php
+│   │       ├── CategoryRepository.php
+│   │       ├── EasterdateRepository.php
+│   │       ├── EventRepository.php
+│   │       ├── GiftRepository.php
+│   │       ├── OrganizationRepository.php
+│   │       ├── PersonRepository.php
+│   │       ├── PresentRepository.php
+│   │       └── RegistrationRepository.php
+│   ├── Property/               # Property type converters
+│   │   └── TypeConverter/
+│   ├── Updates/                # Database update scripts
+│   │   └── SKomLeseohrenCTypeMigration.php
+│   └── ViewHelpers/            # Custom Fluid view helpers
+│       ├── Format/
+│       │   └── AgeViewHelper.php
+│       └── Form/
+├── Configuration/              # TYPO3 extension configuration
+│   ├── Extbase/                # Extbase configuration
+│   │   └── Persistence/
+│   │       └── Classes.php
+│   ├── FlexForms/              # Plugin flexform configurations
+│   │   ├── Leseohren_Events.xml
+│   │   ├── Leseohren_Holidays.xml
+│   │   ├── Leseohren_PersonDashboard.xml
+│   │   └── Leseohren_Personen.xml
+│   ├── Sets/                   # Site package configurations
+│   │   └── Leseohren/
+│   │       ├── config.yaml
+│   │       ├── settings.yaml
+│   │       ├── settings.definitions.yaml
+│   │       ├── constants.typoscript
+│   │       ├── setup.typoscript
+│   │       └── TypoScript/     # Plugin TypoScript configurations
+│   │           ├── page.typoscript
+│   │           ├── plugin.tx_leseohren_blackboards.typoscript
+│   │           ├── plugin.tx_leseohren_events.typoscript
+│   │           ├── plugin.tx_leseohren_holidays.typoscript
+│   │           ├── plugin.tx_leseohren_organizations.typoscript
+│   │           ├── plugin.tx_leseohren_persondashboard.typoscript
+│   │           ├── plugin.tx_leseohren_personen.typoscript
+│   │           ├── plugin.tx_leseohren_presents.typoscript
+│   │           └── plugin.tx_leseohren_registrations.typoscript
+│   ├── TCA/                    # Table Configuration Array
+│   │   ├── Overrides/          # TCA overrides
+│   │   │   ├── sys_template.php
+│   │   │   ├── tt_content.php
+│   │   │   ├── tx_leseohren_domain_model_event.php
+│   │   │   ├── tx_leseohren_domain_model_organization.php
+│   │   │   └── tx_leseohren_domain_model_person.php
+│   │   ├── tx_leseohren_domain_model_blackboard.php
+│   │   ├── tx_leseohren_domain_model_easterdate.php
+│   │   ├── tx_leseohren_domain_model_event.php
+│   │   ├── tx_leseohren_domain_model_gift.php
+│   │   ├── tx_leseohren_domain_model_organization.php
+│   │   ├── tx_leseohren_domain_model_person.php
+│   │   ├── tx_leseohren_domain_model_present.php
+│   │   └── tx_leseohren_domain_model_registration.php
+│   ├── TypoScript/             # Extension TypoScript
+│   │   ├── constants.typoscript
+│   │   └── setup.typoscript
+│   ├── Icons.php               # Backend icon configuration
+│   ├── Services.yaml           # Dependency injection configuration
+│   ├── ViteEntrypoints.json    # Vite entry points
+│   └── page.tsconfig           # Page TSConfig
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources (not directly accessible)
+│   │   ├── Language/           # Translation files
+│   │   │   ├── locallang.xlf
+│   │   │   ├── de.locallang.xlf
+│   │   │   ├── locallang_db.xlf
+│   │   │   ├── de.locallang_db.xlf
+│   │   │   ├── locallang_flexforms.xlf
+│   │   │   ├── de.locallang_flexforms.xlf
+│   │   │   └── locallang_csh_*.xlf (context sensitive help)
+│   │   ├── Layouts/            # Fluid layouts
+│   │   │   └── Default.html
+│   │   ├── Partials/           # Fluid partials
+│   │   │   ├── Blackboard/
+│   │   │   ├── Event/
+│   │   │   ├── Gift/
+│   │   │   ├── Organization/
+│   │   │   ├── Person/
+│   │   │   ├── PersonDashboard/
+│   │   │   ├── Present/
+│   │   │   ├── Registration/
+│   │   │   └── FormErrors.html
+│   │   ├── Templates/          # Fluid templates
+│   │   │   ├── Blackboard/
+│   │   │   ├── Event/
+│   │   │   ├── Gift/
+│   │   │   ├── Holiday/
+│   │   │   ├── Organization/
+│   │   │   ├── Person/
+│   │   │   ├── PersonDashboard/
+│   │   │   ├── Present/
+│   │   │   ├── Registration/
+│   │   │   └── Main.html
+│   │   ├── Scss/               # SCSS stylesheets
+│   │   │   ├── abstracts/      # SCSS abstracts (variables, mixins)
+│   │   │   │   ├── _bem-mixin.scss
+│   │   │   │   ├── _css-vars.scss
+│   │   │   │   └── _variables.scss
+│   │   │   ├── base/           # Base styles
+│   │   │   │   └── _typography.scss
+│   │   │   ├── components/     # Component styles
+│   │   │   │   ├── _buttons.scss
+│   │   │   │   └── _modals.scss
+│   │   │   ├── layout/         # Layout styles
+│   │   │   │   └── _container.scss
+│   │   │   ├── plugins/        # Plugin-specific styles
+│   │   │   │   ├── _plugins.scss
+│   │   │   │   └── leseohren/
+│   │   │   │       ├── _leseohren.scss
+│   │   │   │       ├── _leseohren-blackboards.scss
+│   │   │   │       ├── _leseohren-events.scss
+│   │   │   │       └── _leseohren-personen.scss
+│   │   │   ├── rte/            # Rich text editor styles
+│   │   │   ├── vendor/         # Third-party styles
+│   │   │   └── Main.entry.scss # Main SCSS entry point
+│   │   ├── DataTables.entry.js # DataTables JavaScript entry
+│   │   └── .htaccess           # Apache configuration
+│   └── Public/                 # Public resources (directly accessible)
+│       ├── Css/                # Compiled CSS files
+│       │   └── datepicker-bs5.min.css
+│       ├── JavaScript/         # JavaScript files
+│       │   ├── datatables.min.css
+│       │   ├── datatables.min.js
+│       │   └── datepicker-init.js
+│       └── Icons/              # Backend icons
+│           ├── Extension.svg
+│           ├── logo_leseohren.svg
+│           ├── relation.gif
+│           ├── tx_leseohren_domain_model_*.svg
+│           └── user_plugin_*.svg
+├── Tests/                      # Unit and functional tests
+│   ├── Unit/                   # Unit tests
+│   │   ├── Controller/
+│   │   │   ├── BlackboardControllerTest.php
+│   │   │   ├── EventControllerTest.php
+│   │   │   ├── GiftControllerTest.php
+│   │   │   ├── OrganizationControllerTest.php
+│   │   │   └── PersonControllerTest.php
+│   │   └── Domain/
+│   │       └── Model/
+│   │           ├── BlackboardTest.php
+│   │           ├── EventTest.php
+│   │           ├── GiftTest.php
+│   │           ├── OrganizationTest.php
+│   │           ├── PersonTest.php
+│   │           └── PresentTest.php
+│   └── Functional/             # Functional tests
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── ext_tables.sql              # Database schema
+├── ToDo.md                     # Extension TODO list
+└── .gitignore                  # Extension git ignore
+```
+
+### SKOM Base Extension (`packages/skombase13/`)
+
+```
+packages/skombase13/
+├── Classes/                    # PHP classes
+│   ├── Controller/             # Controllers
+│   ├── Domain/                 # Domain models
+│   ├── ViewHelpers/            # View helpers
+│   └── .htaccess
+├── Configuration/              # TYPO3 configuration
+│   ├── Sets/                   # Site package configurations
+│   │   └── SitePackage/
+│   │       ├── PageTsConfig/   # Page TSConfig
+│   │       │   └── BackendLayouts/
+│   │       │       └── example.tsconfig
+│   │       ├── config.yaml
+│   │       ├── settings.yaml
+│   │       ├── constants.typoscript
+│   │       ├── setup.typoscript
+│   │       └── page.tsconfig
+│   ├── RTE/                    # Rich text editor configuration
+│   │   └── Default.yaml
+│   ├── ContentSecurityPolicies.php
+│   ├── Icons.php
+│   └── ViteEntrypoints.json
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources
+│   │   ├── Language/           # Translation files
+│   │   │   ├── locallang.xlf
+│   │   │   ├── locallang_be.xlf
+│   │   │   └── locallang_db.xlf
+│   │   ├── Layouts/            # Fluid layouts
+│   │   │   ├── ContentElements/
+│   │   │   └── Page/
+│   │   │       └── Default.html
+│   │   ├── Partials/           # Fluid partials
+│   │   │   ├── ContentElements/
+│   │   │   └── Page/
+│   │   │       ├── DropIn/
+│   │   │       │   └── Navigation/
+│   │   │       │       └── MainAfter.html
+│   │   │       ├── Navigation/
+│   │   │       │   ├── Main.html
+│   │   │       │   └── MainNavigation.html
+│   │   │       └── Structure/
+│   │   │           └── FooterMeta.html
+│   │   ├── Templates/          # Fluid templates
+│   │   │   ├── ContentElements/
+│   │   │   └── Page/
+│   │   │       └── Example.html
+│   │   ├── Scss/               # SCSS stylesheets
+│   │   │   ├── abstracts/      # SCSS abstracts
+│   │   │   │   ├── _bem-mixin.scss
+│   │   │   │   ├── _css-vars.scss
+│   │   │   │   ├── _variables.scss
+│   │   │   │   └── _variables-dark.scss
+│   │   │   ├── base/           # Base styles
+│   │   │   │   └── _typography.scss
+│   │   │   ├── components/     # Component styles
+│   │   │   │   ├── _buttons.scss
+│   │   │   │   ├── _cards.scss
+│   │   │   │   ├── _color-mode-toggle.scss
+│   │   │   │   └── _modals.scss
+│   │   │   ├── layout/         # Layout styles
+│   │   │   │   ├── _container.scss
+│   │   │   │   ├── _footer.scss
+│   │   │   │   ├── _language-menu.scss
+│   │   │   │   └── _navigation.scss
+│   │   │   ├── plugins/        # Plugin styles
+│   │   │   │   └── _plugins.scss
+│   │   │   ├── rte/            # Rich text editor styles
+│   │   │   ├── vendor/         # Third-party styles
+│   │   │   └── Main.entry.scss # Main SCSS entry point
+│   │   ├── JavaScript/         # JavaScript files
+│   │   │   └── ColorMode.js
+│   │   ├── Main.entry.js       # Main JavaScript entry
+│   │   └── .htaccess
+│   └── Public/                 # Public resources
+│       ├── Fonts/              # Web fonts
+│       │   ├── .gitkeep
+│       │   └── rubik-v19-latin-*.{eot,svg,ttf,woff,woff2}
+│       ├── Icons/              # Icons
+│       │   ├── BackendLayouts/
+│       │   │   └── example.svg
+│       │   ├── Extension.svg
+│       │   ├── favicon.ico
+│       │   ├── de-DE.svg
+│       │   ├── en-US.svg
+│       │   ├── de-DE_grey.svg
+│       │   └── en-US_grey.svg
+│       └── Images/             # Images
+│           ├── logo_leseohren.svg
+│           ├── logo-inverted.svg
+│           └── logo.svg
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── README.md                   # Extension documentation
+└── vite.config.js              # Vite configuration
+```
+
+## Public Directory (`public/`)
+
+```
+public/
+├── _assets/                    # Compiled assets (Vite output)
+│   ├── vite/                   # Vite build files
+│   └── [hash]/                 # Versioned asset files
+├── fileadmin/                  # File management
+│   ├── user_upload/            # User uploaded files
+│   ├── _temp_/                 # Temporary files
+│   ├── _processed_/            # Processed files
+│   └── .htaccess
+├── typo3/                      # TYPO3 core files
+│   ├── install.php
+│   └── index.php
+├── typo3temp/                  # TYPO3 temporary files
+│   ├── assets/                 # Temporary assets
+│   └── index.html
+├── .htaccess                   # Apache configuration
+└── index.php                   # Frontend entry point
+```
+
+## Important Configuration Files
+
+### Root Level
+- `composer.json` - PHP dependencies and project metadata
+- `package.json` - NPM dependencies and build scripts
+- `vite.config.js` - Vite build configuration
+- `deploy.php` - Deployment configuration
+- `rector.php` - PHP upgrade configuration
+- `renovate.json` - Dependency update automation
+
+### TYPO3 Configuration
+- `config/sites/main/config.yaml` - Main site configuration
+- `config/sites/main/csp.yaml` - Content Security Policy
+- `config/system/settings.php` - TYPO3 system settings
+- `config/system/additional.php` - Additional system configuration
+
+### Extension Configuration
+- `packages/*/ext_emconf.php` - Extension metadata
+- `packages/*/ext_localconf.php` - Extension local configuration
+- `packages/*/ext_tables.php` - Extension tables configuration
+- `packages/*/ext_tables.sql` - Database schema
+- `packages/*/composer.json` - Extension dependencies
+
+## Key Development Patterns
+
+### MVC Architecture
+- **Models**: `packages/leseohren/Classes/Domain/Model/`
+- **Views**: `packages/leseohren/Resources/Private/Templates/`
+- **Controllers**: `packages/leseohren/Classes/Controller/`
+
+### Asset Management
+- **SCSS**: `packages/*/Resources/Private/Scss/`
+- **JavaScript**: `packages/*/Resources/Private/JavaScript/`
+- **Compiled Assets**: `public/_assets/`
+
+### Configuration Management
+- **Site Configuration**: `config/sites/`
+- **Extension Configuration**: `packages/*/Configuration/`
+- **TypoScript**: `packages/*/Configuration/TypoScript/`
+
+### Testing
+- **Unit Tests**: `packages/leseohren/Tests/Unit/`
+- **Functional Tests**: `packages/leseohren/Tests/Functional/`
+
+### Internationalization
+- **Translation Files**: `packages/*/Resources/Private/Language/`
+- **Language Keys**: `locallang.xlf`, `de.locallang.xlf`
+
+## File Naming Conventions
+
+### TYPO3 Extensions
+- Extension keys use lowercase with underscores: `leseohren`, `skombase13`
+- TCA files: `tx_[extension]_domain_model_[model].php`
+- Plugin TypoScript: `plugin.tx_[extension]_[plugin].typoscript`
+
+### Fluid Templates
+- Templates: `[Action].html` (e.g., `Index.html`, `Edit.html`)
+- Partials: `[PartialName].html`
+- Layouts: `[LayoutName].html`
+
+### SCSS Files
+- Main entry: `Main.entry.scss`
+- Abstracts: `_variables.scss`, `_mixins.scss`
+- Components: `_component-name.scss`
+- Plugins: `_plugin-name.scss`
+
+### JavaScript Files
+- Main entry: `Main.entry.js`
+- Plugin entries: `[PluginName].entry.js`
+
+## Development Workflow
+
+1. **Extension Development**: Work in `packages/leseohren/`
+2. **Site Package**: Customize in `packages/skombase13/`
+3. **Configuration**: Modify in `config/`
+4. **Assets**: Build with Vite, output to `public/_assets/`
+5. **Testing**: Write tests in `packages/leseohren/Tests/`
+6. **Documentation**: Update PRD files in root directory

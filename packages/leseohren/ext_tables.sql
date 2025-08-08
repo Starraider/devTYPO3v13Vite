@@ -63,7 +63,7 @@ CREATE TABLE tx_leseohren_domain_model_organization (
 	vp_languages varchar(255) NOT NULL DEFAULT '',
 	vp_number int(11) NOT NULL DEFAULT '0',
 	vlpaten int(11) unsigned NOT NULL DEFAULT '0',
-	contact_person int(11) unsigned DEFAULT '0'
+	contact_person text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_leseohren_domain_model_gift (

@@ -1,0 +1,12 @@
+---
+description: Best practices for PHP development in TYPO3
+globs: **/*.{php}
+alwaysApply: false
+---
+
+- Use object-oriented programming principles to enhance modularity and reusability.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive names for functions, variables, and files for better readability.
+- Implement assertions to validate assumptions and catch potential errors early.
+- Handle potential edge cases in logic implementations to ensure robustness.
+- Maintain compatibility with specified PHP versions and TYPO3 requirements.

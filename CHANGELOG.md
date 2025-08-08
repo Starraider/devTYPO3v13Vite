@@ -92,6 +92,7 @@
 
 * Add composer normalization and JSON linting tools ([df5c93d](https://github.com/Starraider/devTYPO3v13Vite/commit/df5c93d0384f1a01e0ae322073ed030b57be30bb))
 
+
 ## 1.0.0 (2025-02-19)
 
 

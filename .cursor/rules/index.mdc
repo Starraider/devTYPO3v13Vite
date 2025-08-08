@@ -1,0 +1,387 @@
+---
+description: Project Leseohren Overview
+alwaysApply: true
+---
+
+# TYPO3 Leseohren Project Overview
+
+## 🎯 **Project Purpose and Vision**
+
+The **TYPO3 Leseohren Project** is a comprehensive database management system built on TYPO3 CMS, designed to manage and organize information about persons, companies, events, and related data. This project serves as a modern, scalable solution for managing reading mentor ("Leseohren") programs and related organizational data.
+
+### **Core Mission**
+- Provide a robust, user-friendly database for managing reading mentor programs
+- Organize and track persons, organizations, events, and related activities
+- Offer a modern web interface with responsive design and accessibility features
+- Maintain data integrity and security while ensuring easy maintenance and scalability
+
+## 🏗️ **Project Architecture**
+
+### **Technology Stack**
+- **Backend**: TYPO3 CMS (Latest LTS version) with PHP 8.2+
+- **Frontend**: Bootstrap 5 with SCSS, modern JavaScript
+- **Build System**: Vite for fast development and optimized production builds
+- **Database**: TYPO3's built-in database abstraction layer with Doctrine QueryBuilder
+- **Templating**: Fluid templating engine with Extbase framework
+
+### **Project Structure**
+```
+leseohrendb/
+├── packages/
+│   ├── leseohren/              # Main application extension
+│   ├── skombase13/             # Base site package
+│   └── migration_extend/       # Migration utilities
+├── config/                     # TYPO3 site configuration
+├── public/                     # Web root directory
+└── vendor/                     # Composer dependencies
+```
+
+## 📦 **Extension Overview**
+
+### **1. Main Application Extension (`packages/leseohren/`)**
+The core application that contains:
+- **Domain Models**: Person, Organization, Event, Gift, Present, Registration, etc.
+- **Controllers**: Extbase controllers for all major functionalities
+- **Templates**: Fluid templates for frontend display
+- **Database Schema**: Complete data structure for the application
+- **Frontend Assets**: SCSS, JavaScript, and compiled assets
+
+**Key Features:**
+- Person management with detailed profiles
+- Organization tracking and management
+- Event planning and registration
+- Gift and present tracking
+- Registration system for activities
+- Dashboard functionality for overview and statistics
+
+### **2. Base Site Package (`packages/skombase13/`)**
+A foundation site package providing:
+- **Base Templates**: Page layouts and content element templates
+- **Styling Foundation**: SCSS structure with Bootstrap 5 integration
+- **Configuration**: Site-wide TypoScript and YAML configurations
+- **Asset Management**: Vite integration for modern build processes
+
+**Purpose:**
+- Provides consistent styling and layout across the application
+- Implements responsive design principles
+- Ensures accessibility compliance
+- Offers reusable components and patterns
+
+### **3. Migration Extension (`packages/migration_extend/`)**
+Utilities for migrating from older TYPO3 versions:
+- **Data Migration**: Tools for upgrading existing data structures
+- **Configuration Updates**: Migration scripts for TypoScript and settings
+- **Compatibility Layer**: Ensures smooth transition between versions
+
+## 🎨 **Design Philosophy**
+
+### **User Experience Principles**
+- **Accessibility First**: All components must meet WCAG guidelines
+- **Responsive Design**: Mobile-first approach with Bootstrap 5
+- **Intuitive Navigation**: Clear, logical information architecture
+- **Performance Optimized**: Fast loading times and efficient data handling
+
+### **Development Standards**
+- **Semantic HTML**: Proper use of HTML5 semantic elements
+- **BEM Methodology**: Consistent CSS class naming conventions
+- **Component-Based Architecture**: Modular, reusable code structure
+- **Type Safety**: Strict typing in PHP and proper JavaScript practices
+
+## 🔧 **Technical Guidelines**
+
+### **PHP/TYPO3 Development**
+- **PSR-2 Coding Standard**: Consistent code formatting and structure
+- **Extbase Framework**: Use for all plugin development
+- **Domain-Driven Design**: Clear separation of business logic
+- **Security First**: Input validation, output sanitization, and proper authentication
+
+### **Frontend Development**
+- **SCSS Architecture**: Organized with abstracts, components, layout, and utilities
+- **Bootstrap Integration**: Leverage Bootstrap components while maintaining customizability
+- **JavaScript Modules**: Modern ES6+ syntax with proper module organization
+- **Asset Optimization**: Vite for fast development and optimized production builds
+
+### **Database Design**
+- **Normalized Structure**: Proper database normalization for data integrity
+- **QueryBuilder Usage**: Use Doctrine QueryBuilder for all database interactions
+- **Indexing Strategy**: Proper database indexing for performance
+- **Migration Support**: Version-controlled database schema changes
+
+## 🚀 **Development Workflow**
+
+### **Key Principles**
+1. **Sequential Thinking**: Always plan before implementation
+2. **Modular Development**: Build reusable, testable components
+3. **Documentation**: Maintain clear documentation for all features
+4. **Testing**: Implement unit and functional tests for critical functionality
+
+### **Best Practices**
+- **Don't Remove Existing Functionality**: Preserve existing structures unless explicitly required
+- **Handle Edge Cases**: Consider and handle potential error scenarios
+- **Use TYPO3 APIs**: Leverage built-in TYPO3 functions when available
+- **Internationalization**: Support multiple languages using XLIFF
+- **Logging**: Implement proper logging for debugging and monitoring
+
+## 📋 **Project Goals**
+
+### **Short-term Objectives**
+- Maintain and improve existing functionality
+- Ensure compatibility with latest TYPO3 LTS version
+- Optimize performance and user experience
+- Enhance accessibility features
+
+### **Long-term Vision**
+- Scalable architecture for growing user base
+- Advanced reporting and analytics capabilities
+- Integration with external systems and APIs
+- Mobile application development
+- Advanced search and filtering capabilities
+
+## 🔒 **Security Considerations**
+
+### **Data Protection**
+- **Input Validation**: All user inputs are validated and sanitized
+- **Output Encoding**: Proper encoding to prevent XSS attacks
+- **Authentication**: Secure user authentication and authorization
+- **Data Privacy**: Compliance with data protection regulations
+
+### **System Security**
+- **TYPO3 Security Guidelines**: Follow TYPO3's security best practices
+- **Regular Updates**: Keep dependencies and TYPO3 core updated
+- **Access Control**: Proper permission management and role-based access
+- **Audit Logging**: Track important system activities and changes
+
+## 📚 **Documentation and Resources**
+
+### **Project Documentation**
+- **PRD Files**: Product Requirements Documents in project root
+- **Code Comments**: Comprehensive DocBlocks for all PHP classes and methods
+- **README Files**: Extension-specific documentation
+- **Change Log**: Version history and feature documentation
+
+### **External Resources**
+- **TYPO3 Documentation**: Official TYPO3 documentation and tutorials
+- **Bootstrap Documentation**: Component library and customization guides
+- **SCSS Guidelines**: Best practices for SCSS development
+- **Accessibility Guidelines**: WCAG compliance resources
+
+## 🎯 **Success Metrics**
+
+### **Technical Metrics**
+- **Performance**: Page load times under 3 seconds
+- **Accessibility**: WCAG 2.1 AA compliance
+- **Code Quality**: Maintainable, well-documented codebase
+- **Security**: Zero critical security vulnerabilities
+
+### **User Experience Metrics**
+- **Usability**: Intuitive interface with minimal learning curve
+- **Responsiveness**: Consistent experience across all devices
+- **Efficiency**: Streamlined workflows for common tasks
+- **Satisfaction**: Positive user feedback and adoption rates
+
+## 🔄 **Continuous Improvement**
+
+### **Development Process**
+- **Regular Reviews**: Code quality and architecture reviews
+- **Performance Monitoring**: Continuous performance optimization
+- **User Feedback**: Incorporate user suggestions and requirements
+- **Technology Updates**: Stay current with TYPO3 and web technologies
+
+### **Quality Assurance**
+- **Automated Testing**: Unit and functional test coverage
+- **Code Standards**: Consistent coding standards and practices
+- **Documentation Updates**: Keep documentation current and comprehensive
+- **Security Audits**: Regular security assessments and updates
+
+This project represents a modern, scalable solution for managing reading mentor programs and related organizational data, built with best practices, security, and user experience in mind. The modular architecture ensures maintainability and extensibility for future growth and requirements.
+# TYPO3 Leseohren Project Overview
+
+## 🎯 **Project Purpose and Vision**
+
+The **TYPO3 Leseohren Project** is a comprehensive database management system built on TYPO3 CMS, designed to manage and organize information about persons, companies, events, and related data. This project serves as a modern, scalable solution for managing reading mentor ("Leseohren") programs and related organizational data.
+
+### **Core Mission**
+- Provide a robust, user-friendly database for managing reading mentor programs
+- Organize and track persons, organizations, events, and related activities
+- Offer a modern web interface with responsive design and accessibility features
+- Maintain data integrity and security while ensuring easy maintenance and scalability
+
+## 🏗️ **Project Architecture**
+
+### **Technology Stack**
+- **Backend**: TYPO3 CMS (Latest LTS version) with PHP 8.2+
+- **Frontend**: Bootstrap 5 with SCSS, modern JavaScript
+- **Build System**: Vite for fast development and optimized production builds
+- **Database**: TYPO3's built-in database abstraction layer with Doctrine QueryBuilder
+- **Templating**: Fluid templating engine with Extbase framework
+
+### **Project Structure**
+```
+leseohrendb/
+├── packages/
+│   ├── leseohren/              # Main application extension
+│   ├── skombase13/             # Base site package
+│   └── migration_extend/       # Migration utilities
+├── config/                     # TYPO3 site configuration
+├── public/                     # Web root directory
+└── vendor/                     # Composer dependencies
+```
+
+## 📦 **Extension Overview**
+
+### **1. Main Application Extension (`packages/leseohren/`)**
+The core application that contains:
+- **Domain Models**: Person, Organization, Event, Gift, Present, Registration, etc.
+- **Controllers**: Extbase controllers for all major functionalities
+- **Templates**: Fluid templates for frontend display
+- **Database Schema**: Complete data structure for the application
+- **Frontend Assets**: SCSS, JavaScript, and compiled assets
+
+**Key Features:**
+- Person management with detailed profiles
+- Organization tracking and management
+- Event planning and registration
+- Gift and present tracking
+- Registration system for activities
+- Dashboard functionality for overview and statistics
+
+### **2. Base Site Package (`packages/skombase13/`)**
+A foundation site package providing:
+- **Base Templates**: Page layouts and content element templates
+- **Styling Foundation**: SCSS structure with Bootstrap 5 integration
+- **Configuration**: Site-wide TypoScript and YAML configurations
+- **Asset Management**: Vite integration for modern build processes
+
+**Purpose:**
+- Provides consistent styling and layout across the application
+- Implements responsive design principles
+- Ensures accessibility compliance
+- Offers reusable components and patterns
+
+### **3. Migration Extension (`packages/migration_extend/`)**
+Utilities for migrating from older TYPO3 versions:
+- **Data Migration**: Tools for upgrading existing data structures
+- **Configuration Updates**: Migration scripts for TypoScript and settings
+- **Compatibility Layer**: Ensures smooth transition between versions
+
+## 🎨 **Design Philosophy**
+
+### **User Experience Principles**
+- **Accessibility First**: All components must meet WCAG guidelines
+- **Responsive Design**: Mobile-first approach with Bootstrap 5
+- **Intuitive Navigation**: Clear, logical information architecture
+- **Performance Optimized**: Fast loading times and efficient data handling
+
+### **Development Standards**
+- **Semantic HTML**: Proper use of HTML5 semantic elements
+- **BEM Methodology**: Consistent CSS class naming conventions
+- **Component-Based Architecture**: Modular, reusable code structure
+- **Type Safety**: Strict typing in PHP and proper JavaScript practices
+
+## 🔧 **Technical Guidelines**
+
+### **PHP/TYPO3 Development**
+- **PSR-2 Coding Standard**: Consistent code formatting and structure
+- **Extbase Framework**: Use for all plugin development
+- **Domain-Driven Design**: Clear separation of business logic
+- **Security First**: Input validation, output sanitization, and proper authentication
+
+### **Frontend Development**
+- **SCSS Architecture**: Organized with abstracts, components, layout, and utilities
+- **Bootstrap Integration**: Leverage Bootstrap components while maintaining customizability
+- **JavaScript Modules**: Modern ES6+ syntax with proper module organization
+- **Asset Optimization**: Vite for fast development and optimized production builds
+
+### **Database Design**
+- **Normalized Structure**: Proper database normalization for data integrity
+- **QueryBuilder Usage**: Use Doctrine QueryBuilder for all database interactions
+- **Indexing Strategy**: Proper database indexing for performance
+- **Migration Support**: Version-controlled database schema changes
+
+## 🚀 **Development Workflow**
+
+### **Key Principles**
+1. **Sequential Thinking**: Always plan before implementation
+2. **Modular Development**: Build reusable, testable components
+3. **Documentation**: Maintain clear documentation for all features
+4. **Testing**: Implement unit and functional tests for critical functionality
+
+### **Best Practices**
+- **Don't Remove Existing Functionality**: Preserve existing structures unless explicitly required
+- **Handle Edge Cases**: Consider and handle potential error scenarios
+- **Use TYPO3 APIs**: Leverage built-in TYPO3 functions when available
+- **Internationalization**: Support multiple languages using XLIFF
+- **Logging**: Implement proper logging for debugging and monitoring
+
+## 📋 **Project Goals**
+
+### **Short-term Objectives**
+- Maintain and improve existing functionality
+- Ensure compatibility with latest TYPO3 LTS version
+- Optimize performance and user experience
+- Enhance accessibility features
+
+### **Long-term Vision**
+- Scalable architecture for growing user base
+- Advanced reporting and analytics capabilities
+- Integration with external systems and APIs
+- Mobile application development
+- Advanced search and filtering capabilities
+
+## 🔒 **Security Considerations**
+
+### **Data Protection**
+- **Input Validation**: All user inputs are validated and sanitized
+- **Output Encoding**: Proper encoding to prevent XSS attacks
+- **Authentication**: Secure user authentication and authorization
+- **Data Privacy**: Compliance with data protection regulations
+
+### **System Security**
+- **TYPO3 Security Guidelines**: Follow TYPO3's security best practices
+- **Regular Updates**: Keep dependencies and TYPO3 core updated
+- **Access Control**: Proper permission management and role-based access
+- **Audit Logging**: Track important system activities and changes
+
+## 📚 **Documentation and Resources**
+
+### **Project Documentation**
+- **PRD Files**: Product Requirements Documents in project root
+- **Code Comments**: Comprehensive DocBlocks for all PHP classes and methods
+- **README Files**: Extension-specific documentation
+- **Change Log**: Version history and feature documentation
+
+### **External Resources**
+- **TYPO3 Documentation**: Official TYPO3 documentation and tutorials
+- **Bootstrap Documentation**: Component library and customization guides
+- **SCSS Guidelines**: Best practices for SCSS development
+- **Accessibility Guidelines**: WCAG compliance resources
+
+## 🎯 **Success Metrics**
+
+### **Technical Metrics**
+- **Performance**: Page load times under 3 seconds
+- **Accessibility**: WCAG 2.1 AA compliance
+- **Code Quality**: Maintainable, well-documented codebase
+- **Security**: Zero critical security vulnerabilities
+
+### **User Experience Metrics**
+- **Usability**: Intuitive interface with minimal learning curve
+- **Responsiveness**: Consistent experience across all devices
+- **Efficiency**: Streamlined workflows for common tasks
+- **Satisfaction**: Positive user feedback and adoption rates
+
+## 🔄 **Continuous Improvement**
+
+### **Development Process**
+- **Regular Reviews**: Code quality and architecture reviews
+- **Performance Monitoring**: Continuous performance optimization
+- **User Feedback**: Incorporate user suggestions and requirements
+- **Technology Updates**: Stay current with TYPO3 and web technologies
+
+### **Quality Assurance**
+- **Automated Testing**: Unit and functional test coverage
+- **Code Standards**: Consistent coding standards and practices
+- **Documentation Updates**: Keep documentation current and comprehensive
+- **Security Audits**: Regular security assessments and updates
+
+This project represents a modern, scalable solution for managing reading mentor programs and related organizational data, built with best practices, security, and user experience in mind. The modular architecture ensures maintainability and extensibility for future growth and requirements.

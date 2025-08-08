@@ -1,0 +1,6 @@
+NOTE: PASTE THIS DIRECTLY IN TO THE CHAT WHERE THE STYLE GUIDE WAS MADE
+
+Fuse your <pondering> analysis with the app idea below, and then wrap your thoughts in <pontificating> tags.
+After you're done, output an updated Style Guide based on the app below:
+
+IMPORTANT: PASTE IN YOUR ACTUAL MVP BASED ON THE MVP GENERATOR STAGE

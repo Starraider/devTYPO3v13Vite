@@ -1,0 +1,15 @@
+---
+description: Best practices for using Bootstrap and SCSS in TYPO3 projects
+globs: **/*.{scss,css,html}
+alwaysApply: false
+---
+
+- Leverage Bootstrap's grid system for responsive layouts using container, row, and column classes.
+- Utilize Bootstrap components (e.g., buttons, modals) to enhance user experience without extensive custom CSS.
+- Apply Bootstrap's utility classes for quick styling adjustments.
+- Ensure all components are accessible; use ARIA attributes and semantic HTML.
+- Customize Bootstrap's Sass variables and mixins for a unique theme without overriding defaults.
+- Use Bootstrap's responsive utilities to manage visibility and layout across devices.
+- Keep custom styles minimal; prefer Bootstrap's classes for consistency.
+- Use BEM (Block Element Modifier) methodology for naming classes of components
+- Avoid !important; use specificity to manage styles.

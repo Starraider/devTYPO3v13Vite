@@ -1,0 +1,21 @@
+Erstelle für die leseohren Extension jeweils den passenden route enhancer für die folgenden Fälle:
+
+1. Listenansicht der Personen:
+Die URL für die Listenansicht der Personen soll dem folgenden Beispielschema entsprechen:
+"https:www.my-website.de/my-page/personen.html
+
+2. Detailansicht der Personen:
+Die URL für die Detailansicht der einzelnen Personen soll dem folgenden Beispielschema für "Max Mustermann" entsprechen:
+"https:www.my-website.de/my-page/personen/max-mustermann.html
+
+3. Listenansicht der Organisationen:
+Die URL für die Listenansicht der Organisationen soll dem folgenden Beispielschema entsprechen:
+"https:www.my-website.de/my-page/organisationen.html
+
+4. Detailansicht der Organisationen:
+Die URL für die Detailansicht der einzelnen Organisationen soll dem folgenden Beispielschema für "Einstein Gymnasium" entsprechen:
+"https:www.my-website.de/my-page/personen/einstein-gymnasium.html
+
+Hole dir dafür mit context7 die aktuelle Dokumentation von TYPO3 v13 zum Thema "Route Enhancements and Aspects: for extensions".
+
+Speichere die erstellten Route Enhancer in der leseohren-Extension in der Datei packages/leseohren/Configuration/Route/routeEnhancers.yaml und binde diese anschließend in der Sidekonfiguration unter config/sites/main/config.yaml ein.
