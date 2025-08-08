@@ -11,9 +11,9 @@ This rule documents the complete application stack, dependencies, versions, and 
 ## Core Technology Stack
 
 ### 🐘 **PHP Platform**
-- **Version**: 8.2.0 (configured in composer.json)
-- **Status**: ✅ **Current LTS** (Supported until November 2025)
-- **Recommendation**: Consider upgrading to PHP 8.3 for better performance and features
+- **Version**: 8.3.0 (configured in composer.json)
+- **Status**: ✅ **Current LTS** (Supported until November 2026)
+- **Recommendation**: ✅ **Optimal Version** - Using latest stable PHP with excellent performance and features
 
 ### 🏗️ **TYPO3 CMS**
 - **Version**: 13.4.x (LTS)
@@ -196,20 +196,20 @@ All TYPO3 core packages are pinned to version 13.4, ensuring consistency:
 1. **Consistent TYPO3 Versions**: All core packages use ^13.4
 2. **Modern Build Tools**: Vite for fast development and building
 3. **Current Dependencies**: Most packages are on latest stable versions
-4. **LTS Versions**: Using TYPO3 13.4 LTS and PHP 8.2 LTS
+4. **LTS Versions**: Using TYPO3 13.4 LTS and PHP 8.3 LTS
+5. **PHP 8.3**: Using latest stable PHP with excellent performance
 
 ### ⚠️ **Areas for Improvement**
 1. **Development Versions**: Consider stable versioning for custom extensions
 2. **Moment.js**: Plan migration to Luxon or native Date API
-3. **PHP Version**: Consider upgrading to PHP 8.3
-4. **Deployer**: Allow minor version updates
+3. **Deployer**: Allow minor version updates
 
 ### 🔄 **Upgrade Recommendations**
 
 #### **Short Term (Next 3 months)**
 1. Migrate custom extensions from @dev to stable versions
 2. Replace Moment.js with Luxon
-3. Update PHP to 8.3
+3. ✅ **PHP 8.3**: Already implemented
 
 #### **Medium Term (Next 6 months)**
 1. Evaluate TYPO3 v14 compatibility
@@ -227,6 +227,7 @@ All TYPO3 core packages are pinned to version 13.4, ensuring consistency:
 1. **LTS Versions**: Using supported LTS versions
 2. **Regular Updates**: Dependencies are relatively current
 3. **Composer Security**: Using composer for dependency management
+4. **PHP 8.3**: Latest security patches and features
 
 ### 🔒 **Security Recommendations**
 1. **Regular Updates**: Keep dependencies updated monthly
@@ -239,6 +240,7 @@ All TYPO3 core packages are pinned to version 13.4, ensuring consistency:
 1. **Vite Build**: Fast development and optimized production builds
 2. **Terser Minification**: Optimized JavaScript minification
 3. **Modern Dependencies**: Using current, performant libraries
+4. **PHP 8.3**: Significant performance improvements over PHP 8.2
 
 ### ⚡ **Performance Recommendations**
 1. **Bundle Analysis**: Monitor bundle sizes with Vite
@@ -253,6 +255,7 @@ All TYPO3 core packages are pinned to version 13.4, ensuring consistency:
 2. **Live Reload**: Automatic browser refresh
 3. **SCSS Compilation**: Modern CSS preprocessing
 4. **TypeScript Support**: Available through Vite
+5. **PHP 8.3**: Latest PHP features and performance
 
 ### 📋 **Development Commands**
 ```bash
@@ -285,285 +288,8 @@ composer ci:php:sniff    # PHP code style check
 
 ## Conclusion
 
-The TYPO3 Leseohren project uses a modern, well-maintained technology stack with current versions of most dependencies. The main areas for improvement are migrating from development versions to stable releases and planning the transition from deprecated libraries like Moment.js. The build system with Vite provides excellent development experience and performance optimization.
-# TYPO3 Leseohren Application Stack
+The TYPO3 Leseohren project uses a modern, well-maintained technology stack with current versions of most dependencies. The upgrade to PHP 8.3 provides significant performance improvements and access to the latest PHP features. The main areas for improvement are migrating from development versions to stable releases and planning the transition from deprecated libraries like Moment.js. The build system with Vite provides excellent development experience and performance optimization.
 
-This rule documents the complete application stack, dependencies, versions, and best practices for the TYPO3 Leseohren project.
-
-## Core Technology Stack
-
-### 🐘 **PHP Platform**
-- **Version**: 8.2.0 (configured in composer.json)
-- **Status**: ✅ **Current LTS** (Supported until November 2025)
-- **Recommendation**: Consider upgrading to PHP 8.3 for better performance and features
-
-### 🏗️ **TYPO3 CMS**
-- **Version**: 13.4.x (LTS)
-- **Status**: ✅ **Current LTS** (Supported until April 2027)
-- **Release Date**: April 2024
-- **Next Major**: TYPO3 v14 (Expected April 2025)
-
-## PHP Dependencies (Composer)
-
-### Core TYPO3 Packages (^13.4)
-All TYPO3 core packages are pinned to version 13.4, ensuring consistency:
-
-```json
-{
-  "typo3/cms-backend": "^13.4",
-  "typo3/cms-core": "^13.4",
-  "typo3/cms-extbase": "^13.4",
-  "typo3/cms-fluid": "^13.4",
-  "typo3/cms-frontend": "^13.4"
-  // ... and 25+ other core packages
-}
-```
-
-**✅ Best Practice**: Using consistent version constraints for all TYPO3 packages
-
-### Third-Party Extensions
-
-#### **b13/container** (^3.1)
-- **Purpose**: Dependency injection container for TYPO3
-- **Status**: ✅ **Current** (Latest stable)
-- **Recommendation**: Good choice for modern TYPO3 development
-
-#### **bk2k/bootstrap-package** (^15.0)
-- **Purpose**: Bootstrap-based site package for TYPO3
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Bootstrap 5, SCSS, modern frontend tooling
-- **Recommendation**: Excellent choice for responsive design
-
-#### **fluidtypo3/vhs** (@dev)
-- **Purpose**: Enhanced Fluid view helpers
-- **Status**: ⚠️ **Development Version**
-- **Recommendation**: Consider using stable version for production
-
-#### **helhum/typo3-console** (^8.2)
-- **Purpose**: CLI tools for TYPO3
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Database commands, cache management, extension management
-
-#### **praetorius/vite-asset-collector** (^1.12)
-- **Purpose**: Vite integration for TYPO3
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Modern asset bundling and development workflow
-
-### Development Dependencies
-
-#### **b13/make** (^0.1.8)
-- **Purpose**: TYPO3 extension generator
-- **Status**: ✅ **Current** (Latest stable)
-
-#### **deployer/deployer** (7.4.1)
-- **Purpose**: Deployment automation
-- **Status**: ⚠️ **Specific Version** (Consider allowing minor updates)
-
-#### **ergebnis/composer-normalize** (^2.45)
-- **Purpose**: Composer.json normalization
-- **Status**: ✅ **Current** (Latest stable)
-
-#### **ssch/typo3-rector** (^3.0)
-- **Purpose**: Automated TYPO3 upgrades
-- **Status**: ✅ **Current** (Latest stable)
-- **Recommendation**: Essential for TYPO3 upgrades
-
-## Frontend Dependencies (NPM)
-
-### Build Tools
-
-#### **Vite** (^5.4.14)
-- **Purpose**: Modern build tool and dev server
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Fast HMR, ES modules, modern bundling
-- **Configuration**: Custom Vite config with TYPO3 integration
-
-#### **Sass** (^1.80.6)
-- **Purpose**: CSS preprocessor
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: SCSS compilation, modern CSS features
-
-#### **Terser** (^5.43.1)
-- **Purpose**: JavaScript minification
-- **Status**: ✅ **Current** (Latest stable)
-- **Configuration**: Custom terser options for TYPO3 compatibility
-
-### UI Framework
-
-#### **Bootstrap** (^5.3.3)
-- **Purpose**: CSS framework
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Responsive design, components, utilities
-- **Integration**: Used via bootstrap-package extension
-
-#### **Bootstrap Icons** (^1.11.3)
-- **Purpose**: Icon library
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: 1,600+ icons, consistent with Bootstrap
-
-### Data Tables
-
-#### **DataTables.net** (^2.2.1)
-- **Purpose**: Advanced table functionality
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Sorting, filtering, pagination, export
-- **Plugins**: Multiple DataTables plugins for enhanced functionality
-
-#### **DataTables Extensions**
-- **Buttons** (^3.2.1): Export buttons (CSV, Excel, PDF)
-- **DateTime** (^1.5.5): Date/time handling
-- **Responsive** (^3.0.3): Mobile-friendly tables
-- **SearchBuilder** (^1.8.1): Advanced search interface
-- **SearchPanes** (^2.3.3): Faceted search
-- **Select** (^3.0.0): Row/column selection
-
-### Date/Time Libraries
-
-#### **Luxon** (^3.5.0)
-- **Purpose**: Modern date/time manipulation
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Immutable, timezone-aware, modern API
-
-#### **Moment.js** (^2.30.1)
-- **Purpose**: Legacy date/time library
-- **Status**: ⚠️ **Deprecated** (Consider migration to Luxon)
-- **Recommendation**: Plan migration to Luxon or native Date API
-
-#### **vanillajs-datepicker** (^1.3.4)
-- **Purpose**: Date picker component
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Lightweight, no dependencies
-
-### Export/Print Libraries
-
-#### **jszip** (^3.10.1)
-- **Purpose**: ZIP file creation
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Client-side ZIP generation
-
-#### **pdfmake** (^0.2.18)
-- **Purpose**: PDF generation
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Client-side PDF creation
-
-### TYPO3 Integration
-
-#### **vite-plugin-typo3** (^1.3.0)
-- **Purpose**: Vite integration for TYPO3
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Asset collection, TYPO3-specific optimizations
-
-#### **vite-plugin-live-reload** (^3.0.4)
-- **Purpose**: Live reload for development
-- **Status**: ✅ **Current** (Latest stable)
-- **Features**: Automatic browser refresh on file changes
-
-## Custom Extensions
-
-### **skom/leseohren** (@dev)
-- **Purpose**: Main application extension
-- **TYPO3 Compatibility**: ^12.4 || ^13.4
-- **Status**: ⚠️ **Development Version**
-- **Recommendation**: Use stable versioning for production
-
-### **skom/skombase13** (@dev)
-- **Purpose**: Base site package
-- **Dependencies**: bk2k/bootstrap-package (^15.0)
-- **Status**: ⚠️ **Development Version**
-- **Recommendation**: Use stable versioning for production
-
-## Version Management Best Practices
-
-### ✅ **Current Best Practices**
-1. **Consistent TYPO3 Versions**: All core packages use ^13.4
-2. **Modern Build Tools**: Vite for fast development and building
-3. **Current Dependencies**: Most packages are on latest stable versions
-4. **LTS Versions**: Using TYPO3 13.4 LTS and PHP 8.2 LTS
-
-### ⚠️ **Areas for Improvement**
-1. **Development Versions**: Consider stable versioning for custom extensions
-2. **Moment.js**: Plan migration to Luxon or native Date API
-3. **PHP Version**: Consider upgrading to PHP 8.3
-4. **Deployer**: Allow minor version updates
-
-### 🔄 **Upgrade Recommendations**
-
-#### **Short Term (Next 3 months)**
-1. Migrate custom extensions from @dev to stable versions
-2. Replace Moment.js with Luxon
-3. Update PHP to 8.3
-
-#### **Medium Term (Next 6 months)**
-1. Evaluate TYPO3 v14 compatibility
-2. Review DataTables usage and consider alternatives
-3. Update to TYPO3 v14 when stable
-
-#### **Long Term (Next 12 months)**
-1. Plan TYPO3 v14 migration
-2. Evaluate modern alternatives to DataTables
-3. Consider migration to modern CSS frameworks
-
-## Security Considerations
-
-### ✅ **Secure Practices**
-1. **LTS Versions**: Using supported LTS versions
-2. **Regular Updates**: Dependencies are relatively current
-3. **Composer Security**: Using composer for dependency management
-
-### 🔒 **Security Recommendations**
-1. **Regular Updates**: Keep dependencies updated monthly
-2. **Security Scanning**: Use tools like `composer audit`
-3. **Vulnerability Monitoring**: Monitor security advisories for all packages
-
-## Performance Considerations
-
-### ✅ **Performance Optimizations**
-1. **Vite Build**: Fast development and optimized production builds
-2. **Terser Minification**: Optimized JavaScript minification
-3. **Modern Dependencies**: Using current, performant libraries
-
-### ⚡ **Performance Recommendations**
-1. **Bundle Analysis**: Monitor bundle sizes with Vite
-2. **Tree Shaking**: Ensure unused code is eliminated
-3. **Caching**: Implement proper caching strategies
-4. **CDN**: Consider CDN for static assets
-
-## Development Workflow
-
-### 🛠️ **Current Setup**
-1. **Vite Dev Server**: Fast hot module replacement
-2. **Live Reload**: Automatic browser refresh
-3. **SCSS Compilation**: Modern CSS preprocessing
-4. **TypeScript Support**: Available through Vite
-
-### 📋 **Development Commands**
-```bash
-# Install dependencies
-composer install
-npm install
-
-# Development
-npm run dev          # Start Vite dev server
-npm run build        # Build for production
-
-# Code quality
-composer fix:composer    # Normalize composer.json
-composer ci:php:sniff    # PHP code style check
-```
-
-## Monitoring and Maintenance
-
-### 📊 **Version Monitoring**
-- **Composer**: `composer outdated`
-- **NPM**: `npm outdated`
-- **TYPO3**: Extension Manager
-- **Security**: `composer audit`
-
-### 🔄 **Update Strategy**
-1. **Monthly**: Check for security updates
-2. **Quarterly**: Update minor versions
-3. **Annually**: Plan major version upgrades
-4. **LTS Releases**: Align with TYPO3 LTS schedule
 
 ## Conclusion
 

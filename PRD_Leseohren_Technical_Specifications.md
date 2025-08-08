@@ -6,7 +6,7 @@
 The Leseohren system is built as a TYPO3 extension following the MVC (Model-View-Controller) pattern with Extbase framework integration.
 
 ### 1.2 Technology Stack Details
-- **PHP Version**: 8.2+ with strict typing enabled
+- **PHP Version**: 8.3+ with strict typing enabled
 - **TYPO3 Version**: Latest LTS (v12+)
 - **Database**: MySQL 8.0+ / MariaDB 10.5+
 - **Frontend Framework**: Bootstrap 5.x

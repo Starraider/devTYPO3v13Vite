@@ -14,7 +14,7 @@ The Leseohren system follows TYPO3 best practices with a focus on:
 #### 1.2.1 Prerequisites
 ```bash
 # Required software
-- PHP 8.2+
+- PHP 8.3+
 - Composer 2.0+
 - Node.js 18+
 - MySQL 8.0+ / MariaDB 10.5+

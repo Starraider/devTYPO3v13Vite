@@ -9,7 +9,7 @@
 - **Primary Purpose**: Management of volunteer reading services ("Leseohren" = reading ears)
 - **Target Users**: Volunteer coordinators, administrators, and volunteers
 - **Domain**: Non-profit volunteer services, reading assistance programs
-- **Technology Stack**: TYPO3 CMS, PHP 8.2+, Bootstrap, SCSS, JavaScript
+- **Technology Stack**: TYPO3 CMS, PHP 8.3+, Bootstrap, SCSS, JavaScript
 
 ### 1.3 Key Value Propositions
 - Centralized volunteer management and coordination
@@ -25,7 +25,7 @@
 - **Frontend**: Bootstrap 5, SCSS, JavaScript
 - **Database**: MySQL/MariaDB with Doctrine QueryBuilder
 - **Build System**: Vite for asset compilation
-- **Development**: PHP 8.2+, Composer for dependency management
+- **Development**: PHP 8.3+, Composer for dependency management
 
 ### 2.2 Extension Structure
 ```
