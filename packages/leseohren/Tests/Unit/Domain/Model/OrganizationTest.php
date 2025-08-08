@@ -61,10 +61,10 @@ class OrganizationTest extends UnitTestCase
     /**
      * @test
      */
-    public function getContactPersonReturnsInitialValueForPerson(): void
+    public function getContactPersonReturnsInitialValueForString(): void
     {
-        self::assertEquals(
-            null,
+        self::assertSame(
+            '',
             $this->subject->getContactPerson()
         );
     }
@@ -72,11 +72,10 @@ class OrganizationTest extends UnitTestCase
     /**
      * @test
      */
-    public function setContactPersonForPersonSetsContactPerson(): void
+    public function setContactPersonForStringSetsContactPerson(): void
     {
-        $contactPersonFixture = new Person();
-        $this->subject->setContactPerson($contactPersonFixture);
+        $this->subject->setContactPerson('Conceived at T3CON10');
 
-        self::assertEquals($contactPersonFixture, $this->subject->_get('contactPerson'));
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('contactPerson'));
     }
 }
