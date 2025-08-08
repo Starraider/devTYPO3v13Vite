@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.3.0...v1.4.0) (2025-08-08)
+
+
+### Features
+
+* add cursor rules and prompts ([f4ce5c5](https://github.com/Starraider/devTYPO3v13Vite/commit/f4ce5c5ea48f5867b973b464c2097503da213127))
+* add list type to CType mapping for Leseohren in SKomLeseohrenCTypeMigration ([504db56](https://github.com/Starraider/devTYPO3v13Vite/commit/504db56b56853eea14c3f7368a9dd023907fe407))
+* upgrade to PHP 8.3, enhancing performance and security; update documentation and application stack to reflect changes ([fa020f3](https://github.com/Starraider/devTYPO3v13Vite/commit/fa020f3e5bcb986af22e265cf35b5070d4619797))
+
+
+### Bug Fixes
+
+* update OrganizationTest to reflect changes in contactPerson handling and adjust .env for TYPO3_CONTEXT ([0917600](https://github.com/Starraider/devTYPO3v13Vite/commit/0917600deba06d8baa328e915c3acca87239ca23))
+
 ## [1.3.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.2.0...v1.3.0) (2025-07-24)
 
 
