@@ -1,0 +1,1830 @@
+---
+description: TYPO3 v13 Extension Development Best Practices
+globs: packages/**/*
+alwaysApply: false
+---
+
+# TYPO3 v13 Extension Development Best Practices
+
+This rule defines the standard structure and best practices for creating TYPO3 v13 extensions with controllers and database tables, based on proven patterns.
+
+## 📁 Extension Directory Structure
+
+### Root Extension Structure
+```
+packages/[extension-name]/
+├── Classes/                    # PHP classes (MVC architecture)
+│   ├── Controller/             # Extbase controllers
+│   │   ├── [Model]Controller.php
+│   │   └── [Model]DashboardController.php
+│   ├── Domain/                 # Domain models and repositories
+│   │   ├── Model/              # Extbase domain models
+│   │   │   ├── [Model].php
+│   │   │   └── [RelatedModel].php
+│   │   └── Repository/         # Extbase repositories
+│   │       ├── [Model]Repository.php
+│   │       └── [RelatedModel]Repository.php
+│   ├── Property/               # Property type converters
+│   │   └── TypeConverter/
+│   ├── Updates/                # Database update scripts
+│   └── ViewHelpers/            # Custom Fluid view helpers
+│       ├── Format/
+│       └── Form/
+├── Configuration/              # TYPO3 extension configuration
+│   ├── Extbase/                # Extbase configuration
+│   │   └── Persistence/
+│   │       └── Classes.php
+│   ├── FlexForms/              # Plugin flexform configurations
+│   │   └── [Extension]_[Plugin].xml
+│   ├── Sets/                   # extension configurations (if needed)
+│   ├── TCA/                    # Table Configuration Array
+│   │   ├── Overrides/          # TCA overrides
+│   │   └── tx_[extension]_domain_model_[model].php
+│   ├── TypoScript/             # Extension TypoScript
+│   │   ├── constants.typoscript
+│   │   └── setup.typoscript
+│   ├── Icons.php               # Backend icon configuration
+│   ├── Services.yaml           # Dependency injection configuration
+│   ├── ViteEntrypoints.json    # Vite entry points
+│   └── page.tsconfig           # Page TSConfig
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources (not directly accessible)
+│   │   ├── Language/           # Translation files
+│   │   │   ├── locallang.xlf
+│   │   │   ├── de.locallang.xlf
+│   │   │   ├── locallang_db.xlf
+│   │   │   ├── de.locallang_db.xlf
+│   │   │   ├── locallang_flexforms.xlf
+│   │   │   └── de.locallang_flexforms.xlf
+│   │   ├── Layouts/            # Fluid layouts
+│   │   ├── Partials/           # Fluid partials
+│   │   │   ├── [Model]/
+│   │   │   └── FormErrors.html
+│   │   ├── Templates/          # Fluid templates
+│   │   │   ├── [Model]/
+│   │   │   └── Main.html
+│   │   ├── Scss/               # SCSS stylesheets
+│   │   └── JavaScript/         # JavaScript files
+│   └── Public/                 # Public resources (directly accessible)
+│       ├── Icons/              # Backend icons
+│       └── Images/             # Images
+├── Tests/                      # Unit and functional tests
+│   ├── Unit/                   # Unit tests
+│   │   ├── Controller/
+│   │   └── Domain/
+│   │       └── Model/
+│   └── Functional/             # Functional tests
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── ext_tables.sql              # Database schema
+└── README.md                   # Extension documentation
+```
+
+## 🔧 Configuration Best Practices
+
+### composer.json Structure
+
+#### For Extensions with Testing (like leseohren)
+```json
+{
+    "name": "vendor/extension-name",
+    "type": "typo3-cms-extension",
+    "description": "Extension description",
+    "authors": [
+        {
+            "name": "Author Name",
+            "email": "author@example.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^12.4 || ^13.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\ExtensionName\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vendor\\ExtensionName\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/extension-name": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+        ]
+    },
+    "extra": {
+        "typo3/cms": {
+            "web-dir": ".Build/public",
+            "extension-key": "extension_name"
+        }
+    }
+}
+```
+
+**Note**: The `.Build/` directories are used only for **testing environments** and are typically gitignored. In production DDEV/TYPO3 environments, extensions use the standard `vendor/` and `public/` directories from the root project.
+
+#### For Site Packages (like skombase13)
+```json
+{
+    "name": "vendor/extension-name",
+    "type": "typo3-cms-extension",
+    "description": "Site package for TYPO3 v13 with Vite",
+    "homepage": "https://www.example.com",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "require": {
+        "bk2k/bootstrap-package": "^15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\ExtensionName\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "extension_name"
+        }
+    }
+}
+```
+
+#### For Root Project (like leseohrendb)
+```json
+{
+    "name": "typo3/cms-base-distribution",
+    "description": "TYPO3 CMS Base Distribution",
+    "license": "GPL-2.0-or-later",
+    "type": "project",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Author Name",
+            "email": "author@example.com",
+            "homepage": "http://www.example.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^13.4",
+        "vendor/extension-name": "@dev"
+    },
+    "require-dev": {
+        "b13/make": "^0.1.8",
+        "deployer/deployer": "7.4.1",
+        "ergebnis/composer-normalize": "^2.45",
+        "ssch/typo3-rector": "^3.0"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/*"
+        },
+        {
+            "type": "composer",
+            "url": "https://composer.typo3.org/"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "helhum/dotenv-connector": true,
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "platform": {
+            "php": "8.2.0"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "ci:composer:normalize": "@composer normalize --dry-run",
+        "ci:json:lint": "find . ! -path '*public/*' ! -path '*vendor/*' ! -path '*.vscode/*' ! -path '*var/*' -name '*.json' | xargs -r php ./vendor/bin/jsonlint",
+        "ci:php:sniff": "exec ./vendor/bin/phpcs packages/extension-name",
+        "fix:composer": "@composer normalize"
+    }
+}
+```
+
+## 📁 Directory Structure in DDEV/TYPO3 Environments
+
+### **Standard DDEV/TYPO3 Structure**
+In DDEV/TYPO3 environments, the directory structure follows these conventions:
+
+```
+project-root/
+├── .ddev/                      # DDEV configuration
+├── packages/                   # TYPO3 extensions
+│   ├── extension-name/         # Individual extensions
+│   └── site-package/          # Site packages
+├── public/                     # Web root (docroot)
+│   ├── index.php              # TYPO3 entry point
+│   ├── typo3/                 # TYPO3 core files
+│   └── fileadmin/             # File management
+├── vendor/                     # Composer dependencies (shared)
+├── config/                     # TYPO3 site configuration
+└── var/                        # TYPO3 temporary files
+```
+
+### **Extension Testing vs Production**
+- **Testing Environment**: Extensions use `.Build/` directories for isolated testing
+- **Production Environment**: Extensions use the root project's `vendor/` and `public/` directories
+- **DDEV Configuration**: Uses `docroot: public` pointing to the `public/` directory
+
+### **Key Points**
+1. **Extensions don't have their own `vendor/` directories** in production
+2. **All dependencies are managed at the root level**
+3. **Extensions are installed via path repositories** (`packages/*`)
+4. **Testing uses isolated `.Build/` directories** (gitignored)
+5. **DDEV serves from `public/` directory** as configured in `.ddev/config.yaml`
+
+### ext_emconf.php Structure
+```php
+<?php
+
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Extension Title',
+    'description' => 'Extension description',
+    'category' => 'plugin',
+    'author' => 'Author Name',
+    'author_email' => 'author@example.com',
+    'author_company' => 'Company Name',
+    'state' => 'stable',
+    'version' => '1.0.0',
+    'constraints' => [
+        'depends' => [
+            'typo3' => '12.4.0-13.4.99',
+        ],
+        'conflicts' => [],
+        'suggests' => [],
+    ],
+];
+```
+
+## 🏗️ Domain Model Best Practices
+
+### Model Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Domain\Model;
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Annotation\Validate;
+
+/**
+ * Model description
+ */
+class ModelName extends AbstractEntity
+{
+    /**
+     * @var ObjectStorage<RelatedModel>
+     */
+    protected $relatedModels;
+
+    /**
+     * Property description
+     *
+     * @var string
+     */
+    #[Validate(['validator' => 'NotEmpty'])]
+    protected $property = '';
+
+    /**
+     * Date property
+     *
+     * @var \DateTime|null
+     */
+    protected $dateProperty = null;
+
+    /**
+     * Boolean property
+     *
+     * @var bool
+     */
+    protected $booleanProperty = false;
+
+    /**
+     * Integer property
+     *
+     * @var int
+     */
+    protected $integerProperty = 0;
+
+    public function __construct()
+    {
+        $this->relatedModels = new ObjectStorage();
+    }
+
+    public function initializeObject(): void
+    {
+        // Initialize if needed
+    }
+
+    // Getter and Setter methods
+    public function getProperty(): string
+    {
+        return $this->property;
+    }
+
+    public function setProperty(string $property): void
+    {
+        $this->property = $property;
+    }
+
+    // ObjectStorage methods for relations
+    public function addRelatedModel(RelatedModel $relatedModel): void
+    {
+        $this->relatedModels->attach($relatedModel);
+    }
+
+    public function removeRelatedModel(RelatedModel $relatedModelToRemove): void
+    {
+        $this->relatedModels->detach($relatedModelToRemove);
+    }
+
+    public function getRelatedModels(): ObjectStorage
+    {
+        return $this->relatedModels;
+    }
+
+    public function setRelatedModels(ObjectStorage $relatedModels): void
+    {
+        $this->relatedModels = $relatedModels;
+    }
+}
+```
+
+### Repository Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Domain\Repository;
+
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
+/**
+ * Repository for ModelName
+ */
+class ModelNameRepository extends Repository
+{
+    /**
+     * Find by custom criteria
+     */
+    public function findByCustomCriteria(string $criteria): array
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('property', $criteria)
+        );
+        $query->setOrderings([
+            'property' => QueryInterface::ORDER_ASCENDING
+        ]);
+
+        return $query->execute()->toArray();
+    }
+
+    /**
+     * Find active records
+     */
+    public function findActive(): array
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('hidden', 0)
+        );
+
+        return $query->execute()->toArray();
+    }
+}
+```
+
+## 🎮 Controller Best Practices
+
+### Controller Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Controller;
+
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
+use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
+use Vendor\ExtensionName\Domain\Repository\ModelNameRepository;
+use Vendor\ExtensionName\Domain\Model\ModelName;
+
+/**
+ * ModelNameController
+ */
+class ModelNameController extends ActionController
+{
+    protected ModelNameRepository $modelNameRepository;
+
+    public function __construct(ModelNameRepository $modelNameRepository)
+    {
+        $this->modelNameRepository = $modelNameRepository;
+    }
+
+    /**
+     * List action
+     */
+    public function listAction(): ResponseInterface
+    {
+        $models = $this->modelNameRepository->findAll();
+        $this->view->assign('models', $models);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Show action
+     */
+    public function showAction(ModelName $model): ResponseInterface
+    {
+        $this->view->assign('model', $model);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * New action
+     */
+    public function newAction(): ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Create action
+     */
+    public function createAction(ModelName $newModel): ResponseInterface
+    {
+        $this->modelNameRepository->add($newModel);
+
+        $this->addFlashMessage(
+            'Model created successfully.',
+            'Success',
+            ContextualFeedbackSeverity::OK
+        );
+
+        return $this->redirect('list');
+    }
+
+    /**
+     * Edit action
+     */
+    #[IgnoreValidation(['value' => 'model'])]
+    public function editAction(ModelName $model): ResponseInterface
+    {
+        $this->view->assign('model', $model);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Update action
+     */
+    public function updateAction(ModelName $model): ResponseInterface
+    {
+        $this->modelNameRepository->update($model);
+
+        $this->addFlashMessage(
+            'Model updated successfully.',
+            'Success',
+            ContextualFeedbackSeverity::OK
+        );
+
+        return $this->redirect('list');
+    }
+
+    /**
+     * Delete action
+     */
+    public function deleteAction(ModelName $model): ResponseInterface
+    {
+        $this->modelNameRepository->remove($model);
+
+        $this->addFlashMessage(
+            'Model deleted successfully.',
+            'Success',
+            ContextualFeedbackSeverity::OK
+        );
+
+        return $this->redirect('list');
+    }
+}
+```
+
+## 📊 TCA Configuration Best Practices
+
+### TCA Structure
+```php
+<?php
+
+return [
+    'ctrl' => [
+        'title' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname',
+        'label' => 'property',
+        'label_alt' => 'property2',
+        'label_alt_force' => true,
+        'default_sortby' => 'property ASC',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'versioningWS' => true,
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ],
+        'searchFields' => 'property,property2',
+        'iconfile' => 'EXT:extension_name/Resources/Public/Icons/tx_extension_domain_model_modelname.svg',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
+    ],
+    'types' => [
+        '1' => [
+            'showitem' => '
+                --div--;LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.tabs.general,
+                    property, property2,
+                --div--;LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.tabs.relations,
+                    related_models,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                    hidden,
+                    starttime,
+                    endtime'
+        ],
+    ],
+    'palettes' => [
+        'generalPalette' => [
+            'label' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.palettes.general',
+            'showitem' => 'property, --linebreak--, property2',
+        ],
+    ],
+    'columns' => [
+        'hidden' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                        'invertStateDisplay' => true
+                    ]
+                ],
+            ]
+        ],
+        'starttime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime,int',
+                'default' => 0,
+            ]
+        ],
+        'endtime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime,int',
+                'default' => 0,
+            ]
+        ],
+        'property' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.property',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim,required',
+                'required' => true,
+            ]
+        ],
+        'related_models' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.related_models',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_extension_domain_model_relatedmodel',
+                'foreign_field' => 'parent_model',
+                'maxitems' => 9999,
+                'appearance' => [
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ]
+        ],
+    ],
+];
+```
+
+## 🗄️ Database Schema Best Practices
+
+### ext_tables.sql Structure
+```sql
+CREATE TABLE tx_extension_domain_model_modelname (
+    uid int(11) NOT NULL auto_increment,
+    pid int(11) DEFAULT 0 NOT NULL,
+
+    tstamp int(11) unsigned DEFAULT 0 NOT NULL,
+    crdate int(11) unsigned DEFAULT 0 NOT NULL,
+    cruser_id int(11) unsigned DEFAULT 0 NOT NULL,
+    deleted tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    hidden tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    starttime int(11) unsigned DEFAULT 0 NOT NULL,
+    endtime int(11) unsigned DEFAULT 0 NOT NULL,
+
+    property varchar(255) DEFAULT '' NOT NULL,
+    property2 text,
+    date_property int(11) DEFAULT 0 NOT NULL,
+    boolean_property tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    integer_property int(11) DEFAULT 0 NOT NULL,
+
+    parent_model int(11) unsigned DEFAULT 0,
+
+    PRIMARY KEY (uid),
+    KEY parent (pid),
+    KEY parent_model (parent_model)
+);
+
+CREATE TABLE tx_extension_domain_model_relatedmodel (
+    uid int(11) NOT NULL auto_increment,
+    pid int(11) DEFAULT 0 NOT NULL,
+
+    tstamp int(11) unsigned DEFAULT 0 NOT NULL,
+    crdate int(11) unsigned DEFAULT 0 NOT NULL,
+    cruser_id int(11) unsigned DEFAULT 0 NOT NULL,
+    deleted tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    hidden tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    starttime int(11) unsigned DEFAULT 0 NOT NULL,
+    endtime int(11) unsigned DEFAULT 0 NOT NULL,
+
+    property varchar(255) DEFAULT '' NOT NULL,
+
+    parent_model int(11) unsigned DEFAULT 0,
+
+    PRIMARY KEY (uid),
+    KEY parent (pid),
+    KEY parent_model (parent_model)
+);
+```
+
+## 🔧 Extbase Configuration
+
+### Configuration/Extbase/Persistence/Classes.php
+```php
+<?php
+
+return [
+    \Vendor\ExtensionName\Domain\Model\ModelName::class => [
+        'tableName' => 'tx_extension_domain_model_modelname',
+        'properties' => [
+            'property' => [
+                'fieldName' => 'property'
+            ],
+            'relatedModels' => [
+                'fieldName' => 'related_models'
+            ],
+        ],
+    ],
+    \Vendor\ExtensionName\Domain\Model\RelatedModel::class => [
+        'tableName' => 'tx_extension_domain_model_relatedmodel',
+        'properties' => [
+            'property' => [
+                'fieldName' => 'property'
+            ],
+            'parentModel' => [
+                'fieldName' => 'parent_model'
+            ],
+        ],
+    ],
+];
+```
+
+## 🎨 TypoScript Configuration
+
+### Configuration/TypoScript/setup.typoscript
+```typoscript
+plugin.tx_extension {
+    view {
+        templateRootPaths.0 = EXT:extension_name/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:extension_name/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:extension_name/Resources/Private/Layouts/
+    }
+    persistence {
+        storagePid = {$plugin.tx_extension.persistence.storagePid}
+    }
+    features {
+        skipDefaultArguments = 1
+    }
+    mvc {
+        callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+# Plugin configuration
+plugin.tx_extension_modelname {
+    settings {
+        # Custom settings
+    }
+}
+```
+
+## 🌐 FlexForm Configuration
+
+### Configuration/FlexForms/Extension_ModelName.xml
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:extension_name/Resources/Private/Language/locallang_flexforms.xlf:plugin.modelname.sheet_title</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.storagePid>
+                        <TCEforms>
+                            <label>LLL:EXT:extension_name/Resources/Private/Language/locallang_flexforms.xlf:plugin.modelname.storage_pid</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.storagePid>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>
+```
+
+## 🧪 Testing Best Practices
+
+### Unit Test Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Tests\Unit\Domain\Model;
+
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use Vendor\ExtensionName\Domain\Model\ModelName;
+
+/**
+ * Test case for ModelName
+ */
+class ModelNameTest extends UnitTestCase
+{
+    protected ModelName $subject;
+
+    protected function setUp(): void
+    {
+        $this->subject = new ModelName();
+    }
+
+    protected function tearDown(): void
+    {
+        unset($this->subject);
+    }
+
+    /**
+     * @test
+     */
+    public function getPropertyReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getProperty()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPropertyForStringSetsProperty(): void
+    {
+        $this->subject->setProperty('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->getProperty());
+    }
+}
+```
+
+## 🚫 Common Anti-Patterns to Avoid
+
+### ❌ Don't Use Old TYPO3 v11 Patterns
+```php
+// ❌ Bad: Old TYPO3 v11 pattern
+class OldController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+    public function indexAction()
+    {
+        // Old pattern without ResponseInterface
+    }
+}
+
+// ✅ Good: TYPO3 v13 pattern
+class NewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+    public function indexAction(): ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+}
+```
+
+### ❌ Don't Use Deprecated Annotations
+```php
+// ❌ Bad: Old annotation style
+/**
+ * @validate $property NotEmpty
+ */
+protected $property;
+
+// ✅ Good: TYPO3 v13 attribute style
+#[Validate(['validator' => 'NotEmpty'])]
+protected $property;
+```
+
+### ❌ Don't Skip Type Declarations
+```php
+// ❌ Bad: Missing type declarations
+public function getProperty()
+{
+    return $this->property;
+}
+
+// ✅ Good: Proper type declarations
+public function getProperty(): string
+{
+    return $this->property;
+}
+```
+
+### ❌ Don't Use Global Variables
+```php
+// ❌ Bad: Using global variables
+public function someAction()
+{
+    global $TYPO3_CONF_VARS;
+    // ...
+}
+
+// ✅ Good: Use dependency injection
+public function __construct(SomeService $someService)
+{
+    $this->someService = $someService;
+}
+```
+
+## 📋 Checklist for New Extension
+
+### ✅ Basic Structure
+- [ ] Extension directory created in `packages/`
+- [ ] `composer.json` with proper dependencies
+- [ ] `ext_emconf.php` with correct metadata
+- [ ] `ext_localconf.php` and `ext_tables.php`
+
+### ✅ Domain Models
+- [ ] Domain models extend `AbstractEntity`
+- [ ] Proper type declarations for all properties
+- [ ] Validation attributes where needed
+- [ ] ObjectStorage for relations
+- [ ] Proper getter/setter methods
+
+### ✅ Controllers
+- [ ] Controllers extend `ActionController`
+- [ ] All actions return `ResponseInterface`
+- [ ] Proper dependency injection
+- [ ] Flash messages for user feedback
+- [ ] Proper validation handling
+
+### ✅ TCA Configuration
+- [ ] TCA files in `Configuration/TCA/`
+- [ ] Proper field configurations
+- [ ] Palettes for logical grouping
+- [ ] Proper relations configuration
+- [ ] Search fields defined
+
+### ✅ Database Schema
+- [ ] `ext_tables.sql` with proper structure
+- [ ] All necessary fields included
+- [ ] Proper indexes for performance
+- [ ] Foreign key relationships
+
+### ✅ Testing
+- [ ] Unit tests for models
+- [ ] Unit tests for controllers
+- [ ] Functional tests for complete workflows
+- [ ] Proper test data setup
+
+## 🔄 TYPO3 v13 Specific Changes
+
+### New Features to Use
+- **Attributes instead of annotations**: Use `#[Validate]` instead of `@validate`
+- **ResponseInterface**: All controller actions must return `ResponseInterface`
+- **Strict typing**: Use `declare(strict_types=1)` and proper type hints
+- **Constructor property promotion**: Use PHP 8 features where possible
+- **Modern dependency injection**: Use constructor injection
+
+### Deprecated Features to Avoid
+- **Old annotation syntax**: Don't use `@validate`, `@inject`, etc.
+- **Global variables**: Avoid `$GLOBALS`, `$TYPO3_CONF_VARS`
+- **Old TCA syntax**: Use modern TCA configuration
+- **Old Extbase patterns**: Use modern Extbase patterns
+
+This rule ensures consistent, maintainable, and scalable TYPO3 v13 extensions following current best practices and avoiding common pitfalls.
+# TYPO3 v13 Extension Development Best Practices
+
+This rule defines the standard structure and best practices for creating TYPO3 v13 extensions with controllers and database tables, based on the proven patterns from the leseohren extension.
+
+## 📁 Extension Directory Structure
+
+### Root Extension Structure
+```
+packages/[extension-name]/
+├── Classes/                    # PHP classes (MVC architecture)
+│   ├── Controller/             # Extbase controllers
+│   │   ├── [Model]Controller.php
+│   │   └── [Model]DashboardController.php
+│   ├── Domain/                 # Domain models and repositories
+│   │   ├── Model/              # Extbase domain models
+│   │   │   ├── [Model].php
+│   │   │   └── [RelatedModel].php
+│   │   └── Repository/         # Extbase repositories
+│   │       ├── [Model]Repository.php
+│   │       └── [RelatedModel]Repository.php
+│   ├── Property/               # Property type converters
+│   │   └── TypeConverter/
+│   ├── Updates/                # Database update scripts
+│   └── ViewHelpers/            # Custom Fluid view helpers
+│       ├── Format/
+│       └── Form/
+├── Configuration/              # TYPO3 extension configuration
+│   ├── Extbase/                # Extbase configuration
+│   │   └── Persistence/
+│   │       └── Classes.php
+│   ├── FlexForms/              # Plugin flexform configurations
+│   │   └── [Extension]_[Plugin].xml
+│   ├── Sets/                   # Site package configurations (if needed)
+│   ├── TCA/                    # Table Configuration Array
+│   │   ├── Overrides/          # TCA overrides
+│   │   └── tx_[extension]_domain_model_[model].php
+│   ├── TypoScript/             # Extension TypoScript
+│   │   ├── constants.typoscript
+│   │   └── setup.typoscript
+│   ├── Icons.php               # Backend icon configuration
+│   ├── Services.yaml           # Dependency injection configuration
+│   ├── ViteEntrypoints.json    # Vite entry points
+│   └── page.tsconfig           # Page TSConfig
+├── Resources/                  # Frontend resources
+│   ├── Private/                # Private resources (not directly accessible)
+│   │   ├── Language/           # Translation files
+│   │   │   ├── locallang.xlf
+│   │   │   ├── de.locallang.xlf
+│   │   │   ├── locallang_db.xlf
+│   │   │   ├── de.locallang_db.xlf
+│   │   │   ├── locallang_flexforms.xlf
+│   │   │   └── de.locallang_flexforms.xlf
+│   │   ├── Layouts/            # Fluid layouts
+│   │   ├── Partials/           # Fluid partials
+│   │   │   ├── [Model]/
+│   │   │   └── FormErrors.html
+│   │   ├── Templates/          # Fluid templates
+│   │   │   ├── [Model]/
+│   │   │   └── Main.html
+│   │   ├── Scss/               # SCSS stylesheets
+│   │   └── JavaScript/         # JavaScript files
+│   └── Public/                 # Public resources (directly accessible)
+│       ├── Icons/              # Backend icons
+│       └── Images/             # Images
+├── Tests/                      # Unit and functional tests
+│   ├── Unit/                   # Unit tests
+│   │   ├── Controller/
+│   │   └── Domain/
+│   │       └── Model/
+│   └── Functional/             # Functional tests
+├── composer.json               # Extension composer configuration
+├── ext_emconf.php              # Extension metadata
+├── ext_localconf.php           # Extension local configuration
+├── ext_tables.php              # Extension tables configuration
+├── ext_tables.sql              # Database schema
+└── README.md                   # Extension documentation
+```
+
+## 🔧 Configuration Best Practices
+
+### composer.json Structure
+```json
+{
+    "name": "vendor/extension-name",
+    "type": "typo3-cms-extension",
+    "description": "Extension description",
+    "authors": [
+        {
+            "name": "Author Name",
+            "email": "author@example.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^12.4 || ^13.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\ExtensionName\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vendor\\ExtensionName\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/extension-name": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+        ]
+    },
+    "extra": {
+        "typo3/cms": {
+            "web-dir": ".Build/public",
+            "extension-key": "extension_name"
+        }
+    }
+}
+```
+
+### ext_emconf.php Structure
+```php
+<?php
+
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Extension Title',
+    'description' => 'Extension description',
+    'category' => 'plugin',
+    'author' => 'Author Name',
+    'author_email' => 'author@example.com',
+    'author_company' => 'Company Name',
+    'state' => 'stable',
+    'version' => '1.0.0',
+    'constraints' => [
+        'depends' => [
+            'typo3' => '12.4.0-13.4.99',
+        ],
+        'conflicts' => [],
+        'suggests' => [],
+    ],
+];
+```
+
+## 🏗️ Domain Model Best Practices
+
+### Model Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Domain\Model;
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Annotation\Validate;
+
+/**
+ * Model description
+ */
+class ModelName extends AbstractEntity
+{
+    /**
+     * @var ObjectStorage<RelatedModel>
+     */
+    protected $relatedModels;
+
+    /**
+     * Property description
+     *
+     * @var string
+     */
+    #[Validate(['validator' => 'NotEmpty'])]
+    protected $property = '';
+
+    /**
+     * Date property
+     *
+     * @var \DateTime|null
+     */
+    protected $dateProperty = null;
+
+    /**
+     * Boolean property
+     *
+     * @var bool
+     */
+    protected $booleanProperty = false;
+
+    /**
+     * Integer property
+     *
+     * @var int
+     */
+    protected $integerProperty = 0;
+
+    public function __construct()
+    {
+        $this->relatedModels = new ObjectStorage();
+    }
+
+    public function initializeObject(): void
+    {
+        // Initialize if needed
+    }
+
+    // Getter and Setter methods
+    public function getProperty(): string
+    {
+        return $this->property;
+    }
+
+    public function setProperty(string $property): void
+    {
+        $this->property = $property;
+    }
+
+    // ObjectStorage methods for relations
+    public function addRelatedModel(RelatedModel $relatedModel): void
+    {
+        $this->relatedModels->attach($relatedModel);
+    }
+
+    public function removeRelatedModel(RelatedModel $relatedModelToRemove): void
+    {
+        $this->relatedModels->detach($relatedModelToRemove);
+    }
+
+    public function getRelatedModels(): ObjectStorage
+    {
+        return $this->relatedModels;
+    }
+
+    public function setRelatedModels(ObjectStorage $relatedModels): void
+    {
+        $this->relatedModels = $relatedModels;
+    }
+}
+```
+
+### Repository Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Domain\Repository;
+
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
+/**
+ * Repository for ModelName
+ */
+class ModelNameRepository extends Repository
+{
+    /**
+     * Find by custom criteria
+     */
+    public function findByCustomCriteria(string $criteria): array
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('property', $criteria)
+        );
+        $query->setOrderings([
+            'property' => QueryInterface::ORDER_ASCENDING
+        ]);
+
+        return $query->execute()->toArray();
+    }
+
+    /**
+     * Find active records
+     */
+    public function findActive(): array
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('hidden', 0)
+        );
+
+        return $query->execute()->toArray();
+    }
+}
+```
+
+## 🎮 Controller Best Practices
+
+### Controller Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Controller;
+
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
+use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
+use Vendor\ExtensionName\Domain\Repository\ModelNameRepository;
+use Vendor\ExtensionName\Domain\Model\ModelName;
+
+/**
+ * ModelNameController
+ */
+class ModelNameController extends ActionController
+{
+    protected ModelNameRepository $modelNameRepository;
+
+    public function __construct(ModelNameRepository $modelNameRepository)
+    {
+        $this->modelNameRepository = $modelNameRepository;
+    }
+
+    /**
+     * List action
+     */
+    public function listAction(): ResponseInterface
+    {
+        $models = $this->modelNameRepository->findAll();
+        $this->view->assign('models', $models);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Show action
+     */
+    public function showAction(ModelName $model): ResponseInterface
+    {
+        $this->view->assign('model', $model);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * New action
+     */
+    public function newAction(): ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Create action
+     */
+    public function createAction(ModelName $newModel): ResponseInterface
+    {
+        $this->modelNameRepository->add($newModel);
+
+        $this->addFlashMessage(
+            'Model created successfully.',
+            'Success',
+            ContextualFeedbackSeverity::OK
+        );
+
+        return $this->redirect('list');
+    }
+
+    /**
+     * Edit action
+     */
+    #[IgnoreValidation(['value' => 'model'])]
+    public function editAction(ModelName $model): ResponseInterface
+    {
+        $this->view->assign('model', $model);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Update action
+     */
+    public function updateAction(ModelName $model): ResponseInterface
+    {
+        $this->modelNameRepository->update($model);
+
+        $this->addFlashMessage(
+            'Model updated successfully.',
+            'Success',
+            ContextualFeedbackSeverity::OK
+        );
+
+        return $this->redirect('list');
+    }
+
+    /**
+     * Delete action
+     */
+    public function deleteAction(ModelName $model): ResponseInterface
+    {
+        $this->modelNameRepository->remove($model);
+
+        $this->addFlashMessage(
+            'Model deleted successfully.',
+            'Success',
+            ContextualFeedbackSeverity::OK
+        );
+
+        return $this->redirect('list');
+    }
+}
+```
+
+## 📊 TCA Configuration Best Practices
+
+### TCA Structure
+```php
+<?php
+
+return [
+    'ctrl' => [
+        'title' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname',
+        'label' => 'property',
+        'label_alt' => 'property2',
+        'label_alt_force' => true,
+        'default_sortby' => 'property ASC',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'versioningWS' => true,
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ],
+        'searchFields' => 'property,property2',
+        'iconfile' => 'EXT:extension_name/Resources/Public/Icons/tx_extension_domain_model_modelname.svg',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
+    ],
+    'types' => [
+        '1' => [
+            'showitem' => '
+                --div--;LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.tabs.general,
+                    property, property2,
+                --div--;LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.tabs.relations,
+                    related_models,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                    hidden,
+                    starttime,
+                    endtime'
+        ],
+    ],
+    'palettes' => [
+        'generalPalette' => [
+            'label' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.palettes.general',
+            'showitem' => 'property, --linebreak--, property2',
+        ],
+    ],
+    'columns' => [
+        'hidden' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                        'invertStateDisplay' => true
+                    ]
+                ],
+            ]
+        ],
+        'starttime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime,int',
+                'default' => 0,
+            ]
+        ],
+        'endtime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime,int',
+                'default' => 0,
+            ]
+        ],
+        'property' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.property',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim,required',
+                'required' => true,
+            ]
+        ],
+        'related_models' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:extension_name/Resources/Private/Language/locallang_db.xlf:tx_extension_domain_model_modelname.related_models',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_extension_domain_model_relatedmodel',
+                'foreign_field' => 'parent_model',
+                'maxitems' => 9999,
+                'appearance' => [
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ]
+        ],
+    ],
+];
+```
+
+## 🗄️ Database Schema Best Practices
+
+### ext_tables.sql Structure
+```sql
+CREATE TABLE tx_extension_domain_model_modelname (
+    uid int(11) NOT NULL auto_increment,
+    pid int(11) DEFAULT 0 NOT NULL,
+
+    tstamp int(11) unsigned DEFAULT 0 NOT NULL,
+    crdate int(11) unsigned DEFAULT 0 NOT NULL,
+    cruser_id int(11) unsigned DEFAULT 0 NOT NULL,
+    deleted tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    hidden tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    starttime int(11) unsigned DEFAULT 0 NOT NULL,
+    endtime int(11) unsigned DEFAULT 0 NOT NULL,
+
+    property varchar(255) DEFAULT '' NOT NULL,
+    property2 text,
+    date_property int(11) DEFAULT 0 NOT NULL,
+    boolean_property tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    integer_property int(11) DEFAULT 0 NOT NULL,
+
+    parent_model int(11) unsigned DEFAULT 0,
+
+    PRIMARY KEY (uid),
+    KEY parent (pid),
+    KEY parent_model (parent_model)
+);
+
+CREATE TABLE tx_extension_domain_model_relatedmodel (
+    uid int(11) NOT NULL auto_increment,
+    pid int(11) DEFAULT 0 NOT NULL,
+
+    tstamp int(11) unsigned DEFAULT 0 NOT NULL,
+    crdate int(11) unsigned DEFAULT 0 NOT NULL,
+    cruser_id int(11) unsigned DEFAULT 0 NOT NULL,
+    deleted tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    hidden tinyint(4) unsigned DEFAULT 0 NOT NULL,
+    starttime int(11) unsigned DEFAULT 0 NOT NULL,
+    endtime int(11) unsigned DEFAULT 0 NOT NULL,
+
+    property varchar(255) DEFAULT '' NOT NULL,
+
+    parent_model int(11) unsigned DEFAULT 0,
+
+    PRIMARY KEY (uid),
+    KEY parent (pid),
+    KEY parent_model (parent_model)
+);
+```
+
+## 🔧 Extbase Configuration
+
+### Configuration/Extbase/Persistence/Classes.php
+```php
+<?php
+
+return [
+    \Vendor\ExtensionName\Domain\Model\ModelName::class => [
+        'tableName' => 'tx_extension_domain_model_modelname',
+        'properties' => [
+            'property' => [
+                'fieldName' => 'property'
+            ],
+            'relatedModels' => [
+                'fieldName' => 'related_models'
+            ],
+        ],
+    ],
+    \Vendor\ExtensionName\Domain\Model\RelatedModel::class => [
+        'tableName' => 'tx_extension_domain_model_relatedmodel',
+        'properties' => [
+            'property' => [
+                'fieldName' => 'property'
+            ],
+            'parentModel' => [
+                'fieldName' => 'parent_model'
+            ],
+        ],
+    ],
+];
+```
+
+## 🎨 TypoScript Configuration
+
+### Configuration/TypoScript/setup.typoscript
+```typoscript
+plugin.tx_extension {
+    view {
+        templateRootPaths.0 = EXT:extension_name/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:extension_name/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:extension_name/Resources/Private/Layouts/
+    }
+    persistence {
+        storagePid = {$plugin.tx_extension.persistence.storagePid}
+    }
+    features {
+        skipDefaultArguments = 1
+    }
+    mvc {
+        callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+# Plugin configuration
+plugin.tx_extension_modelname {
+    settings {
+        # Custom settings
+    }
+}
+```
+
+## 🌐 FlexForm Configuration
+
+### Configuration/FlexForms/Extension_ModelName.xml
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:extension_name/Resources/Private/Language/locallang_flexforms.xlf:plugin.modelname.sheet_title</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.storagePid>
+                        <TCEforms>
+                            <label>LLL:EXT:extension_name/Resources/Private/Language/locallang_flexforms.xlf:plugin.modelname.storage_pid</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.storagePid>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>
+```
+
+## 🧪 Testing Best Practices
+
+### Unit Test Structure
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\ExtensionName\Tests\Unit\Domain\Model;
+
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use Vendor\ExtensionName\Domain\Model\ModelName;
+
+/**
+ * Test case for ModelName
+ */
+class ModelNameTest extends UnitTestCase
+{
+    protected ModelName $subject;
+
+    protected function setUp(): void
+    {
+        $this->subject = new ModelName();
+    }
+
+    protected function tearDown(): void
+    {
+        unset($this->subject);
+    }
+
+    /**
+     * @test
+     */
+    public function getPropertyReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getProperty()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPropertyForStringSetsProperty(): void
+    {
+        $this->subject->setProperty('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->getProperty());
+    }
+}
+```
+
+## 🚫 Common Anti-Patterns to Avoid
+
+### ❌ Don't Use Old TYPO3 v11 Patterns
+```php
+// ❌ Bad: Old TYPO3 v11 pattern
+class OldController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+    public function indexAction()
+    {
+        // Old pattern without ResponseInterface
+    }
+}
+
+// ✅ Good: TYPO3 v13 pattern
+class NewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+    public function indexAction(): ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+}
+```
+
+### ❌ Don't Use Deprecated Annotations
+```php
+// ❌ Bad: Old annotation style
+/**
+ * @validate $property NotEmpty
+ */
+protected $property;
+
+// ✅ Good: TYPO3 v13 attribute style
+#[Validate(['validator' => 'NotEmpty'])]
+protected $property;
+```
+
+### ❌ Don't Skip Type Declarations
+```php
+// ❌ Bad: Missing type declarations
+public function getProperty()
+{
+    return $this->property;
+}
+
+// ✅ Good: Proper type declarations
+public function getProperty(): string
+{
+    return $this->property;
+}
+```
+
+### ❌ Don't Use Global Variables
+```php
+// ❌ Bad: Using global variables
+public function someAction()
+{
+    global $TYPO3_CONF_VARS;
+    // ...
+}
+
+// ✅ Good: Use dependency injection
+public function __construct(SomeService $someService)
+{
+    $this->someService = $someService;
+}
+```
+
+## 📋 Checklist for New Extension
+
+### ✅ Basic Structure
+- [ ] Extension directory created in `packages/`
+- [ ] `composer.json` with proper dependencies
+- [ ] `ext_emconf.php` with correct metadata
+- [ ] `ext_localconf.php` and `ext_tables.php`
+
+### ✅ Domain Models
+- [ ] Domain models extend `AbstractEntity`
+- [ ] Proper type declarations for all properties
+- [ ] Validation attributes where needed
+- [ ] ObjectStorage for relations
+- [ ] Proper getter/setter methods
+
+### ✅ Controllers
+- [ ] Controllers extend `ActionController`
+- [ ] All actions return `ResponseInterface`
+- [ ] Proper dependency injection
+- [ ] Flash messages for user feedback
+- [ ] Proper validation handling
+
+### ✅ TCA Configuration
+- [ ] TCA files in `Configuration/TCA/`
+- [ ] Proper field configurations
+- [ ] Palettes for logical grouping
+- [ ] Proper relations configuration
+- [ ] Search fields defined
+
+### ✅ Database Schema
+- [ ] `ext_tables.sql` with proper structure
+- [ ] All necessary fields included
+- [ ] Proper indexes for performance
+- [ ] Foreign key relationships
+
+### ✅ Testing
+- [ ] Unit tests for models
+- [ ] Unit tests for controllers
+- [ ] Functional tests for complete workflows
+- [ ] Proper test data setup
+
+## 🔄 TYPO3 v13 Specific Changes
+
+### New Features to Use
+- **Attributes instead of annotations**: Use `#[Validate]` instead of `@validate`
+- **ResponseInterface**: All controller actions must return `ResponseInterface`
+- **Strict typing**: Use `declare(strict_types=1)` and proper type hints
+- **Constructor property promotion**: Use PHP 8 features where possible
+- **Modern dependency injection**: Use constructor injection
+
+### Deprecated Features to Avoid
+- **Old annotation syntax**: Don't use `@validate`, `@inject`, etc.
+- **Global variables**: Avoid `$GLOBALS`, `$TYPO3_CONF_VARS`
+- **Old TCA syntax**: Use modern TCA configuration
+- **Old Extbase patterns**: Use modern Extbase patterns
+
+This rule ensures consistent, maintainable, and scalable TYPO3 v13 extensions following current best practices and avoiding common pitfalls.

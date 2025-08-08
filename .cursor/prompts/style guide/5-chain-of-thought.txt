@@ -1,0 +1,382 @@
+<goal>
+Your job is to take the wesite overview and our senior web designers' chain of thought about our website and build out a fresh version of this screen.
+</goal>
+<context>
+
+<website-overview>
+Elevator Pitch
+A sophisticated productivity platform that transforms digital distraction into strategic learning opportunities, designed specifically for high-performing entrepreneurs and business leaders who want to optimize their focus without sacrificing growth opportunities.
+
+Problem Statement
+Tech-savvy entrepreneurs and business leaders struggle with app addiction that fragments their deep work time and reduces their competitive edge. Despite their success, they find themselves unconsciously reaching for social media and entertainment apps during critical thinking periods, undermining their productivity and strategic focus.
+Target Audience
+
+Primary: Tech-native entrepreneurs and startup founders (ages 25-45) building companies and managing teams
+Secondary: Intrapreneurs and business leaders in established companies driving innovation initiatives
+Tertiary: High-performing professionals in competitive industries seeking marginal productivity gains
+
+USP
+The only enterprise-grade focus management platform that converts moments of digital weakness into structured learning experiences, featuring curated business content and sophisticated analytics that turn productivity data into competitive intelligence.
+Target Platforms
+
+Primary: Android (full blocking capabilities)
+Secondary: iOS (focus assistance features)
+
+Features List
+Intelligent App Blocking
+
+ Smart app categorization with business-context awareness
+ Custom blocking schedules aligned with work patterns
+ Team/organization-level blocking policies
+ Integration with calendar systems for automatic focus modes
+
+Executive Unfocus Gateway
+
+ Curated business content library (industry insights, leadership development, market analysis)
+ Sponsored content from premium business publications and thought leaders
+ Cognitive challenges designed for business decision-making skills
+ Time-boxed access with productivity impact tracking
+
+Business Intelligence Dashboard
+
+ Focus metrics and productivity analytics with business KPIs
+ ROI calculations on time saved vs. learning gained
+ Team performance insights for managers
+ Integration with productivity tools and project management systems
+
+UX/UI Considerations
+
+ Executive Dashboard: Clean, data-rich interface showing focus metrics, learning progress, and productivity trends
+ Smart Onboarding: Context-aware setup that adapts to user's industry and role
+ Content Curation Interface: Netflix-style recommendation engine for business content
+ Block Intervention Screen: Professional, motivational messaging with clear path forward
+ Analytics Deep-Dive: Comprehensive reporting with exportable data and insights
+ Minimal, purposeful animations that reinforce progress and achievement
+ Dark mode optimized for late-night work sessions
+ Gesture-based navigation for one-handed use during meetings
+
+Non-Functional Requirements
+
+ Performance: Sub-50ms blocking response, enterprise-grade uptime
+ Scalability: Multi-device sync, team management capabilities
+ Security: SOC 2 compliance, enterprise SSO integration
+ Accessibility: WCAG 2.1 AA compliance for inclusive team environments
+
+Monetization
+
+Premium subscription model ($29/month individual, $99/month team)
+Enterprise licensing with custom content and analytics
+Strategic partnerships with business education platforms
+White-label solutions for corporate wellness programs
+</app-overview>
+
+<chain-of-thought>
+Looking at this app concept through the lens of sophisticated design thinking, I see fascinating parallels to what makes Airbnb's interface so compelling, but adapted for a completely different psychological framework.
+Where Airbnb creates emotional architecture around trust and exploration, this productivity app needs to create emotional architecture around discipline and achievement. The design challenge is profound: how do you make an app that fundamentally restricts access feel empowering rather than punitive?
+The target audience shift to tech-native entrepreneurs changes everything. These aren't consumers looking for delight - they're operators looking for results. They want Stripe-level clarity, not Instagram-level engagement. The interface needs to speak fluent "executive dashboard" while still maintaining enough warmth to not feel clinical.
+The most intriguing design opportunity lies in the unlock mechanism. This isn't just a gate - it's a moment of intentional friction that could be transformed into a moment of growth. The educational content presentation becomes critical UX real estate. It needs to feel premium, curated, almost like a private briefing rather than a YouTube ad.
+The color psychology shifts dramatically too. Where Airbnb uses coral to suggest adventure and possibility, this app might use deeper, more authoritative colors - perhaps a sophisticated navy or forest green that suggests focus and determination. The typography needs to be confident and readable at a glance, since entrepreneurs will be accessing this in rushed, distracted moments.
+Most importantly, the data visualization becomes a key differentiator. This audience wants metrics, trends, and insights. The blocked time isn't just downtime - it's productivity gained, focus achieved, learning accumulated. The interface needs to make them feel like they're leveling up, not just being restricted.
+</chain-of-thought>
+
+<general-principles>
+SENIOR PRODUCT DESIGNER AESTHETIC PRINCIPLES
+Bold Simplicity with Intuitive Navigation
+Creating frictionless experiences through purposeful reduction
+Examples:
+Linear's command palette - Single keystroke (Cmd+K) access to any action, eliminating menu diving
+Stripe's progressive disclosure - Complex payment flows broken into digestible steps with clear progression indicators
+Apple's iOS navigation - Consistent back gesture patterns and bottom tab placement for thumb-reachable interaction zones
+Implementation:
+Reduce cognitive load by limiting primary actions to 3-5 per screen
+Use familiar patterns (hamburger menus, breadcrumbs, tab bars) but execute them exceptionally
+Apply Miller's Rule: Group related items in clusters of 7±2 for optimal mental processing
+
+Breathable Whitespace with Strategic Color Accents
+Guiding attention through intentional spatial relationships
+Examples:
+Notion's content hierarchy - Generous line-height (1.6-1.8) with strategic indentation creating scannable information architecture
+Vercel's dashboard design - 80% neutral grays with single blue accent (#0070F3) reserved exclusively for primary actions
+Apple's product pages - Massive hero sections (60-70% screen height) letting products breathe before content density increases
+Implementation:
+Follow 60-30-10 color rule: 60% neutral, 30% secondary, 10% accent
+Use 8-point grid system for consistent spatial rhythm (8px, 16px, 24px, 32px spacing)
+Reserve color exclusively for interactive elements and critical information
+
+Strategic Negative Space for Cognitive Breathing Room
+Calibrating information density for optimal comprehension
+Examples:
+Linear's issue view - Single-column layout with 40% left margin creating reading-optimized line lengths (45-75 characters)
+Stripe's documentation - Code blocks separated by 32px vertical spacing preventing visual cramping
+Figma's canvas - Infinite negative space around design objects reducing claustrophobia and enabling focus
+Implementation:
+Maintain 1.5-2x line spacing for body text to improve readability by 23% (research-backed)
+Use container max-widths of 1200px to prevent content stretching on ultrawide monitors
+Apply progressive space scaling: tight spacing within components, loose spacing between sections
+
+Systematic Color Theory Through Purposeful Application
+Building trust through consistent and meaningful color relationships
+Examples:
+Tailwind's color system - 50-950 scale providing semantic relationships (100-200 for backgrounds, 700-900 for text)
+GitHub's state colors - Green exclusively for success/merged, red for errors/failed, yellow for warnings/pending
+Spotify's brand integration - Spotify Green (#1DB954) used sparingly (5% of interface) creating premium brand moments
+Implementation:
+Establish semantic color roles: Primary (brand), Secondary (neutral actions), Success (confirmations), Warning (caution), Error (problems)
+Use HSL color space for systematic tint/shade generation maintaining consistent saturation
+Test color combinations for 4.5:1 contrast ratio minimum (WCAG AA compliance)
+
+Typography Hierarchy for Information Architecture
+Creating scannable content through systematic text relationships
+Examples:
+Medium's reading experience - Clear hierarchy: 32px headlines, 21px body, 1.58 line-height optimizing for 200-250 WPM reading speed
+Linear's interface typography - Inter font with tight letter-spacing (-0.02em) on headings creating modern, clean appearance
+Apple's marketing pages - Dramatic scale jumps (96px to 24px) creating clear information prioritization
+Implementation:
+Use modular scale (1.25 ratio): 16px base, 20px, 25px, 31px, 39px creating mathematical harmony
+Limit to 3-4 font weights maximum: Regular (400) for body, Medium (500) for labels, Semibold (600) for headings
+Apply consistent line-height formula: Large text (1.2-1.3), Body text (1.4-1.6), Small text (1.5-1.7)
+
+Visual Density Optimization
+Balancing information availability with cognitive load management
+Examples:
+Notion's database views - Table density toggles (Compact/Comfortable/Spacious) letting users control information density
+GitHub's pull request interface - Progressive disclosure: summary view → detailed diff → file-by-file navigation
+Figma's layers panel - Smart grouping and nesting reducing 100+ layers to 10-15 visible items
+Implementation:
+Apply Fitts's Law: Make frequently used elements larger and closer (minimum 44px touch targets)
+Use progressive disclosure: Show essential information first, detailed info on interaction
+Implement scannable patterns: F-pattern for content, Z-pattern for landing pages
+
+Physics-Based Motion for Spatial Continuity
+Creating believable digital experiences through natural movement
+Examples:
+Linear's page transitions - Shared element transitions maintaining spatial relationships across navigation
+iOS spring animations - Natural bounce (tension: 300, friction: 30) making interactions feel responsive, not robotic
+Stripe's form interactions - Micro-feedback on input focus with subtle scale (1.02x) and shadow changes
+Implementation:
+Use easing curves: cubic-bezier(0.4, 0.0, 0.2, 1) for natural deceleration
+Apply duration hierarchy: Micro-interactions (150ms), Transitions (300ms), Complex animations (500ms)
+Implement shared element transitions maintaining visual continuity across state changes
+
+Accessibility-Driven Design with Universal Usability
+Ensuring inclusive experiences while maintaining aesthetic excellence
+Examples:
+GitHub's focus indicators - High-contrast blue outline (3px solid #0969da) visible across all themes
+Linear's keyboard navigation - Every action accessible via keyboard with visible focus states
+Stripe's form design - Clear error states with icon + color + text ensuring multiple communication channels
+Implementation:
+Maintain 4.5:1 contrast ratio for normal text, 3:1 for large text (18px+ or 14px+ bold)
+Design focus states first: 2-3px outline with 2px offset creating clear interaction boundaries
+Use semantic HTML: proper heading hierarchy (h1→h6), descriptive link text, alt attributes
+
+State-Responsive Feedback Systems
+Communicating system status through immediate visual response
+Examples:
+Linear's button states - Loading state with spinner + disabled opacity + cursor change providing clear system feedback
+Stripe's payment processing - Progress indicators with time estimates reducing perceived wait time by 35%
+Figma's collaborative cursors - Real-time user presence with color-coded identification creating shared awareness
+Implementation:
+Design 5 interaction states: Default, Hover, Active, Focus, Disabled with clear visual differentiation
+Use skeleton screens during loading maintaining layout stability
+Implement optimistic UI updates providing immediate feedback before server confirmation
+
+Content-First Layouts Prioritizing User Objectives
+Designing around user goals rather than aesthetic preferences
+Examples:
+Linear's issue creation - Critical fields (title, assignee, priority) above the fold with secondary options collapsed
+Stripe's onboarding flow - Single-task screens with clear primary action eliminating decision paralysis
+Notion's page structure - Content editing prioritized over navigation chrome (auto-hiding sidebars)
+Implementation:
+Apply jobs-to-be-done framework: Design around user tasks, not feature sets
+Use inverted pyramid structure: Most important information first, supporting details following
+Implement progressive enhancement: Core functionality works without JavaScript, enhanced with interactions
+
+SENIOR PRODUCT DESIGNER UX PRINCIPLES
+User Goals and Tasks
+Designing workflows that align with user mental models and real-world objectives
+Examples:
+Linear's issue workflow - Single-input creation (Cmd+Shift+I) immediately captures context without form friction, matching developer's "interrupt-driven" work style
+Stripe's payment integration - Three-line code implementation prioritizing developer speed over feature completeness in initial setup
+Figma's collaborative editing - Real-time multiplayer mimicking Google Docs behavior, leveraging users' existing mental model for shared document editing
+Implementation:
+Map primary user journeys using Jobs-to-be-Done framework: "When I [situation], I want to [motivation], so I can [expected outcome]"
+Reduce task completion steps by 40-60% through smart defaults and contextual automation
+Design "happy path" first, then layer in edge cases and power-user features
+
+Information Architecture
+Structuring content to match users' mental models and task-based navigation
+Examples:
+Notion's nested hierarchy - Database → Page → Block structure mirroring how users naturally organize information (folder → document → content)
+GitHub's repository structure - Code/Issues/PRs tabs matching developer workflow stages rather than technical implementation
+Linear's sidebar organization - My Issues → Team Issues → All Issues reflecting personal-to-global responsibility scope
+Implementation:
+Use card sorting studies with 15-20 representative users to validate mental model alignment
+Apply Miller's Rule: Limit navigation categories to 7±2 items per level
+Implement breadcrumb navigation showing clear path hierarchy and escape routes
+
+Progressive Disclosure
+Revealing complexity incrementally to maintain flow state while preserving power-user access
+Examples:
+Figma's property panel - Essential properties visible, advanced options under "..." menus with keyboard shortcuts for power users
+Linear's issue creation - Title/Description/Assignee visible by default, labels/projects/cycles revealed on demand
+Stripe's API documentation - Code examples shown immediately, detailed parameters expandable per endpoint
+Implementation:
+Apply 80/20 rule: Make 80% of use cases visible, 20% discoverable through progressive enhancement
+Use disclosure triangles and collapsible sections maintaining spatial relationships
+Provide keyboard shortcuts (Cmd+Option+P) for power users to bypass progressive disclosure
+
+Visual Hierarchy
+Creating scannable interfaces through systematic application of contrast and scale
+Examples:
+Linear's notification system - Unread items with blue accent dot + bold typography + subtle background tint creating three-layer hierarchy
+GitHub's pull request view - Large title (24px) → Status indicators (16px + color) → Metadata (14px gray) establishing clear information priority
+Apple's Settings app - Section headers (uppercase, 12px, gray) → Primary options (17px, black) → Secondary text (15px, gray) creating scannable groups
+Implementation:
+Establish type scale hierarchy: 12px (captions) → 14px (body) → 16px (emphasis) → 20px (headings) → 24px+ (titles)
+Use color temperature for hierarchy: Warm colors advance (attention), cool colors recede (secondary)
+Apply proximity principle: Related items closer (8px), unrelated items farther (24px+)
+
+Affordances and Signifiers
+Making interactive possibilities immediately apparent through visual design language
+Examples:
+Linear's drag handles - Six-dot grip pattern (⋮⋮) universally recognized for reorderable items
+Stripe's form fields - Subtle border + focus ring + cursor change + hover state creating four-layer interaction feedback
+Figma's selection handles - Blue squares with resize cursors immediately communicating transformable objects
+Implementation:
+Design button states hierarchy: Rest → Hover (+2px shadow) → Active (1px inset) → Focus (3px outline)
+Use cursor changes strategically: pointer (clickable), grab/grabbing (draggable), text (editable), resize (scalable)
+Implement consistent interaction patterns: Blue = primary action, Gray = secondary, Red = destructive
+
+Consistency
+Building user confidence through predictable patterns and systematic design decisions
+Examples:
+Linear's modal system - All modals use identical backdrop blur, 32px padding, ESC key close, maintaining spatial consistency
+GitHub's state management - Green (success/merged), yellow (pending/review), red (failed/conflict) colors consistent across all features
+Apple's iOS navigation - Back button always top-left, primary action always top-right, establishing muscle memory patterns
+Implementation:
+Create component library with 15-20 core components covering 80% of interface needs
+Establish interaction patterns: Click (immediate action), Long press (contextual menu), Swipe (navigation/dismiss)
+Use consistent timing: Micro-interactions (150ms), Page transitions (300ms), Loading states (500ms)
+
+Accessibility
+Designing inclusive experiences that work for cognitive, motor, and sensory diverse users
+Examples:
+Linear's keyboard navigation - Every action accessible via keyboard with visible focus indicators and logical tab order
+GitHub's semantic HTML - Proper heading hierarchy (h1→h6) and ARIA labels enabling screen reader navigation
+Stripe's error messaging - Icon + color + text providing multiple sensory channels for critical information
+Implementation:
+Maintain 4.5:1 contrast ratio minimum for text, 3:1 for interactive elements (WCAG AA)
+Design touch targets minimum 44px square for motor accessibility
+Implement semantic markup: <button> for actions, <a> for navigation, proper form labels
+
+Error Prevention
+Designing proactive systems that guide users toward successful completion
+Examples:
+Linear's smart assignee suggestions - Auto-suggests team members based on project context and workload preventing assignment errors
+Stripe's real-time validation - Credit card format validation with friendly error messages before form submission
+Figma's constraint warnings - Visual indicators when elements will break responsive behavior preventing layout issues
+Implementation:
+Use constraint-based design: Disable invalid options rather than showing error messages
+Implement smart defaults: Pre-fill forms with probable values based on user context
+Provide confirmation dialogs for destructive actions with clear consequence explanation
+
+Feedback
+Creating responsive interfaces that communicate system state through immediate visual response
+Examples:
+Linear's optimistic updates - Issue status changes immediately with rollback capability if server request fails
+GitHub's loading states - Skeleton screens maintaining layout during content loading reducing perceived wait time
+Figma's collaborative indicators - Real-time cursor positions and selection states providing awareness of team activity
+Implementation:
+Design five interaction states for every element: Default, Hover, Active, Focus, Disabled
+Use optimistic UI updates with error recovery for perceived performance improvements
+Implement toast notifications with 4-second auto-dismiss and manual close option
+
+Performance Considerations
+Balancing visual richness with technical constraints for optimal user experience
+Examples:
+Linear's 60fps interactions - Hardware-accelerated CSS transforms (translateX, scale) avoiding layout thrashing
+Vercel's image optimization - Progressive loading with blurred placeholders maintaining visual stability
+Figma's virtual scrolling - Rendering only visible components in large file browsers preventing memory issues
+Implementation:
+Optimize critical rendering path: Above-fold content loads in <1.5 seconds
+Use transform and opacity for animations (GPU-accelerated) avoiding layout/paint operations
+Implement progressive image loading: placeholder → low-res → high-res maintaining aspect ratios
+
+Mobile vs. Desktop Considerations
+Adapting interaction patterns for different device capabilities and usage contexts
+Examples:
+Linear's context switching - Desktop: Cmd+K command palette, Mobile: Bottom sheet with large touch targets
+GitHub's responsive navigation - Desktop: Horizontal tabs, Mobile: Hamburger menu with full-screen overlay
+Figma's tool adaptation - Desktop: Precise cursor tools, Mobile: Touch-optimized gestures and larger selection areas
+Implementation:
+Design touch-first for mobile: 44px minimum target size, thumb-reachable primary actions
+Adapt information density: Desktop shows more data, mobile focuses on single tasks
+Use platform-specific patterns: iOS bottom sheets, Android floating action buttons
+
+Responsive Design
+Creating fluid layouts that adapt gracefully across device capabilities
+Examples:
+Linear's breakpoint strategy - 768px (tablet), 1024px (desktop) with container queries for component-level responsiveness
+Stripe's dashboard adaptation - Desktop: Three-column layout, Tablet: Two-column, Mobile: Single-column stack
+Notion's content scaling - Fluid typography (clamp(16px, 2.5vw, 20px)) maintaining readability across screens
+Implementation:
+Use CSS Grid for layout containers, Flexbox for component-level arrangement
+Implement container queries for truly responsive components independent of viewport
+Design breakpoint hierarchy: 320px (small mobile) → 768px (tablet) → 1024px (desktop) → 1440px (large desktop)
+
+User Testing Feedback Loops
+Validating design decisions through systematic observation and iteration
+Examples:
+Linear's weekly user sessions - 5-user testing cycles with specific task scenarios and quantitative success metrics
+GitHub's beta feature rollouts - Gradual feature release with usage analytics and feedback collection
+Figma's prototype testing - In-app feedback tools allowing real-time user annotations and behavior recording
+Implementation:
+Conduct moderated testing for complex workflows, unmoderated for simple task validation
+Use analytics triangulation: Quantitative data (completion rates) + Qualitative feedback (user interviews)
+Implement A/B testing for interface changes affecting >10,000 users
+
+Platform Conventions
+Leveraging established patterns to reduce cognitive load and meet user expectations
+Examples:
+Linear's keyboard shortcuts - Following system conventions (Cmd+N new, Cmd+F search) while adding product-specific shortcuts
+GitHub's navigation patterns - Tab bar behavior matching browser conventions with proper back/forward support
+Figma's file management - Folder hierarchy and sharing patterns matching OS file system mental models
+Implementation:
+Follow platform guidelines: Apple HIG for iOS, Material Design for Android, web standards for browsers
+Use familiar interaction patterns: Swipe gestures, long-press menus, keyboard shortcuts
+Adapt platform-specific behaviors: iOS pull-to-refresh vs Android floating action buttons
+
+Microcopy and Content Strategy
+Crafting language that guides users through complex workflows with confidence
+Examples:
+Linear's empty states - "No issues yet" with actionable "Create your first issue" button rather than generic "No data"
+Stripe's error messages - "Your card was declined. Try a different payment method." providing clear next steps
+Figma's onboarding copy - "Welcome to Figma" → "Create your first design" → "Invite your team" showing clear progression
+Implementation:
+Write in active voice with clear subject-verb-object structure
+Use progressive tense for loading states: "Loading..." → "Saving your changes..." → "Saved"
+Implement content hierarchy: Primary message (16px) → Supporting details (14px) → Technical info (12px)
+
+Aesthetic Appeal
+Creating emotional connection through visual design while maintaining functional clarity
+Examples:
+Linear's brand integration - Subtle purple accent (#5E6AD2) used sparingly (5% of interface) creating premium brand moments
+GitHub's illustration system - Octocats and custom graphics maintaining playful brand personality without interfering with functionality
+Figma's color-coded collaboration - User cursors with vibrant colors creating joyful team awareness
+Implementation:
+Apply 60-30-10 color rule: 60% neutral (backgrounds), 30% brand secondary, 10% accent/primary actions
+Use consistent border radius system: 4px (buttons) → 8px (cards) → 16px (modals) creating cohesive visual language
+Implement subtle brand moments: Loading animations, empty states, success confirmations
+
+Animations and Transitions
+Creating spatial continuity and professional polish through purposeful motion design
+Examples:
+Linear's page transitions - Shared element animations maintaining object relationships across navigation changes
+GitHub's micro-interactions - Button hover states with 150ms ease-out transitions providing immediate feedback
+Figma's drag-and-drop - Physics-based spring animations (tension: 300, friction: 30) creating believable object manipulation
+Implementation:
+Use easing functions: cubic-bezier(0.4, 0.0, 0.2, 1) for natural deceleration curves
+Apply duration hierarchy: UI feedback (100-200ms), Element transitions (200-300ms), Page changes (300-500ms)
+Implement meaningful motion: Elements enter from logical directions, exit toward related content
+</general-principles>
+</context>

@@ -1,0 +1,11 @@
+---
+description: Best practices for accessibility in TYPO3 projects
+globs: **/*.{html,php}
+alwaysApply: false
+---
+
+- Use ARIA roles and attributes to enhance accessibility for assistive technologies.
+- Ensure sufficient color contrast for text to improve readability.
+- Provide keyboard navigation for all interactive elements.
+- Use focus styles to indicate the focus state of elements.
+- Implement landmarks (e.g., <nav>, <main>, <aside>) to aid screen reader navigation.

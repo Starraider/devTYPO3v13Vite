@@ -1,0 +1,12 @@
+---
+description: Best practices for Fluid templating in TYPO3
+globs: **/*.{html,fluid}
+alwaysApply: false
+---
+
+- Use Fluid's ViewHelpers for dynamic content rendering and logic separation.
+- Modularize templates by creating layouts, partials, and templates for better maintainability.
+- Implement proper internationalization and localization using XLIFF coding guidelines.
+- Use Fluid's built-in security features to prevent XSS and other vulnerabilities.
+- Ensure semantic HTML structure for better SEO and accessibility.
+- Validate Fluid templates for syntax errors to avoid runtime issues.

@@ -1,0 +1,15 @@
+---
+description: Best practices and guidelines for TYPO3 development
+globs: **/*.{php,typo3,html}
+alwaysApply: false
+---
+
+- Use PHP 8.2+ features where applicable for improved performance and syntax.
+- Follow PSR-2 Coding Standard for consistent code style.
+- Declare strict types with `declare(strict_types=1);` to enforce type safety.
+- Document all classes, methods, and properties with DocBlocks for clarity.
+- Utilize TYPO3 core functions and APIs to leverage built-in functionality.
+- Implement error handling and logging using TYPO3's logging features.
+- Follow TYPO3's security guidelines to protect against vulnerabilities.
+- Use TYPO3's built-in functions for data validation and sanitization.
+- Use the QueryBuilder of Doctrine for secure database interactions.
