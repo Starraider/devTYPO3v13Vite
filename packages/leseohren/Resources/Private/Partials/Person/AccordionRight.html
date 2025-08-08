@@ -126,30 +126,23 @@
                     <div class="c-person__file-link">
                         <strong>
                             <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />:
-                        </strong><br />
-                        <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}">
+                        </strong>
+                        <br />
+                        <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}" target="_blank">
                             {person.fileFuehrungszeugnis.originalResource.name}
                         </a>
-                        <f:if condition="{person.fuehrungszeugnisChecked}">
-                            <i class="bi bi-patch-check"></i>
-                        </f:if>
-                        <f:if condition="{person.fuehrungszeugnisDate}">
-                            <small>({person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')})</small>
-                        </f:if>
+                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteFuehrungszeugnisModal">
+                            <i class="bi bi-trash"></i>
+                        </button>
                     </div>
                 </f:if>
 
                 <!-- Upload Button for fileFuehrungszeugnis - only show if no file is uploaded -->
                 <f:if condition="{person.fileFuehrungszeugnis}">
-                    <f:then>
-                        <!-- File exists, no upload button needed -->
-                    </f:then>
                     <f:else>
-                        <div class="c-person__file-upload mt-2">
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#uploadFuehrungszeugnisModal">
-                                <i class="bi bi-upload"></i> Datei hochladen
-                            </button>
-                        </div>
+                        <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadFuehrungszeugnisModal">
+                            <i class="bi bi-upload"></i>
+                        </button>
                     </f:else>
                 </f:if>
             </div>
@@ -236,16 +229,52 @@
     </div>
 </div>
 
+<!-- Modal for deleting Führungszeugnis -->
+<div class="modal fade" id="deleteFuehrungszeugnisModal" tabindex="-1" aria-labelledby="deleteFuehrungszeugnisModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteFuehrungszeugnisModalLabel">
+                    <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" /> löschen
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Möchten Sie das Führungszeugnis wirklich löschen?</p>
+                <f:form action="deleteFile" name="person" object="{person}">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <f:form.submit value="Löschen" class="btn btn-danger" />
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('uploadFuehrungszeugnisModal');
+    const uploadModal = document.getElementById('uploadFuehrungszeugnisModal');
+    const deleteModal = document.getElementById('deleteFuehrungszeugnisModal');
 
-    // Reset form when modal is closed
-    modal.addEventListener('hidden.bs.modal', function() {
-        const form = modal.querySelector('form');
-        if (form) {
-            form.reset();
-        }
-    });
+    // Reset upload form when modal is closed
+    if (uploadModal) {
+        uploadModal.addEventListener('hidden.bs.modal', function() {
+            const form = uploadModal.querySelector('form');
+            if (form) {
+                form.reset();
+            }
+        });
+    }
+
+    // Reset delete form when modal is closed
+    if (deleteModal) {
+        deleteModal.addEventListener('hidden.bs.modal', function() {
+            const form = deleteModal.querySelector('form');
+            if (form) {
+                form.reset();
+            }
+        });
+    }
 });
 </script>

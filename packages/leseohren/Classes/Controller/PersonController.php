@@ -206,4 +206,78 @@ class PersonController extends ActionController
 
         return $this->redirect('show', null, null, ['person' => $person]);
     }
+
+    /**
+     * action deleteFile
+     *
+     * @param Person $person
+     * @return ResponseInterface
+     */
+    public function deleteFileAction(Person $person): ResponseInterface
+    {
+        try {
+            // Get the file reference
+            $fileReference = $person->getFileFuehrungszeugnis();
+
+            if ($fileReference) {
+                // Get the actual file from the file reference
+                $file = $fileReference->getOriginalResource();
+
+                if ($file) {
+                    // Method 1: Try to delete using storage
+                    try {
+                        $storage = $file->getStorage();
+                        $storage->deleteFile($file);
+                    } catch (\Exception $storageException) {
+                        // Method 2: Try using ResourceFactory
+                        try {
+                            $resourceFactory = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\ResourceFactory::class);
+                            $fileObject = $resourceFactory->getFileObject($file->getUid());
+                            $fileObject->getStorage()->deleteFile($fileObject);
+                        } catch (\Exception $factoryException) {
+                            // Log the error but continue with database cleanup
+                            DebugUtility::debug('Could not delete file from storage: ' . $factoryException->getMessage());
+                        }
+                    }
+
+                    // Delete the file reference from the database
+                    $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
+                    $persistenceManager->remove($fileReference);
+
+                    // Update the person
+                    $this->personRepository->update($person);
+
+                    // Persist all changes
+                    $persistenceManager->persistAll();
+
+                    $this->addFlashMessage(
+                        'Das Führungszeugnis wurde erfolgreich gelöscht!',
+                        'Erfolg',
+                        ContextualFeedbackSeverity::OK
+                    );
+                } else {
+                    $this->addFlashMessage(
+                        'Datei konnte nicht gefunden werden.',
+                        'Warnung',
+                        ContextualFeedbackSeverity::WARNING
+                    );
+                }
+            } else {
+                $this->addFlashMessage(
+                    'Keine Datei zum Löschen gefunden.',
+                    'Warnung',
+                    ContextualFeedbackSeverity::WARNING
+                );
+            }
+
+        } catch (\Exception $e) {
+            $this->addFlashMessage(
+                'Fehler beim Löschen der Datei: ' . $e->getMessage(),
+                'Fehler',
+                ContextualFeedbackSeverity::ERROR
+            );
+        }
+
+        return $this->redirect('show', null, null, ['person' => $person]);
+    }
 }
