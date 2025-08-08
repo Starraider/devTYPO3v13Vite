@@ -35,7 +35,14 @@ final class SKomLeseohrenCTypeMigration extends AbstractListTypeToCTypeUpdate
     protected function getListTypeToCTypeMapping(): array
     {
         return [
-            // TODO: Add this mapping yourself!
+            'leseohren_personen' => 'leseohren_personen',
+            'leseohren_organizations' => 'leseohren_organizations',
+            'leseohren_events' => 'leseohren_events',
+            'leseohren_holidays' => 'leseohren_holidays',
+            'leseohren_blackboards' => 'leseohren_blackboards',
+            'leseohren_presents' => 'leseohren_presents',
+            'leseohren_registrations' => 'leseohren_registrations',
+            'leseohren_persondashboard' => 'leseohren_persondashboard',
         ];
     }
 }

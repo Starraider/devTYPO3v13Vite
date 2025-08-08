@@ -1,4 +1,4 @@
-@import "EXT:leseohren/Configuration/Sets/Leseohren/constants.typoscript"
+// @import "EXT:leseohren/Configuration/Sets/Leseohren/constants.typoscript"
 
 page {
     theme {
