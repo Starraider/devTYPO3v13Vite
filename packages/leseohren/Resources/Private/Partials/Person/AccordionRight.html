@@ -90,22 +90,6 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
             <div class="accordion-body">
-                <f:if condition="{person.fileFuehrungszeugnis}">
-                    <div class="c-person__file-link">
-                        <strong>
-                            <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />:
-                        </strong><br />
-                        <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}">
-                            {person.fileFuehrungszeugnis.originalResource.name}
-                        </a>
-                        <f:if condition="{person.fuehrungszeugnisChecked}">
-                            <i class="bi bi-patch-check"></i>
-                        </f:if>
-                        <f:if condition="{person.fuehrungszeugnisDate}">
-                            <small>({person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')})</small>
-                        </f:if>
-                    </div>
-                </f:if>
                 <f:if condition="{person.file_mandat}">
                     <div class="c-person__file-link">
                         <strong>
@@ -125,6 +109,48 @@
                             {person.fileOthers.originalResource.name}
                         </a>
                     </div>
+                </f:if>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFuehrungszeugnis" aria-expanded="false" aria-controls="collapseFuehrungszeugnis">
+                <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />
+            </button>
+        </h2>
+        <div id="collapseFuehrungszeugnis" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
+            <div class="accordion-body">
+                <f:if condition="{person.fileFuehrungszeugnis}">
+                    <div class="c-person__file-link">
+                        <strong>
+                            <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />:
+                        </strong><br />
+                        <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}">
+                            {person.fileFuehrungszeugnis.originalResource.name}
+                        </a>
+                        <f:if condition="{person.fuehrungszeugnisChecked}">
+                            <i class="bi bi-patch-check"></i>
+                        </f:if>
+                        <f:if condition="{person.fuehrungszeugnisDate}">
+                            <small>({person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')})</small>
+                        </f:if>
+                    </div>
+                </f:if>
+
+                <!-- Upload Button for fileFuehrungszeugnis - only show if no file is uploaded -->
+                <f:if condition="{person.fileFuehrungszeugnis}">
+                    <f:then>
+                        <!-- File exists, no upload button needed -->
+                    </f:then>
+                    <f:else>
+                        <div class="c-person__file-upload mt-2">
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#uploadFuehrungszeugnisModal">
+                                <i class="bi bi-upload"></i> Datei hochladen
+                            </button>
+                        </div>
+                    </f:else>
                 </f:if>
             </div>
         </div>
@@ -178,3 +204,48 @@
         </div>
     </div>
 </div>
+
+<!-- Modal for fileFuehrungszeugnis upload -->
+<div class="modal fade" id="uploadFuehrungszeugnisModal" tabindex="-1" aria-labelledby="uploadFuehrungszeugnisModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadFuehrungszeugnisModalLabel">
+                    <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" /> hochladen
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <f:form action="processFileUpload" name="person" object="{person}" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="fileFuehrungszeugnis" class="form-label">
+                            <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />
+                        </label>
+                        <f:form.upload property="fileFuehrungszeugnis" />
+                        <div class="form-text">
+                            Erlaubte Dateiformate: PDF, DOC, DOCX, ODT (max. 10MB)
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <f:form.submit value="Hochladen" class="btn btn-primary" />
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('uploadFuehrungszeugnisModal');
+
+    // Reset form when modal is closed
+    modal.addEventListener('hidden.bs.modal', function() {
+        const form = modal.querySelector('form');
+        if (form) {
+            form.reset();
+        }
+    });
+});
+</script>

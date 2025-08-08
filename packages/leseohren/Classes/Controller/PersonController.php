@@ -17,7 +17,6 @@ use SKom\Leseohren\Domain\Model\Person;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Cache\CacheManager;
-//use SKom\Leseohren\Property\TypeConverter\UploadedFileReferenceConverter;
 
 /**
  * This file is part of the "Leseohren" Extension for TYPO3 CMS.
@@ -53,38 +52,6 @@ class PersonController extends ActionController
         $this->personRepository = $personRepository;
         $this->categoryRepository = $categoryRepository;
     }
-
-    /**
-     * Set TypeConverter configuration for file upload
-     *
-     * @param string
-     */
-    // protected function setTypeConverterConfigurationForFileUpload($argumentName): void
-    // {
-    //     $uploadConfiguration = [
-    //         UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS =>
-    //             'pdf,doc,docx,xls,xlsx,ppt,pptx,odt,ods,odp,txt,rtf',
-    //         UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER =>
-    //             '1:/uploadedfiles/',
-    //     ];
-    //     /** @var PropertyMappingConfiguration $propertyMappingConfiguration */
-    //     $propertyMappingConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
-    //     $propertyMappingConfiguration->forProperty('file_fuehrungszeugnis')
-    //         ->setTypeConverterOptions(
-    //             UploadedFileReferenceConverter::class,
-    //             $uploadConfiguration
-    //         );
-    //     $propertyMappingConfiguration->forProperty('file_mandat')
-    //         ->setTypeConverterOptions(
-    //             UploadedFileReferenceConverter::class,
-    //             $uploadConfiguration
-    //         );
-    //     $propertyMappingConfiguration->forProperty('file_others')
-    //         ->setTypeConverterOptions(
-    //             UploadedFileReferenceConverter::class,
-    //             $uploadConfiguration
-    //         );
-    // }
 
     /**
      * action index
@@ -208,5 +175,35 @@ class PersonController extends ActionController
         $this->personRepository->remove($person);
         $this->addFlashMessage('Die Person wurde erfolgreich aus der Datenbank entfernt!', '', ContextualFeedbackSeverity::OK);
         return $this->redirect('list');
+    }
+
+    /**
+     * action processFileUpload
+     *
+     * @param Person $person
+     * @return ResponseInterface
+     */
+    public function processFileUploadAction(Person $person): ResponseInterface
+    {
+        try {
+            // TYPO3 v13 handles file uploads automatically via FileUpload attributes
+            // Just update the person and show success message
+            $this->personRepository->update($person);
+
+            $this->addFlashMessage(
+                'Die Datei wurde erfolgreich hochgeladen!',
+                'Erfolg',
+                ContextualFeedbackSeverity::OK
+            );
+
+        } catch (\Exception $e) {
+            $this->addFlashMessage(
+                'Fehler beim Hochladen der Datei: ' . $e->getMessage(),
+                'Fehler',
+                ContextualFeedbackSeverity::ERROR
+            );
+        }
+
+        return $this->redirect('show', null, null, ['person' => $person]);
     }
 }

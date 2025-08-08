@@ -688,16 +688,6 @@ return [
             ],
             'displayCond' => 'FIELD:payment_method:=:3',
         ],
-        'file_fuehrungszeugnis' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_fuehrungszeugnis',
-            'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_fuehrungszeugnis.description',
-            'config' => [
-                'type' => 'file',
-                'maxitems' => 1,
-                'allowed' => 'pdf,doc,docx,xls,xlsx,txt,md,zip,tar,gz'
-            ],
-        ],
         'fuehrungszeugnis_checked' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.fuehrungszeugnis_checked',
@@ -721,26 +711,6 @@ return [
                 'required' => false,
                 'size' => 20,
                 'default' => 0,
-            ],
-        ],
-        'file_mandat' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_mandat',
-            'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_mandat.description',
-            'config' => [
-                'type' => 'file',
-                'maxitems' => 1,
-                'allowed' => 'pdf,doc,docx,xls,xlsx,txt,md,zip,tar,gz'
-            ],
-        ],
-        'file_others' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_others',
-            'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_others.description',
-            'config' => [
-                'type' => 'file',
-                'maxitems' => 20,
-                'allowed' => 'pdf,doc,docx,xls,xlsx,txt,md,zip,tar,gz'
             ],
         ],
         'donations' => [
@@ -829,6 +799,36 @@ return [
                 ],
             ],
 
+        ],
+        'file_fuehrungszeugnis' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_fuehrungszeugnis',
+            'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_fuehrungszeugnis.description',
+            'config' => [
+                'type' => 'file',
+                'maxitems' => 1,
+                'allowed' => 'pdf,doc,docx,odt'
+            ],
+        ],
+        'file_mandat' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_mandat',
+            'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_mandat.description',
+            'config' => [
+                'type' => 'file',
+                'maxitems' => 1,
+                'allowed' => 'pdf,doc,docx,odt'
+            ],
+        ],
+        'file_others' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_others',
+            'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_others.description',
+            'config' => [
+                'type' => 'file',
+                'maxitems' => 1,
+                'allowed' => 'pdf,doc,docx,odt'
+            ],
         ],
 
     ],
