@@ -90,7 +90,7 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
             <div class="accordion-body">
-                <f:if condition="{person.file_mandat}">
+                <f:if condition="{person.fileMandat}">
                     <div class="c-person__file-link">
                         <strong>
                             <f:translate key="tx_leseohren_domain_model_person.file_mandat" />:
@@ -100,7 +100,14 @@
                         </a>
                     </div>
                 </f:if>
-                <f:if condition="{person.file_others}">
+                <f:if condition="{person.fileMandat}">
+                    <f:else>
+                        <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadMandatModal">
+                            <i class="bi bi-upload"></i>
+                        </button>
+                    </f:else>
+                </f:if>
+                <f:if condition="{person.fileOthers}">
                     <div class="c-person__file-link">
                         <strong>
                             <f:translate key="tx_leseohren_domain_model_person.file_others" />
@@ -198,6 +205,37 @@
     </div>
 </div>
 
+<!-- Modal for Mandat upload -->
+<div class="modal fade" id="uploadMandatModal" tabindex="-1" aria-labelledby="uploadMandatModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadMandatModalLabel">
+                    <f:translate key="tx_leseohren_domain_model_person.file_mandat" /> hochladen
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <f:form action="processFileUpload" name="person" object="{person}" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="fileMandat" class="form-label">
+                            <f:translate key="tx_leseohren_domain_model_person.file_mandat" />
+                        </label>
+                        <f:form.upload property="fileMandat" />
+                        <div class="form-text">
+                            Erlaubte Dateiformate: PDF, DOC, DOCX, ODT (max. 10MB)
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <f:form.submit value="Hochladen" class="btn btn-primary" />
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </div>
+    </div>
+
 <!-- Modal for fileFuehrungszeugnis upload -->
 <div class="modal fade" id="uploadFuehrungszeugnisModal" tabindex="-1" aria-labelledby="uploadFuehrungszeugnisModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -256,11 +294,22 @@
 document.addEventListener('DOMContentLoaded', function() {
     const uploadModal = document.getElementById('uploadFuehrungszeugnisModal');
     const deleteModal = document.getElementById('deleteFuehrungszeugnisModal');
+    const uploadMandatModal = document.getElementById('uploadMandatModal');
 
     // Reset upload form when modal is closed
     if (uploadModal) {
         uploadModal.addEventListener('hidden.bs.modal', function() {
             const form = uploadModal.querySelector('form');
+            if (form) {
+                form.reset();
+            }
+        });
+    }
+
+    // Reset mandat upload form when modal is closed
+    if (uploadMandatModal) {
+        uploadMandatModal.addEventListener('hidden.bs.modal', function() {
+            const form = uploadMandatModal.querySelector('form');
             if (form) {
                 form.reset();
             }
