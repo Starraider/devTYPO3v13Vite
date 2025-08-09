@@ -16,11 +16,11 @@ defined('TYPO3') || die();
         'Leseohren',
         'Personen',
         [
-            PersonController::class => 'list, index, show, new, create, edit, update, delete, processFileUpload, deleteFile'
+            PersonController::class => 'list, index, show, new, create, edit, update, delete, processFileUpload, deleteFile, deleteMandat'
         ],
         // non-cacheable actions
         [
-            PersonController::class => 'new, create, edit, update, delete, processFileUpload, deleteFile'
+            PersonController::class => 'new, create, edit, update, delete, processFileUpload, deleteFile, deleteMandat'
         ],
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );

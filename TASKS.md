@@ -4,26 +4,29 @@ Implementation of file upload functionality for mandates, status management for 
 
 ## Completed Tasks
 
-- [ ] (No tasks completed yet)
+- [x] Analyze existing codebase structure for file upload implementation
+- [x] Review current Person model for file upload integration
+- [x] Create file upload functionality for mandates (file_mandat)
+- [x] Add file validation and security checks for mandate uploads
+- [x] Create file upload UI components for mandates
+- [x] Implement file upload error handling for mandates
+- [x] Create delete functionality for mandate files
+- [x] Implement file deletion confirmation modal for mandates
+- [x] Add file deletion error handling for mandates
+- [x] Update file list after deletion for mandates
 
 ## In Progress Tasks
 
-- [ ] Analyze existing codebase structure for file upload implementation
-- [ ] Review current Person model for file upload integration
+- [ ] Create status display for background check verification
+- [ ] Implement status change modal window
 
 ## Future Tasks
 
-### File Upload Functionality
-- [ ] Create file upload functionality for mandates
-- [ ] Add file validation and security checks
-- [ ] Create file upload UI components
-- [ ] Implement file upload error handling
-
 ### File Management
-- [ ] Create delete functionality for mandate files
-- [ ] Implement file deletion confirmation
-- [ ] Add file deletion error handling
-- [ ] Update file list after deletion
+- [ ] Create delete functionality for other file types (file_others)
+- [ ] Implement file deletion confirmation for other files
+- [ ] Add file deletion error handling for other files
+- [ ] Update file list after deletion for other files
 
 ### Background Check Status Management
 - [ ] Create status display for background check verification
@@ -41,23 +44,23 @@ Implementation of file upload functionality for mandates, status management for 
 
 ## Implementation Plan
 
-### Phase 1: File Upload Infrastructure
-1. **Database Schema Updates**
-   - Create file storage configuration
+### Phase 1: File Upload Infrastructure ✅ COMPLETED
+1. **Database Schema Updates** ✅
+   - File storage configuration already exists
 
-2. **Backend Implementation**
-   - Create file upload service/controller
-   - Implement file validation and security
-   - Add file storage management
+2. **Backend Implementation** ✅
+   - File upload service/controller implemented
+   - File validation and security implemented
+   - File storage management implemented
 
-3. **Frontend Implementation**
-   - Create file upload UI components
+3. **Frontend Implementation** ✅
+   - File upload UI components created for mandates
 
-### Phase 2: File Management
-1. **Delete Functionality**
-   - Implement file deletion service
-   - Add confirmation dialogs
-   - Update file lists after deletion
+### Phase 2: File Management ✅ COMPLETED
+1. **Delete Functionality** ✅
+   - File deletion service implemented for mandates
+   - Confirmation dialogs added for mandates
+   - File lists updated after deletion for mandates
 
 ### Phase 3: Status Management
 1. **Status Display**
@@ -79,24 +82,27 @@ Implementation of file upload functionality for mandates, status management for 
 ## Relevant Files
 
 ### Models and Repositories
-- `packages/leseohren/Classes/Domain/Model/Person.php` - Person model with file upload fields
+- `packages/leseohren/Classes/Domain/Model/Person.php` ✅ - Person model with file upload fields (fileFuehrungszeugnis, fileMandat, fileOthers)
 - `packages/leseohren/Classes/Domain/Model/Organization.php` - Organization model with file upload fields
 - `packages/leseohren/Classes/Domain/Repository/PersonRepository.php` - Person repository
 - `packages/leseohren/Classes/Domain/Repository/OrganizationRepository.php` - Organization repository
 
 ### Controllers
-- `packages/leseohren/Classes/Controller/PersonController.php` - Person controller for file upload handling
+- `packages/leseohren/Classes/Controller/PersonController.php` ✅ - Person controller with file upload handling (processFileUpload, deleteFile, deleteMandat actions)
 - `packages/leseohren/Classes/Controller/OrganizationController.php` - Organization controller for file upload handling
 
 ### Templates and Partials
 - `packages/leseohren/Resources/Private/Templates/Person/` - Person templates
 - `packages/leseohren/Resources/Private/Templates/Organization/` - Organization templates
-- `packages/leseohren/Resources/Private/Partials/Person/` - Person partials
+- `packages/leseohren/Resources/Private/Partials/Person/AccordionRight.html` ✅ - Person partials with file upload/delete UI for mandates
 - `packages/leseohren/Resources/Private/Partials/Organization/` - Organization partials
 
 ### Database Schema
-- `packages/leseohren/ext_tables.sql` - Database schema for file upload fields
-- `packages/leseohren/Configuration/TCA/` - TCA configuration for file upload fields
+- `packages/leseohren/ext_tables.sql` ✅ - Database schema for file upload fields
+- `packages/leseohren/Configuration/TCA/tx_leseohren_domain_model_person.php` ✅ - TCA configuration for file upload fields
+
+### Configuration
+- `packages/leseohren/ext_localconf.php` ✅ - Plugin configuration with file upload actions registered
 
 ### JavaScript and SCSS
 - `packages/leseohren/Resources/Private/` - JavaScript for file upload and form handling
@@ -104,10 +110,11 @@ Implementation of file upload functionality for mandates, status management for 
 
 ## Technical Considerations
 
-### File Upload Security
-- File type validation
-- File size limits
-- Secure file storage
+### File Upload Security ✅ IMPLEMENTED
+- File type validation (PDF, DOC, DOCX, ODT)
+- File size limits (10MB max)
+- Secure file storage with random suffixes
+- TYPO3 v13 FileUpload attribute implementation
 
 ### Status Management
 - Status workflow validation
@@ -120,16 +127,16 @@ Implementation of file upload functionality for mandates, status management for 
 
 ## Dependencies
 
-### TYPO3 Core
-- File Abstraction Layer (FAL)
-- TYPO3 File Upload API
-- TYPO3 Security Framework
+### TYPO3 Core ✅
+- File Abstraction Layer (FAL) - Used for file management
+- TYPO3 File Upload API - Implemented with FileUpload attributes
+- TYPO3 Security Framework - Integrated
 
-### Frontend Libraries
-- Bootstrap 5 for UI components
-- JavaScript for form handling
+### Frontend Libraries ✅
+- Bootstrap 5 for UI components - Used for modals and buttons
+- JavaScript for form handling - Implemented for modal reset
 - SCSS for styling
 
-### Custom Extensions
-- Existing leseohren extension structure
-- Integration with current models and controllers
+### Custom Extensions ✅
+- Existing leseohren extension structure - Integrated
+- Integration with current models and controllers - Completed

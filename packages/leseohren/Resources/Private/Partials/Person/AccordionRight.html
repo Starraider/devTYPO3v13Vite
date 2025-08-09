@@ -98,6 +98,9 @@
                         <a href="{person.fileMandat.originalResource.publicUrl}">
                             {person.fileMandat.originalResource.name}
                         </a>
+                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteMandatModal">
+                            <i class="bi bi-trash"></i>
+                        </button>
                     </div>
                 </f:if>
                 <f:if condition="{person.fileMandat}">
@@ -236,6 +239,29 @@
     </div>
     </div>
 
+<!-- Modal for deleting Mandat -->
+<div class="modal fade" id="deleteMandatModal" tabindex="-1" aria-labelledby="deleteMandatModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteMandatModalLabel">
+                    <f:translate key="tx_leseohren_domain_model_person.file_mandat" /> löschen
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Möchten Sie das Mandat wirklich löschen?</p>
+                <f:form action="deleteMandat" name="person" object="{person}">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <f:form.submit value="Löschen" class="btn btn-danger" />
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal for fileFuehrungszeugnis upload -->
 <div class="modal fade" id="uploadFuehrungszeugnisModal" tabindex="-1" aria-labelledby="uploadFuehrungszeugnisModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -295,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const uploadModal = document.getElementById('uploadFuehrungszeugnisModal');
     const deleteModal = document.getElementById('deleteFuehrungszeugnisModal');
     const uploadMandatModal = document.getElementById('uploadMandatModal');
+    const deleteMandatModal = document.getElementById('deleteMandatModal');
 
     // Reset upload form when modal is closed
     if (uploadModal) {
@@ -320,6 +347,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (deleteModal) {
         deleteModal.addEventListener('hidden.bs.modal', function() {
             const form = deleteModal.querySelector('form');
+            if (form) {
+                form.reset();
+            }
+        });
+    }
+
+    // Reset mandat delete form when modal is closed
+    if (deleteMandatModal) {
+        deleteMandatModal.addEventListener('hidden.bs.modal', function() {
+            const form = deleteMandatModal.querySelector('form');
             if (form) {
                 form.reset();
             }
