@@ -14,10 +14,12 @@ Implementation of file upload functionality for mandates, status management for 
 - [x] Implement file deletion confirmation modal for mandates
 - [x] Add file deletion error handling for mandates
 - [x] Update file list after deletion for mandates
+- [x] Create status display for background check verification (icons, tooltips, accessibility)
+- [x] Display background check date next to status (format dd.mm.yy)
+- [x] Add translations for status labels (de/en)
 
 ## In Progress Tasks
 
-- [ ] Create status display for background check verification
 - [ ] Implement status change modal window
 
 ## Future Tasks
@@ -29,7 +31,6 @@ Implementation of file upload functionality for mandates, status management for 
 - [ ] Update file list after deletion for other files
 
 ### Background Check Status Management
-- [ ] Create status display for background check verification
 - [ ] Implement status change modal window
 - [ ] Add date modification functionality in status modal
 - [ ] Create status update validation
@@ -63,10 +64,11 @@ Implementation of file upload functionality for mandates, status management for 
    - File lists updated after deletion for mandates
 
 ### Phase 3: Status Management
-1. **Status Display**
-   - Create status indicator components
-   - Implement status color coding
-   - Add status tooltips
+1. **Status Display** ✅ COMPLETED
+   - [x] Create status indicator components
+   - [x] Implement status color coding
+   - [x] Add status tooltips
+   - [x] Display background check date next to status (dd.mm.yy)
 
 2. **Status Modal**
    - Create modal for status changes
@@ -94,8 +96,12 @@ Implementation of file upload functionality for mandates, status management for 
 ### Templates and Partials
 - `packages/leseohren/Resources/Private/Templates/Person/` - Person templates
 - `packages/leseohren/Resources/Private/Templates/Organization/` - Organization templates
-- `packages/leseohren/Resources/Private/Partials/Person/AccordionRight.html` ✅ - Person partials with file upload/delete UI for mandates
+- `packages/leseohren/Resources/Private/Partials/Person/AccordionRight.html` ✅ - Person partial with file upload/delete UI and background check status/date display
 - `packages/leseohren/Resources/Private/Partials/Organization/` - Organization partials
+
+### Language
+- `packages/leseohren/Resources/Private/Language/de.locallang.xlf` ✅ - Added translations for background check status labels
+- `packages/leseohren/Resources/Private/Language/locallang.xlf` ✅ - Added translations for background check status labels
 
 ### Database Schema
 - `packages/leseohren/ext_tables.sql` ✅ - Database schema for file upload fields

@@ -51,6 +51,10 @@
 				<source>divers</source>
 				<target>divers</target>
 			</trans-unit>
+            <trans-unit id="tx_leseohren.date" resname="tx_leseohren.date" xml:space="preserve">
+				<source>Date</source>
+				<target>Datum</target>
+			</trans-unit>
 			<trans-unit id="tx_leseohren.status" resname="tx_leseohren.status" xml:space="preserve">
 				<source>Status</source>
 				<target>Status</target>
@@ -1207,6 +1211,14 @@
 				<source>Member Organization</source>
 				<target>Mitgliedsorganisation</target>
 			</trans-unit>
+            <trans-unit id="tx_leseohren.fuehrungszeugnis.checked" resname="tx_leseohren.fuehrungszeugnis.checked" xml:space="preserve">
+                <source>Certificate verified</source>
+                <target>Führungszeugnis geprüft</target>
+            </trans-unit>
+            <trans-unit id="tx_leseohren.fuehrungszeugnis.notchecked" resname="tx_leseohren.fuehrungszeugnis.notchecked" xml:space="preserve">
+                <source>Certificate not verified</source>
+                <target>Führungszeugnis nicht geprüft</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

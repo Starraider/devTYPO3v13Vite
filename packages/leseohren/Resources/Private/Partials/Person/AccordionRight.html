@@ -84,19 +84,68 @@
     <div class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Dateien
+                data-bs-target="#collapseFuehrungszeugnis" aria-expanded="false" aria-controls="collapseFuehrungszeugnis">
+                <f:translate key="tx_leseohren_domain_model_person.files" />
             </button>
         </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
+        <div id="collapseFuehrungszeugnis" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
             <div class="accordion-body">
+                <!-- Führungszeugnis -->
+                <strong>
+                    <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />:
+                </strong>
+                <br />
+                <f:if condition="{person.fileFuehrungszeugnis}">
+                    <div class="c-person__file-link">
+                        <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}" target="_blank">
+                            {person.fileFuehrungszeugnis.originalResource.name -> f:format.crop(maxCharacters: 20)}
+                        </a>
+                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteFuehrungszeugnisModal">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                        <div class="mt-2">
+                            <f:if condition="{person.fuehrungszeugnisChecked}">
+                                <f:then>
+                                    <i class="bi bi-shield-check text-success" aria-hidden="true" title="{f:translate(key: 'tx_leseohren.fuehrungszeugnis.checked')}"></i>
+                                    <span class="visually-hidden"><f:translate key="tx_leseohren.fuehrungszeugnis.checked" /></span>
+                                </f:then>
+                                <f:else>
+                                    <i class="bi bi-shield-exclamation text-danger" aria-hidden="true" title="{f:translate(key: 'tx_leseohren.fuehrungszeugnis.notchecked')}"></i>
+                                    <span class="visually-hidden"><f:translate key="tx_leseohren.fuehrungszeugnis.notchecked" /></span>
+                                </f:else>
+                            </f:if>
+                            <span class="ms-3">
+                                <strong>
+                                    <f:translate key="tx_leseohren.date" />:
+                                </strong>
+                                <f:if condition="{person.fuehrungszeugnisDate}">
+                                    <f:then>
+                                        {person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')}
+                                    </f:then>
+                                    <f:else>
+                                        <span class="text-danger">k.A.</span>
+                                    </f:else>
+                                </f:if>
+                            </span>
+
+                        </div>
+                    </div>
+                </f:if>
+                <f:if condition="{person.fileFuehrungszeugnis}">
+                    <f:else>
+                        <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadFuehrungszeugnisModal">
+                            <i class="bi bi-upload"></i>
+                        </button>
+                    </f:else>
+                </f:if>
+                <hr /><!-- Mandat -->
+                <strong>
+                    <f:translate key="tx_leseohren_domain_model_person.file_mandat" />:
+                </strong><br />
                 <f:if condition="{person.fileMandat}">
                     <div class="c-person__file-link">
-                        <strong>
-                            <f:translate key="tx_leseohren_domain_model_person.file_mandat" />:
-                        </strong><br />
-                        <a href="{person.fileMandat.originalResource.publicUrl}">
-                            {person.fileMandat.originalResource.name}
+                        <a href="{person.fileMandat.originalResource.publicUrl}" target="_blank">
+                            {person.fileMandat.originalResource.name -> f:format.crop(maxCharacters: 20)}
                         </a>
                         <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteMandatModal">
                             <i class="bi bi-trash"></i>
@@ -110,50 +159,16 @@
                         </button>
                     </f:else>
                 </f:if>
+                <hr /><!-- Other files -->
+                <strong>
+                    <f:translate key="tx_leseohren_domain_model_person.file_others" />
+                </strong>:<br />
                 <f:if condition="{person.fileOthers}">
                     <div class="c-person__file-link">
-                        <strong>
-                            <f:translate key="tx_leseohren_domain_model_person.file_others" />
-                        </strong>:<br />
                         <a href="{person.fileOthers.originalResource.publicUrl}">
                             {person.fileOthers.originalResource.name}
                         </a>
                     </div>
-                </f:if>
-            </div>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseFuehrungszeugnis" aria-expanded="false" aria-controls="collapseFuehrungszeugnis">
-                <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />
-            </button>
-        </h2>
-        <div id="collapseFuehrungszeugnis" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
-            <div class="accordion-body">
-                <f:if condition="{person.fileFuehrungszeugnis}">
-                    <div class="c-person__file-link">
-                        <strong>
-                            <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />:
-                        </strong>
-                        <br />
-                        <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}" target="_blank">
-                            {person.fileFuehrungszeugnis.originalResource.name}
-                        </a>
-                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteFuehrungszeugnisModal">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </div>
-                </f:if>
-
-                <!-- Upload Button for fileFuehrungszeugnis - only show if no file is uploaded -->
-                <f:if condition="{person.fileFuehrungszeugnis}">
-                    <f:else>
-                        <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadFuehrungszeugnisModal">
-                            <i class="bi bi-upload"></i>
-                        </button>
-                    </f:else>
                 </f:if>
             </div>
         </div>
