@@ -1,12 +1,21 @@
 # TASKS (Generated via MCP TaskManager)
 
-Request ID: req-1
+## Request ID: req-1 (Completed)
 
 Progress Overview
 | Task ID | Title | Status |
 |--------|-------|--------|
-| task-1 | Enable multiple file upload for Person "other files" field | Completed |
+| task-1 | Enable multiple file upload for Person "other files" field | ✅ Completed |
 | task-2 | Add modal in person detail view for Certificate of Conduct fields | ✅ Completed |
+
+## Request ID: req-2 (Active)
+
+Progress Overview
+| Task ID | Title | Status |
+|--------|-------|--------|
+| task-3 | Fix modal window display for file_others upload | 🔄 In Progress |
+| task-4 | Move static texts to language files | 🔄 In Progress |
+| task-5 | Repair PDF export functionality | 🔄 In Progress |
 
 ---
 

@@ -348,6 +348,12 @@ Short Do/Don't
 - Do: Use feature branches and semantic versioning.
 - Don't: Commit directly to main or merge without CI checks.
 
+### **Task Management**
+- **Dual System Approach**: Use MCP TaskManager for active task management and workflow tracking
+- **Documentation Sync**: Always update TASKS.md file to reflect current tasks from MCP TaskManager
+- **Consistency Rule**: When adding new tasks via MCP TaskManager, immediately update the TASKS.md file with the same information
+- **Single Source of Truth**: MCP TaskManager serves as the primary system, TASKS.md serves as the documentation backup
+
 ### **Version Control**
 - **Git Flow**: Use structured branching strategy
 - **Commit Messages**: Clear, descriptive commit messages
