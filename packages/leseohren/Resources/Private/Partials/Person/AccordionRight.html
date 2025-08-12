@@ -32,10 +32,18 @@
                     <v:l key="tx_leseohren.paymentMethod" />:
                 </strong><br />
                 <f:switch expression="{person.paymentMethod}">
-                    <f:case value="0"><v:l key="tx_leseohren.paymentMethod.0" /></f:case>
-                    <f:case value="1"><i class="bi bi-bank"></i>&nbsp;<v:l key="tx_leseohren.paymentMethod.1" /></f:case>
-                    <f:case value="2"><i class="bi bi-currency-euro"></i>&nbsp;<v:l key="tx_leseohren.paymentMethod.2" /></f:case>
-                    <f:case value="3"><i class="bi bi-paypal"></i>&nbsp;<v:l key="tx_leseohren.paymentMethod.3" /></f:case>
+                    <f:case value="0">
+                        <v:l key="tx_leseohren.paymentMethod.0" />
+                    </f:case>
+                    <f:case value="1"><i class="bi bi-bank"></i>&nbsp;
+                        <v:l key="tx_leseohren.paymentMethod.1" />
+                    </f:case>
+                    <f:case value="2"><i class="bi bi-currency-euro"></i>&nbsp;
+                        <v:l key="tx_leseohren.paymentMethod.2" />
+                    </f:case>
+                    <f:case value="3"><i class="bi bi-paypal"></i>&nbsp;
+                        <v:l key="tx_leseohren.paymentMethod.3" />
+                    </f:case>
                     <f:defaultCase></f:defaultCase>
                 </f:switch>
                 </br>
@@ -84,110 +92,163 @@
     <div class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseFuehrungszeugnis" aria-expanded="false" aria-controls="collapseFuehrungszeugnis">
+                data-bs-target="#collapseFuehrungszeugnis" aria-expanded="false"
+                aria-controls="collapseFuehrungszeugnis">
                 <f:translate key="tx_leseohren_domain_model_person.files" />
             </button>
         </h2>
         <div id="collapseFuehrungszeugnis" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
             <div class="accordion-body">
-                <!-- Führungszeugnis -->
-                <strong>
-                    <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />:
-                </strong>
-                <br />
-                <f:if condition="{person.fileFuehrungszeugnis}">
-                    <div class="c-person__file-link">
-                        <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}" target="_blank">
-                            {person.fileFuehrungszeugnis.originalResource.name -> f:format.crop(maxCharacters: 28)}
-                        </a>
-                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteFuehrungszeugnisModal">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                        <div class="mt-2">
-                            <f:if condition="{person.fuehrungszeugnisChecked}">
-                                <f:then>
-                                    <i class="bi bi-shield-check text-success" aria-hidden="true" title="{f:translate(key: 'tx_leseohren.fuehrungszeugnis.checked')}"></i>
-                                    <span class="visually-hidden"><f:translate key="tx_leseohren.fuehrungszeugnis.checked" /></span>
-                                </f:then>
-                                <f:else>
-                                    <i class="bi bi-shield-exclamation text-danger" aria-hidden="true" title="{f:translate(key: 'tx_leseohren.fuehrungszeugnis.notchecked')}"></i>
-                                    <span class="visually-hidden"><f:translate key="tx_leseohren.fuehrungszeugnis.notchecked" /></span>
-                                </f:else>
-                            </f:if>
-                            <span class="ms-3">
-                                <strong>
-                                    <f:translate key="tx_leseohren.date" />:
-                                </strong>
-                                <f:if condition="{person.fuehrungszeugnisDate}">
-                                    <f:then>
-                                        {person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')}
-                                    </f:then>
-                                    <f:else>
-                                        <span class="text-danger">k.A.</span>
-                                    </f:else>
-                                </f:if>
-                            </span>
-                            <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#editFuehrungszeugnisModal">
-                                <i class="bi bi-pencil"></i>
-                            </button>
+                <div class="container-fluid gx-0 px-0">
+                    <!-- Führungszeugnis -->
+                    <div class="row gx-0 py-1">
+                        <div class="col-12">
+                            <strong>
+                                <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />:
+                            </strong>
+                            <br />
                         </div>
                     </div>
-                </f:if>
-                <f:if condition="{person.fileFuehrungszeugnis}">
-                    <f:else>
-                        <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadFuehrungszeugnisModal">
-                            <i class="bi bi-upload"></i>
-                        </button>
-                    </f:else>
-                </f:if>
-                <hr /><!-- Mandat -->
-                <strong>
-                    <f:translate key="tx_leseohren_domain_model_person.file_mandat" />:
-                </strong><br />
-                <f:if condition="{person.fileMandat}">
-                    <div class="c-person__file-link">
-                        <a href="{person.fileMandat.originalResource.publicUrl}" target="_blank">
-                            {person.fileMandat.originalResource.name -> f:format.crop(maxCharacters: 28)}
-                        </a>
-                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteMandatModal">
-                            <i class="bi bi-trash"></i>
-                        </button>
+                    <f:if condition="{person.fileFuehrungszeugnis}">
+                        <div class="c-person__file-link">
+                            <div class="row gx-0 py-1">
+                                <div class="col-9">
+                                    <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}" target="_blank">
+                                        {person.fileFuehrungszeugnis.originalResource.name -> f:format.crop(maxCharacters: 20)}
+                                    </a>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal"
+                                        data-bs-target="#deleteFuehrungszeugnisModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row gx-0 py-1">
+                                <div class="col-3 text-center fs-3">
+                                    <f:if condition="{person.fuehrungszeugnisChecked}">
+                                        <f:then>
+                                            <i class="bi bi-shield-check text-success" aria-hidden="true"
+                                                title="{f:translate(key: 'tx_leseohren.fuehrungszeugnis.checked')}"></i>
+                                            <span class="visually-hidden">
+                                                <f:translate key="tx_leseohren.fuehrungszeugnis.checked" />
+                                            </span>
+                                        </f:then>
+                                        <f:else>
+                                            <i class="bi bi-shield-exclamation text-danger" aria-hidden="true"
+                                                title="{f:translate(key: 'tx_leseohren.fuehrungszeugnis.notchecked')}"></i>
+                                            <span class="visually-hidden">
+                                                <f:translate key="tx_leseohren.fuehrungszeugnis.notchecked" />
+                                            </span>
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                                <div class="col-6">
+                                    <strong>
+                                        <f:translate key="tx_leseohren.date" />:
+                                    </strong>
+                                    <f:if condition="{person.fuehrungszeugnisDate}">
+                                        <f:then>
+                                            {person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')}
+                                        </f:then>
+                                        <f:else>
+                                            <span class="text-danger">k.A.</span>
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal"
+                                        data-bs-target="#editFuehrungszeugnisModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <f:if condition="!{person.fileFuehrungszeugnis}">
+                        <div class="row gx-0 py-1">
+                            <div class="col-12 text-end">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#uploadFuehrungszeugnisModal">
+                                    <i class="bi bi-upload"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <div class="row gx-0 py-1">
+                        <div class="col-12">
+                            <hr /><!-- Mandat -->
+                            <strong>
+                                <f:translate key="tx_leseohren_domain_model_person.file_mandat" />:
+                            </strong>
+                        </div>
                     </div>
-                </f:if>
-                <f:if condition="{person.fileMandat}">
-                    <f:else>
-                        <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadMandatModal">
-                            <i class="bi bi-upload"></i>
-                        </button>
-                    </f:else>
-                </f:if>
-                <hr /><!-- Other files -->
-                <strong>
-                    <f:translate key="tx_leseohren_domain_model_person.file_others" />
-                </strong>:<br />
-                <f:if condition="{person.fileOthers}">
-                    <div class="c-person__file-link">
-                        <!-- List all other files -->
-                        <f:for each="{person.fileOthers}" as="otherFile">
-                            <div class="d-flex align-items-center mb-1">
-                                <a href="{otherFile.originalResource.publicUrl}" target="_blank">
-                                    {otherFile.originalResource.name -> f:format.crop(maxCharacters: 28)}
+
+                    <f:if condition="{person.fileMandat}">
+                        <div class="row gx-0 py-1 c-person__file-link">
+                            <div class="col-9">
+                                <a href="{person.fileMandat.originalResource.publicUrl}" target="_blank">
+                                    {person.fileMandat.originalResource.name -> f:format.crop(maxCharacters: 20)}
                                 </a>
-                                <button type="button"
-                                    class="btn btn-primary btn-sm ms-2"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#deleteOtherFileModal"
-                                    data-file-uid="{otherFile.uid}">
+                            </div>
+                            <div class="col-3 text-end">
+                                <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal"
+                                    data-bs-target="#deleteMandatModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
-                        </f:for>
+                        </div>
+                    </f:if>
+                    <f:if condition="!{person.fileMandat}">
+                        <div class="row gx-0 py-1">
+                            <div class="col-12 text-end">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#uploadMandatModal">
+                                    <i class="bi bi-upload"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </f:if>
+                    <div class="row gx-0 py-1">
+                        <div class="col-12">
+                            <hr /><!-- Other files -->
+                            <strong>
+                                <f:translate key="tx_leseohren_domain_model_person.file_others" />
+                            </strong>:
+                        </div>
                     </div>
-                </f:if>
-                <!-- Upload button always visible to add more files -->
-                <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadOtherFilesModal">
-                    <i class="bi bi-upload"></i>
-                </button>
+
+                    <f:if condition="{person.fileOthers}">
+                        <div class="c-person__file-link">
+                            <!-- List all other files -->
+                            <f:for each="{person.fileOthers}" as="otherFile">
+                                <div class="row gx-0 py-1">
+                                    <div class="col-9">
+                                        <a href="{otherFile.originalResource.publicUrl}" target="_blank">
+                                            {otherFile.originalResource.name -> f:format.crop(maxCharacters: 20)}
+                                        </a>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal"
+                                            data-bs-target="#deleteOtherFileModal" data-file-uid="{otherFile.uid}">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </f:for>
+                        </div>
+                    </f:if>
+                    <div class="row gx-0 py-1">
+                        <div class="col-3 offset-9 text-end">
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#uploadOtherFilesModal">
+                                <i class="bi bi-upload"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -205,12 +266,24 @@
                         <v:l key="tx_leseohren.travelOptions" />:
                     </strong> <br />
                     <f:switch expression="{person.travelOptions}">
-                        <f:case value="0"><i class="bi bi-car-front"></i>&nbsp;<v:l key="tx_leseohren.travelOptions.0" /></f:case>
-                        <f:case value="1"><v:l key="tx_leseohren.travelOptions.1" /></f:case>
-                        <f:case value="2"><i class="bi bi-bus-front"></i>&nbsp;<v:l key="tx_leseohren.travelOptions.2" /></f:case>
-                        <f:case value="3"><i class="bi bi-bicycle"></i>&nbsp;<v:l key="tx_leseohren.travelOptions.3" /></f:case>
-                        <f:case value="4"><i class="bi bi-person-walking"></i>&nbsp;<v:l key="tx_leseohren.travelOptions.4" /></f:case>
-                        <f:case value="5"><v:l key="tx_leseohren.travelOptions.5" /></f:case>
+                        <f:case value="0"><i class="bi bi-car-front"></i>&nbsp;
+                            <v:l key="tx_leseohren.travelOptions.0" />
+                        </f:case>
+                        <f:case value="1">
+                            <v:l key="tx_leseohren.travelOptions.1" />
+                        </f:case>
+                        <f:case value="2"><i class="bi bi-bus-front"></i>&nbsp;
+                            <v:l key="tx_leseohren.travelOptions.2" />
+                        </f:case>
+                        <f:case value="3"><i class="bi bi-bicycle"></i>&nbsp;
+                            <v:l key="tx_leseohren.travelOptions.3" />
+                        </f:case>
+                        <f:case value="4"><i class="bi bi-person-walking"></i>&nbsp;
+                            <v:l key="tx_leseohren.travelOptions.4" />
+                        </f:case>
+                        <f:case value="5">
+                            <v:l key="tx_leseohren.travelOptions.5" />
+                        </f:case>
                         <f:defaultCase></f:defaultCase>
                     </f:switch>
                 </div>
@@ -220,8 +293,12 @@
                     </strong> <br />
                     <f:for each="{person.preferenceAgegroup}" as="ageID" iteration="ageIterator">
                         <f:if condition="{ageIterator.isLast}">
-                            <f:then><v:l key="tx_leseohren.ageGroup.{ageID}" /></f:then>
-                            <f:else><v:l key="tx_leseohren.ageGroup.{ageID}" />,</f:else>
+                            <f:then>
+                                <v:l key="tx_leseohren.ageGroup.{ageID}" />
+                            </f:then>
+                            <f:else>
+                                <v:l key="tx_leseohren.ageGroup.{ageID}" />,
+                            </f:else>
                         </f:if>
                     </f:for>
                 </div>
@@ -231,8 +308,12 @@
                     </strong> <br />
                     <f:for each="{person.preferenceOrganizationType}" as="orgTypeID" iteration="orgTypeIterator">
                         <f:if condition="{orgTypeIterator.isLast}">
-                            <f:then><v:l key="tx_leseohren.orgType.{orgTypeID}" /></f:then>
-                            <f:else><v:l key="tx_leseohren.orgType.{orgTypeID}" />,</f:else>
+                            <f:then>
+                                <v:l key="tx_leseohren.orgType.{orgTypeID}" />
+                            </f:then>
+                            <f:else>
+                                <v:l key="tx_leseohren.orgType.{orgTypeID}" />,
+                            </f:else>
                         </f:if>
                     </f:for>
                 </div>
@@ -242,7 +323,8 @@
 </div>
 
 <!-- Modal for Mandat upload -->
-<div class="modal fade" id="uploadMandatModal" tabindex="-1" aria-labelledby="uploadMandatModalLabel" aria-hidden="true">
+<div class="modal fade" id="uploadMandatModal" tabindex="-1" aria-labelledby="uploadMandatModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -270,10 +352,11 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
 <!-- Modal for deleting Mandat -->
-<div class="modal fade" id="deleteMandatModal" tabindex="-1" aria-labelledby="deleteMandatModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteMandatModal" tabindex="-1" aria-labelledby="deleteMandatModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -296,7 +379,8 @@
 </div>
 
 <!-- Modal for fileFuehrungszeugnis upload -->
-<div class="modal fade" id="uploadFuehrungszeugnisModal" tabindex="-1" aria-labelledby="uploadFuehrungszeugnisModalLabel" aria-hidden="true">
+<div class="modal fade" id="uploadFuehrungszeugnisModal" tabindex="-1"
+    aria-labelledby="uploadFuehrungszeugnisModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -327,7 +411,8 @@
 </div>
 
 <!-- Modal for deleting Führungszeugnis -->
-<div class="modal fade" id="deleteFuehrungszeugnisModal" tabindex="-1" aria-labelledby="deleteFuehrungszeugnisModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteFuehrungszeugnisModal" tabindex="-1"
+    aria-labelledby="deleteFuehrungszeugnisModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -350,7 +435,8 @@
 </div>
 
 <!-- Modal for editing Führungszeugnis status/date -->
-<div class="modal fade" id="editFuehrungszeugnisModal" tabindex="-1" aria-labelledby="editFuehrungszeugnisModalLabel" aria-hidden="true">
+<div class="modal fade" id="editFuehrungszeugnisModal" tabindex="-1" aria-labelledby="editFuehrungszeugnisModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -362,7 +448,8 @@
             <div class="modal-body">
                 <f:form action="updateFuehrungszeugnis" name="person" object="{person}">
                     <div class="mb-3 form-check">
-                        <f:form.checkbox property="fuehrungszeugnisChecked" id="fzChecked" class="form-check-input" value="1" uncheckedValue="0" checked="{person.fuehrungszeugnisChecked}" />
+                        <f:form.checkbox property="fuehrungszeugnisChecked" id="fzChecked" class="form-check-input"
+                            value="1" uncheckedValue="0" checked="{person.fuehrungszeugnisChecked}" />
                         <label class="form-check-label" for="fzChecked">
                             <f:translate key="tx_leseohren_domain_model_person.fuehrungszeugnis_checked" />
                         </label>
@@ -371,7 +458,9 @@
                         <label for="fzDate" class="form-label">
                             <f:translate key="tx_leseohren_domain_model_person.fuehrungszeugnis_date" />
                         </label>
-                        <f:form.textfield property="fuehrungszeugnisDate" id="fzDate" value="{person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')}" class="form-control" />
+                        <f:form.textfield property="fuehrungszeugnisDate" id="fzDate"
+                            value="{person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')}"
+                            class="form-control" />
                         <div class="form-text">Format: TT.MM.JJJJ</div>
                     </div>
                     <div class="modal-footer">
@@ -385,7 +474,8 @@
 </div>
 
 <!-- Modal for uploading Other Files (multiple) -->
-<div class="modal fade" id="uploadOtherFilesModal" tabindex="-1" aria-labelledby="uploadOtherFilesModalLabel" aria-hidden="true">
+<div class="modal fade" id="uploadOtherFilesModal" tabindex="-1" aria-labelledby="uploadOtherFilesModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -416,7 +506,8 @@
 </div>
 
 <!-- Modal for deleting Other File (reused for any item) -->
-<div class="modal fade" id="deleteOtherFileModal" tabindex="-1" aria-labelledby="deleteOtherFileModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteOtherFileModal" tabindex="-1" aria-labelledby="deleteOtherFileModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -440,46 +531,46 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const uploadModal = document.getElementById('uploadFuehrungszeugnisModal');
-    const deleteModal = document.getElementById('deleteFuehrungszeugnisModal');
-    const uploadMandatModal = document.getElementById('uploadMandatModal');
-    const deleteMandatModal = document.getElementById('deleteMandatModal');
+    document.addEventListener('DOMContentLoaded', function () {
+        const uploadModal = document.getElementById('uploadFuehrungszeugnisModal');
+        const deleteModal = document.getElementById('deleteFuehrungszeugnisModal');
+        const uploadMandatModal = document.getElementById('uploadMandatModal');
+        const deleteMandatModal = document.getElementById('deleteMandatModal');
 
-    // New: other files modals
-    const uploadOtherModal = document.getElementById('uploadOtherFilesModal');
-    const deleteOtherModal = document.getElementById('deleteOtherFileModal');
+        // New: other files modals
+        const uploadOtherModal = document.getElementById('uploadOtherFilesModal');
+        const deleteOtherModal = document.getElementById('deleteOtherFileModal');
 
-    // Reset upload form when modal is closed
-    if (uploadOtherModal) {
-        uploadOtherModal.addEventListener('hidden.bs.modal', function() {
-            const form = uploadOtherModal.querySelector('form');
-            if (form) {
-                form.reset();
-            }
-        });
-    }
+        // Reset upload form when modal is closed
+        if (uploadOtherModal) {
+            uploadOtherModal.addEventListener('hidden.bs.modal', function () {
+                const form = uploadOtherModal.querySelector('form');
+                if (form) {
+                    form.reset();
+                }
+            });
+        }
 
-    // When opening deleteOtherFileModal, set hidden input with file uid
-    if (deleteOtherModal) {
-        deleteOtherModal.addEventListener('show.bs.modal', function(event) {
-            const button = event.relatedTarget;
-            if (!button) return;
-            const fileUid = button.getAttribute('data-file-uid');
-            const input = deleteOtherModal.querySelector('#deleteOtherFileUid');
-            if (input && fileUid) {
-                input.value = fileUid;
-            }
-        });
-        // Reset on hide
-        deleteOtherModal.addEventListener('hidden.bs.modal', function() {
-            const form = deleteOtherModal.querySelector('form');
-            if (form) {
-                form.reset();
-            }
-            const input = deleteOtherModal.querySelector('#deleteOtherFileUid');
-            if (input) input.value = '';
-        });
-    }
-});
+        // When opening deleteOtherFileModal, set hidden input with file uid
+        if (deleteOtherModal) {
+            deleteOtherModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                if (!button) return;
+                const fileUid = button.getAttribute('data-file-uid');
+                const input = deleteOtherModal.querySelector('#deleteOtherFileUid');
+                if (input && fileUid) {
+                    input.value = fileUid;
+                }
+            });
+            // Reset on hide
+            deleteOtherModal.addEventListener('hidden.bs.modal', function () {
+                const form = deleteOtherModal.querySelector('form');
+                if (form) {
+                    form.reset();
+                }
+                const input = deleteOtherModal.querySelector('#deleteOtherFileUid');
+                if (input) input.value = '';
+            });
+        }
+    });
 </script>

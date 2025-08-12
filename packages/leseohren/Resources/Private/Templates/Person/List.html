@@ -92,9 +92,14 @@ data-namespace-typo3-fluid="true">
                             </organization-categories>
                         </f:if>
                     </td>
-                    <td class="dt-body-center">
+                    <td class="dt-body-center fs-5">
                         <f:if condition="{person.fuehrungszeugnisChecked}">
-                            <strong><i class="bi bi-patch-check"></i></strong>
+                            <f:then>
+                                <strong><i class="bi bi-shield-check text-success"></i></strong>
+                            </f:then>
+                            <f:else>
+                                <strong><i class="bi bi-shield-exclamation text-danger"></i></strong>
+                            </f:else>
                         </f:if>
                     </td>
                     <td class="dt-body-center">
