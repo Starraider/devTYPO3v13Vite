@@ -339,6 +339,89 @@ class PersonController extends ActionController
                     ContextualFeedbackSeverity::WARNING
                 );
             }
+
+        } catch (\Exception $e) {
+            $this->addFlashMessage(
+                'Fehler beim Löschen der Datei: ' . $e->getMessage(),
+                'Fehler',
+                ContextualFeedbackSeverity::ERROR
+            );
+        }
+
+        return $this->redirect('show', null, null, ['person' => $person]);
+    }
+
+    /**
+     * action deleteOtherFile
+     *
+     * @param Person $person
+     * @param int $fileUid The UID of the file reference to delete
+     * @return ResponseInterface
+     */
+    public function deleteOtherFileAction(Person $person, int $fileUid): ResponseInterface
+    {
+        try {
+            $fileReference = null;
+
+            // Find the specific file reference by UID
+            foreach ($person->getFileOthers() as $file) {
+                if ($file->getUid() === $fileUid) {
+                    $fileReference = $file;
+                    break;
+                }
+            }
+
+            if ($fileReference) {
+                $file = $fileReference->getOriginalResource();
+
+                if ($file) {
+                    // Try to delete using storage first
+                    try {
+                        $storage = $file->getStorage();
+                        $storage->deleteFile($file);
+                    } catch (\Exception $storageException) {
+                        // Fallback: Use ResourceFactory
+                        try {
+                            $resourceFactory = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\ResourceFactory::class);
+                            $fileObject = $resourceFactory->getFileObject($file->getUid());
+                            $fileObject->getStorage()->deleteFile($fileObject);
+                        } catch (\Exception $factoryException) {
+                            // Log the error but continue with database cleanup
+                            DebugUtility::debug('Could not delete other file from storage: ' . $factoryException->getMessage());
+                        }
+                    }
+
+                    // Remove the file reference from ObjectStorage
+                    $person->removeFileOther($fileReference);
+
+                    // Remove the file reference from DB
+                    $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
+                    $persistenceManager->remove($fileReference);
+
+                    // Update and persist
+                    $this->personRepository->update($person);
+                    $persistenceManager->persistAll();
+
+                    $this->addFlashMessage(
+                        'Die Datei wurde erfolgreich gelöscht!',
+                        'Erfolg',
+                        ContextualFeedbackSeverity::OK
+                    );
+                } else {
+                    $this->addFlashMessage(
+                        'Datei konnte nicht gefunden werden.',
+                        'Warnung',
+                        ContextualFeedbackSeverity::WARNING
+                    );
+                }
+            } else {
+                $this->addFlashMessage(
+                    'Datei zum Löschen nicht gefunden.',
+                    'Warnung',
+                    ContextualFeedbackSeverity::WARNING
+                );
+            }
+
         } catch (\Exception $e) {
             $this->addFlashMessage(
                 'Fehler beim Löschen der Datei: ' . $e->getMessage(),

@@ -346,13 +346,13 @@ class Person extends AbstractEntity
 
     /**
      * fileOthers
-     *
-     * @var FileReference|null
+     * 
+     * @var ObjectStorage<FileReference>
      */
     #[FileUpload([
         'validation' => [
             'required' => false,
-            'maxFiles' => 1,
+            'maxFiles' => 10,
             'fileSize' => ['minimum' => '0K', 'maximum' => '10M'],
             'mimeType' => [
                 'allowedMimeTypes' => [
@@ -427,6 +427,7 @@ class Person extends AbstractEntity
         $this->registrations = $this->registrations ?: new ObjectStorage();
         $this->blackboards = $this->blackboards ?: new ObjectStorage();
         $this->organizations = $this->organizations ?: new ObjectStorage();
+        $this->fileOthers = $this->fileOthers ?: new ObjectStorage();
     }
 
     /**
@@ -1262,19 +1263,39 @@ class Person extends AbstractEntity
      *
      * @return FileReference|null
      */
-    public function getFileOthers()
+    public function getFileOthers(): ObjectStorage
     {
-        return $this->fileOthers;
+        return $this->fileOthers ?? new ObjectStorage();
     }
 
     /**
      * Sets the fileOthers
      *
-     * @return void
+     * @param ObjectStorage<FileReference> $fileOthers
      */
-    public function setFileOthers(FileReference $fileOthers): void
+    public function setFileOthers(ObjectStorage $fileOthers): void
     {
         $this->fileOthers = $fileOthers;
+    }
+
+    /**
+     * Adds a file to fileOthers
+     *
+     * @param FileReference $fileOther
+     */
+    public function addFileOther(FileReference $fileOther): void
+    {
+        $this->fileOthers->attach($fileOther);
+    }
+
+    /**
+     * Removes a file from fileOthers
+     *
+     * @param FileReference $fileOtherToRemove
+     */
+    public function removeFileOther(FileReference $fileOtherToRemove): void
+    {
+        $this->fileOthers->detach($fileOtherToRemove);
     }
 
     /**

@@ -826,7 +826,7 @@ return [
             'description' => 'LLL:EXT:leseohren/Resources/Private/Language/locallang_db.xlf:tx_leseohren_domain_model_person.file_others.description',
             'config' => [
                 'type' => 'file',
-                'maxitems' => 1,
+                'maxitems' => 10,
                 'allowed' => 'pdf,doc,docx,odt'
             ],
         ],

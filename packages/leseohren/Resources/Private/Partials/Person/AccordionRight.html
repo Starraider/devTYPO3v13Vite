@@ -98,7 +98,7 @@
                 <f:if condition="{person.fileFuehrungszeugnis}">
                     <div class="c-person__file-link">
                         <a href="{person.fileFuehrungszeugnis.originalResource.publicUrl}" target="_blank">
-                            {person.fileFuehrungszeugnis.originalResource.name -> f:format.crop(maxCharacters: 20)}
+                            {person.fileFuehrungszeugnis.originalResource.name -> f:format.crop(maxCharacters: 28)}
                         </a>
                         <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteFuehrungszeugnisModal">
                             <i class="bi bi-trash"></i>
@@ -127,7 +127,7 @@
                                     </f:else>
                                 </f:if>
                             </span>
-                            <button type="button" class="btn btn-outline-secondary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#editFuehrungszeugnisModal">
+                            <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#editFuehrungszeugnisModal">
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </div>
@@ -147,7 +147,7 @@
                 <f:if condition="{person.fileMandat}">
                     <div class="c-person__file-link">
                         <a href="{person.fileMandat.originalResource.publicUrl}" target="_blank">
-                            {person.fileMandat.originalResource.name -> f:format.crop(maxCharacters: 20)}
+                            {person.fileMandat.originalResource.name -> f:format.crop(maxCharacters: 28)}
                         </a>
                         <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteMandatModal">
                             <i class="bi bi-trash"></i>
@@ -167,11 +167,27 @@
                 </strong>:<br />
                 <f:if condition="{person.fileOthers}">
                     <div class="c-person__file-link">
-                        <a href="{person.fileOthers.originalResource.publicUrl}">
-                            {person.fileOthers.originalResource.name}
-                        </a>
+                        <!-- List all other files -->
+                        <f:for each="{person.fileOthers}" as="otherFile">
+                            <div class="d-flex align-items-center mb-1">
+                                <a href="{otherFile.originalResource.publicUrl}" target="_blank">
+                                    {otherFile.originalResource.name -> f:format.crop(maxCharacters: 28)}
+                                </a>
+                                <button type="button"
+                                    class="btn btn-primary btn-sm ms-2"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#deleteOtherFileModal"
+                                    data-file-uid="{otherFile.uid}">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </f:for>
                     </div>
                 </f:if>
+                <!-- Upload button always visible to add more files -->
+                <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#uploadOtherFilesModal">
+                    <i class="bi bi-upload"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -368,6 +384,61 @@
     </div>
 </div>
 
+<!-- Modal for uploading Other Files (multiple) -->
+<div class="modal fade" id="uploadOtherFilesModal" tabindex="-1" aria-labelledby="uploadOtherFilesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadOtherFilesModalLabel">
+                    <f:translate key="tx_leseohren_domain_model_person.file_others" /> hochladen
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <f:form action="processFileUpload" name="person" object="{person}" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="fileOthers" class="form-label">
+                            <f:translate key="tx_leseohren_domain_model_person.file_others" />
+                        </label>
+                        <f:form.upload property="fileOthers" multiple="1" />
+                        <div class="form-text">
+                            Erlaubte Dateiformate: PDF, DOC, DOCX, ODT (max. 10MB)
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <f:form.submit value="Hochladen" class="btn btn-primary" />
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for deleting Other File (reused for any item) -->
+<div class="modal fade" id="deleteOtherFileModal" tabindex="-1" aria-labelledby="deleteOtherFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteOtherFileModalLabel">
+                    <f:translate key="tx_leseohren_domain_model_person.file_others" /> löschen
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Möchten Sie diese Datei wirklich löschen?</p>
+                <f:form action="deleteOtherFile" name="person" object="{person}">
+                    <f:form.hidden name="fileUid" value="" id="deleteOtherFileUid" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <f:form.submit value="Löschen" class="btn btn-danger" />
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const uploadModal = document.getElementById('uploadFuehrungszeugnisModal');
@@ -375,43 +446,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const uploadMandatModal = document.getElementById('uploadMandatModal');
     const deleteMandatModal = document.getElementById('deleteMandatModal');
 
+    // New: other files modals
+    const uploadOtherModal = document.getElementById('uploadOtherFilesModal');
+    const deleteOtherModal = document.getElementById('deleteOtherFileModal');
+
     // Reset upload form when modal is closed
-    if (uploadModal) {
-        uploadModal.addEventListener('hidden.bs.modal', function() {
-            const form = uploadModal.querySelector('form');
+    if (uploadOtherModal) {
+        uploadOtherModal.addEventListener('hidden.bs.modal', function() {
+            const form = uploadOtherModal.querySelector('form');
             if (form) {
                 form.reset();
             }
         });
     }
 
-    // Reset mandat upload form when modal is closed
-    if (uploadMandatModal) {
-        uploadMandatModal.addEventListener('hidden.bs.modal', function() {
-            const form = uploadMandatModal.querySelector('form');
-            if (form) {
-                form.reset();
+    // When opening deleteOtherFileModal, set hidden input with file uid
+    if (deleteOtherModal) {
+        deleteOtherModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            if (!button) return;
+            const fileUid = button.getAttribute('data-file-uid');
+            const input = deleteOtherModal.querySelector('#deleteOtherFileUid');
+            if (input && fileUid) {
+                input.value = fileUid;
             }
         });
-    }
-
-    // Reset delete form when modal is closed
-    if (deleteModal) {
-        deleteModal.addEventListener('hidden.bs.modal', function() {
-            const form = deleteModal.querySelector('form');
+        // Reset on hide
+        deleteOtherModal.addEventListener('hidden.bs.modal', function() {
+            const form = deleteOtherModal.querySelector('form');
             if (form) {
                 form.reset();
             }
-        });
-    }
-
-    // Reset mandat delete form when modal is closed
-    if (deleteMandatModal) {
-        deleteMandatModal.addEventListener('hidden.bs.modal', function() {
-            const form = deleteMandatModal.querySelector('form');
-            if (form) {
-                form.reset();
-            }
+            const input = deleteOtherModal.querySelector('#deleteOtherFileUid');
+            if (input) input.value = '';
         });
     }
 });

@@ -5,7 +5,7 @@ Request ID: req-1
 Progress Overview
 | Task ID | Title | Status |
 |--------|-------|--------|
-| task-1 | Enable multiple file upload for Person "other files" field | Planned |
+| task-1 | Enable multiple file upload for Person "other files" field | Completed |
 | task-2 | Add modal in person detail view for Certificate of Conduct fields | ✅ Completed |
 
 ---
