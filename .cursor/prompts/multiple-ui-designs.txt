@@ -1,0 +1,10 @@
+WHAT TO BUILD: the text description provided
+
+PURPOSE
+Create 3 different versions of the same UI so people can pick which one looks best.
+
+STEPS FOR EACH VERSION
+
+Read the style guide at designs/design.json and look at any example pictures for ideas
+Make one HTML page that shows one complete screen based on the text description of what to build
+Save each HTML file in the ui_design_drafts folder as ui_1.html, ui_2.html, ui_3.html (each file must have a different number)
