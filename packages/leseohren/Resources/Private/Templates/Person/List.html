@@ -1,32 +1,38 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
-xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-data-namespace-typo3-fluid="true">
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 <f:section name="content">
-    <vac:asset.vite entry="EXT:leseohren/Resources/Private/DataTables.entry.js"
-        scriptTagAttributes="{
+    <vac:asset.vite entry="EXT:leseohren/Resources/Private/DataTables.entry.js" scriptTagAttributes="{
             type: 'module',
             async: 1
-        }"
-        addCss="1"
-        priority="1"
-        useNonce="1"
-    />
-    <h1><f:translate key="tx_leseohren_domain_model_person.personList" /></h1>
+        }" addCss="1" priority="1" useNonce="1" />
+    <h1>
+        <f:translate key="tx_leseohren_domain_model_person.personList" />
+    </h1>
 
     <f:flashMessages />
 
     <table id="personList" class="table table-striped display">
         <thead>
             <tr>
-                <th><f:translate key="tx_leseohren_domain_model_person.lastname" /></th>
-                <th><f:translate key="tx_leseohren_domain_model_person.firstname" /></th>
+                <th>
+                    <f:translate key="tx_leseohren_domain_model_person.lastname" />
+                </th>
+                <th>
+                    <f:translate key="tx_leseohren_domain_model_person.firstname" />
+                </th>
                 <th>Kategorien</th>
-                <th><f:translate key="tx_leseohren_domain_model_person.zip" /></th>
-                <th><f:translate key="tx_leseohren_domain_model_person.city" /></th>
-                <th><f:translate key="tx_leseohren_domain_model_person.email" /></th>
+                <th>
+                    <f:translate key="tx_leseohren_domain_model_person.zip" />
+                </th>
+                <th>
+                    <f:translate key="tx_leseohren_domain_model_person.city" />
+                </th>
+                <th>
+                    <f:translate key="tx_leseohren_domain_model_person.email" />
+                </th>
                 <th>Telefon</th>
                 <th>Liest in</th>
                 <th>Organisation Kategorien</th>
@@ -37,11 +43,16 @@ data-namespace-typo3-fluid="true">
         <tbody>
             <f:for each="{people}" as="person" iteration="personIterator">
                 <tr>
-                    <td><f:link.action action="show" arguments="{person : person}">{person.lastname}</f:link.action></td>
-                    <td><f:link.action action="show" arguments="{person : person}">{person.firstname}</f:link.action></td>
+                    <td>
+                        <f:link.action action="show" arguments="{person : person}">{person.lastname}</f:link.action>
+                    </td>
+                    <td>
+                        <f:link.action action="show" arguments="{person : person}">{person.firstname}</f:link.action>
+                    </td>
                     <td>
                         <f:if condition="{person.categories}">
-                            <category class="c-person__categories" data-search="<f:for each='{person.categories}' as='cat' iteration='it'>{cat.title}<f:if condition='!{it.isLast}'>, </f:if></f:for>">
+                            <category class="c-person__categories"
+                                data-search="<f:for each='{person.categories}' as='cat' iteration='it'>{cat.title}<f:if condition='!{it.isLast}'>, </f:if></f:for>">
                                 <f:for each="{person.categories}" as="personCategory">
                                     <span class="badge bg-secondary">
                                         {personCategory.title -> f:format.htmlspecialchars()}
@@ -54,7 +65,8 @@ data-namespace-typo3-fluid="true">
                     <td>{person.city}</td>
                     <td>
                         <f:if condition="{person.email}">
-                            <i class="bi bi-envelope-at"></i>&nbsp;<f:link.email email="{person.email}">{person.email -> f:format.crop(maxCharacters: 17)}</f:link.email></br>
+                            <i class="bi bi-envelope-at"></i>&nbsp;<f:link.email email="{person.email}">{person.email ->
+                                f:format.crop(maxCharacters: 17)}</f:link.email></br>
                         </f:if>
                     </td>
                     <td>
@@ -69,8 +81,9 @@ data-namespace-typo3-fluid="true">
                     </td>
                     <td>
                         <f:for each="{person.organizations}" as="organization" iteration="orgIterator">
-                            <f:link.action pageUid="19" action="show" controller="Organization" arguments="{organization: organization}">
-                                    {organization.name -> f:format.crop(maxCharacters: 17)},<br />
+                            <f:link.action pageUid="19" action="show" controller="Organization"
+                                arguments="{organization: organization}">
+                                {organization.name -> f:format.crop(maxCharacters: 17)},<br />
                             </f:link.action>
                         </f:for>
                     </td>
@@ -86,28 +99,45 @@ data-namespace-typo3-fluid="true">
                             ">
                                 <f:for each="{person.organizations}" as="org">
                                     <f:for each="{org.categories}" as="orgCategory">
-                                        <span class="badge bg-primary">{orgCategory.title -> f:format.htmlspecialchars()}</span><br />
+                                        <span class="badge bg-primary">{orgCategory.title ->
+                                            f:format.htmlspecialchars()}</span><br />
                                     </f:for>
                                 </f:for>
                             </organization-categories>
                         </f:if>
                     </td>
                     <td class="dt-body-center fs-5">
-                        <f:if condition="{person.fuehrungszeugnisChecked}">
+                        <f:variable name="isVorlesepate" value="0" />
+                        <f:for each="{person.categories}" as="category">
+                            <f:if condition="{category.title} == 'Vorlesepate'">
+                                <f:variable name="isVorlesepate" value="1" />
+                            </f:if>
+                        </f:for>
+                        <f:if condition="{isVorlesepate}">
                             <f:then>
-                                <strong><i class="bi bi-shield-check text-success"></i></strong>
+                                <f:if condition="{person.fuehrungszeugnisChecked}">
+                                    <f:then>
+                                        <strong><i class="bi bi-shield-check text-success"></i></strong>
+                                    </f:then>
+                                    <f:else>
+                                        <strong><i class="bi bi-shield-exclamation text-danger"></i></strong>
+                                    </f:else>
+                                </f:if>
                             </f:then>
                             <f:else>
-                                <strong><i class="bi bi-shield-exclamation text-danger"></i></strong>
+                                &nbsp;
                             </f:else>
                         </f:if>
                     </td>
                     <td class="dt-body-center">
-                        <f:link.action action="edit" arguments="{person:person}" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i></f:link.action>
-                        <a type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deletePersonModal{personIterator.index}">
+                        <f:link.action action="edit" arguments="{person:person}" class="btn btn-primary btn-sm"><i
+                                class="bi bi-pencil"></i></f:link.action>
+                        <a type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#deletePersonModal{personIterator.index}">
                             <i class="bi bi-trash3"></i>
                         </a>
-                        <f:render partial="Person/DeleteModal" arguments="{person:person, personnr:personIterator.index}" />
+                        <f:render partial="Person/DeleteModal"
+                            arguments="{person:person, personnr:personIterator.index}" />
                     </td>
                 </tr>
             </f:for>
@@ -122,7 +152,8 @@ data-namespace-typo3-fluid="true">
             </div>
             <div class="col-4 text-center">
                 <f:link.action action="new" class="btn btn-primary btn-sm">
-                    <i class="bi bi-person-fill-add"></i>&nbsp;<f:translate key="tx_leseohren_domain_model_person.newPerson" />
+                    <i class="bi bi-person-fill-add"></i>&nbsp;
+                    <f:translate key="tx_leseohren_domain_model_person.newPerson" />
                 </f:link.action>
             </div>
             <div class="col-4 text-center">
@@ -134,4 +165,5 @@ data-namespace-typo3-fluid="true">
 
 
 </f:section>
+
 </html>
