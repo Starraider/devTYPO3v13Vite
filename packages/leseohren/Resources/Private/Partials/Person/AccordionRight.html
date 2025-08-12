@@ -127,7 +127,9 @@
                                     </f:else>
                                 </f:if>
                             </span>
-
+                            <button type="button" class="btn btn-outline-secondary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#editFuehrungszeugnisModal">
+                                <i class="bi bi-pencil"></i>
+                            </button>
                         </div>
                     </div>
                 </f:if>
@@ -324,6 +326,41 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
                         <f:form.submit value="Löschen" class="btn btn-danger" />
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for editing Führungszeugnis status/date -->
+<div class="modal fade" id="editFuehrungszeugnisModal" tabindex="-1" aria-labelledby="editFuehrungszeugnisModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editFuehrungszeugnisModalLabel">
+                    <f:translate key="tx_leseohren_domain_model_person.file_fuehrungszeugnis" />
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <f:form action="updateFuehrungszeugnis" name="person" object="{person}">
+                    <div class="mb-3 form-check">
+                        <f:form.checkbox property="fuehrungszeugnisChecked" id="fzChecked" class="form-check-input" value="1" uncheckedValue="0" checked="{person.fuehrungszeugnisChecked}" />
+                        <label class="form-check-label" for="fzChecked">
+                            <f:translate key="tx_leseohren_domain_model_person.fuehrungszeugnis_checked" />
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fzDate" class="form-label">
+                            <f:translate key="tx_leseohren_domain_model_person.fuehrungszeugnis_date" />
+                        </label>
+                        <f:form.textfield property="fuehrungszeugnisDate" id="fzDate" value="{person.fuehrungszeugnisDate -> f:format.date(format: 'd.m.Y')}" class="form-control" />
+                        <div class="form-text">Format: TT.MM.JJJJ</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <f:form.submit value="Speichern" class="btn btn-primary" />
                     </div>
                 </f:form>
             </div>

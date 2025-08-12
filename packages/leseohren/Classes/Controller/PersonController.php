@@ -349,4 +349,49 @@ class PersonController extends ActionController
 
         return $this->redirect('show', null, null, ['person' => $person]);
     }
+
+    /**
+     * initialize updateFuehrungszeugnis action
+     */
+    public function initializeUpdateFuehrungszeugnisAction(): void
+    {
+        if ($this->arguments->hasArgument('person')) {
+            $this->arguments->getArgument('person')
+                ->getPropertyMappingConfiguration()
+                ->forProperty('fuehrungszeugnisDate')
+                ->setTypeConverterOption(
+                    'TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter',
+                    \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                    'd.m.Y'
+                );
+        }
+    }
+
+    /**
+     * action updateFuehrungszeugnis
+     */
+    public function updateFuehrungszeugnisAction(Person $person)
+    {
+        // Work around setter casing inconsistency for fuehrungszeugnisChecked
+        $args = $this->request->hasArgument('person') ? (array)$this->request->getArgument('person') : [];
+        if (array_key_exists('fuehrungszeugnisChecked', $args)) {
+            // Checkbox: presence means true ("1"), absence means false
+            $person->setFuehrungszeugnischecked((bool)$args['fuehrungszeugnisChecked']);
+        } else {
+            $person->setFuehrungszeugnischecked(false);
+        }
+
+        // Ensure date is properly set if mapper didn't convert
+        if (isset($args['fuehrungszeugnisDate']) && is_string($args['fuehrungszeugnisDate']) && trim($args['fuehrungszeugnisDate']) !== '') {
+            $date = \DateTime::createFromFormat('d.m.Y', $args['fuehrungszeugnisDate']);
+            if ($date instanceof \DateTime) {
+                $person->setFuehrungszeugnisDate($date);
+            }
+        }
+
+        $this->personRepository->update($person);
+        $this->addFlashMessage('Führungszeugnis-Daten wurden aktualisiert.', '', ContextualFeedbackSeverity::OK);
+        return $this->redirect('show', null, null, ['person' => $person]);
+    }
+
 }

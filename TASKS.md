@@ -1,148 +1,57 @@
-# File Upload and Status Management Implementation
+# TASKS (Generated via MCP TaskManager)
 
-Implementation of file upload functionality for mandates, status management for background checks, and button state management for form submissions.
+Request ID: req-1
 
-## Completed Tasks
+Progress Overview
+| Task ID | Title | Status |
+|--------|-------|--------|
+| task-1 | Enable multiple file upload for Person "other files" field | Planned |
+| task-2 | Add modal in person detail view for Certificate of Conduct fields | ✅ Completed |
 
-- [x] Analyze existing codebase structure for file upload implementation
-- [x] Review current Person model for file upload integration
-- [x] Create file upload functionality for mandates (file_mandat)
-- [x] Add file validation and security checks for mandate uploads
-- [x] Create file upload UI components for mandates
-- [x] Implement file upload error handling for mandates
-- [x] Create delete functionality for mandate files
-- [x] Implement file deletion confirmation modal for mandates
-- [x] Add file deletion error handling for mandates
-- [x] Update file list after deletion for mandates
-- [x] Create status display for background check verification (icons, tooltips, accessibility)
-- [x] Display background check date next to status (format dd.mm.yy)
-- [x] Add translations for status labels (de/en)
+---
 
-## In Progress Tasks
+## task-1 — Enable multiple file upload for Person "other files" field
 
-- [ ] Implement status change modal window
+Goal
+Enable uploading and managing multiple files in the Person entity’s "file_others" field and persist them as file references.
 
-## Future Tasks
+Checklist
+- [ ] Backend (TCA): Allow multiple sys_file_reference items for the "file_others" field (type=inline, maxitems > 1, proper appearance, sorting, and allowed file types).
+- [ ] Domain Model: Map the property to ObjectStorage<FileReference> with correct persistence mapping and add add/remove helpers as needed.
+- [ ] Persistence/Controller: Ensure create/update actions correctly persist multiple file references and handle removals.
+- [ ] Fluid/Form: Add an "Edit" button in the person detail view that opens a Bootstrap modal to support multi-file selection and upload; show selected files.
+- [ ] Display: List existing files in the person detail viewwith filename and remove action; handle removal on save.
+- [ ] Validation: Server-side validation for file types/size; graceful error handling and messaging.
+- [ ] Acceptance: User can upload multiple files, see them listed, remove individual files, and they persist after saving.
 
-### File Management
-- [ ] Create delete functionality for other file types (file_others)
-- [ ] Implement file deletion confirmation for other files
-- [ ] Add file deletion error handling for other files
-- [ ] Update file list after deletion for other files
+Notes
+- Follow TYPO3 best practices (Extbase + FAL). Use TYPO3 v13 APIs for file processing and references.
+- Analyze the packages/extbase_upload/ Extension, as it contains examples for multiple file upload.
+- Maintain CSRF protection in forms and use proper FlashMessages for feedback.
 
-### Background Check Status Management
-- [ ] Implement status change modal window
-- [ ] Add date modification functionality in status modal
-- [ ] Create status update validation
-- [ ] Implement status change error handling
+---
 
-### Form Button State Management
-- [ ] Implement button state management for Person creation
-- [ ] Implement button state management for Organization creation
-- [ ] Implement button state management for Event creation
-- [ ] Add loading states and disabled states
-- [ ] Prevent double-clicking during form submission
+## task-2 — Add modal in person detail view for Certificate of Conduct fields ✅ COMPLETED
 
-## Implementation Plan
+Goal
+From the person detail view, allow editing of certificate of conduct date (fuehrungszeugnis_date) and certificate of conduct checked status (fuehrungszeugnis_checked) via a modal.
 
-### Phase 1: File Upload Infrastructure ✅ COMPLETED
-1. **Database Schema Updates** ✅
-   - File storage configuration already exists
+Checklist
+- [x] UI: Add an "Edit" button in the person detail view that opens a Bootstrap modal containing a date picker (HTML5 date input) and a checkbox.
+- [x] Accessibility: Ensure keyboard/focus management, labels, and descriptive help text in the modal.
+- [x] Backend: Implement an Extbase action (AJAX-friendly) to update only these fields with validation (date format, required constraints) and CSRF protection.
+- [x] Frontend/JS: Submit the modal form via fetch/XHR; on success, update the visible values in the detail view without a full page reload.
+- [x] UX: Show success/error feedback; close the modal on success; keep open on validation errors.
+- [x] Acceptance: Opening the modal allows editing both fields; changes persist and the detail view reflects updates immediately.
 
-2. **Backend Implementation** ✅
-   - File upload service/controller implemented
-   - File validation and security implemented
-   - File storage management implemented
+Implementation Summary
+- Added edit button and Bootstrap modal in AccordionRight.html with proper form fields
+- Implemented updateFuehrungszeugnisAction and initializeUpdateFuehrungszeugnisAction in PersonController.php
+- Added proper DateTime conversion, checkbox handling, and flash messages
+- Registered new action in ext_localconf.php
+- Fixed Fluid template syntax for checkbox value binding
+- Tested functionality with local PHP server
 
-3. **Frontend Implementation** ✅
-   - File upload UI components created for mandates
-
-### Phase 2: File Management ✅ COMPLETED
-1. **Delete Functionality** ✅
-   - File deletion service implemented for mandates
-   - Confirmation dialogs added for mandates
-   - File lists updated after deletion for mandates
-
-### Phase 3: Status Management
-1. **Status Display** ✅ COMPLETED
-   - [x] Create status indicator components
-   - [x] Implement status color coding
-   - [x] Add status tooltips
-   - [x] Display background check date next to status (dd.mm.yy)
-
-2. **Status Modal**
-   - Create modal for status changes
-   - Add date picker for background check dates
-   - Implement status validation
-
-### Phase 4: Form Improvements
-1. **Button State Management**
-   - Implement loading states
-   - Add disabled states during submission
-   - Prevent double submissions
-
-## Relevant Files
-
-### Models and Repositories
-- `packages/leseohren/Classes/Domain/Model/Person.php` ✅ - Person model with file upload fields (fileFuehrungszeugnis, fileMandat, fileOthers)
-- `packages/leseohren/Classes/Domain/Model/Organization.php` - Organization model with file upload fields
-- `packages/leseohren/Classes/Domain/Repository/PersonRepository.php` - Person repository
-- `packages/leseohren/Classes/Domain/Repository/OrganizationRepository.php` - Organization repository
-
-### Controllers
-- `packages/leseohren/Classes/Controller/PersonController.php` ✅ - Person controller with file upload handling (processFileUpload, deleteFile, deleteMandat actions)
-- `packages/leseohren/Classes/Controller/OrganizationController.php` - Organization controller for file upload handling
-
-### Templates and Partials
-- `packages/leseohren/Resources/Private/Templates/Person/` - Person templates
-- `packages/leseohren/Resources/Private/Templates/Organization/` - Organization templates
-- `packages/leseohren/Resources/Private/Partials/Person/AccordionRight.html` ✅ - Person partial with file upload/delete UI and background check status/date display
-- `packages/leseohren/Resources/Private/Partials/Organization/` - Organization partials
-
-### Language
-- `packages/leseohren/Resources/Private/Language/de.locallang.xlf` ✅ - Added translations for background check status labels
-- `packages/leseohren/Resources/Private/Language/locallang.xlf` ✅ - Added translations for background check status labels
-
-### Database Schema
-- `packages/leseohren/ext_tables.sql` ✅ - Database schema for file upload fields
-- `packages/leseohren/Configuration/TCA/tx_leseohren_domain_model_person.php` ✅ - TCA configuration for file upload fields
-
-### Configuration
-- `packages/leseohren/ext_localconf.php` ✅ - Plugin configuration with file upload actions registered
-
-### JavaScript and SCSS
-- `packages/leseohren/Resources/Private/` - JavaScript for file upload and form handling
-- `packages/leseohren/Resources/Private/Scss/` - Styles for file upload components
-
-## Technical Considerations
-
-### File Upload Security ✅ IMPLEMENTED
-- File type validation (PDF, DOC, DOCX, ODT)
-- File size limits (10MB max)
-- Secure file storage with random suffixes
-- TYPO3 v13 FileUpload attribute implementation
-
-### Status Management
-- Status workflow validation
-- Audit trail for status changes
-
-### Form Security
-- CSRF protection
-- Input validation
-- XSS prevention
-
-## Dependencies
-
-### TYPO3 Core ✅
-- File Abstraction Layer (FAL) - Used for file management
-- TYPO3 File Upload API - Implemented with FileUpload attributes
-- TYPO3 Security Framework - Integrated
-
-### Frontend Libraries ✅
-- Bootstrap 5 for UI components - Used for modals and buttons
-- JavaScript for form handling - Implemented for modal reset
-- SCSS for styling
-
-### Custom Extensions ✅
-- Existing leseohren extension structure - Integrated
-- Integration with current models and controllers - Completed
+Notes
+- Keep business logic in Controller/Domain layers, not in templates.
+- Ensure proper permission checks and use TYPO3's FormProtection/CSRF mechanisms.
