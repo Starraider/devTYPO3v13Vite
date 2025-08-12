@@ -51,6 +51,7 @@ Short Do/Don't
 
 ### **Development Environment**
 - **DDEV**: Local development environment with Docker
+  - **IMPORTANT**: Always use DDEV for test runs and result verification. Never run PHP's built-in server directly (`php -S`)
 - **Composer**: PHP dependency management
 - **NPM**: Frontend package management
 - **Git**: Version control with semantic versioning
