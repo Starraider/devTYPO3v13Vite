@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.5.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.4.0...v1.5.0) (2025-08-15)
+
+
+### Features
+
+* add deleteFile action and UI modal for managing Führungszeugnis files in PersonController ([9485721](https://github.com/Starraider/devTYPO3v13Vite/commit/9485721cc24a5f52d75bc74ca130055133c950bd))
+* add file upload functionality for Mandat, including modal UI and form handling in AccordionRight.html ([50c08d2](https://github.com/Starraider/devTYPO3v13Vite/commit/50c08d2432827c8007793452b41f6158e402aa5e))
+* **datepicker:** add datepicker initialization for fzDate field ([6616443](https://github.com/Starraider/devTYPO3v13Vite/commit/661644365c51882d2630457358491f64b20ed397))
+* enhance background check status management with display, date formatting, and translations in AccordionRight.html and language files ([e0d7771](https://github.com/Starraider/devTYPO3v13Vite/commit/e0d77714ab8f301f928870b57f172042380ad31f))
+* implement deleteMandat functionality in PersonController, including modal UI for confirmation in AccordionRight.html ([305a645](https://github.com/Starraider/devTYPO3v13Vite/commit/305a645a6c749e23514c97d48fbd4e3b12c8f283))
+* implement file upload functionality for Fuehrungszeugnis, including UI updates and backend processing ([3e26e52](https://github.com/Starraider/devTYPO3v13Vite/commit/3e26e5208fdb27646a4f638f6a6d207a43633bae))
+* implement task management for file upload and status handling, including detailed implementation plan and relevant files ([e580996](https://github.com/Starraider/devTYPO3v13Vite/commit/e580996369b0244dfd7bf4fbb07675e5b98abef6))
+* **person:** add modal for editing certificate of conduct status ([549e9dd](https://github.com/Starraider/devTYPO3v13Vite/commit/549e9dd5bb91f110d1d565ab765b5ddf557c1ee3))
+* **person:** enable multiple file upload for other files field ([c701950](https://github.com/Starraider/devTYPO3v13Vite/commit/c701950c3b407325612f674eddf51e4f238d7026))
+* **person:** improve file management UI and add visual indicators ([7b56ea8](https://github.com/Starraider/devTYPO3v13Vite/commit/7b56ea8349e1538e55f3a5baf830a3bf929ffcf4))
+
 ## [1.4.0](https://github.com/Starraider/devTYPO3v13Vite/compare/v1.3.0...v1.4.0) (2025-08-08)
 
 

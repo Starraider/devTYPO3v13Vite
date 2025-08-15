@@ -3,7 +3,7 @@
 	"description": "TYPO3 CMS Base Distribution",
 	"license": "GPL-2.0-or-later",
 	"type": "project",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"authors": [
 		{
 			"name": "Sven Kalbhenn",
