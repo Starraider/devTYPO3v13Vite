@@ -105,6 +105,18 @@ function initDatepickers() {
       todayHighlight: true,
     })
   }
+
+  const fzDate = document.querySelector('input[id="fzDate"]')
+  if (fzDate !== null) {
+    const datepicker8 = new window.Datepicker(fzDate, {
+      format: 'dd.mm.yyyy',
+      buttonClass: 'btn',
+      autohide: true,
+      todayButton: true,
+      clearButton: true,
+      todayHighlight: true,
+    })
+  }
   console.log('leseohren datepicker initialization completed!')
 }
 

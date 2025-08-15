@@ -11,6 +11,7 @@ use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Annotation\Validate;
+use TYPO3\CMS\Extbase\Annotation\FileUpload;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
@@ -282,9 +283,26 @@ class Person extends AbstractEntity
     /**
      * fileFuehrungszeugnis
      *
-     * @var FileReference
+     * @var FileReference|null
      */
-    #[Cascade(['value' => 'remove'])]
+    #[FileUpload([
+        'validation' => [
+            'required' => false,
+            'maxFiles' => 1,
+            'fileSize' => ['minimum' => '0K', 'maximum' => '10M'],
+            'mimeType' => [
+                'allowedMimeTypes' => [
+                    'application/pdf',
+                    'application/msword',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'application/vnd.oasis.opendocument.text'
+                ]
+            ]
+        ],
+        'uploadFolder' => '1:/user_upload/Fuehrungszeugnise/',
+        'addRandomSuffix' => true,
+        'duplicationBehavior' => \TYPO3\CMS\Core\Resource\Enum\DuplicationBehavior::RENAME
+    ])]
     protected $fileFuehrungszeugnis = null;
 
     /**
@@ -297,24 +315,58 @@ class Person extends AbstractEntity
     /**
      * fuehrungszeugnisDate
      *
-     * @var \DateTime
+     * @var \DateTime|null
      */
     protected $fuehrungszeugnisDate = null;
 
     /**
      * fileMandat
      *
-     * @var FileReference
+     * @var FileReference|null
      */
-    #[Cascade(['value' => 'remove'])]
+    #[FileUpload([
+        'validation' => [
+            'required' => false,
+            'maxFiles' => 1,
+            'fileSize' => ['minimum' => '0K', 'maximum' => '10M'],
+            'mimeType' => [
+                'allowedMimeTypes' => [
+                    'application/pdf',
+                    'application/msword',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'application/vnd.oasis.opendocument.text'
+                ]
+            ]
+        ],
+        'uploadFolder' => '1:/user_upload/Mandate/',
+        'addRandomSuffix' => true,
+        'duplicationBehavior' => \TYPO3\CMS\Core\Resource\Enum\DuplicationBehavior::RENAME
+    ])]
     protected $fileMandat = null;
 
     /**
      * fileOthers
-     *
-     * @var FileReference
+     * 
+     * @var ObjectStorage<FileReference>
      */
-    #[Cascade(['value' => 'remove'])]
+    #[FileUpload([
+        'validation' => [
+            'required' => false,
+            'maxFiles' => 10,
+            'fileSize' => ['minimum' => '0K', 'maximum' => '10M'],
+            'mimeType' => [
+                'allowedMimeTypes' => [
+                    'application/pdf',
+                    'application/msword',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'application/vnd.oasis.opendocument.text'
+                ]
+            ]
+        ],
+        'uploadFolder' => '1:/user_upload/UserFiles/',
+        'addRandomSuffix' => true,
+        'duplicationBehavior' => \TYPO3\CMS\Core\Resource\Enum\DuplicationBehavior::RENAME
+    ])]
     protected $fileOthers = null;
 
     /**
@@ -375,6 +427,7 @@ class Person extends AbstractEntity
         $this->registrations = $this->registrations ?: new ObjectStorage();
         $this->blackboards = $this->blackboards ?: new ObjectStorage();
         $this->organizations = $this->organizations ?: new ObjectStorage();
+        $this->fileOthers = $this->fileOthers ?: new ObjectStorage();
     }
 
     /**
@@ -1128,7 +1181,7 @@ class Person extends AbstractEntity
     /**
      * Returns the fileFuehrungszeugnis
      *
-     * @return FileReference
+     * @return FileReference|null
      */
     public function getFileFuehrungszeugnis()
     {
@@ -1188,7 +1241,7 @@ class Person extends AbstractEntity
     /**
      * Returns the fileMandat
      *
-     * @return FileReference
+     * @return FileReference|null
      */
     public function getFileMandat()
     {
@@ -1208,21 +1261,41 @@ class Person extends AbstractEntity
     /**
      * Returns the fileOthers
      *
-     * @return FileReference
+     * @return FileReference|null
      */
-    public function getFileOthers()
+    public function getFileOthers(): ObjectStorage
     {
-        return $this->fileOthers;
+        return $this->fileOthers ?? new ObjectStorage();
     }
 
     /**
      * Sets the fileOthers
      *
-     * @return void
+     * @param ObjectStorage<FileReference> $fileOthers
      */
-    public function setFileOthers(FileReference $fileOthers): void
+    public function setFileOthers(ObjectStorage $fileOthers): void
     {
         $this->fileOthers = $fileOthers;
+    }
+
+    /**
+     * Adds a file to fileOthers
+     *
+     * @param FileReference $fileOther
+     */
+    public function addFileOther(FileReference $fileOther): void
+    {
+        $this->fileOthers->attach($fileOther);
+    }
+
+    /**
+     * Removes a file from fileOthers
+     *
+     * @param FileReference $fileOtherToRemove
+     */
+    public function removeFileOther(FileReference $fileOtherToRemove): void
+    {
+        $this->fileOthers->detach($fileOtherToRemove);
     }
 
     /**

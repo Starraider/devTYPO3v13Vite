@@ -39,6 +39,9 @@
 			<trans-unit id="tx_leseohren.gender.2" resname="tx_leseohren.gender.2" xml:space="preserve">
 				<source>divers</source>
 			</trans-unit>
+			<trans-unit id="tx_leseohren.date" resname="tx_leseohren.date" xml:space="preserve">
+				<source>Date</source>
+			</trans-unit>
 			<trans-unit id="tx_leseohren.status" resname="tx_leseohren.status" xml:space="preserve">
 				<source>Status</source>
 			</trans-unit>
@@ -895,6 +898,12 @@
             <trans-unit id="tx_leseohren_domain_model_person.memberorg" xml:space="preserve">
 				<source>Member Organization</source>
 			</trans-unit>
+            <trans-unit id="tx_leseohren.fuehrungszeugnis.checked" xml:space="preserve">
+                <source>Certificate verified</source>
+            </trans-unit>
+            <trans-unit id="tx_leseohren.fuehrungszeugnis.notchecked" xml:space="preserve">
+                <source>Certificate not verified</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>
