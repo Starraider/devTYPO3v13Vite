@@ -15,7 +15,7 @@ addEventListener('DOMContentLoaded', () => {
                         pageSize: 'A4',
                         title: 'Personen Liste',
                         exportOptions: {
-                            columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                            columns: [0, 1, 2, 3, 4, 5, 6],
                         },
                         customize: function (doc) {
                             doc.defaultStyle.fontSize = 10
@@ -39,13 +39,7 @@ addEventListener('DOMContentLoaded', () => {
                 searchPanes: {
                     show: false,
                 },
-                targets: [0],
-            },
-            {
-                searchPanes: {
-                    show: true,
-                },
-                targets: [1],
+                targets: [0], // Name column - no search pane
             },
             {
                 searchPanes: {
@@ -54,7 +48,7 @@ addEventListener('DOMContentLoaded', () => {
                         filter: 'spFilter'
                     }
                 },
-                targets: [2],
+                targets: [1], // Categories column
                 render: function (data, type, row, meta) {
                     const cell = meta && meta.col !== undefined && meta.row !== undefined
                         ? tablePersonList.cell(meta.row, meta.col).node()
@@ -83,31 +77,25 @@ addEventListener('DOMContentLoaded', () => {
                 searchPanes: {
                     show: true,
                 },
-                targets: [3],
+                targets: [2], // ZIP column
             },
             {
                 searchPanes: {
                     show: true,
                 },
-                targets: [4],
+                targets: [3], // City column
             },
             {
                 searchPanes: {
                     show: false,
                 },
-                targets: [5],
+                targets: [4], // Email column
             },
             {
                 searchPanes: {
                     show: false,
                 },
-                targets: [6],
-            },
-            {
-                searchPanes: {
-                    show: true,
-                },
-                targets: [7],
+                targets: [5], // Phone column
             },
             {
                 searchPanes: {
@@ -116,7 +104,7 @@ addEventListener('DOMContentLoaded', () => {
                         filter: 'spFilter'
                     }
                 },
-                targets: [8],
+                targets: [6], // Organization Categories column
                 render: function (data, type, row, meta) {
                     const cell = meta && meta.col !== undefined && meta.row !== undefined
                         ? tablePersonList.cell(meta.row, meta.col).node()
@@ -146,7 +134,14 @@ addEventListener('DOMContentLoaded', () => {
                 searchPanes: {
                     show: false,
                 },
-                targets: [9],
+                targets: [7], // FZ column
+            },
+            {
+                orderable: false,
+                searchPanes: {
+                    show: false,
+                },
+                targets: [8], // Actions column
             },
         ],
     })

@@ -1,0 +1,216 @@
+// Tables Component Styles
+// Responsive design optimizations for DataTables
+
+.table {
+    // Ensure proper table layout
+    table-layout: auto;
+
+    // Optimize column widths for merged name column
+    th,
+    td {
+        &:nth-child(1) {
+            // Name column - give it more space after merge
+            min-width: 150px;
+            max-width: 250px;
+            width: 18%;
+        }
+
+        &:nth-child(2) {
+            // Categories column
+            min-width: 120px;
+            width: 15%;
+        }
+
+        &:nth-child(3) {
+            // ZIP column
+            min-width: 60px;
+            width: 8%;
+        }
+
+        &:nth-child(4) {
+            // City column
+            min-width: 100px;
+            width: 12%;
+        }
+
+        &:nth-child(5) {
+            // Email column
+            min-width: 120px;
+            width: 15%;
+        }
+
+        &:nth-child(6) {
+            // Phone column
+            min-width: 100px;
+            width: 12%;
+        }
+
+        &:nth-child(7) {
+            // Organization Categories column
+            min-width: 100px;
+            width: 12%;
+        }
+
+        &:nth-child(8) {
+            // FZ column
+            min-width: 40px;
+            width: 4%;
+            text-align: center;
+        }
+
+        &:nth-child(9) {
+            // Actions column
+            min-width: 80px;
+            width: 4%;
+            text-align: center;
+        }
+    }
+}
+
+// DataTables responsive optimizations
+.dataTables_wrapper {
+
+    // Ensure proper responsive behavior
+    .dataTables_scroll {
+        overflow-x: auto;
+    }
+
+    // Mobile optimizations
+    @media (max-width: 767px) {
+        .table {
+
+            th,
+            td {
+                // Reduce padding on mobile for better space utilization
+                padding: 0.5rem 0.25rem;
+
+                &:nth-child(1) {
+                    // Name column on mobile - ensure it's always visible
+                    min-width: 120px;
+                    width: auto;
+                }
+            }
+        }
+
+        // Hide less critical columns on mobile (handled by DataTables responsive)
+        .dtr-hidden {
+            display: none !important;
+        }
+    }
+
+    // Tablet optimizations
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .table {
+
+            th,
+            td {
+                &:nth-child(1) {
+                    // Name column on tablet
+                    min-width: 140px;
+                    width: 16%;
+                }
+            }
+        }
+    }
+
+    // Desktop optimizations
+    @media (min-width: 1024px) {
+        .table {
+
+            th,
+            td {
+                &:nth-child(1) {
+                    // Name column on desktop - optimal width
+                    min-width: 150px;
+                    width: 18%;
+                }
+            }
+        }
+    }
+}
+
+// Specific optimizations for person list table
+#personList {
+
+    // Ensure proper text wrapping in name column
+    td:first-child {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        // Ensure links are properly styled
+        a {
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                color: var(--bs-primary);
+            }
+        }
+    }
+
+    // Optimize badge display in category columns
+    .badge {
+        margin: 0.125rem;
+        font-size: 0.75rem;
+
+        // Ensure badges wrap properly on smaller screens
+        @media (max-width: 767px) {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.4rem;
+        }
+    }
+
+    // Action buttons optimization
+    .btn-sm {
+        @media (max-width: 767px) {
+            padding: 0.25rem 0.4rem;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+// DataTables responsive control button styling
+.dtr-control {
+    cursor: pointer;
+}
+
+// Responsive details row styling
+.dtr-details {
+    background-color: var(--bs-light);
+    border-left: 3px solid var(--bs-primary);
+
+    ul {
+        margin: 0;
+        padding: 0.5rem 1rem;
+        list-style: none;
+
+        li {
+            margin-bottom: 0.25rem;
+
+            .dtr-title {
+                font-weight: bold;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+
+// Print optimizations
+@media print {
+    .table {
+
+        th,
+        td {
+            &:nth-child(1) {
+                // Name column in print - ensure proper width
+                width: 20%;
+            }
+        }
+    }
+
+    // Hide action columns in print
+    .table th:last-child,
+    .table td:last-child {
+        display: none;
+    }
+}

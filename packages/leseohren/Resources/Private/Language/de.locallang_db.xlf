@@ -38,6 +38,10 @@
 				<source></source>
 				<target></target>
 			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.name" resname="tx_leseohren_domain_model_person.name" xml:space="preserve">
+				<source>Name</source>
+				<target>Name</target>
+			</trans-unit>
 			<trans-unit id="tx_leseohren_domain_model_person.title" resname="tx_leseohren_domain_model_person.title" xml:space="preserve">
 				<source>Title</source>
 				<target>Titel</target>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <tx_leseohren_domain_model_person>
+        <uid>1</uid>
+        <pid>1</pid>
+        <firstname>John</firstname>
+        <lastname>Doe</lastname>
+        <email>john.doe@example.com</email>
+        <zip>12345</zip>
+        <city>Test City</city>
+        <status>0</status>
+        <tstamp>1577836800</tstamp>
+        <crdate>1577836800</crdate>
+    </tx_leseohren_domain_model_person>
+    
+    <tx_leseohren_domain_model_person>
+        <uid>2</uid>
+        <pid>1</pid>
+        <firstname>Jane</firstname>
+        <lastname>Smith</lastname>
+        <email>jane.smith@example.com</email>
+        <zip>54321</zip>
+        <city>Another City</city>
+        <status>0</status>
+        <tstamp>1577836800</tstamp>
+        <crdate>1577836800</crdate>
+    </tx_leseohren_domain_model_person>
+    
+    <tx_leseohren_domain_model_person>
+        <uid>3</uid>
+        <pid>1</pid>
+        <firstname></firstname>
+        <lastname>LastnameOnly</lastname>
+        <email>lastname.only@example.com</email>
+        <zip>11111</zip>
+        <city>Test City</city>
+        <status>0</status>
+        <tstamp>1577836800</tstamp>
+        <crdate>1577836800</crdate>
+    </tx_leseohren_domain_model_person>
+    
+    <tx_leseohren_domain_model_person>
+        <uid>4</uid>
+        <pid>1</pid>
+        <firstname>FirstnameOnly</firstname>
+        <lastname></lastname>
+        <email>firstname.only@example.com</email>
+        <zip>22222</zip>
+        <city>Another City</city>
+        <status>0</status>
+        <tstamp>1577836800</tstamp>
+        <crdate>1577836800</crdate>
+    </tx_leseohren_domain_model_person>
+</dataset>

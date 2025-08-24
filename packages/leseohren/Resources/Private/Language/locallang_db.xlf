@@ -39,6 +39,9 @@
 			<trans-unit id="tx_leseohren_domain_model_person.lastname.description" resname="tx_leseohren_domain_model_person.lastname.description" xml:space="preserve">
 				<source>Lastname</source>
 			</trans-unit>
+			<trans-unit id="tx_leseohren_domain_model_person.name" resname="tx_leseohren_domain_model_person.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
 			<trans-unit id="tx_leseohren_domain_model_person.title" resname="tx_leseohren_domain_model_person.title" xml:space="preserve">
 				<source>Title</source>
 			</trans-unit>
